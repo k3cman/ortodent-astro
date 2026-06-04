@@ -1,0 +1,49 @@
+---
+import { versionStaticPaths } from "@/lib/static-paths";
+import {
+  isSiteVersion,
+  USLUGE_TABS,
+  USLUGE_TAB_LABELS,
+  type SiteVersion,
+  type UslugeTab,
+} from "@/lib/paths";
+import V1Layout from "@/layouts/V1Layout.astro";
+import V2Layout from "@/layouts/V2Layout.astro";
+import V1Usluge2D from "@/components/v1/pages/Usluge2DPage";
+import V1Usluge3D from "@/components/v1/pages/Usluge3DPage";
+import V1UslugeKefa from "@/components/v1/pages/UslugeKefaPage";
+import V2Shell from "@/components/v2/V2Shell.astro";
+
+export function getStaticPaths() {
+  return versionStaticPaths().flatMap(({ params }) =>
+    USLUGE_TABS.map((tab) => ({
+      params: { version: params.version, tab },
+    })),
+  );
+}
+
+const version = Astro.params.version as string;
+const tab = Astro.params.tab as string;
+
+if (!isSiteVersion(version) || !USLUGE_TABS.includes(tab as UslugeTab)) {
+  return Astro.redirect(`${import.meta.env.BASE_URL}v1/usluge/2d/`);
+}
+
+const v = version as SiteVersion;
+const t = tab as UslugeTab;
+const title = `${USLUGE_TAB_LABELS[t]} — OrtoDent`;
+---
+
+{v === "v1" ? (
+  <V1Layout title={title}>
+    {t === "2d" && <V1Usluge2D client:load version={v} />}
+    {t === "3d" && <V1Usluge3D client:load version={v} />}
+    {t === "kefalometrija" && <V1UslugeKefa client:load version={v} />}
+  </V1Layout>
+) : (
+  <V2Layout title={title}>
+    <V2Shell version={v} title={USLUGE_TAB_LABELS[t]}>
+      <p>Stranica usluge ({t}) — pun tekst iz v1, novi layout u v2.</p>
+    </V2Shell>
+  </V2Layout>
+)}

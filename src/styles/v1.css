@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ortodent Print Design System - Bold Geometric Aesthetic */
+
+@layer base {
+  :root {
+    /* Reference: pink/magenta brand, clean neutrals */
+
+    /* Backgrounds */
+    --background: 0 0% 100%;           /* #FFFFFF - main content */
+    --foreground: 0 0% 20%;            /* #333333 - primary text/headings */
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    /* Primary #db1a56 — brand magenta + scale (hue 341) */
+    --primary: 341 79% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-50: 341 71% 97%;
+    --primary-100: 341 71% 93%;
+    --primary-200: 341 71% 86%;
+    --primary-300: 341 79% 74%;
+    --primary-400: 341 79% 62%;
+    --primary-600: 341 79% 41%;
+    --primary-700: 341 79% 34%;
+    --primary-800: 341 79% 27%;
+    --primary-900: 341 79% 20%;
+    --primary-950: 341 79% 13%;
+
+    /* Secondary (#952862) - buttons, icons, active states */
+    --secondary: 328 58% 37%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted - Very light grey (#F8F8F8 header, #EEEEEE hero) */
+    --muted: 0 0% 97%;
+    --muted-foreground: 0 0% 42%;      /* #6B6B6B - secondary text/labels */
+
+    /* Accent - Lighter magenta (#EE1C7E) - gradient end, highlights */
+    --accent: 334 86% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 87%;                /* #DEDEDE - subtle grey */
+    --input: 0 0% 87%;
+    --ring: 341 79% 48%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens - aligned to reference */
+    --maroon: 340 76% 43%;             /* #C21B5F - deep magenta */
+    --crimson: 342 82% 52%;            /* #EA1F62 - vibrant pink */
+    --warm-orange: 334 86% 52%;        /* #EE1C7E - lighter magenta */
+    --golden: 45 100% 50%;             /* #FFC107 - amber (star ratings) */
+    --charcoal: 0 0% 17%;              /* #2B2B2B - footer, dark bg */
+
+    /* Gradients - magenta/pink (reference bar under hero) */
+    --gradient-brand: linear-gradient(135deg, hsl(340, 76%, 43%) 0%, hsl(342, 82%, 52%) 50%, hsl(334, 86%, 52%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(334, 86%, 52%) 0%, hsl(45, 100%, 50%) 100%);
+    --gradient-diagonal: linear-gradient(135deg, hsl(342, 82%, 52%) 0%, hsl(334, 86%, 52%) 50%, hsl(45, 100%, 50%) 100%);
+    --gradient-maroon: linear-gradient(135deg, hsl(340, 76%, 43%) 0%, hsl(342, 82%, 52%) 100%);
+    --gradient-card-accent: linear-gradient(90deg, hsl(340, 76%, 43%) 0%, hsl(334, 86%, 52%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(340 76% 43% / 0.12);
+    --shadow-raised: 0 8px 30px -8px hsl(0 0% 17% / 0.12), 0 2px 8px -2px hsl(0 0% 17% / 0.06);
+    --shadow-glow: 0 8px 25px -5px hsl(342 82% 52% / 0.35);
+    --shadow-card: 0 10px 40px -10px hsl(0 0% 17% / 0.08);
+  }
+
+  .dark {
+    --background: 0 0% 17%;            /* #2B2B2B - charcoal */
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 21%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 21%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 341 79% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 328 58% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 22%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 334 86% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 28%;
+    --input: 0 0% 28%;
+    --ring: 341 79% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  /* Geometric Diagonal Background */
+  .diagonal-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diagonal-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 70%;
+    height: 200%;
+    background: var(--gradient-diagonal);
+    transform: rotate(-20deg);
+    z-index: 0;
+    opacity: 0.9;
+  }
+
+  .diagonal-bg::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 45%;
+    height: 180%;
+    background: var(--gradient-warm);
+    transform: rotate(-25deg);
+    z-index: 1;
+    opacity: 0.85;
+  }
+
+  /* Diagonal Section Divider */
+  .diagonal-divider {
+    position: relative;
+  }
+
+  .diagonal-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: hsl(var(--background));
+    clip-path: polygon(0 0, 100% 0, 100% 0%, 0 100%);
+    z-index: 2;
+  }
+
+  /* Card with gradient top border */
+  .accent-card {
+    @apply bg-card rounded-xl relative overflow-hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .accent-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-card-accent);
+  }
+
+  /* Soft Card - Updated */
+  .soft-card {
+    @apply bg-card rounded-xl relative overflow-hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .soft-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-card-accent);
+  }
+
+  /* Timeline connector */
+  .timeline-connector {
+    @apply h-0.5 flex-1 mx-4;
+    background: var(--gradient-card-accent);
+  }
+
+  /* Angular clip sections */
+  .clip-diagonal-top {
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .clip-diagonal-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+  }
+}
+
+@layer utilities {
+  .text-gradient-brand {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-brand);
+  }
+
+  .text-gradient-warm {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-warm);
+  }
+
+  /* Keep backward compatibility */
+  .text-gradient-pink {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-maroon);
+  }
+
+  .bg-cream {
+    background-color: hsl(var(--muted));
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-raised {
+    box-shadow: var(--shadow-raised);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .gradient-accent-line {
+    background: var(--gradient-card-accent);
+  }
+}

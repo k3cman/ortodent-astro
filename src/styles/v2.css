@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&display=swap");
+
+:root {
+  --background: 220 20% 98%;
+  --foreground: 220 15% 20%;
+  --primary: 220 60% 45%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 220 15% 94%;
+  --muted-foreground: 220 10% 45%;
+  --border: 220 15% 88%;
+  --radius: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  line-height: 1.6;
+}
+
+.v2-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.v2-header,
+.v2-footer {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.v2-footer {
+  border-bottom: none;
+  border-top: 1px solid hsl(var(--border));
+  margin-top: auto;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.v2-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.v2-main {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.v2-main h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.5rem;
+}
+
+.v2-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+.v2-nav a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+}
+
+.v2-nav a:hover {
+  text-decoration: underline;
+}
