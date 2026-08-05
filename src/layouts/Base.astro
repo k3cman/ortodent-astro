@@ -3,21 +3,19 @@ interface Props {
   title?: string;
   description?: string;
   bodyClass?: string;
-  lang?: string;
 }
 
 const {
   title = "OrtoDent — Dentalna radiologija",
   description = "Najpreciznija 2D i 3D dijagnostika u Beogradu, Novom Sadu i Pančevu.",
   bodyClass,
-  lang = "sr",
 } = Astro.props;
 
 const favicon = import.meta.env.BASE_URL + "favicon.svg";
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang="sr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
