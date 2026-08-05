@@ -5,6 +5,7 @@ import { VersionLink } from "@/components/v1/VersionContext";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { assetPath } from "@/lib/paths";
 import {
   Accordion,
   AccordionContent,
@@ -247,7 +248,7 @@ const Informacije = () => {
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/40 shadow-card">
                   <img
-                    src="/images/informacije.jpg"
+                    src={assetPath("/images/informacije.jpg")}
                     alt="Stomatolog u ordinaciji pregleda 3D snimak zuba na tabletu"
                     className="h-full w-full object-cover"
                     loading="lazy"

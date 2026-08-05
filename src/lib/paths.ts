@@ -11,6 +11,12 @@ function siteBase(): string {
   return base.endsWith("/") ? base.slice(0, -1) : base;
 }
 
+export function assetPath(path: string): string {
+  const stripped = path.startsWith("/") ? path.slice(1) : path;
+  const base = siteBase();
+  return base + "/" + stripped;
+}
+
 /** Build a path under /v1 or /v2 (respects Astro `base` / SITE_BASE). */
 export function vPath(version: string, path: string): string {
   const stripped = path.startsWith("/") ? path.slice(1) : path;

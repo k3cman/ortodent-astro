@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check, Zap } from "lucide-react";
+import { assetPath } from "@/lib/paths";
 
 export const UslugeKefa = () => (
   <motion.div
@@ -22,7 +23,7 @@ export const UslugeKefa = () => (
       <div className="soft-card p-6 border">
         <div className="overflow-hidden rounded-xl border border-border/40 bg-muted/30">
           <img
-            src="/images/Kef-analize2-400x367.jpg"
+            src={assetPath("/images/Kef-analize2-400x367.jpg")}
             alt="Kefalometrijski tracing – lateralni kefalogram sa digitalnim merenjima"
             className="w-full h-auto object-contain"
             loading="lazy"
@@ -35,7 +36,7 @@ export const UslugeKefa = () => (
       <div className="space-y-6 mt-6">
         <h3 className="m-0">
           <img
-            src="/images/Kef-analize-logo.png"
+            src={assetPath("/images/Kef-analize-logo.png")}
             alt="KefAnalize dentamed"
             className="h-9 w-auto max-w-full object-contain object-left md:h-11"
             loading="eager"

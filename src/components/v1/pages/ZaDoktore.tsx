@@ -18,6 +18,7 @@ import {
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import tabletXray from "@/assets/internet-pristup2.jpg";
+import { assetPath } from "@/lib/paths";
 
 const ZaDoktore = () => {
   const { toast } = useToast();
@@ -116,7 +117,7 @@ const ZaDoktore = () => {
             >
               <div className="aspect-[4/5] overflow-hidden rounded-3xl border border-border/40 bg-muted/30 shadow-card">
                 <img
-                  src={encodeURI("/images/image 12 (1).png")}
+                  src={encodeURI(assetPath("/images/image 12 (1).png"))}
                   alt="Savremena stomatološka ordinacija sa dentalnim kreslom i monitorom sa prikazom ortopantomograma"
                   className="h-full w-full object-cover object-center"
                   loading="eager"
@@ -307,7 +308,7 @@ const ZaDoktore = () => {
             >
               <div className="overflow-hidden rounded-2xl border border-border/40 bg-muted/30 shadow-card">
                 <img
-                  src={encodeURI("/images/Tomografska analiza.jpg")}
+                  src={encodeURI(assetPath("/images/Tomografska analiza.jpg"))}
                   alt="Tomografska analiza — CBCT preseci i merenja u Ez3D-i softveru"
                   className="h-auto w-full object-contain"
                   loading="lazy"
@@ -316,7 +317,9 @@ const ZaDoktore = () => {
               </div>
               <div className="overflow-hidden rounded-2xl border border-border/40 bg-muted/30 shadow-card">
                 <img
-                  src={encodeURI("/images/Tomografska analiza 2.jpg")}
+                  src={encodeURI(
+                    assetPath("/images/Tomografska analiza 2.jpg"),
+                  )}
                   alt="Tomografska analiza — dodatni pregled preseka i panorame u Ez3D-i softveru"
                   className="h-auto w-full object-contain"
                   loading="lazy"
@@ -439,7 +442,7 @@ const ZaDoktore = () => {
               <div className="soft-card p-6">
                 <div className="overflow-hidden rounded-xl border border-border/40 bg-muted/30">
                   <img
-                    src="/images/Kef-analize2-400x367.jpg"
+                    src={assetPath("/images/Kef-analize2-400x367.jpg")}
                     alt="Kefalometrijski tracing – lateralni kefalogram sa digitalnim merenjima"
                     className="h-auto w-full object-contain"
                     loading="lazy"
@@ -457,7 +460,7 @@ const ZaDoktore = () => {
             >
               <h3 className="m-0">
                 <img
-                  src="/images/Kef-analize-logo.png"
+                  src={assetPath("/images/Kef-analize-logo.png")}
                   alt="KefAnalize dentamed"
                   className="h-9 w-auto max-w-full object-contain object-left md:h-11"
                   loading="eager"
