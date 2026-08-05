@@ -91,7 +91,7 @@ const ServiceCards = () => {
   ];
 
   return (
-    <section className="pb-20 pt-20 bg-background relative overflow-hidden">
+    <section className="pb-20 bg-background relative overflow-hidden">
       {/* Subtle diagonal background accent */}
       <div
         className="absolute -top-20 -left-20 w-40 h-[120%] bg-secondary/5"

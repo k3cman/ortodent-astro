@@ -13,9 +13,10 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <ServiceCards />
-        <OrtoCloudSection />
         <TrustStats />
+        <ServiceCards />
+        <Timeline />
+        <OrtoCloudSection />
         <TestimonialsSection />
       </main>
       <Footer />
