@@ -18,10 +18,12 @@ import {
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import tabletXray from "@/assets/internet-pristup2.jpg";
-import { assetPath } from "@/lib/paths";
+import { useVersion } from "@/components/v1/VersionContext";
+import { assetPath, vPath } from "@/lib/paths";
 
 const ZaDoktore = () => {
   const { toast } = useToast();
+  const version = useVersion();
   const [formData, setFormData] = useState({
     name: "",
     clinic: "",
@@ -51,7 +53,7 @@ const ZaDoktore = () => {
       key: "ortocloud",
       top: "Otvorite",
       bottom: "OrtoCloud",
-      href: "/#ortocloud",
+      href: `${vPath(version, "/")}#ortocloud`,
       Icon: Cloud,
     },
     {
@@ -138,7 +140,11 @@ const ZaDoktore = () => {
               <div className="soft-card p-8">
                 <div className="overflow-hidden rounded-xl border border-border/40 bg-muted/30">
                   <img
-                    src={tabletXray}
+                    src={
+                      typeof tabletXray === "string"
+                        ? tabletXray
+                        : tabletXray.src
+                    }
                     alt="OrtoCloud na tabletu — pregled dentalnog snimka"
                     className="h-auto w-full object-cover"
                     loading="lazy"
