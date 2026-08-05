@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MapPin } from "lucide-react";
 import heroImage from "@/assets/hero-girl.png";
-import { VersionLink } from "@/components/v1/VersionContext";
 
 const Hero = () => {
-  const locations = ["BEOGRAD", "NOVI SAD", "PANČEVO"];
+  const locations = ["Beograd", "Novi Sad", "Pančevo"];
 
   return (
     <section className="min-h-screen pt-20 bg-background relative overflow-x-hidden flex flex-col">
@@ -63,12 +61,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <span className="text-primary">Više</span> od snimka.
-                <br />
-                Vizija{" "}
-                <span className="text-primary">
-                  <span className="font-extrabold">osmeha.</span>
-                </span>
+                Najpreciznija 2D i 3D dijagnostika
               </motion.h1>
 
               <motion.p
@@ -77,7 +70,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                Najpreciznija 2D i 3D dijagnostika. Minimalno zračenje.
+                Minimalno zračenje.
                 <br />
                 Rezultati dostupni odmah na OrtoCloud platformi.
               </motion.p>
@@ -89,12 +82,16 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Button variant="default" size="lg" asChild className="mt-6">
-                <VersionLink to="/lokacije">
-                  <MapPin className="w-5 h-5 mr-2" />
-                  Pronađi Lokacije
-                </VersionLink>
-              </Button>
+              {locations.map((location) => (
+                <Button
+                  key={location}
+                  type="button"
+                  variant="default"
+                  size="lg"
+                >
+                  {location}
+                </Button>
+              ))}
             </motion.div>
           </motion.div>
 
@@ -117,51 +114,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Location Strip - Gradient Bar */}
-      <div
-        className="py-6 relative z-10"
-        style={{
-          background: "linear-gradient(to right, #952862, #db1a56)",
-        }}
-      >
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-center space-y-2"
-          >
-            <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 font-semibold">
-              Dostupni u 3 grada
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
-              {locations.map((location, index) => (
-                <div
-                  key={location}
-                  className="flex items-center gap-4 md:gap-8"
-                >
-                  <motion.span
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.9 + index * 0.15 }}
-                    className="text-xl md:text-3xl font-extrabold text-primary-foreground tracking-wide"
-                  >
-                    {location}
-                  </motion.span>
-                  {index < locations.length - 1 && (
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.3, delay: 1 + index * 0.15 }}
-                      className="w-2 h-2 rounded-full bg-accent hidden md:block"
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
     </section>
   );
 };
