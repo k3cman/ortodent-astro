@@ -104,7 +104,9 @@ const OrtoCloudSection = () => {
           >
             <div className="relative">
               <motion.img
-                src={tabletXray}
+                src={
+                  typeof tabletXray === "string" ? tabletXray : tabletXray.src
+                }
                 alt="OrtoCloud na tabletu - dentalni snimak"
                 className="w-full max-w-md rounded-xl shadow-raised"
                 animate={{ y: [0, -10, 0] }}

@@ -7,7 +7,8 @@
 /* Ortodent Print Design System - Bold Geometric Aesthetic */
 
 @layer base {
-  :root {
+  :root,
+  body.v1-theme {
     /* Reference: pink/magenta brand, clean neutrals */
 
     /* Backgrounds */
@@ -122,9 +123,23 @@
     font-family: 'Montserrat', sans-serif;
   }
 
+  body.v1-theme {
+    font-family: sans-serif;
+    line-height: 1.5;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+  }
+
+  body.v1-theme h1,
+  body.v1-theme h2,
+  body.v1-theme h3,
+  body.v1-theme h4,
+  body.v1-theme h5,
+  body.v1-theme h6 {
+    font-family: sans-serif;
   }
 }
 

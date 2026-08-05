@@ -71,19 +71,22 @@ const ServiceCard = ({
 const ServiceCards = () => {
   const services = [
     {
-      image: service2d,
+      image: typeof service2d === "string" ? service2d : service2d.src,
       title: "2D snimanje",
       subtitle: "Ortopan, dentalni radiogram, kefalogram...",
       href: "/usluge/2d",
     },
     {
-      image: service3d,
+      image: typeof service3d === "string" ? service3d : service3d.src,
       title: "3D snimanje",
       subtitle: "CBCT",
       href: "/usluge/3d",
     },
     {
-      image: serviceCephalometry,
+      image:
+        typeof serviceCephalometry === "string"
+          ? serviceCephalometry
+          : serviceCephalometry.src,
       title: "Kefalometrijske analize",
       subtitle: "Analize za ortodonte",
       href: "/usluge/kefalometrija",

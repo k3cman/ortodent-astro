@@ -7,9 +7,14 @@ interface Props {
   description?: string;
 }
 
-const { title, description } = Astro.props;
+const { description } = Astro.props;
 ---
 
-<Base title={title} description={description}>
+<Base
+  title="Ortodent - Dentalna Radiologija"
+  description={description}
+  bodyClass="v1-theme"
+  lang="en"
+>
   <slot />
 </Base>
