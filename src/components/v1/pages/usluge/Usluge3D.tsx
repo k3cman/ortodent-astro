@@ -6,8 +6,9 @@ export const Usluge3D = () => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -20 }}
     transition={{ duration: 0.3 }}
-    className="space-y-12 max-w-6xl mx-auto"
+    className="space-y-12 max-w-5xl mx-auto"
   >
+    {/* Title */}
     <div className="text-center">
       <h2 className="text-3xl md:text-4xl font-bold text-foreground">
         3D/CBCT{" "}
@@ -15,9 +16,11 @@ export const Usluge3D = () => (
       </h2>
     </div>
 
-    <section className="grid lg:grid-cols-2 gap-8 items-start">
-      <div className="soft-card p-6 md:p-8">
-        <div className="relative aspect-[4/3] md:aspect-video w-full overflow-hidden rounded-2xl border border-border/40 bg-black">
+    {/* Split: Image Left, Text Right */}
+    <div className="grid lg:grid-cols-2 gap-8 items-start lg:items-stretch">
+      {/* Left - 3D CBCT video (stretches to match text column on lg+) */}
+      <div className="soft-card flex h-full min-h-0 flex-col p-8">
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border/40 bg-black lg:min-h-0 lg:flex-1 lg:aspect-auto">
           <iframe
             src="https://www.youtube.com/embed/fLM5W-d17HU"
             title="3D CBCT prikaz"
@@ -29,51 +32,53 @@ export const Usluge3D = () => (
         </div>
       </div>
 
-      <div className="space-y-4">
-        <h3 className="text-xl md:text-2xl font-bold text-primary">
-          3D/CBCT - Zlatni standard dijagnostike
+      {/* Right - Content */}
+      <div className="space-y-6">
+        <h3 className="text-lg font-bold text-primary">
+          3D/CBCT – Zlatni standard dijagnostike
         </h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          3D CBCT snimak predstavlja najsavremeniji oblik dijagnostike u
-          stomatologiji. Za razliku od klasičnih 2D snimaka, ova tehnologija
-          daje precizan trodimenzionalni prikaz zuba, viličnih kostiju, nerava
-          i okolnih anatomskih struktura.
+
+        <p className="text-muted-foreground leading-relaxed text-sm">
+          CBCT tehnologija koristi konusni snop rendgenskih zraka za dobijanje
+          preciznog 3D prikaza Vaših zuba i vilica. Za razliku od klasičnog
+          skenera (CT), CBCT koristi neuporedivo manje doze zračenja, čineći
+          snimanje maksimalno bezbednim.
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          CBCT aparat koristi značajno manju dozu zračenja u odnosu na
-          medicinski CT, što postupak čini bezbednim i pogodnim za rutinsku
-          stomatološku praksu.
+        <p className="text-muted-foreground leading-relaxed text-sm">
+          Za Vas to znači precizniju dijagnozu, bezbedniju intervenciju i plan
+          lečenja potpuno prilagođen Vašoj anatomiji.
         </p>
 
-        <div className="space-y-2">
-          <h4 className="font-bold text-primary text-sm md:text-base">
+        <div className="space-y-3">
+          <h4 className="font-bold text-primary text-sm">
             Gde se sve koristi 3D snimak?
           </h4>
-          <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
+          <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
               <span className="text-primary mt-1">•</span>
               <span>
                 <strong className="text-foreground">
                   Implantologija i hirurgija:
                 </strong>{" "}
-                Planiranje ugradnje implantata i vađenja umnjaka uz jasan prikaz
-                odnosa korena, nerva i maksilarnog sinusa.
+                Sigurno postavljanje implantata i bezbedno vađenje umnjaka uz
+                jasan uvid u položaj nerava, strukturu i dimenzije alveolarne
+                kosti i odnose sa maksilarnim sinusom.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary mt-1">•</span>
               <span>
                 <strong className="text-foreground">Endodoncija:</strong>{" "}
-                Detaljan prikaz korenskih kanala, dodatnih kanala i zapaljenskih
-                procesa na vrhovima korena.
+                Precizan prikaz kanala korena zuba i upalnih procesa na vrhu
+                korena zuba.
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary mt-1">•</span>
               <span>
                 <strong className="text-foreground">Ortodoncija:</strong>{" "}
-                Analiza položaja impaktiranih zuba i odnosa vilica pre i tokom
-                ortodontske terapije.
+                Analiza koštanih struktura lica i jasan prikaz odnosa zuba i
+                viličnih zglobova (temporomandibularni zglobovi).
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -82,147 +87,64 @@ export const Usluge3D = () => (
                 <strong className="text-foreground">
                   Maksilofacijalna hirurgija:
                 </strong>{" "}
-                Procena trauma, cista, patoloških promena i koštanih defekata.
+                Detekcija trauma, preloma i patoloških promena u koštanom tkivu.
               </span>
             </li>
           </ul>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section className="space-y-5">
-      <h4 className="text-center text-xl md:text-2xl font-bold text-foreground">
+    {/* Tri veličine polja - 3 column row */}
+    <div className="space-y-6">
+      <h4 className="text-xl font-bold text-foreground text-center">
         Tri veličine polja
       </h4>
-      <div className="grid md:grid-cols-3 gap-5">
-        <article className="soft-card p-6 text-center space-y-3 border-t-2 border-primary/40">
-          <div className="w-11 h-11 mx-auto rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center">
-            S
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="soft-card p-6 flex flex-col items-center text-center gap-3">
+          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+            <span className="text-primary font-bold">S</span>
           </div>
-          <h5 className="font-semibold text-sm text-foreground">
+          <h5 className="font-semibold text-foreground text-sm">
             Malo Polje (5 × 5 cm)
           </h5>
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground text-xs">
             Obuhvata ciljanu regiju, zahvatajući 2-3 zuba u nizu.
           </p>
-        </article>
+        </div>
 
-        <article className="soft-card p-6 text-center space-y-3 border-t-2 border-primary/40">
-          <div className="w-11 h-11 mx-auto rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center">
-            M
+        <div className="soft-card p-6 flex flex-col items-center text-center gap-3">
+          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+            <span className="text-primary font-bold">M</span>
           </div>
-          <h5 className="font-semibold text-sm text-foreground">
+          <h5 className="font-semibold text-foreground text-sm">
             Srednje Polje (8 × 5 cm)
           </h5>
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground text-xs">
             Obuhvata celu gornju ili celu donju vilicu.
           </p>
-        </article>
+        </div>
 
-        <article className="soft-card p-6 text-center space-y-3 border-t-2 border-primary/40">
-          <div className="w-11 h-11 mx-auto rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center">
-            L
+        <div className="soft-card p-6 flex flex-col items-center text-center gap-3">
+          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+            <span className="text-primary font-bold">L</span>
           </div>
-          <h5 className="font-semibold text-sm text-foreground">
+          <h5 className="font-semibold text-foreground text-sm">
             Veliko Polje (12 × 9 cm)
           </h5>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Obuhvata obe vilice.
-          </p>
-        </article>
+          <p className="text-muted-foreground text-xs">Obuhvata obe vilice.</p>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <section className="soft-card px-5 py-4 md:px-8 md:py-5">
-      <p className="text-center text-sm text-muted-foreground leading-relaxed">
+    {/* Bottom Note */}
+    <div className="p-4 bg-muted/50 rounded-xl text-center">
+      <p className="text-sm text-muted-foreground">
         3D snimci se izdaju na USB-u i otpremaju na{" "}
-        <strong className="text-primary">OrtoCloud platformu</strong>, gde su
-        privremeno dostupni Vama i Vašem stomatologu radi planiranja terapije i
-        praćenja toka lečenja.
+        <strong className="text-primary">OrtoCloud</strong>, gde su 15 dana
+        dostupni Vama i Vašem stomatologu. Pristup je moguć isključivo putem
+        računara.
       </p>
-    </section>
-
-    <section className="grid lg:grid-cols-2 gap-8 items-start">
-      <div className="space-y-4">
-        <div className="overflow-hidden rounded-2xl border border-border/40 bg-black">
-          <img
-            src="/images/image 36.png"
-            alt="3D prikaz vilice na CBCT snimku"
-            className="w-full h-auto object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          <div className="overflow-hidden rounded-xl border border-border/40 bg-black">
-            <img
-              src="/images/image 37.png"
-              alt="CBCT preseci vilice - koronarni i aksijalni prikaz"
-              className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div className="overflow-hidden rounded-xl border border-border/40 bg-black">
-            <img
-              src="/images/image 38.png"
-              alt="CBCT preseci vilice - sagitalni i 3D prikaz"
-              className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-4 pt-1">
-        <h3 className="text-lg md:text-xl font-bold text-primary">
-          Digitalna tačnost i bezbedna dijagnostika
-        </h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Kombinacijom 3D volumetrijskog prikaza i multiplanarnih preseka,
-          stomatolog dobija potpunu dijagnostičku sliku jednim snimanjem. Ovo je
-          posebno važno u implantologiji, oralnoj hirurgiji i složenijim
-          endodontskim slučajevima.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Precizniji uvid znači sigurnije planiranje zahvata, manje
-          intraoperativnih iznenađenja i bolju predvidivost terapijskog ishoda.
-        </p>
-      </div>
-    </section>
-
-    <section className="grid lg:grid-cols-5 gap-6 lg:gap-8 items-end">
-      <div className="lg:col-span-2 soft-card p-6 md:p-7 space-y-3">
-        <h3 className="text-lg font-bold text-primary">
-          Snimanje na vrhunskom 3D uređaju
-        </h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Koristimo savremen CBCT aparat visoke rezolucije koji omogućava
-          precizne i pouzdane snimke uz optimizovanu dozu zračenja.
-        </p>
-      </div>
-
-      <div className="lg:col-span-3 relative">
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-background/70 to-transparent" />
-        <img
-          src="/images/image 34.png"
-          alt="3D CBCT aparat"
-          className="relative z-10 w-full h-auto object-contain"
-          loading="lazy"
-          decoding="async"
-        />
-        <div className="soft-card p-4 md:p-5 max-w-xs ml-auto -mt-10 relative z-20">
-          <h4 className="text-sm font-bold text-primary mb-1">
-            Brzo i stručno tumačenje
-          </h4>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Nalaz i snimci su organizovani za jednostavno deljenje sa Vašim
-            stomatologom i dalje planiranje terapije.
-          </p>
-        </div>
-      </div>
-    </section>
+    </div>
   </motion.div>
 );
