@@ -9,13 +9,26 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import logo from "@/assets/logo.png";
-import { MAIN_NAV, USLUGE_NAV } from "@/content/nav";
 import { VersionLink, useVersion } from "@/components/v1/VersionContext";
 import { vPath } from "@/lib/paths";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const version = useVersion();
+
+  const navItems = [
+    { name: "Cenovnik", href: "/cenovnik", isRoute: true },
+    { name: "Informacije", href: "/informacije", isRoute: true },
+    { name: "Za stomatologe", href: "/za-doktore", isRoute: true },
+    { name: "Lokacije", href: "/lokacije", isRoute: true },
+    { name: "Kontakt", href: "/kontakt", isRoute: true },
+  ];
+
+  const uslugeItems = [
+    { name: "2D Snimanje", href: "/usluge/2d" },
+    { name: "3D Snimanje", href: "/usluge/3d" },
+    { name: "Kefalometrija", href: "/usluge/kefalometrija" },
+  ];
 
   return (
     <motion.header
@@ -25,6 +38,7 @@ const Header = () => {
       className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/30"
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
         <VersionLink to="/" className="flex items-center gap-2">
           <img
             src={typeof logo === "string" ? logo : logo.src}
@@ -33,7 +47,9 @@ const Header = () => {
           />
         </VersionLink>
 
+        {/* Navigation - Desktop */}
         <nav className="hidden lg:flex items-center gap-8">
+          {/* Usluge Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-semibold">
@@ -45,10 +61,10 @@ const Header = () => {
               align="start"
               className="w-48 bg-card border border-border shadow-raised"
             >
-              {USLUGE_NAV.map((item) => (
+              {uslugeItems.map((item) => (
                 <DropdownMenuItem key={item.name} asChild>
                   <VersionLink
-                    to={item.path}
+                    to={item.href}
                     className="cursor-pointer hover:bg-muted hover:text-foreground"
                   >
                     {item.name}
@@ -58,10 +74,10 @@ const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {MAIN_NAV.map((item) => (
+          {navItems.map((item) => (
             <VersionLink
               key={item.name}
-              to={item.path}
+              to={item.href}
               className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-[15px] font-semibold"
             >
               {item.name}
@@ -69,6 +85,7 @@ const Header = () => {
           ))}
         </nav>
 
+        {/* Right Side */}
         <div className="flex items-center gap-3">
           <Button variant="default" size="sm" className="rounded-full" asChild>
             <a href={`${vPath(version, "/")}#ortocloud`}>
@@ -76,6 +93,7 @@ const Header = () => {
               OrtoCloud
             </a>
           </Button>
+          {/* Mobile menu toggle */}
           <button
             className="lg:hidden text-foreground p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -89,6 +107,7 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -104,10 +123,10 @@ const Header = () => {
             >
               Usluge
             </VersionLink>
-            {MAIN_NAV.map((item) => (
+            {navItems.map((item) => (
               <VersionLink
                 key={item.name}
-                to={item.path}
+                to={item.href}
                 className="text-foreground hover:text-secondary transition-colors text-sm font-semibold py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >

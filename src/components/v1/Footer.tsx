@@ -1,19 +1,35 @@
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Mail } from "lucide-react";
 import logo from "@/assets/logo.png";
-import { MAIN_NAV, USLUGE_NAV } from "@/content/nav";
 import { VersionLink, useVersion } from "@/components/v1/VersionContext";
 import { vPath } from "@/lib/paths";
 
 const Footer = () => {
   const version = useVersion();
 
+  const quickLinks = [
+    { label: "Lokacije", href: "/lokacije" },
+    { label: "Kontakt", href: "/kontakt" },
+    { label: "Cenovnik", href: "/cenovnik" },
+    { label: "Za stomatologe", href: "/za-doktore" },
+    { label: "Informacije", href: "/informacije" },
+  ];
+
+  const services = [
+    { label: "2D Snimanje", href: "/usluge/2d" },
+    { label: "3D CBCT", href: "/usluge/3d" },
+    { label: "Kefalometrija", href: "/usluge/kefalometrija" },
+  ];
+
   return (
     <footer className="bg-charcoal text-primary-foreground relative overflow-hidden">
+      {/* Diagonal accent at top */}
       <div className="absolute top-0 left-0 right-0 h-1 gradient-accent-line" />
 
+      {/* Main Footer */}
       <div className="container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-12">
+          {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -57,6 +73,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
+          {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -66,19 +83,20 @@ const Footer = () => {
           >
             <h4 className="font-bold text-lg">Brzi Linkovi</h4>
             <ul className="space-y-3">
-              {MAIN_NAV.map((link) => (
-                <li key={link.name}>
+              {quickLinks.map((link) => (
+                <li key={link.label}>
                   <VersionLink
-                    to={link.path}
+                    to={link.href}
                     className="text-primary-foreground/60 hover:text-accent transition-colors text-sm"
                   >
-                    {link.name}
+                    {link.label}
                   </VersionLink>
                 </li>
               ))}
             </ul>
           </motion.div>
 
+          {/* Services */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -88,13 +106,13 @@ const Footer = () => {
           >
             <h4 className="font-bold text-lg">Usluge</h4>
             <ul className="space-y-3">
-              {USLUGE_NAV.map((service) => (
-                <li key={service.name}>
+              {services.map((service) => (
+                <li key={service.label}>
                   <VersionLink
-                    to={service.path}
+                    to={service.href}
                     className="text-primary-foreground/60 hover:text-accent transition-colors text-sm"
                   >
-                    {service.name}
+                    {service.label}
                   </VersionLink>
                 </li>
               ))}
@@ -111,6 +129,7 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Bottom Bar */}
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-6 py-6">
           <p className="text-center text-sm text-primary-foreground/40">
