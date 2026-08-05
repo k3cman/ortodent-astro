@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Mail } from "lucide-react";
 import logo from "@/assets/logo.png";
-import { VersionLink, useVersion } from "@/components/v1/VersionContext";
-import { vPath } from "@/lib/paths";
+import { VersionLink } from "@/components/v1/VersionContext";
 
 const Footer = () => {
-  const version = useVersion();
-
   const quickLinks = [
     { label: "Lokacije", href: "/lokacije" },
     { label: "Kontakt", href: "/kontakt" },
@@ -117,12 +114,12 @@ const Footer = () => {
                 </li>
               ))}
               <li>
-                <a
-                  href={`${vPath(version, "/")}#ortocloud`}
+                <VersionLink
+                  to="/ortocloud"
                   className="text-primary-foreground/60 hover:text-accent transition-colors text-sm"
                 >
                   OrtoCloud
-                </a>
+                </VersionLink>
               </li>
             </ul>
           </motion.div>

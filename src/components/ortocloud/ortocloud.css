@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+.ortocloud-theme {
+  --background: 0 0% 100%;
+  --foreground: 138 19% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 138 19% 9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 138 19% 9%;
+  --primary: 138 19% 9%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 138 19% 9%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 10% 46%;
+  --accent: 190 80% 81%;
+  --accent-foreground: 138 19% 9%;
+  --accent-light: 187 71% 93%;
+  --accent-glow: 190 80% 81%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 14% 90%;
+  --input: 220 14% 90%;
+  --ring: 190 80% 81%;
+  --radius: 0.75rem;
+  --shadow-soft: 0 4px 20px -4px hsl(220 14% 9% / 0.08);
+  --shadow-medium: 0 8px 30px -8px hsl(220 14% 9% / 0.12);
+  --shadow-glow: 0 0 60px -12px hsl(190 80% 81% / 0.5);
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.ortocloud-theme {
+  min-height: 100vh;
+}
+
+body.v1-theme .ortocloud-theme :is(h1, h2, h3, h4, h5, h6) {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.ortocloud-theme .gradient-glow {
+  background: radial-gradient(ellipse 80% 60% at 80% 40%, hsl(var(--accent) / 0.3), transparent 70%);
+}
+
+.ortocloud-theme .gradient-accent {
+  background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
+}
+
+.ortocloud-theme .text-gradient {
+  background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--muted-foreground)));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ortocloud-theme .shadow-soft { box-shadow: var(--shadow-soft); }
+.ortocloud-theme .shadow-medium { box-shadow: var(--shadow-medium); }
+.ortocloud-theme .shadow-glow { box-shadow: var(--shadow-glow); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ortocloud-theme *,
+  .ortocloud-theme *::before,
+  .ortocloud-theme *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

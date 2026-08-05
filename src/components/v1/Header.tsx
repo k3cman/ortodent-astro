@@ -9,13 +9,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import logo from "@/assets/logo.png";
-import { VersionLink, useVersion } from "@/components/v1/VersionContext";
-import { vPath } from "@/lib/paths";
+import { VersionLink } from "@/components/v1/VersionContext";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const version = useVersion();
-
   const navItems = [
     { name: "Cenovnik", href: "/cenovnik", isRoute: true },
     { name: "Informacije", href: "/informacije", isRoute: true },
@@ -88,10 +85,10 @@ const Header = () => {
         {/* Right Side */}
         <div className="flex items-center gap-3">
           <Button variant="default" size="sm" className="rounded-full" asChild>
-            <a href={`${vPath(version, "/")}#ortocloud`}>
+            <VersionLink to="/ortocloud">
               <Cloud className="w-4 h-4" />
               OrtoCloud
-            </a>
+            </VersionLink>
           </Button>
           {/* Mobile menu toggle */}
           <button
