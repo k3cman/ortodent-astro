@@ -9,19 +9,19 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 rounded-full",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-full",
         outline:
-          "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground [&_svg]:text-primary hover:[&_svg]:text-primary-foreground focus-visible:ring-primary",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/90",
-        ghost: "hover:bg-muted hover:text-foreground",
+          "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground rounded-full [&_svg]:text-primary hover:[&_svg]:text-primary-foreground focus-visible:ring-primary",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full",
+        ghost: "hover:bg-muted hover:text-foreground rounded-full",
         link: "text-primary underline-offset-4 hover:underline",
         // Brand variants
-        glow: "bg-primary text-primary-foreground hover:bg-primary/90",
-        raised: "bg-card text-foreground shadow-raised hover:shadow-[0_12px_40px_-10px_hsl(350_20%_15%_/_0.15)] hover:-translate-y-0.5 border border-border/50",
+        glow: "bg-primary text-primary-foreground hover:bg-primary/90 rounded-full",
+        raised: "bg-card text-foreground rounded-full shadow-raised hover:shadow-[0_12px_40px_-10px_hsl(350_20%_15%_/_0.15)] hover:-translate-y-0.5 border border-border/50",
         "outline-soft":
-          "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground [&_svg]:text-primary hover:[&_svg]:text-primary-foreground focus-visible:ring-primary",
-        gradient: "text-primary-foreground hover:-translate-y-0.5 shadow-glow",
+          "border-2 border-primary text-primary bg-transparent rounded-full hover:bg-primary hover:text-primary-foreground [&_svg]:text-primary hover:[&_svg]:text-primary-foreground focus-visible:ring-primary",
+        gradient: "text-primary-foreground rounded-full hover:-translate-y-0.5 shadow-glow",
       },
       size: {
         default: "h-10 px-5 py-2",
@@ -30,19 +30,10 @@ const buttonVariants = cva(
         xl: "h-14 px-10 text-lg",
         icon: "h-10 w-10",
       },
-      roundness: {
-        none: "rounded-none",
-        sm: "rounded-sm",
-        md: "rounded-md",
-        lg: "rounded-lg",
-        xl: "rounded-xl",
-        full: "rounded-full",
-      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
-      roundness: "full",
     },
   },
 );
@@ -54,11 +45,9 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, roundness, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    return (
-      <Comp className={cn(buttonVariants({ variant, size, roundness, className }))} ref={ref} {...props} />
-    );
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
   },
 );
 Button.displayName = "Button";
