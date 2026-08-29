@@ -51,6 +51,17 @@ test("production build publishes only canonical unversioned routes", async () =>
   assert.match(designSystemHtml, /DIZAJN SISTEM/);
 
   const builtFiles = await readdir(distRoot, { recursive: true });
+  const builtCss = (
+    await Promise.all(
+      builtFiles
+        .filter((file) => file.endsWith(".css"))
+        .map((file) => readFile(path.join(distRoot, file), "utf8")),
+    )
+  ).join("\n");
+  assert.match(builtCss, /--od-magenta:\s*#d51155/i);
+  assert.match(builtCss, /--od-magenta-dark:\s*#a11346/i);
+  assert.doesNotMatch(builtCss, /#e6007e|rgb\(230 0 126/i);
+
   for (const builtFile of builtFiles.filter((file) => file.endsWith(".html"))) {
     const html = await readFile(path.join(distRoot, builtFile), "utf8");
     assert.doesNotMatch(

@@ -12,7 +12,7 @@ import Footer from "@/components/site/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/site/ui/tabs";
 
 const colors = [
-  ["Primary / Magenta", "--od-magenta", "#E6007E"], ["Magenta Dark", "--od-magenta-dark", "#C1006B"], ["Magenta Light", "--od-magenta-light", "#FFE6F2"], ["Dark / Text", "--od-graphite", "#1A1A1A"],
+  ["Primary / Magenta", "--od-magenta", "#D51155"], ["Magenta Dark", "--od-magenta-dark", "#A11346"], ["Magenta Light", "--od-magenta-light", "#FBE7EE"], ["Dark / Text", "--od-graphite", "#1A1A1A"],
   ["Gray 700", "--od-gray-700", "#333333"], ["Gray 500", "--od-gray-500", "#686868"], ["Gray 300", "--od-gray-300", "#E5E5E5"], ["Off White", "--od-off-white", "#FAFAFA"],
 ] as const;
 
