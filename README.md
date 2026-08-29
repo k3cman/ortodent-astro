@@ -1,13 +1,13 @@
 # OrtoDent — Astro site
 
-Static site with two design versions sharing the same content layer.
+Static OrtoDent site built with Astro and React islands.
 
 ## Commands
 
 ```bash
-cd astro
-npm install
+npm ci --legacy-peer-deps
 npm run dev      # http://localhost:4321
+npm test         # unit and production-route tests
 npm run build    # output → dist/
 npm run preview  # serve dist/
 ```
@@ -16,30 +16,37 @@ npm run preview  # serve dist/
 
 | Path | Description |
 |------|-------------|
-| `/` | Redirects to `/v1/` |
-| `/v1/...` | Current design (ported from `ortodent-old`) |
-| `/v2/...` | v2 shell — same routes, placeholder UI |
+| `/` | Home page |
+| `/cenovnik/` | Price list |
+| `/informacije/` | Patient information and FAQ |
+| `/kontakt/` | Contact page |
+| `/lokacije/` | Cities and imaging centers |
+| `/lokacije/:city/:location/` | Imaging-center details |
+| `/ortocloud/` | OrtoCloud landing page |
+| `/usluge/:tab/` | 2D, 3D, and cephalometry services |
+| `/za-doktore/` | Information for dentists |
 
-Examples: `/v1/cenovnik/`, `/v1/usluge/2d/`, `/v2/kontakt/`
+The retired `/v1/...` and `/v2/...` namespaces are not published.
 
 ## Project layout
 
-- `src/content/` — shared data (nav, cenovnik, usluge image paths)
-- `src/components/v1/` — v1 React UI (shadcn, framer-motion)
-- `src/components/v2/` — v2 Astro shell (`V2Shell.astro`)
-- `src/styles/v1.css` / `v2.css` — separate stylesheets (no theme provider)
-- `ortodent-old/` — original Vite SPA (git remote still lives here)
+- `src/pages/` — canonical Astro routes
+- `src/components/site/` — React UI, providers, and UI primitives
+- `src/components/ortocloud/` — OrtoCloud landing-page sections
+- `src/content/` — shared navigation, pricing, and service data
+- `src/styles/site.css` — site theme and global component styles
+- `src/assets/site/` — service imagery imported by Astro/Vite
 
 ## GitHub Pages / subpath deploy
 
-Match the old app base path:
+Set the deployment base path when the site is served from a subdirectory:
 
 ```bash
 SITE_BASE=/orto-cloud-vision/ npm run build
 ```
 
-Deploy the `dist/` folder. When moving CI to the parent repo, set `working-directory: astro` in the workflow.
+Deploy the generated `dist/` folder.
 
 ## Editing content
 
-Change copy and prices once in `src/content/` — both v1 and v2 read from there (v2 cenovnik page lists sections; v1 uses the same `CENOVNIK_SECTIONS`).
+Shared navigation, pricing, and service content lives in `src/content/`.

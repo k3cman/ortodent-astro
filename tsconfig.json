@@ -13,8 +13,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@/components/*": ["src/components/v1/*"],
-      "@/hooks/*": ["src/components/v1/hooks/*"]
+      "@/components/*": ["src/components/site/*"],
+      "@/hooks/*": ["src/components/site/hooks/*"]
     }
   }
 }

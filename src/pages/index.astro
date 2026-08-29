@@ -1,3 +1,8 @@
 ---
-return Astro.redirect(`${import.meta.env.BASE_URL}v1/`);
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import IndexPage from "@/components/site/pages/Index";
 ---
+
+<SiteLayout>
+  <IndexPage client:load />
+</SiteLayout>

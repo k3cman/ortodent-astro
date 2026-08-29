@@ -1,0 +1,30 @@
+---
+import {
+  USLUGE_TABS,
+  USLUGE_TAB_LABELS,
+  type UslugeTab,
+} from "@/lib/paths";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import Usluge2DPage from "@/components/site/pages/Usluge2DPage";
+import Usluge3DPage from "@/components/site/pages/Usluge3DPage";
+import UslugeKefaPage from "@/components/site/pages/UslugeKefaPage";
+
+export function getStaticPaths() {
+  return USLUGE_TABS.map((tab) => ({ params: { tab } }));
+}
+
+const tab = Astro.params.tab as string;
+
+if (!USLUGE_TABS.includes(tab as UslugeTab)) {
+  return Astro.redirect(`${import.meta.env.BASE_URL}usluge/2d/`);
+}
+
+const currentTab = tab as UslugeTab;
+const title = `${USLUGE_TAB_LABELS[currentTab]} — OrtoDent`;
+---
+
+<SiteLayout title={title}>
+  {currentTab === "2d" && <Usluge2DPage client:load />}
+  {currentTab === "3d" && <Usluge3DPage client:load />}
+  {currentTab === "kefalometrija" && <UslugeKefaPage client:load />}
+</SiteLayout>

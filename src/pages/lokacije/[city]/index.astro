@@ -1,0 +1,26 @@
+---
+import {
+  CITY_SLUGS,
+  getCityBySlug,
+  isLocationCitySlug,
+} from "@/lib/locations";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import CityLocationsPage from "@/components/site/pages/CityLocations";
+
+export function getStaticPaths() {
+  return CITY_SLUGS.map((city) => ({ params: { city } }));
+}
+
+const city = Astro.params.city as string;
+
+if (!isLocationCitySlug(city)) {
+  return Astro.redirect(`${import.meta.env.BASE_URL}lokacije/`);
+}
+
+const cityData = getCityBySlug(city)!;
+const title = `Lokacije ${cityData.name} — OrtoDent`;
+---
+
+<SiteLayout title={title}>
+  <CityLocationsPage client:load citySlug={city} />
+</SiteLayout>

@@ -1,0 +1,41 @@
+---
+import {
+  LOCATIONS,
+  getLocationBySlug,
+  isLocationCitySlug,
+} from "@/lib/locations";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import LocationDetailPage from "@/components/site/pages/LocationDetail";
+
+export function getStaticPaths() {
+  return LOCATIONS.map((location) => ({
+    params: {
+      city: location.citySlug,
+      location: location.slug,
+    },
+  }));
+}
+
+const city = Astro.params.city as string;
+const locationSlug = Astro.params.location as string;
+
+if (!isLocationCitySlug(city)) {
+  return Astro.redirect(`${import.meta.env.BASE_URL}lokacije/`);
+}
+
+const location = getLocationBySlug(city, locationSlug);
+
+if (!location) {
+  return Astro.redirect(`${import.meta.env.BASE_URL}lokacije/${city}/`);
+}
+
+const title = `${location.name}, ${location.city} — OrtoDent`;
+---
+
+<SiteLayout title={title}>
+  <LocationDetailPage
+    client:load
+    citySlug={city}
+    locationSlug={locationSlug}
+  />
+</SiteLayout>
