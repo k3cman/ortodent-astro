@@ -1,15 +1,9 @@
 import { useRef, useState, type KeyboardEvent } from "react";
-import { Box, Check, MonitorSmartphone, Share2, ShieldCheck } from "lucide-react";
+import { Box, Check } from "lucide-react";
 import heroMockup from "@/assets/ortocloud/hero-mockup.png";
 import patientPhone from "@/assets/home/ortocloud-phone.webp";
 
 type Experience = "patients" | "dentists";
-
-const capabilities = [
-  { icon: MonitorSmartphone, title: "Sa svih uređaja", text: "Pristupite OrtoCloudu sa računara, tableta ili telefona." },
-  { icon: Share2, title: "Deljenje bez komplikacija", text: "Podelite snimke sa stomatologom ili drugim stručnjakom." },
-  { icon: ShieldCheck, title: "Maksimalna sigurnost", text: "Vaši podaci se čuvaju prema visokim standardima zaštite." },
-] as const;
 
 const experiences = {
   patients: {
@@ -56,15 +50,6 @@ export default function FeaturesSection() {
 
   return (
     <>
-      <section id="funkcije" className="odc-capabilities" aria-labelledby="odc-capabilities-title">
-        <div className="odc-container">
-          <div className="odc-section-heading odc-section-heading--center"><h2 id="odc-capabilities-title">Sve na jednom mestu</h2><p>Pristupite svojim snimcima brzo i jednostavno, kad god vam zatrebaju.</p></div>
-          <div className="odc-capabilities__strip">
-            {capabilities.map(({ icon: Icon, title, text }) => <article key={title}><span className="odc-icon"><Icon aria-hidden="true" /></span><div><h3>{title}</h3><p>{text}</p></div></article>)}
-          </div>
-        </div>
-      </section>
-
       <section id="iskustva" className="odc-experiences" aria-labelledby="odc-experiences-title">
         <div className="odc-container">
           <div className="odc-section-heading odc-section-heading--center"><h2 id="odc-experiences-title">Jedna platforma. Dva načina korišćenja.</h2></div>

@@ -93,7 +93,8 @@ export const Usluge3D = () => (
       }
       image={imageSrc(cbctPatient)}
       imageAlt="Pacijentkinja tokom 3D CBCT snimanja"
-      imagePosition="center 43%"
+      imagePosition="72% 43%"
+      variant="backdrop"
     />
 
       <section className="od3d-use-cases od3d-use-cases--standalone">

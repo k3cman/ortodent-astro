@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Map, MapPin, Phone, ScanLine } from "lucide-react";
+import { Map, MapPin, ScanLine } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SiteLink } from "@/components/site/SiteLink";
@@ -14,8 +14,7 @@ import "@/components/site/locations/locations.css";
 const steps = [
   [Map, "01", "Izaberite grad", "Odaberite grad u kojem želite da pronađete OrtoDent centar."],
   [MapPin, "02", "Pronađite centar", "Pogledajte dostupne centre po regionima, na mapi ili u listi."],
-  [Phone, "03", "Kontaktirajte", "Pozovite nas ili otvorite navigaciju do izabranog centra."],
-  [ScanLine, "04", "Snimajte bez čekanja", "Dođite bez zakazivanja i uradite snimanje."],
+  [ScanLine, "03", "Snimajte bez čekanja", "Dođite bez zakazivanja i uradite snimanje."],
 ] as const;
 
 function Lokacije() {

@@ -66,7 +66,8 @@ export const UslugeKefa = () => (
         }
         image={imageSrc(profileImage)}
         imageAlt="Profil pacijentkinje sa prikazom koštanih struktura lica"
-        imagePosition="center 42%"
+        imagePosition="78% 42%"
+        variant="backdrop"
       >
         <div className="oc-kefa-hero__extras">
           <img

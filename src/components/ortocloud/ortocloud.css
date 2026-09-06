@@ -45,16 +45,7 @@
 .odc-signal strong { color: var(--oc-ink); font-size: 12px; font-weight: 650; }
 .odc-signal small { color: var(--oc-gray-500); font-size: 10px; line-height: 1.4; }
 
-.odc-capabilities { padding: 36px 0 44px; background: #fff; }
-.odc-capabilities__strip { display: grid; grid-template-columns: repeat(3, 1fr); }
-.odc-capabilities__strip article { min-width: 0; display: grid; grid-template-columns: 48px 1fr; gap: 17px; padding: 10px clamp(24px, 3vw, 42px); }
-.odc-capabilities__strip article:not(:last-child) { border-right: 1px solid var(--odc-line); }
-.odc-icon { width: 46px; height: 46px; display: grid; place-items: center; color: var(--oc-magenta); background: var(--odc-pink); border-radius: 50%; }
-.odc-icon svg { width: 21px; }
-.odc-capabilities h3 { margin: 3px 0 4px; font-size: 14px; font-weight: 650; letter-spacing: -.02em; }
-.odc-capabilities article p { margin: 0; color: var(--oc-gray-500); font-size: 11px; line-height: 1.5; }
-
-.odc-experiences { padding: 22px 0 50px; background: #fff; }
+.odc-experiences { padding: 80px 0 44px; background: #fff; }
 .odc-tabs { width: min(100%, 470px); height: 50px; display: grid; grid-template-columns: 1fr 1fr; margin: 0 auto -1px; padding: 0; }
 .odc-tabs button { position: relative; z-index: 2; min-height: 48px; padding: 10px 20px; color: var(--oc-gray-700); background: #fff; border: 1px solid transparent; border-bottom: 0; border-radius: 8px 8px 0 0; font: 500 13px/1 "Inter", system-ui, sans-serif; cursor: pointer; }
 .odc-tabs button[aria-selected="true"] { color: #fff; background: var(--oc-magenta); box-shadow: none; }
@@ -69,11 +60,11 @@
 .odc-experience li svg { width: 15px; height: 15px; color: var(--oc-magenta); stroke-width: 2.3; }
 .odc-experience__visual { position: relative; min-width: 0; min-height: 370px; overflow: hidden; }
 .odc-experience__visual::before { content: ""; position: absolute; z-index: 1; inset: 0 auto 0 0; width: 25%; background: linear-gradient(90deg, #fff, transparent); }
-.odc-experience__visual img { width: 100%; height: 100%; display: block; animation: odc-reveal .28s ease both; }
+.odc-experience__visual img { width: 100%; height: 100%; display: block; }
 .odc-experience__image--patient { object-fit: cover; object-position: 29% center; }
 .odc-experience__image--dentist { object-fit: cover; object-position: 52% center; }
 
-.odc-retention { padding: 48px 0 38px; background: #fff; border-top: 1px solid #f2f2f2; }
+.odc-retention { padding: 44px 0 36px; background: #fff; border-top: 1px solid #f2f2f2; }
 .odc-retention__strip { display: grid; grid-template-columns: repeat(3, 1fr); }
 .odc-retention__strip article { min-height: 118px; display: grid; grid-template-columns: 52px 1fr; align-items: center; gap: 16px; padding: 6px clamp(24px, 3vw, 44px); }
 .odc-retention__strip article:not(:last-child) { border-right: 1px solid var(--odc-line); }
@@ -99,7 +90,7 @@
 .odc-download__visual img { width: 175%; max-width: none; height: 100%; display: block; object-fit: cover; object-position: 8% center; }
 .odc-download__aside { margin: 0; padding-left: clamp(20px, 3vw, 44px); color: var(--oc-ink); border-left: 1px solid var(--oc-magenta); font-size: clamp(22px, 2.25vw, 30px); font-weight: 620; line-height: 1.05; letter-spacing: -.04em; }
 
-.odc-access { padding: 44px 0 40px; background: #fff; }
+.odc-access { padding: 32px 0 30px; background: #fff; }
 .odc-access__paths { display: grid; grid-template-columns: 1fr 1fr; border-block: 1px solid var(--odc-line); }
 .odc-access__paths article { min-height: 190px; display: grid; grid-template-columns: 42px 48px 1fr; gap: 14px; align-items: start; padding: 30px clamp(24px, 3.5vw, 48px); }
 .odc-access__paths article + article { border-left: 1px solid var(--odc-line); }
@@ -109,16 +100,6 @@
 .odc-access h3 { margin: 4px 0 6px; font-size: 16px; font-weight: 650; letter-spacing: -.02em; }
 .odc-access article p { min-height: 48px; margin-bottom: 15px; color: var(--oc-gray-500); font-size: 12px; line-height: 1.5; }
 .odc-access .odc-button { min-height: 40px; padding: 8px 16px; font-size: 11px; }
-
-.odc-final-cta { padding: 0 0 28px; background: #fff; }
-.odc-final-cta__inner { min-height: 112px; display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; align-items: center; gap: 22px; padding: 22px 26px; background: #fff8fa; border: 1px solid #f3dce5; border-radius: 12px; }
-.odc-final-cta__icon { width: 54px; height: 54px; display: grid; place-items: center; color: var(--oc-magenta); background: #fff; border-radius: 50%; }
-.odc-final-cta__icon svg { width: 28px; }
-.odc-final-cta__copy .odc-eyebrow { margin-bottom: 4px; font-size: 9px; }
-.odc-final-cta h2 { margin-bottom: 2px; font-size: 22px; font-weight: 600; letter-spacing: -.035em; }
-.odc-final-cta__copy > p:last-child { margin: 0; color: var(--oc-gray-500); font-size: 11px; }
-.odc-final-cta__actions { display: flex; gap: 10px; }
-.odc-final-cta .odc-button { min-height: 42px; padding: 9px 17px; font-size: 11px; white-space: nowrap; }
 
 .odc-support { padding: 26px 0; background: #f7fbfd; }
 .odc-support__inner { min-height: 96px; display: grid; grid-template-columns: minmax(320px, 1.4fr) .75fr .75fr auto; align-items: center; gap: clamp(20px, 3vw, 42px); padding-block: 18px; }
@@ -133,8 +114,6 @@
 .odc-support__detail small { color: var(--oc-gray-500); font-size: 9px; }
 .odc-support__detail strong { font-size: 11px; font-weight: 600; }
 .odc-support .odc-button { white-space: nowrap; }
-
-@keyframes odc-reveal { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 
 @media (max-width: 1100px) {
   .odc-hero__veil { background: linear-gradient(90deg, rgb(255 255 255 / .98) 0%, rgb(255 255 255 / .91) 42%, rgb(255 255 255 / .2) 70%, transparent 100%); }
@@ -152,8 +131,6 @@
   .odc-hero__layout { order: 1; min-height: 0; grid-template-rows: auto auto; }
   .odc-hero__copy { max-width: 620px; padding: 64px 0 34px; }
   .odc-hero__signals { width: 100%; padding: 10px 0 34px; }
-  .odc-capabilities__strip article { grid-template-columns: 42px 1fr; padding-inline: 18px; }
-  .odc-icon { width: 40px; height: 40px; }
   .odc-experience { grid-template-columns: 1fr; }
   .odc-experience__copy { padding-bottom: 30px; }
   .odc-experience__visual { min-height: 360px; }
@@ -166,8 +143,6 @@
   .odc-download__visual img { width: 120%; object-position: 5% center; }
   .odc-download__copy { padding: 44px 0 64px; }
   .odc-access__paths article { grid-template-columns: 38px 44px 1fr; padding-inline: 20px; }
-  .odc-final-cta__inner { grid-template-columns: 58px 1fr; }
-  .odc-final-cta__actions { grid-column: 1 / -1; padding-left: 80px; }
   .odc-support__inner { grid-template-columns: 1fr 1fr; }
   .odc-support__intro { grid-column: 1 / -1; }
   .odc-support .odc-button { grid-column: 1 / -1; justify-self: start; }
@@ -186,13 +161,7 @@
   .odc-signal, .odc-signal:not(:first-child) { min-height: 44px; padding: 0; border-left: 0; }
   .odc-signal strong { font-size: 13px; }
   .odc-signal small { font-size: 11px; }
-  .odc-capabilities { padding: 60px 0; }
-  .odc-capabilities__strip { grid-template-columns: 1fr; }
-  .odc-capabilities__strip article { min-height: 92px; padding: 18px 0; }
-  .odc-capabilities__strip article:not(:last-child) { border-right: 0; border-bottom: 1px solid var(--odc-line); }
-  .odc-capabilities h3 { font-size: 15px; }
-  .odc-capabilities article p { font-size: 13px; }
-  .odc-experiences { padding: 8px 0 60px; }
+  .odc-experiences { padding: 56px 0 40px; }
   .odc-tabs { height: auto; }
   .odc-tabs button { min-height: 50px; padding-inline: 8px; }
   .odc-experience { min-height: 0; }
@@ -201,7 +170,7 @@
   .odc-experience__lead, .odc-experience li { font-size: 15px; }
   .odc-experience__visual { min-height: 290px; }
   .odc-experience__image--patient { object-position: 27% center; }
-  .odc-retention { padding: 60px 0 48px; }
+  .odc-retention { padding: 40px 0 36px; }
   .odc-retention__strip { grid-template-columns: 1fr; }
   .odc-retention__strip article { min-height: 112px; padding: 18px 4px; }
   .odc-retention__strip article:not(:last-child) { border-right: 0; border-bottom: 1px solid var(--odc-line); }
@@ -212,7 +181,7 @@
   .odc-download__visual img { width: 145%; object-position: 2% center; }
   .odc-store-row { display: grid; grid-template-columns: 1fr 1fr; }
   .odc-store-row a { justify-content: center; padding-inline: 8px; }
-  .odc-access { padding: 60px 0; }
+  .odc-access { padding: 48px 0 36px; }
   .odc-access__paths { grid-template-columns: 1fr; }
   .odc-access__paths article { grid-template-columns: 38px 1fr; min-height: 0; padding: 28px 0; }
   .odc-access__paths article + article { border-left: 0; border-top: 1px solid var(--odc-line); }
@@ -220,11 +189,6 @@
   .odc-access__paths article > div { grid-column: 1 / -1; }
   .odc-access article p { min-height: 0; font-size: 15px; }
   .odc-access .odc-button { width: 100%; min-height: 48px; font-size: 13px; }
-  .odc-final-cta { padding-bottom: 20px; }
-  .odc-final-cta__inner { grid-template-columns: 44px 1fr; gap: 14px; padding: 22px 18px; }
-  .odc-final-cta__icon { width: 44px; height: 44px; }
-  .odc-final-cta__actions { padding-left: 0; display: grid; grid-template-columns: 1fr; }
-  .odc-final-cta .odc-button { width: 100%; min-height: 46px; }
   .odc-support { padding: 34px 0; }
   .odc-support__inner { grid-template-columns: 1fr; gap: 22px; }
   .odc-support__intro { grid-column: auto; align-items: flex-start; }

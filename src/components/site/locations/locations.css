@@ -416,9 +416,15 @@
 }
 
 .od-city-card__icon svg {
+  display: block;
   width: 25px;
   height: 25px;
   stroke-width: 1.6;
+}
+
+.od-city-card .od-city-card__icon {
+  display: grid;
+  place-items: center;
 }
 
 .od-city-card strong,
@@ -464,7 +470,7 @@
 
 .od-process-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 26px;
 }
 
@@ -495,7 +501,9 @@
 }
 
 .od-process-grid__icon svg {
+  display: block;
   width: 26px;
+  height: 26px;
   stroke-width: 1.7;
 }
 
