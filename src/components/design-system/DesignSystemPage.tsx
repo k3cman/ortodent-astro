@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarDays, CheckCircle2, Clock3, Cloud, Mail, MapPin, ScanFace, ScanLine, ShieldCheck, Star, UsersRound } from "lucide-react";
+import { ArrowRight, CalendarDays, CheckCircle2, Clock3, Cloud, Mail, MapPin, ScanFace, ScanLine, ShieldCheck, UsersRound } from "lucide-react";
 import logo from "@/assets/logo.png";
 import heroImage from "@/assets/home/hero-clinician.webp";
 import cloudImage from "@/assets/home/ortocloud-phone.webp";
@@ -66,7 +66,7 @@ export default function DesignSystemPage() {
 
             <SpecimenSection number="08" title="Statistike"><div className="oc-ds-stats"><div><strong>13</strong><small>centara</small></div><div><strong>500K+</strong><small>snimaka</small></div><div><strong>17</strong><small>godina iskustva</small></div></div></SpecimenSection>
 
-            <SpecimenSection number="09" title="Testimonial card"><div className="oc-ds-review"><blockquote>“{homeContent.reviews[0][1]}”<footer><strong>{homeContent.reviews[0][0]}</strong><br /><small>Verifikovana kopija iz produkcionog sadržaja</small></footer></blockquote><div className="oc-stars">{Array.from({ length: 5 }).map((_, i) => <Star key={i} fill="currentColor" />)}</div></div></SpecimenSection>
+            <SpecimenSection number="09" title="Testimonial card"><div className="oc-ds-review"><blockquote>“{homeContent.reviews[0][1]}”<footer><strong>{homeContent.reviews[0][0]}</strong><br /><small>Verifikovana kopija iz produkcionog sadržaja</small></footer></blockquote></div></SpecimenSection>
 
             <SpecimenSection number="10" title="OrtoCloud promo"><div className="oc-ds-hero"><img src={cloudImage.src} alt="" loading="lazy" decoding="async" /><div className="oc-ds-hero__copy" style={{ marginLeft: "auto" }}><h2>Vaši snimci,<br /><span className="oc-dot">uvek dostupni!</span></h2><p>Pristupite svojim snimcima bilo kada i bilo gde.</p><SiteLink className="oc-button oc-button--primary" to="/ortocloud">Više o OrtoCloudu <Cloud /></SiteLink></div></div></SpecimenSection>
 

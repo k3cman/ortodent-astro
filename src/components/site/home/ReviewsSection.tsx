@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, CheckCircle2, HeartHandshake, Quote, ShieldCheck, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, HeartHandshake, Quote, ShieldCheck } from "lucide-react";
 import { homeContent } from "@/content/home";
 
 const trustPoints = [
@@ -7,10 +7,6 @@ const trustPoints = [
   [HeartHandshake, "Ljubazno i stručno osoblje"],
   [ShieldCheck, "Pouzdana dijagnostika kojoj verujete"],
 ] as const;
-
-function Stars() {
-  return <div className="oc-stars" aria-label="5 od 5 zvezdica">{Array.from({ length: 5 }).map((_, i) => <Star key={i} aria-hidden="true" fill="currentColor" />)}</div>;
-}
 
 export default function ReviewsSection() {
   const [active, setActive] = useState(0);
@@ -25,7 +21,6 @@ export default function ReviewsSection() {
           <p className="oc-eyebrow">Recenzije</p>
           <h2 id="reviews-title">Šta kažu naši<br /><span>korisnici</span></h2>
           <p>Poverenje koje gradimo svakim snimkom.</p>
-          <div className="oc-rating"><strong>4.9</strong><span>/5</span><div><Stars /><small>na osnovu 500+ recenzija</small></div></div>
           <div className="oc-trust-points">{trustPoints.map(([Icon, label]) => <p key={label}><Icon aria-hidden="true" /> {label}</p>)}</div>
         </div>
 
@@ -35,7 +30,6 @@ export default function ReviewsSection() {
               <article className={index === 0 ? "oc-review-card oc-review-card--featured" : "oc-review-card"} key={`${name}-${active}-${index}`}>
                 <Quote aria-hidden="true" className="oc-review-card__quote" fill="currentColor" />
                 <blockquote>{review}</blockquote>
-                <Stars />
                 <footer><span>{name.split(" ").map((part) => part[0]).join("").toUpperCase()}</span><div><strong>{name}</strong></div></footer>
               </article>
             ))}

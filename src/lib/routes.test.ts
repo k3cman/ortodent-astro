@@ -43,6 +43,8 @@ test("production build publishes only canonical unversioned routes", async () =>
   assert.match(homeHtml, /Sve preporuke,ljubazno osoblje i vrhunski kvalitet usluge/);
   assert.match(homeHtml, /Very nice, clean and quick\. The staff is polite and friendly\./);
   assert.doesNotMatch(homeHtml, /Rezultati su bili spremni vrlo brzo/);
+  assert.doesNotMatch(homeHtml, /oc-icon-tile/);
+  assert.doesNotMatch(homeHtml, /oc-stars|5 od 5 zvezdica/);
 
   const designSystemHtml = await readFile(
     path.join(distRoot, "design-system/index.html"),
