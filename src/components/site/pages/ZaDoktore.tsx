@@ -125,9 +125,8 @@ function ZaDoktore() {
     ? {}
     : {
         variants: reveal,
-        initial: "hidden",
-        whileInView: "visible",
-        viewport: { once: true, amount: 0.16 },
+        initial: false,
+        animate: "visible",
         transition: { duration: 0.48, ease: "easeOut" as const },
       };
 

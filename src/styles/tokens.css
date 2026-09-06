@@ -10,11 +10,11 @@ body.site-theme {
   --od-off-white: #fafafa;
   --od-white: #ffffff;
   --od-container: 80rem;
-  --od-radius-sm: .25rem;
-  --od-radius-md: .75rem;
-  --od-radius-lg: 1.5rem;
-  --od-shadow-sm: 0 1px 3px rgb(0 0 0 / .05);
-  --od-shadow-md: 0 4px 12px rgb(0 0 0 / .08);
+  --od-radius-sm: .5rem;
+  --od-radius-md: .625rem;
+  --od-radius-lg: .875rem;
+  --od-shadow-sm: 0 1px 3px rgb(17 21 27 / .04);
+  --od-shadow-md: 0 8px 24px rgb(17 21 27 / .06);
 
   --oc-magenta: var(--od-magenta);
   --oc-magenta-dark: var(--od-magenta-dark);
@@ -38,11 +38,14 @@ body.site-theme {
   --oc-space-4: 32px;
   --oc-space-5: 48px;
   --oc-space-6: 64px;
+  --oc-space-6-5: 80px;
   --oc-space-7: 96px;
-  --oc-radius-sm: 4px;
-  --oc-radius-md: 8px;
-  --oc-radius-lg: 12px;
-  --oc-radius-xl: 24px;
+  --oc-space-8: 112px;
+  --oc-space-9: 128px;
+  --oc-radius-sm: 8px;
+  --oc-radius-md: 10px;
+  --oc-radius-lg: 14px;
+  --oc-radius-xl: 18px;
   --oc-shadow-sm: var(--od-shadow-sm);
   --oc-shadow-md: var(--od-shadow-md);
   --gradient-brand: linear-gradient(135deg, var(--oc-magenta-dark), var(--oc-magenta));

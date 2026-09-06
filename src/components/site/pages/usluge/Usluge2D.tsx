@@ -1,5 +1,4 @@
 import { Cloud } from "lucide-react";
-import { motion } from "framer-motion";
 import {
   KEFALOGRAM_SRC,
   ORTOPANTOMOGRAM_SRC,
@@ -51,13 +50,7 @@ const EditorialCard = ({
 );
 
 export const Usluge2D = () => (
-  <motion.section
-    initial={{ opacity: 0, y: 16 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -16 }}
-    transition={{ duration: 0.35, ease: "easeOut" }}
-    className="oc-2d"
-  >
+  <section className="oc-2d">
     <header className="oc-2d-intro">
       <h1>2D rendgenski snimci</h1>
       <span aria-hidden="true" />
@@ -240,5 +233,5 @@ export const Usluge2D = () => (
         <br /> za brz i siguran pristup vašim snimcima, bilo gde i bilo kada.
       </p>
     </aside>
-  </motion.section>
+  </section>
 );

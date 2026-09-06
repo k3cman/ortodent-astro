@@ -94,7 +94,7 @@ function LocationDetail({
 
               <aside className="od-contact-panel">
                 <h2>Kontakt i adresa</h2>
-                <p>Pozovite centar direktno ili otvorite preciznu lokaciju na mapi.</p>
+                <p>Kontakt podaci i precizna lokacija centra.</p>
 
                 <div className="od-contact-panel__facts">
                   <div>
@@ -122,7 +122,6 @@ function LocationDetail({
                   </div>
                 </div>
 
-                <LocationActions location={location} compact />
               </aside>
             </div>
 

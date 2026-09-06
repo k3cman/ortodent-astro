@@ -5,7 +5,6 @@ import {
   ChevronDown,
   Clock3,
   Cloud,
-  Info,
   Mail,
   MapPin,
   Send,
@@ -233,13 +232,6 @@ const Kontakt = () => {
             </form>
           </section>
 
-          <aside className="oc-contact-note">
-            <Info aria-hidden="true" />
-            <p>
-              Za radno vreme i direktan kontakt sa centrom pogledajte stranicu{" "}
-              <SiteLink to="/lokacije">Lokacije</SiteLink>.
-            </p>
-          </aside>
         </div>
       </main>
 

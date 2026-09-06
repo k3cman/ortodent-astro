@@ -6,8 +6,8 @@ import cbctImage from "@/assets/home/cbct-patient.webp";
 import TokenSwatch from "@/components/design-system/TokenSwatch";
 import SpecimenSection from "@/components/design-system/SpecimenSection";
 import { SiteLink } from "@/components/site/SiteLink";
-import { assetPath } from "@/lib/paths";
 import { homeContent } from "@/content/home";
+import { KEFALOGRAM_SRC, ORTOPANTOMOGRAM_SRC } from "@/content/usluge/images";
 import Footer from "@/components/site/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/site/ui/tabs";
 
@@ -17,9 +17,9 @@ const colors = [
 ] as const;
 
 const cards = [
-  [assetPath("images/Ortopan.jpg"), "2D snimanja", "Panoramski i retroalveolarni snimci za brzu, pouzdanu i sigurnu dijagnozu.", "/usluge/2d"],
+  [ORTOPANTOMOGRAM_SRC, "2D snimanja", "Panoramski i retroalveolarni snimci za brzu, pouzdanu i sigurnu dijagnozu.", "/usluge/2d"],
   [cbctImage.src, "3D snimanja / CBCT", "CBCT volumni snimci visoke rezolucije za precizno planiranje lečenja.", "/usluge/3d"],
-  [assetPath("images/Lateralni kefalogram.jpg"), "Kefalometrijske analize", "Detaljne analize za ortodontsko planiranje i praćenje rasta.", "/usluge/kefalometrija"],
+  [KEFALOGRAM_SRC, "Kefalometrijske analize", "Detaljne analize za ortodontsko planiranje i praćenje rasta.", "/usluge/kefalometrija"],
 ] as const;
 
 export default function DesignSystemPage() {
@@ -28,7 +28,7 @@ export default function DesignSystemPage() {
       <div className="oc-ds__shell">
         <header className="oc-ds__header">
           <SiteLink to="/" className="oc-logo"><img src={logo.src} alt="OrtoDent" /></SiteLink>
-          <div><h1>DIZAJN SISTEM</h1><p>Verzija 1.0 — Avgust 2026</p></div>
+          <div><h1>DIZAJN SISTEM</h1><p>Verzija 1.1 — Septembar 2026</p></div>
         </header>
 
         <div className="oc-ds__grid">
@@ -38,7 +38,7 @@ export default function DesignSystemPage() {
             <SpecimenSection number="02" title="Tipografija">
               <div className="oc-type-specimen">
                 <div><strong style={{ fontSize: 44 }}>Aa</strong><p className="oc-type-specimen__display">Precizna 2D i<br />3D dijagnostika<span className="oc-dot">.</span></p></div>
-                <div className="oc-type-specimen__meta"><strong>Inter Variable</strong><span>H1 / 56–72px / 500</span><span>H2 / 40–48px / 600</span><span>H3 / 22–28px / 600</span><span>Body Large / 18–24px / 400</span><span>Body / 14–16px / 400</span><span>Small / 10–12px / 500</span></div>
+                <div className="oc-type-specimen__meta"><strong>Inter Variable</strong><span>H1 / 56–68px / 500</span><span>H2 / 40–48px / 500</span><span>H3 / 20–28px / 600</span><span>Body Large / 18–20px / 400</span><span>Body / 16–17px / 400</span><span>Small / 12–14px / 500</span></div>
                 <p className="oc-type-specimen__alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />0123456789 @#$%&amp;*()</p>
               </div>
             </SpecimenSection>
@@ -72,13 +72,17 @@ export default function DesignSystemPage() {
 
             <SpecimenSection number="11" title="Footer"><div className="oc-ds-footer-preview"><Footer /></div></SpecimenSection>
 
-            <SpecimenSection number="12" title="Spacing & grid"><div className="oc-ds-rules"><div><strong>Grid</strong>12 kolona, gutter 24px, max-width 1280px.</div><div><strong>Mobile</strong>20px page gutter.</div></div><div className="oc-ds-scale" style={{ marginTop: 22 }}>{[4, 8, 12, 16, 24, 32, 48, 64, 96].map((value) => <div key={value}><i style={{ width: value, height: Math.max(4, value / 5) }} /><span>{value}px</span></div>)}</div></SpecimenSection>
+            <SpecimenSection number="12" title="Spacing & grid"><div className="oc-ds-rules"><div><strong>Grid</strong>12 kolona, fluid gutter 20–48px, max-width 1280px.</div><div><strong>Section rhythm</strong>72–128px između glavnih celina.</div></div><div className="oc-ds-scale" style={{ marginTop: 22 }}>{[4, 8, 12, 16, 24, 32, 48, 64, 80, 96, 112, 128].map((value) => <div key={value}><i style={{ width: value, height: Math.max(4, value / 5) }} /><span>{value}px</span></div>)}</div></SpecimenSection>
 
-            <SpecimenSection number="13" title="Radius"><div className="oc-ds-scale oc-ds-radius">{[4, 8, 12, 24].map((value) => <div key={value}><i style={{ borderRadius: value }} /><span>{value}px</span></div>)}</div></SpecimenSection>
+            <SpecimenSection number="13" title="Radius"><div className="oc-ds-scale oc-ds-radius">{[8, 10, 14, 18].map((value) => <div key={value}><i style={{ borderRadius: value }} /><span>{value}px</span></div>)}</div></SpecimenSection>
 
-            <SpecimenSection number="14" title="Shadows"><div className="oc-ds-scale oc-ds-shadows"><div style={{ boxShadow: "var(--od-shadow-sm)" }}><strong>sm</strong><span>Neutralna ivica</span></div><div style={{ boxShadow: "var(--od-shadow-md)" }}><strong>md</strong><span>Podignuta kartica</span></div></div></SpecimenSection>
+            <SpecimenSection number="14" title="Shadows"><div className="oc-ds-scale oc-ds-shadows"><div style={{ boxShadow: "var(--od-shadow-sm)" }}><strong>sm</strong><span>Diskretno odvajanje</span></div><div style={{ boxShadow: "var(--od-shadow-md)" }}><strong>md</strong><span>Samo za overlay i meni</span></div></div></SpecimenSection>
 
-            <SpecimenSection number="15" title="Smernice upotrebe"><div className="oc-ds-guidelines"><p>Magenta se koristi za akcije, ikone i aktivna stanja.</p><p>Fotografije ostaju prirodne, svetle i medicinski relevantne.</p><p>Naslovi koriste jasnu hijerarhiju i umerene težine.</p><p>Interakcije imaju vidljiv fokus i najmanje 44px dodirnu zonu.</p><p>Senke su diskretne; struktura se gradi razmakom i linijama.</p><p>Mobilni raspored sledi redosled čitanja, ne samo desktop kolone.</p></div></SpecimenSection>
+            <SpecimenSection number="15" title="Smernice upotrebe"><div className="oc-ds-guidelines"><p>Magenta je akcenat za akcije, ikone i aktivna stanja — ne za cele naslove.</p><p>Fotografije ostaju prirodne, svetle i medicinski relevantne.</p><p>H1/H2 su umerene težine; H3 i labele nose funkcionalnu hijerarhiju.</p><p>Interakcije imaju vidljiv fokus i najmanje 44px dodirnu zonu.</p><p>Struktura se gradi razmakom i linijama; senke su izuzetak.</p><p>Sadržaj je vidljiv i bez JavaScript animacija.</p></div></SpecimenSection>
+
+            <SpecimenSection number="16" title="Page intro patterns"><div className="oc-ds-guidelines"><p><strong>Editorial</strong><br />Eyebrow, veliki monohromatski H1, uvodni tekst i medij.</p><p><strong>Utility</strong><br />Centriran naslov i kratko objašnjenje za informacije, cenovnik i forme.</p><p><strong>Location</strong><br />Breadcrumb, naziv područja ili centra, adresa i jedna grupa akcija.</p><p><strong>Rule</strong><br />Samo tačka, kratka fraza ili aktivno stanje dobija magentu.</p></div></SpecimenSection>
+
+            <SpecimenSection number="17" title="Forms & notices"><div className="oc-component-grid"><div><h3>Polje forme</h3><div className="oc-ds-field"><label htmlFor="ds-name">Ime i prezime</label><input id="ds-name" className="oc-ds-input" placeholder="Vaše ime i prezime" /></div></div><div><h3>Info surface</h3><div className="oc-ds-rules"><div><strong>Bez zakazivanja</strong>Neutralna ili svetlo-roze površina, bez dekorativne senke.</div></div></div></div></SpecimenSection>
           </div>
         </div>
       </div>

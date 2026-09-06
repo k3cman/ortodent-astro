@@ -42,10 +42,10 @@
 .od-pro-button--primary {
   color: var(--oc-white) !important;
   background: var(--oc-magenta);
-  box-shadow: 0 10px 24px rgb(213 17 85 / .14);
-  transition: background .2s ease, transform .2s ease;
+  box-shadow: none;
+  transition: background .2s ease;
 }
-.od-pro-button--primary:hover { background: var(--oc-magenta-dark); transform: translateY(-1px); }
+.od-pro-button--primary:hover { background: var(--oc-magenta-dark); }
 .od-pro-button svg, .od-pro-text-link svg { width: 18px; height: 18px; flex: 0 0 auto; }
 .od-pro-text-link {
   padding: 10px 0 7px;
