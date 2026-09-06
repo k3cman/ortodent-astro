@@ -169,7 +169,7 @@ export const UslugeKefa = () => (
 
           <div className="oc-kefa-cta__actions">
             <SiteLink
-              to="/ortocloud#registracija"
+              to="/za-doktore#partnerstvo"
               className="oc-button oc-button--primary"
             >
               Pošalji snimak <ArrowRight aria-hidden="true" />

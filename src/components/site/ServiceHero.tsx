@@ -7,6 +7,7 @@ type ServiceHeroProps = {
   image: string;
   imageAlt: string;
   imagePosition?: string;
+  variant?: "split" | "backdrop";
   children?: ReactNode;
 };
 
@@ -17,10 +18,14 @@ export default function ServiceHero({
   image,
   imageAlt,
   imagePosition,
+  variant = "split",
   children,
 }: ServiceHeroProps) {
   return (
-    <section className="oc-service-hero" aria-labelledby="service-hero-title">
+    <section
+      className={`oc-service-hero oc-service-hero--${variant}`}
+      aria-labelledby="service-hero-title"
+    >
       <div className="oc-service-hero__copy">
         <p className="oc-service-hero__eyebrow">{eyebrow}</p>
         <h1 id="service-hero-title">{title}</h1>

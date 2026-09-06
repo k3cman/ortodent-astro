@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 import {
   CITY_SLUGS,
@@ -24,6 +25,39 @@ test("city filtering returns only locations from the requested city", () => {
   assert.ok(beograd.every((location) => location.citySlug === "beograd"));
   assert.ok(noviSad.every((location) => location.citySlug === "novi-sad"));
   assert.ok(pancevo.every((location) => location.citySlug === "pancevo"));
+});
+
+test("every location is open daily from 08:00 to 20:00", () => {
+  const expectedHours = {
+    open: "08:00",
+    close: "20:00",
+  };
+
+  for (const location of LOCATIONS) {
+    assert.ok(location.openingHours, `${location.name} has opening hours`);
+
+    for (const day of [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+      "sunday",
+    ] as const) {
+      assert.deepEqual(location.openingHours?.[day], expectedHours);
+    }
+  }
+});
+
+test("location details describe the fixed daily schedule", async () => {
+  const detailSource = await readFile(
+    new URL("../components/site/pages/LocationDetail.tsx", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(detailSource, /Svakog dana od 08:00 do 20:00/);
+  assert.doesNotMatch(detailSource, /Proverite aktuelno radno vreme telefonom/);
 });
 
 test("location slugs resolve only inside their city and build a nested path", async () => {

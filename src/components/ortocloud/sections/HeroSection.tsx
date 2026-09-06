@@ -1,5 +1,7 @@
 import { ArrowRight, ScanLine, Share2, ShieldCheck } from "lucide-react";
-import heroMockup from "@/assets/ortocloud/hero-mockup.png";
+import heroDiagnostics from "@/assets/ortocloud/hero-diagnostics.png";
+import ortoCloudLogo from "@/assets/ortocloud/logo.png";
+import { SiteLink } from "@/components/site/SiteLink";
 
 const signals = [
   { icon: ScanLine, title: "Snimci online", text: "Odmah nakon obrade" },
@@ -10,20 +12,28 @@ const signals = [
 export default function HeroSection() {
   return (
     <section id="pocetna" className="odc-hero" aria-labelledby="odc-hero-title">
+      <img
+        className="odc-hero__backdrop"
+        src={heroDiagnostics.src}
+        alt="Stomatološkinja analizira panoramski snimak zuba"
+        fetchPriority="high"
+      />
+      <div className="odc-hero__veil" aria-hidden="true" />
       <div className="odc-container odc-hero__layout">
         <div className="odc-hero__copy">
-          <p className="odc-eyebrow">OrtoCloud</p>
+          <img
+            className="odc-hero__logo"
+            src={ortoCloudLogo.src}
+            alt="OrtoCloud Dentamed"
+            width={398}
+            height={170}
+          />
           <h1 id="odc-hero-title">Vaša dijagnostika.<br /><span>Uvek dostupna.</span></h1>
           <p className="odc-hero__lead">OrtoCloud je digitalna platforma za čuvanje, pregled i deljenje dentalnih snimaka. Dostupno sa bilo kog uređaja, sigurno i uvek na dohvat ruke.</p>
           <div className="odc-actions">
             <a className="odc-button odc-button--primary" href="#pristup">Prijavite se <ArrowRight aria-hidden="true" /></a>
-            <a className="odc-button odc-button--secondary" href="#registracija">Otvorite nalog <ArrowRight aria-hidden="true" /></a>
+            <SiteLink className="odc-button odc-button--secondary" to="/za-doktore#partnerstvo">Registrujte ordinaciju <ArrowRight aria-hidden="true" /></SiteLink>
           </div>
-        </div>
-        <div className="odc-hero__visual">
-          <span className="odc-orbit odc-orbit--one" aria-hidden="true" />
-          <span className="odc-orbit odc-orbit--two" aria-hidden="true" />
-          <img src={heroMockup.src} alt="OrtoCloud platforma prikazana na laptopu i mobilnom telefonu" fetchPriority="high" />
         </div>
         <div className="odc-hero__signals" aria-label="OrtoCloud prednosti">
           {signals.map(({ icon: Icon, title, text }) => (

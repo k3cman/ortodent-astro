@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, Landmark, Sprout } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { SiteLink } from "@/components/site/SiteLink";
 import {
   LOCATION_CITIES,
@@ -6,12 +6,6 @@ import {
   getLocationsByCity,
   type LocationCitySlug,
 } from "@/lib/locations";
-
-const cityIcons = {
-  beograd: Landmark,
-  "novi-sad": Sprout,
-  pancevo: Building2,
-} as const;
 
 export default function CityCards({
   activeCity,
@@ -23,8 +17,6 @@ export default function CityCards({
       {LOCATION_CITIES.map((city) => {
         const count = getLocationsByCity(city.slug).length;
         const active = activeCity === city.slug;
-        const Icon = cityIcons[city.slug];
-
         return (
           <SiteLink
             key={city.slug}
@@ -32,7 +24,7 @@ export default function CityCards({
             className={`od-city-card${active ? " is-active" : ""}`}
           >
             <div className="od-city-card__main">
-              <span className="od-city-card__icon"><Icon aria-hidden="true" /></span>
+              <span className="od-city-card__icon"><MapPin aria-hidden="true" /></span>
               <span>
                 <strong>{city.name}</strong>
                 <span>{centerCountLabel(count)}</span>

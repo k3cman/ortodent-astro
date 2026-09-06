@@ -128,7 +128,7 @@ function LocationDetail({
 
             <div className="od-practical-strip">
               <div><span><ShieldCheck aria-hidden="true" /></span><p><strong>Bez zakazivanja</strong>Dođite direktno u centar koji Vam odgovara.</p></div>
-              <div><span><Clock3 aria-hidden="true" /></span><p><strong>Radno vreme</strong>Proverite aktuelno radno vreme telefonom.</p></div>
+              <div><span><Clock3 aria-hidden="true" /></span><p><strong>Radno vreme</strong>Svakog dana od 08:00 do 20:00.</p></div>
               <div><span><Cloud aria-hidden="true" /></span><p><strong>OrtoCloud rezultati</strong>Brz i siguran pristup rezultatima online.</p></div>
             </div>
           </div>

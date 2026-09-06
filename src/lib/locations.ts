@@ -24,6 +24,16 @@ export type OpeningHours = Partial<Record<Weekday, DayHours | null>>;
 export type LocationService = "2d" | "3d";
 export const DEFAULT_LOCATION_SERVICES: readonly LocationService[] = ["2d", "3d"];
 
+export const DAILY_LOCATION_OPENING_HOURS: OpeningHours = {
+  monday: { open: "08:00", close: "20:00" },
+  tuesday: { open: "08:00", close: "20:00" },
+  wednesday: { open: "08:00", close: "20:00" },
+  thursday: { open: "08:00", close: "20:00" },
+  friday: { open: "08:00", close: "20:00" },
+  saturday: { open: "08:00", close: "20:00" },
+  sunday: { open: "08:00", close: "20:00" },
+};
+
 export interface LocationPracticalInfo {
   parking?: string;
   publicTransport?: string;
@@ -98,6 +108,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "062 165 36 64",
     lat: 44.8156336,
     lng: 20.4198943,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 2,
@@ -110,6 +121,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "062 810 40 49",
     lat: 44.806649,
     lng: 20.3834658,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 3,
@@ -122,6 +134,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "063 846 50 58",
     lat: 44.8154496,
     lng: 20.471039,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 4,
@@ -134,6 +147,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "062 840 05 50",
     lat: 44.7705875,
     lng: 20.4175057,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 5,
@@ -146,6 +160,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "063 846 50 59",
     lat: 44.7843987,
     lng: 20.4692256,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 6,
@@ -158,6 +173,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "063 846 50 63",
     lat: 44.7986253,
     lng: 20.4861359,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 7,
@@ -170,6 +186,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "062 872 00 46",
     lat: 44.8027225,
     lng: 20.47007,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 8,
@@ -182,6 +199,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "062 144 47 72",
     lat: 44.7493107,
     lng: 20.4283677,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 9,
@@ -194,6 +212,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "062 854 91 11",
     lat: 44.8289777,
     lng: 20.4125316,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 10,
@@ -206,6 +225,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "062 333 30 80",
     lat: 44.8723342,
     lng: 20.6499484,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 11,
@@ -218,6 +238,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "063 120 89 69",
     lat: 44.8731616,
     lng: 20.6436448,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 12,
@@ -230,6 +251,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "062 871 78 61",
     lat: 45.2475608,
     lng: 19.8385544,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
   {
     id: 13,
@@ -242,6 +264,7 @@ export const LOCATIONS: readonly Location[] = [
     phone2: "062 148 32 48",
     lat: 45.2564539,
     lng: 19.8131542,
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
 ];
 
