@@ -7,7 +7,7 @@ const navItems = [
   ["Cenovnik", "/cenovnik"],
   ["Za stomatologe", "/za-doktore"],
   ["Lokacije", "/lokacije"],
-  ["O nama", "/informacije"],
+  ["O nama", "/o-nama"],
   ["Kontakt", "/kontakt"],
 ] as const;
 
