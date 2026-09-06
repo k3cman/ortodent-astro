@@ -41,10 +41,14 @@ test("production build publishes only canonical unversioned routes", async () =>
   assert.match(homeHtml, /Dijagnostika na koju možete da se oslonite\./);
   assert.doesNotMatch(homeHtml, /href=["']\/design-system/);
   assert.match(homeHtml, /Sve preporuke,ljubazno osoblje i vrhunski kvalitet usluge/);
+  assert.match(homeHtml, />Tanja Macura</);
   assert.match(homeHtml, /Very nice, clean and quick\. The staff is polite and friendly\./);
   assert.doesNotMatch(homeHtml, /Rezultati su bili spremni vrlo brzo/);
   assert.doesNotMatch(homeHtml, /oc-icon-tile/);
   assert.doesNotMatch(homeHtml, /oc-stars|5 od 5 zvezdica/);
+  const quoteIcon = homeHtml.match(/<svg[^>]*oc-review-card__quote[^>]*>/)?.[0];
+  assert.ok(quoteIcon, "missing testimonial quote icon");
+  assert.match(quoteIcon, /fill="none"/, "testimonial quote icon must stay outlined");
 
   const designSystemHtml = await readFile(
     path.join(distRoot, "design-system/index.html"),

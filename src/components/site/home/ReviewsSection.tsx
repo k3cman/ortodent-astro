@@ -28,7 +28,7 @@ export default function ReviewsSection() {
           <div className="oc-review-grid" id="reviews-panel" aria-live="polite">
             {visible.map(([name, review], index) => (
               <article className={index === 0 ? "oc-review-card oc-review-card--featured" : "oc-review-card"} key={`${name}-${active}-${index}`}>
-                <Quote aria-hidden="true" className="oc-review-card__quote" fill="currentColor" />
+                <Quote aria-hidden="true" className="oc-review-card__quote" />
                 <blockquote>{review}</blockquote>
                 <footer><span>{name.split(" ").map((part) => part[0]).join("").toUpperCase()}</span><div><strong>{name}</strong></div></footer>
               </article>

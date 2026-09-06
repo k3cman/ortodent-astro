@@ -36,7 +36,7 @@ export const homeContent = {
     ["17", "godina iskustva"],
   ],
   reviews: [
-    ["tanja macura", "Sve preporuke,ljubazno osoblje i vrhunski kvalitet usluge👍"],
+    ["Tanja Macura", "Sve preporuke,ljubazno osoblje i vrhunski kvalitet usluge👍"],
     ["Vera Nikolić", "Very nice, clean and quick. The staff is polite and friendly. They are connected to the local dentists via app and they can send them files digitally."],
     ["Nemanja Pantelić", "Pa uz ovakve ljude i ovakvu uslugu, ne boli ni zub, a kamo li novčanik, za svaku pohvalu!"],
     ["Nebojša Stojanović", "Profesionalno,ljubazno.Pišem najiskrenije kao pacijent.Snimak odmah gotov i poslato stomatologu.Svaka čast.Čistoća na visokom nivou."],
