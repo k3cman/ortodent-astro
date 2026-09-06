@@ -17,7 +17,11 @@ const services = [
   ["Kefalometrijske analize", "/usluge/kefalometrija"],
 ] as const;
 
-export default function Header() {
+type HeaderProps = {
+  currentPath?: string;
+};
+
+export default function Header({ currentPath }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
@@ -34,7 +38,15 @@ export default function Header() {
             <button type="button" aria-expanded={servicesOpen} aria-controls="services-menu" onClick={() => setServicesOpen((value) => !value)}>Usluge <ChevronDown aria-hidden="true" /></button>
             <div id="services-menu" hidden={!servicesOpen} className="oc-nav__menu">{services.map(([label, href]) => <SiteLink key={href} to={href}>{label}</SiteLink>)}</div>
           </div>
-          {navItems.map(([label, href]) => <SiteLink key={href} to={href}>{label}</SiteLink>)}
+          {navItems.map(([label, href]) => (
+            <SiteLink
+              key={href}
+              to={href}
+              aria-current={currentPath === href ? "page" : undefined}
+            >
+              {label}
+            </SiteLink>
+          ))}
         </nav>
         <div className="oc-header__actions">
           <SiteLink to="/ortocloud" className="oc-cloud-link"><Cloud aria-hidden="true" /> OrtoCloud</SiteLink>
@@ -44,7 +56,16 @@ export default function Header() {
       {open && (
         <nav className="oc-mobile-nav" aria-label="Mobilna navigacija">
           {services.map(([label, href]) => <SiteLink key={href} to={href} onClick={() => setOpen(false)}>{label}</SiteLink>)}
-          {navItems.map(([label, href]) => <SiteLink key={href} to={href} onClick={() => setOpen(false)}>{label}</SiteLink>)}
+          {navItems.map(([label, href]) => (
+            <SiteLink
+              key={href}
+              to={href}
+              aria-current={currentPath === href ? "page" : undefined}
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </SiteLink>
+          ))}
           <SiteLink to="/ortocloud" onClick={() => setOpen(false)}>OrtoCloud</SiteLink>
         </nav>
       )}

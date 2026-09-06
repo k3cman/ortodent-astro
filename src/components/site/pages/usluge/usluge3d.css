@@ -1,0 +1,701 @@
+.od3d {
+  --od3d-radius: 18px;
+  color: var(--oc-ink);
+}
+
+.od3d-page {
+  padding: 112px 0;
+}
+
+.od3d-page .oc-service-tabs > div:first-child {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  gap: clamp(22px, 3.5vw, 48px);
+  display: flex;
+  justify-content: flex-start;
+  background: transparent;
+  border-bottom: 1px solid var(--oc-gray-300);
+  border-radius: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.od3d-page .oc-service-tabs > div:first-child::-webkit-scrollbar {
+  display: none;
+}
+
+.od3d-page .oc-service-tabs :is(button, [role="tab"]) {
+  min-height: 48px;
+  flex: 0 0 auto;
+  padding: 0;
+  color: var(--oc-gray-500);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  box-shadow: none !important;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.od3d-page .oc-service-tabs :is(button, [role="tab"])[data-state="active"] {
+  color: var(--oc-magenta);
+  background: transparent;
+  border-bottom-color: var(--oc-magenta);
+}
+
+.od3d section {
+  scroll-margin-top: 110px;
+}
+
+.od3d-eyebrow {
+  margin-bottom: 20px;
+  color: var(--oc-magenta);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.od3d-eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 2px;
+  display: block;
+  margin-top: 14px;
+  background: var(--oc-magenta);
+}
+
+.od3d h1,
+.od3d h2,
+.od3d h3 {
+  color: var(--oc-ink);
+}
+
+.od3d-hero {
+  min-height: 670px;
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(430px, .82fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "copy visual"
+    "uses visual";
+  column-gap: clamp(56px, 7vw, 104px);
+  row-gap: 38px;
+  align-items: start;
+  padding: clamp(56px, 7vw, 92px) 0 clamp(80px, 9vw, 112px);
+}
+
+.od3d-hero__copy {
+  grid-area: copy;
+  max-width: 620px;
+}
+
+.od3d-hero h1 {
+  max-width: 560px;
+  margin-bottom: 24px;
+  font-size: clamp(46px, 4.8vw, 66px);
+  font-weight: 500;
+  letter-spacing: -.055em;
+  line-height: 1.02;
+}
+
+.od3d-lead {
+  max-width: 585px;
+  margin-bottom: 38px;
+  color: var(--oc-gray-500);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.od3d-use-cases {
+  grid-area: uses;
+  padding-top: 26px;
+  border-top: 1px solid var(--oc-gray-300);
+}
+
+.od3d-use-cases h2 {
+  margin-bottom: 18px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+
+.od3d-use-cases ul {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+  list-style: none;
+}
+
+.od3d-use-cases li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.od3d-use-cases li::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--oc-magenta);
+}
+
+.od3d-use-cases strong,
+.od3d-use-cases span {
+  display: block;
+}
+
+.od3d-use-cases strong {
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.od3d-use-cases span {
+  color: var(--oc-gray-500);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.od3d-hero__visual {
+  grid-area: visual;
+  min-height: 0;
+  margin: 0;
+  align-self: stretch;
+  overflow: hidden;
+  background: var(--oc-off-white);
+  border-radius: var(--od3d-radius);
+}
+
+.od3d-hero__visual img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 43%;
+}
+
+.od3d-section-heading {
+  max-width: 680px;
+  margin-bottom: 44px;
+}
+
+.od3d-section-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.od3d-section-heading--center .od3d-eyebrow::after {
+  margin-inline: auto;
+}
+
+.od3d-section-heading h2,
+.od3d-technology h2 {
+  margin-bottom: 0;
+  font-size: clamp(38px, 4vw, 48px);
+  font-weight: 500;
+  letter-spacing: -.045em;
+  line-height: 1.08;
+}
+
+.od3d-fields {
+  padding: clamp(72px, 8vw, 96px) clamp(24px, 4vw, 54px) clamp(48px, 5vw, 64px);
+  background: var(--oc-off-white);
+  border-radius: var(--od3d-radius);
+}
+
+.od3d-fields__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.od3d-field-card {
+  min-height: 220px;
+  padding: clamp(26px, 3vw, 38px);
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  background: var(--oc-white);
+  border: 1px solid var(--oc-gray-300);
+  border-radius: var(--od3d-radius);
+}
+
+.od3d-field-card__marker {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: grid;
+  place-items: center;
+  color: var(--oc-magenta-dark);
+  background: var(--oc-magenta-light);
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.od3d-field-card h3 {
+  margin: 2px 0 4px;
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -.035em;
+  line-height: 1.15;
+}
+
+.od3d-field-card p {
+  color: var(--oc-gray-500);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.od3d-field-card .od3d-field-card__dimensions {
+  margin-bottom: 18px;
+  color: var(--oc-magenta-dark);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.od3d-cloud-note {
+  margin-top: 18px;
+  padding: 20px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--oc-gray-500);
+  background: #f2f2ef;
+  border-radius: 12px;
+}
+
+.od3d-cloud-note svg {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  color: var(--oc-magenta);
+}
+
+.od3d-cloud-note p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.od3d-cloud-note strong {
+  color: var(--oc-magenta-dark);
+  font-weight: 600;
+}
+
+.od3d-technology {
+  display: grid;
+  grid-template-columns: minmax(0, .87fr) minmax(480px, 1.13fr);
+  gap: clamp(56px, 7vw, 104px);
+  align-items: center;
+  padding: clamp(88px, 9vw, 112px) 0;
+}
+
+.od3d-technology__copy {
+  max-width: 590px;
+}
+
+.od3d-technology h2 {
+  margin-bottom: 26px;
+}
+
+.od3d-technology__intro {
+  color: var(--oc-gray-500);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.od3d-technology__intro p {
+  margin-bottom: 12px;
+}
+
+.od3d-technology__intro strong {
+  color: var(--oc-ink);
+  font-weight: 600;
+}
+
+.od3d-benefits {
+  margin: 34px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  list-style: none;
+}
+
+.od3d-benefits li {
+  padding: 17px 0;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 14px;
+  color: var(--oc-gray-500);
+  border-top: 1px solid var(--oc-gray-300);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.od3d-benefits__icon {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  color: var(--oc-magenta);
+  background: var(--oc-magenta-light);
+  border-radius: 50%;
+}
+
+.od3d-benefits__icon svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.4;
+}
+
+.od3d-benefits strong {
+  margin-bottom: 3px;
+  display: block;
+  color: var(--oc-ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.od3d-collage {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+}
+
+.od3d-collage > img,
+.od3d-collage__slices {
+  min-width: 0;
+  overflow: hidden;
+  background: #090b0d;
+  border-radius: 14px;
+}
+
+.od3d-collage > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.od3d-collage__screen {
+  grid-row: 1 / 3;
+}
+
+.od3d-collage .od3d-collage__jaw {
+  object-position: center;
+}
+
+.od3d-collage__slices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.od3d-collage__slices img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  display: block;
+  object-fit: cover;
+}
+
+.od3d-software {
+  position: relative;
+  min-height: 650px;
+  display: grid;
+  grid-template-columns: minmax(250px, .78fr) minmax(360px, 1.18fr) minmax(250px, .78fr);
+  grid-template-areas: "analysis machine tutorial";
+  gap: clamp(20px, 3vw, 38px);
+  align-items: center;
+  padding: clamp(54px, 6vw, 74px);
+  overflow: hidden;
+  background: var(--oc-off-white);
+  border-radius: var(--od3d-radius);
+}
+
+.od3d-software::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 43%;
+  aspect-ratio: 1;
+  border: 1px solid var(--oc-gray-300);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.od3d-software-card {
+  position: relative;
+  z-index: 2;
+  padding: clamp(28px, 3vw, 40px);
+  background: var(--oc-white);
+  border: 1px solid var(--oc-gray-300);
+  border-radius: var(--od3d-radius);
+}
+
+.od3d-software-card--analysis {
+  grid-area: analysis;
+}
+
+.od3d-software-card--tutorial {
+  grid-area: tutorial;
+}
+
+.od3d-software-card h2 {
+  margin-bottom: 18px;
+  font-size: clamp(24px, 2.5vw, 30px);
+  font-weight: 550;
+  letter-spacing: -.04em;
+  line-height: 1.12;
+}
+
+.od3d-software-card > p:not(.od3d-eyebrow) {
+  margin-bottom: 0;
+  color: var(--oc-gray-500);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.od3d-tutorial-link {
+  min-height: 44px;
+  margin-top: 26px;
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  color: var(--oc-magenta) !important;
+  border-bottom: 1px solid var(--oc-magenta);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.od3d-tutorial-link svg {
+  width: 17px;
+  height: 17px;
+  transition: transform .2s ease;
+}
+
+.od3d-tutorial-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.od3d-software__machine {
+  position: relative;
+  z-index: 1;
+  grid-area: machine;
+  width: 125%;
+  max-width: none;
+  margin-left: -12.5%;
+  display: block;
+  filter: drop-shadow(0 22px 24px rgb(18 25 34 / .08));
+}
+
+@media (max-width: 1120px) {
+  .od3d-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, .8fr);
+    gap: 48px;
+  }
+
+  .od3d-use-cases ul {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .od3d-field-card {
+    min-height: 250px;
+    padding: 28px 22px;
+    display: block;
+  }
+
+  .od3d-field-card__marker {
+    margin-bottom: 20px;
+  }
+
+  .od3d-technology {
+    grid-template-columns: 1fr;
+  }
+
+  .od3d-technology__copy {
+    max-width: 760px;
+  }
+
+  .od3d-collage {
+    max-height: 620px;
+  }
+
+  .od3d-software {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "analysis tutorial"
+      "machine machine";
+  }
+
+  .od3d-software::before {
+    top: 70%;
+    width: 54%;
+  }
+
+  .od3d-software__machine {
+    width: min(620px, 90%);
+    margin: -20px auto -70px;
+  }
+}
+
+@media (max-width: 760px) {
+  .od3d-page {
+    padding: 92px 0 72px;
+  }
+
+  .od3d-page .oc-service-tabs > div:first-child {
+    gap: 26px;
+  }
+
+  .od3d-hero {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "copy"
+      "visual"
+      "uses";
+    gap: 36px;
+    padding: 44px 0 64px;
+  }
+
+  .od3d-hero h1 {
+    font-size: clamp(42px, 12vw, 52px);
+  }
+
+  .od3d-lead {
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+
+  .od3d-use-cases ul {
+    gap: 14px;
+  }
+
+  .od3d-use-cases span {
+    font-size: 13px;
+  }
+
+  .od3d-hero__visual {
+    aspect-ratio: 4 / 5;
+  }
+
+  .od3d-fields {
+    margin-inline: -1px;
+    padding: 58px 18px 24px;
+  }
+
+  .od3d-section-heading {
+    margin-bottom: 34px;
+  }
+
+  .od3d-section-heading h2,
+  .od3d-technology h2 {
+    font-size: clamp(32px, 9.5vw, 38px);
+  }
+
+  .od3d-fields__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .od3d-field-card {
+    min-height: 0;
+    padding: 24px;
+    display: flex;
+  }
+
+  .od3d-field-card__marker {
+    margin-bottom: 0;
+  }
+
+  .od3d-field-card h3 {
+    font-size: 22px;
+  }
+
+  .od3d-field-card .od3d-field-card__dimensions {
+    margin-bottom: 10px;
+  }
+
+  .od3d-cloud-note {
+    padding: 20px;
+    align-items: flex-start;
+  }
+
+  .od3d-technology {
+    gap: 44px;
+    padding: 64px 0;
+  }
+
+  .od3d-collage {
+    max-height: none;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 8px;
+  }
+
+  .od3d-collage__screen {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    aspect-ratio: 1.25;
+  }
+
+  .od3d-collage__jaw {
+    aspect-ratio: 1;
+  }
+
+  .od3d-collage__slices {
+    aspect-ratio: 1;
+  }
+
+  .od3d-software {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "analysis"
+      "tutorial"
+      "machine";
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .od3d-software::before {
+    top: auto;
+    bottom: 0;
+    width: 92%;
+    transform: translate(-50%, 26%);
+  }
+
+  .od3d-software-card {
+    padding: 28px;
+  }
+
+  .od3d-software__machine {
+    width: 115%;
+    margin: -16px 0 -44px -7.5%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .od3d-tutorial-link svg {
+    transition: none;
+  }
+}

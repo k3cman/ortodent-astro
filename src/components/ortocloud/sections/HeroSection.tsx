@@ -1,31 +1,34 @@
-import { Button } from "@/components/ui/button";
+import { ArrowRight, ScanLine, Share2, ShieldCheck } from "lucide-react";
 import heroMockup from "@/assets/ortocloud/hero-mockup.png";
 
+const signals = [
+  { icon: ScanLine, title: "Snimci online", text: "Odmah nakon obrade" },
+  { icon: ShieldCheck, title: "Sigurno čuvanje", text: "Visoki standardi zaštite" },
+  { icon: Share2, title: "Jednostavno deljenje", text: "Sa stomatologom ili pacijentom" },
+] as const;
+
 export default function HeroSection() {
-  const imageSrc = typeof heroMockup === "string" ? heroMockup : heroMockup.src;
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      <div className="absolute inset-0 gradient-glow pointer-events-none" />
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse-glow pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/3 w-64 h-64 bg-accent/10 rounded-full blur-2xl animate-pulse-glow pointer-events-none" style={{ animationDelay: "1s" }} />
-      <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-8 text-center lg:text-left">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground animate-fade-in">
-                Vaša dijagnostika.<br /><span className="text-foreground">Trenutna. Sigurna.</span><br /><span className="text-muted-foreground">Bilo gde.</span>
-              </h1>
-              <p className="text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-                Napredna platforma za arhiviranje, pregled i deljenje dentalnih snimaka. Povezujemo stomatologe, pacijente i radiološke centre u jedan klik.
-              </p>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.4s" }}><Button size="xl" className="shadow-medium">Registracija</Button></div>
+    <section id="pocetna" className="odc-hero" aria-labelledby="odc-hero-title">
+      <div className="odc-container odc-hero__layout">
+        <div className="odc-hero__copy">
+          <p className="odc-eyebrow">OrtoCloud</p>
+          <h1 id="odc-hero-title">Vaša dijagnostika.<br /><span>Uvek dostupna.</span></h1>
+          <p className="odc-hero__lead">OrtoCloud je digitalna platforma za čuvanje, pregled i deljenje dentalnih snimaka. Dostupno sa bilo kog uređaja, sigurno i uvek na dohvat ruke.</p>
+          <div className="odc-actions">
+            <a className="odc-button odc-button--primary" href="#pristup">Prijavite se <ArrowRight aria-hidden="true" /></a>
+            <a className="odc-button odc-button--secondary" href="#registracija">Otvorite nalog <ArrowRight aria-hidden="true" /></a>
           </div>
-          <div className="relative animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-            <div className="relative z-10 animate-float"><img src={imageSrc} alt="OrtoCloud platforma na MacBook i iPhone uređajima" className="w-full h-auto rounded-2xl shadow-glow" /></div>
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-accent/30 rounded-full blur-2xl" />
-            <div className="absolute -top-8 -right-8 w-24 h-24 bg-accent/20 rounded-full blur-xl" />
-          </div>
+        </div>
+        <div className="odc-hero__visual">
+          <span className="odc-orbit odc-orbit--one" aria-hidden="true" />
+          <span className="odc-orbit odc-orbit--two" aria-hidden="true" />
+          <img src={heroMockup.src} alt="OrtoCloud platforma prikazana na laptopu i mobilnom telefonu" fetchPriority="high" />
+        </div>
+        <div className="odc-hero__signals" aria-label="OrtoCloud prednosti">
+          {signals.map(({ icon: Icon, title, text }) => (
+            <div className="odc-signal" key={title}><Icon aria-hidden="true" /><span><strong>{title}</strong><small>{text}</small></span></div>
+          ))}
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ import {
 
 export function UslugeTabs({ currentTab }: { currentTab: UslugeTab }) {
   return (
-    <Tabs value={currentTab} className="w-full">
+    <Tabs value={currentTab} className="oc-service-tabs w-full">
       <TabsList className="w-full max-w-3xl mx-auto grid grid-cols-4 mb-12 bg-muted/50 p-1 rounded-full">
         {USLUGE_TABS.map((path) => (
           <TabsTrigger

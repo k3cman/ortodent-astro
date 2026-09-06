@@ -4,10 +4,10 @@ import { UslugeTabs } from "@/components/site/UslugeTabs";
 import { Usluge2D } from "@/components/site/pages/usluge/Usluge2D";
 
 const Usluge2DPage = () => (
-  <div className="min-h-screen bg-background">
+  <div className="oc-site min-h-screen bg-background">
     <Header />
-    <main className="pt-32 pb-24">
-      <div className="container mx-auto px-6">
+    <main className="oc-2d-page">
+      <div className="oc-container">
         <UslugeTabs currentTab="2d" />
         <Usluge2D />
       </div>

@@ -1,22 +1,122 @@
-import { Cloud, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/logo.png";
+import {
+  ChevronRight,
+  Cloud,
+  Facebook,
+  Headphones,
+  Instagram,
+  Linkedin,
+  MapPin,
+} from "lucide-react";
 import { SiteLink } from "@/components/site/SiteLink";
+
+const quickLinks = [
+  ["Lokacije", "/lokacije"],
+  ["Kontakt", "/kontakt"],
+  ["Cenovnik", "/cenovnik"],
+  ["Za stomatologe", "/za-doktore"],
+  ["Informacije", "/informacije"],
+] as const;
+
+const serviceLinks = [
+  ["2D snimanja", "/usluge/2d"],
+  ["3D / CBCT", "/usluge/3d"],
+  ["Kefalometrija", "/usluge/kefalometrija"],
+  ["OrtoCloud", "/ortocloud"],
+] as const;
+
+const socialLinks = [
+  { label: "Facebook", icon: Facebook },
+  { label: "Instagram", icon: Instagram },
+  { label: "LinkedIn", icon: Linkedin },
+] as const;
 
 export default function Footer() {
   return (
     <footer className="oc-footer">
-      <div className="oc-container">
-        <div className="oc-footer__grid">
+      <svg
+        className="oc-footer__contours"
+        viewBox="0 0 760 450"
+        aria-hidden="true"
+      >
+        {Array.from({ length: 9 }, (_, index) => (
+          <path
+            key={index}
+            d={`M 760 ${-20 + index * 32} C 735 ${110 + index * 18}, 650 ${70 + index * 25}, ${590 + index * 12} ${190 + index * 23} C ${520 + index * 10} ${325 + index * 6}, ${360 + index * 18} ${385 + index * 4}, ${index * 55} 450`}
+          />
+        ))}
+      </svg>
+
+      <div className="oc-footer__inner">
+        <div className="oc-footer__main">
           <div className="oc-footer__brand">
-            <SiteLink to="/" className="oc-logo oc-logo--dark"><img src={logo.src} alt="OrtoDent" /></SiteLink>
-            <p>Lider u dentalnoj radiologiji sa preko 17 godina iskustva. Najsavremenija tehnologija za Vašu dijagnostiku.</p>
-            <SiteLink to="/lokacije" className="oc-footer__contact"><MapPin /> Beograd · Novi Sad · Pančevo</SiteLink>
+            <SiteLink
+              to="/"
+              className="oc-footer__brandmark"
+              aria-label="OrtoDent naslovna"
+            >
+              <span aria-hidden="true">D</span>
+              <strong>OrtoDent</strong>
+            </SiteLink>
+            <p>
+              Digitalna dijagnostika koja donosi preciznost, sigurnost i
+              poverenje u svaki plan terapije.
+            </p>
+            <nav className="oc-socials" aria-label="Društvene mreže">
+              {socialLinks.map(({ label, icon: Icon }) => (
+                <a key={label} href="#" aria-label={label}>
+                  <Icon aria-hidden="true" />
+                </a>
+              ))}
+            </nav>
           </div>
-          <div><h2>Brzi linkovi</h2><nav><SiteLink to="/lokacije">Lokacije</SiteLink><SiteLink to="/cenovnik">Cenovnik</SiteLink><SiteLink to="/za-doktore">Za stomatologe</SiteLink><SiteLink to="/informacije">Informacije</SiteLink><SiteLink to="/kontakt">Kontakt</SiteLink></nav></div>
-          <div><h2>Usluge</h2><nav><SiteLink to="/usluge/2d">2D snimanja</SiteLink><SiteLink to="/usluge/3d">3D CBCT</SiteLink><SiteLink to="/usluge/kefalometrija">Kefalometrija</SiteLink><SiteLink to="/ortocloud">OrtoCloud</SiteLink></nav></div>
-          <div className="oc-footer__cloud"><h2>OrtoCloud</h2><p>Digitalna platforma za moderne ordinacije.</p><SiteLink to="/ortocloud">Saznajte više <Cloud /></SiteLink><a href="mailto:info@ortodent.rs"><Mail /> info@ortodent.rs</a><SiteLink to="/kontakt">Kontaktirajte nas</SiteLink></div>
+
+          <div className="oc-footer__column">
+            <h2>Brzi linkovi</h2>
+            <nav aria-label="Brzi linkovi">
+              {quickLinks.map(([label, path]) => (
+                <SiteLink key={path} to={path}>
+                  <ChevronRight aria-hidden="true" />
+                  {label}
+                </SiteLink>
+              ))}
+            </nav>
+          </div>
+
+          <div className="oc-footer__column">
+            <h2>Usluge</h2>
+            <nav aria-label="Usluge u podnožju">
+              {serviceLinks.map(([label, path]) => (
+                <SiteLink key={path} to={path}>
+                  <ChevronRight aria-hidden="true" />
+                  {label}
+                </SiteLink>
+              ))}
+            </nav>
+          </div>
         </div>
-        <div className="oc-footer__bottom"><span>© 2026 OrtoDent. Sva prava zadržana.</span><span>Dentalna radiologija u 13 centara</span></div>
+
+        <div className="oc-footer__features">
+          <SiteLink to="/lokacije" className="oc-footer__feature">
+            <MapPin aria-hidden="true" />
+            <span>13 centara širom regiona</span>
+          </SiteLink>
+          <SiteLink to="/ortocloud" className="oc-footer__feature">
+            <Cloud aria-hidden="true" />
+            <span>OrtoCloud platforma</span>
+          </SiteLink>
+          <SiteLink to="/kontakt" className="oc-footer__feature">
+            <Headphones aria-hidden="true" />
+            <span>Podrška 24/7</span>
+          </SiteLink>
+        </div>
+
+        <div className="oc-footer__bottom">
+          <span>© 2026 OrtoDent. Sva prava zadržana.</span>
+          <nav aria-label="Pravne informacije">
+            <a href="#">Politika privatnosti</a>
+            <a href="#">Uslovi korišćenja</a>
+          </nav>
+        </div>
       </div>
     </footer>
   );

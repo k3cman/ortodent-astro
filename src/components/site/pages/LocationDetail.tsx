@@ -1,20 +1,34 @@
 import { useMemo } from "react";
-import { motion } from "framer-motion";
-import { ArrowLeft, Clock3, ExternalLink, MapPin, Phone, ScanLine } from "lucide-react";
+import {
+  Accessibility,
+  ArrowRight,
+  Bus,
+  Car,
+  Clock3,
+  Cloud,
+  DoorOpen,
+  MapPin,
+  Phone,
+  ShieldCheck,
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import { SiteLink } from "@/components/site/SiteLink";
 import { SiteProviders } from "@/components/site/SiteProviders";
 import LocationCard from "@/components/site/locations/LocationCard";
+import LocationActions from "@/components/site/locations/LocationActions";
 import LocationsMap from "@/components/site/locations/LocationsMap";
+import OpenNowStatus from "@/components/site/locations/OpenNowStatus";
+import OrtoCloudBanner from "@/components/site/locations/OrtoCloudBanner";
+import WeeklyOpeningHours from "@/components/site/locations/WeeklyOpeningHours";
 import {
+  distanceBetweenLocations,
   getLocationBySlug,
   getLocationsByCity,
-  openStreetMapPageUrl,
   phoneHref,
   type LocationCitySlug,
 } from "@/lib/locations";
+import "@/components/site/locations/locations.css";
 
 function LocationDetail({
   citySlug,
@@ -26,160 +40,136 @@ function LocationDetail({
   const location = getLocationBySlug(citySlug, locationSlug)!;
   const mapLocations = useMemo(() => [location], [location]);
   const relatedLocations = useMemo(
-    () => getLocationsByCity(citySlug).filter((item) => item.id !== location.id),
-    [citySlug, location.id],
+    () =>
+      getLocationsByCity(citySlug)
+        .filter((item) => item.id !== location.id)
+        .sort(
+          (first, second) =>
+            distanceBetweenLocations(location, first) -
+            distanceBetweenLocations(location, second),
+        )
+        .slice(0, 3),
+    [citySlug, location],
   );
 
+  const practicalItems = location.practicalInfo
+    ? [
+        [Car, "Parking", location.practicalInfo.parking],
+        [Bus, "Javni prevoz", location.practicalInfo.publicTransport],
+        [Accessibility, "Pristupačnost", location.practicalInfo.access],
+        [DoorOpen, "Ulaz", location.practicalInfo.entrance],
+      ].filter((item): item is [typeof Car, string, string] => Boolean(item[2]))
+    : [];
+
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <div className="od-page">
+      <Header currentPath="/lokacije" />
 
-      <main className="pt-20">
-        <section className="border-b border-border/50 bg-cream py-10 md:py-14">
-          <div className="container mx-auto px-6">
-            <SiteLink
-              to={`/lokacije/${citySlug}`}
-              className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-secondary"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Sve lokacije — {location.city}
-            </SiteLink>
-
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45 }}
-              className="max-w-3xl"
-            >
-              <span className="mb-2 inline-flex items-center gap-2 text-sm font-semibold text-secondary">
-                <MapPin className="h-4 w-4" />
-                OrtoDent {location.city}
-              </span>
-              <h1 className="mb-3 text-3xl font-semibold text-foreground md:text-5xl">
-                {location.name}
-              </h1>
-              <p className="flex items-center gap-2 text-lg text-muted-foreground">
-                <MapPin className="h-5 w-5 shrink-0 text-secondary" />
-                {location.address}
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        <section className="py-10 md:py-14">
-          <div className="container mx-auto px-6">
-            <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.5fr)]">
-              <LocationsMap
-                locations={mapLocations}
-                selectedId={location.id}
-                className="min-h-[430px] md:min-h-[560px]"
-              />
-
-              <aside className="rounded-2xl border border-border/60 bg-card p-6 shadow-raised md:p-8">
-                <h2 className="text-2xl font-semibold text-foreground">
-                  Kontakt i adresa
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Pozovite centar direktno ili otvorite preciznu lokaciju u
-                  OpenStreetMap-u.
-                </p>
-
-                <div className="mt-7 space-y-5">
-                  <div className="flex items-start gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
-                      <MapPin className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                        Adresa
-                      </p>
-                      <p className="mt-1 font-medium text-foreground">
-                        {location.address}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
-                      <Phone className="h-5 w-5" />
-                    </span>
-                    <div className="space-y-1">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                        Telefoni
-                      </p>
-                      <a
-                        href={`tel:${phoneHref(location.phone)}`}
-                        className="block font-medium text-foreground transition-colors hover:text-secondary"
-                      >
-                        {location.phone}
-                      </a>
-                      <a
-                        href={`tel:${phoneHref(location.phone2)}`}
-                        className="block font-medium text-foreground transition-colors hover:text-secondary"
-                      >
-                        {location.phone2}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 flex flex-col gap-3">
-                  <Button variant="glow" size="lg" asChild>
-                    <a href={`tel:${phoneHref(location.phone)}`}>
-                      <Phone className="h-4 w-4" />
-                      Pozovite centar
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
-                    <a
-                      href={openStreetMapPageUrl(location)}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      Otvori mapu
-                    </a>
-                  </Button>
-                </div>
-
-                <div className="mt-8 space-y-5 border-t border-border/70 pt-7">
-                  <div className="flex items-start gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
-                      <ScanLine className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Usluge</p>
-                      <p className="mt-1 text-sm font-medium leading-relaxed text-foreground">2D i 3D dentalna dijagnostika</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
-                      <Clock3 className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Radno vreme</p>
-                      <p className="mt-1 text-sm leading-relaxed text-foreground">Pozovite centar za aktuelno radno vreme.</p>
-                    </div>
-                  </div>
-                </div>
-              </aside>
+      <main>
+        <section className="od-detail-hero">
+          <div className="od-shell">
+            <nav className="od-breadcrumb" aria-label="Putanja">
+              <SiteLink to="/lokacije">Lokacije</SiteLink><span>›</span><SiteLink to={`/lokacije/${citySlug}`}>{location.city}</SiteLink><span>›</span><span>{location.name}</span>
+            </nav>
+            <div className="od-detail-hero__grid">
+              <div>
+                <p className="od-kicker">OrtoDent centar</p>
+                <h1>{location.name}</h1>
+                <p className="od-detail-address"><MapPin aria-hidden="true" /> {location.address}</p>
+                <OpenNowStatus openingHours={location.openingHours} />
+              </div>
+              <LocationActions location={location} />
             </div>
           </div>
         </section>
 
-        {relatedLocations.length > 0 && (
-          <section className="border-t border-border/50 bg-muted/30 py-12 md:py-16">
-            <div className="container mx-auto px-6">
-              <div className="mb-8 max-w-2xl">
-                <h2 className="text-2xl font-semibold text-foreground md:text-3xl">
-                  Ostale lokacije — {location.city}
-                </h2>
-                <p className="mt-2 text-muted-foreground">
-                  Pogledajte i druge OrtoDent centre u istom gradu.
-                </p>
-              </div>
+        <section className="od-detail-main">
+          <div className="od-shell">
+            <div className="od-detail-map-layout">
+              <LocationsMap
+                locations={mapLocations}
+                selectedId={location.id}
+                className="od-map--detail"
+              />
 
-              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              <aside className="od-contact-panel">
+                <h2>Kontakt i adresa</h2>
+                <p>Pozovite centar direktno ili otvorite preciznu lokaciju na mapi.</p>
+
+                <div className="od-contact-panel__facts">
+                  <div>
+                    <span className="od-contact-panel__icon"><MapPin aria-hidden="true" /></span>
+                    <div>
+                      <small>Adresa</small><strong>{location.address}</strong>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="od-contact-panel__icon"><Phone aria-hidden="true" /></span>
+                    <div>
+                      <small>Telefoni</small>
+                      <a href={`tel:${phoneHref(location.phone)}`}>{location.phone}</a>
+                      <a href={`tel:${phoneHref(location.phone2)}`}>{location.phone2}</a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="od-contact-panel__icon"><Clock3 aria-hidden="true" /></span>
+                    <div>
+                      <small>Radno vreme</small>
+                      <OpenNowStatus openingHours={location.openingHours} />
+                    </div>
+                  </div>
+                </div>
+
+                <LocationActions location={location} compact />
+              </aside>
+            </div>
+
+            <div className="od-practical-strip">
+              <div><span><ShieldCheck aria-hidden="true" /></span><p><strong>Bez zakazivanja</strong>Dođite direktno u centar koji Vam odgovara.</p></div>
+              <div><span><Clock3 aria-hidden="true" /></span><p><strong>Radno vreme</strong>Proverite aktuelno radno vreme telefonom.</p></div>
+              <div><span><Cloud aria-hidden="true" /></span><p><strong>OrtoCloud rezultati</strong>Brz i siguran pristup rezultatima online.</p></div>
+            </div>
+          </div>
+        </section>
+
+        {location.openingHours && (
+          <section className="od-detail-section">
+            <div className="od-shell od-detail-section__grid">
+              <header className="od-section-heading"><p className="od-kicker">Pre dolaska</p><h2>Radno vreme</h2><p>Kompletan nedeljni raspored centra {location.name}.</p></header>
+              <WeeklyOpeningHours openingHours={location.openingHours} />
+            </div>
+          </section>
+        )}
+
+        {location.services && location.services.length > 0 && (
+          <section className="od-detail-section">
+            <div className="od-shell od-detail-section__grid">
+              <header className="od-section-heading"><p className="od-kicker">U centru</p><h2>Dostupne usluge</h2></header>
+              <div className="od-service-list">
+                {location.services.map((service) => <span key={service}>{service}<ArrowRight aria-hidden="true" /></span>)}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {practicalItems.length > 0 && (
+          <section className="od-detail-section">
+            <div className="od-shell od-detail-section__grid">
+              <header className="od-section-heading"><p className="od-kicker">Dolazak</p><h2>Praktične informacije</h2></header>
+              <div className="od-practical-list">
+                {practicalItems.map(([Icon, label, value]) => <div key={label}><Icon aria-hidden="true" /><p><strong>{label}</strong>{value}</p></div>)}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {relatedLocations.length > 0 && (
+          <section className="od-nearby-section">
+            <div className="od-shell">
+              <header className="od-section-heading"><p className="od-kicker">U blizini</p><h2>Ostali centri u blizini</h2><p>Još nekoliko OrtoDent centara u gradu {location.city}.</p></header>
+              <div className="od-nearby-grid">
                 {relatedLocations.map((relatedLocation) => (
                   <LocationCard
                     key={relatedLocation.id}
@@ -188,6 +178,7 @@ function LocationDetail({
                   />
                 ))}
               </div>
+              <OrtoCloudBanner />
             </div>
           </section>
         )}

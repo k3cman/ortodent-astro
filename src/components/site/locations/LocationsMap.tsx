@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import type { Map as LeafletMap, Marker as LeafletMarker } from "leaflet";
 import type { Location } from "@/lib/locations";
+import { locationPath } from "@/lib/locations";
+import { sitePath } from "@/lib/paths";
 import "leaflet/dist/leaflet.css";
 
 interface LocationsMapProps {
@@ -20,8 +22,10 @@ export default function LocationsMap({
   const mapRef = useRef<LeafletMap | null>(null);
   const markersRef = useRef(new Map<number, LeafletMarker>());
   const onSelectRef = useRef(onSelect);
+  const selectedIdRef = useRef(selectedId);
 
   onSelectRef.current = onSelect;
+  selectedIdRef.current = selectedId;
 
   useEffect(() => {
     if (!elementRef.current || locations.length === 0) return;
@@ -45,19 +49,30 @@ export default function LocationsMap({
 
       const markers = new Map<number, LeafletMarker>();
 
+      const escapeHtml = (value: string) =>
+        value.replace(/[&<>'"]/g, (character) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "'": "&#039;",
+          '"': "&quot;",
+        })[character] ?? character);
+
       locations.forEach((location) => {
+        const isSelected = location.id === selectedIdRef.current;
         const marker = L.marker([location.lat, location.lng], {
           icon: L.divIcon({
-            className: "ortodent-map-marker",
-            html: '<span style="display:block;width:18px;height:18px;border:4px solid white;border-radius:9999px;background:#d51155;box-shadow:0 4px 14px rgba(33,29,46,.28)"></span>',
-            iconSize: [18, 18],
-            iconAnchor: [9, 9],
+            className: `od-leaflet-marker${isSelected ? " is-selected" : ""}`,
+            html: '<span aria-hidden="true"><i></i></span>',
+            iconSize: [32, 40],
+            iconAnchor: [16, 38],
+            popupAnchor: [0, -32],
           }),
           title: `${location.name}, ${location.address}`,
         })
           .addTo(map)
           .bindPopup(
-            `<strong>${location.name}</strong><br><span>${location.address}</span>`,
+            `<div class="od-map-popup"><strong>${escapeHtml(location.name)}</strong><span>${escapeHtml(location.address)}</span><a href="${sitePath(locationPath(location))}">Detalji centra →</a></div>`,
           );
 
         marker.on("click", () => onSelectRef.current?.(location));
@@ -76,6 +91,10 @@ export default function LocationsMap({
 
       mapRef.current = map;
       markersRef.current = markers;
+
+      if (selectedIdRef.current) {
+        markers.get(selectedIdRef.current)?.openPopup();
+      }
     });
 
     return () => {
@@ -92,6 +111,10 @@ export default function LocationsMap({
     const marker = markersRef.current.get(selectedId);
     if (!marker || !mapRef.current) return;
 
+    markersRef.current.forEach((item, id) => {
+      item.getElement()?.classList.toggle("is-selected", id === selectedId);
+    });
+
     mapRef.current.flyTo(marker.getLatLng(), Math.max(mapRef.current.getZoom(), 15), {
       duration: 0.6,
     });
@@ -100,7 +123,7 @@ export default function LocationsMap({
 
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-2xl bg-muted shadow-raised ${className}`}
+      className={`od-locations-map ${className}`}
       aria-label="Mapa OrtoDent lokacija"
     >
       <div ref={elementRef} className="absolute inset-0 z-0" />

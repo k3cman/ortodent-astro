@@ -4,10 +4,10 @@ import { CenovnikPricing } from "./cenovnik/CenovnikPricing";
 
 const Cenovnik = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main className="pt-32 pb-24">
-        <div className="container mx-auto px-6">
+    <div className="oc-site">
+      <Header currentPath="/cenovnik" />
+      <main className="oc-pricing-page">
+        <div className="oc-container">
           <CenovnikPricing />
         </div>
       </main>

@@ -46,6 +46,15 @@ test("production build publishes only canonical unversioned routes", async () =>
   assert.doesNotMatch(homeHtml, /Rezultati su bili spremni vrlo brzo/);
   assert.doesNotMatch(homeHtml, /oc-icon-tile/);
   assert.doesNotMatch(homeHtml, /oc-stars|5 od 5 zvezdica/);
+  assert.match(homeHtml, /Digitalna dijagnostika koja donosi/);
+  assert.match(homeHtml, /13 centara širom regiona/);
+  assert.match(homeHtml, /OrtoCloud platforma/);
+  assert.match(homeHtml, /Podrška 24\/7/);
+  assert.match(homeHtml, /aria-label="Facebook"/);
+  assert.match(homeHtml, /aria-label="Instagram"/);
+  assert.match(homeHtml, /aria-label="LinkedIn"/);
+  assert.match(homeHtml, />Politika privatnosti</);
+  assert.match(homeHtml, />Uslovi korišćenja</);
   const quoteIcon = homeHtml.match(/<svg[^>]*oc-review-card__quote[^>]*>/)?.[0];
   assert.ok(quoteIcon, "missing testimonial quote icon");
   assert.match(quoteIcon, /fill="none"/, "testimonial quote icon must stay outlined");
