@@ -39,10 +39,14 @@ The retired `/v1/...` and `/v2/...` namespaces are not published.
 
 ## GitHub Pages / subpath deploy
 
-Set the deployment base path when the site is served from a subdirectory:
+Pushes to `main` are deployed by `.github/workflows/deploy.yml` to:
+
+`https://k3cman.github.io/ortodent-astro/`
+
+To reproduce the Pages build locally, set the production site URL and repository base path:
 
 ```bash
-SITE_BASE=/orto-cloud-vision/ npm run build
+SITE_URL=https://k3cman.github.io SITE_BASE=/ortodent-astro npm run build
 ```
 
 Deploy the generated `dist/` folder.

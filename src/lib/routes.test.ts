@@ -98,7 +98,7 @@ test("production build publishes only canonical unversioned routes", async () =>
 
   await execFileAsync("npm", ["run", "build"], {
     cwd: projectRoot,
-    env: { ...process.env, SITE_BASE: "/ortodent/" },
+    env: { ...process.env, SITE_BASE: "/ortodent" },
     maxBuffer: 10 * 1024 * 1024,
   });
 
@@ -107,6 +107,7 @@ test("production build publishes only canonical unversioned routes", async () =>
     "utf8",
   );
   assert.match(subpathHomeHtml, /href=["']\/ortodent\/kontakt["']/);
+  assert.match(subpathHomeHtml, /href=["']\/ortodent\/favicon\.svg["']/);
   assert.doesNotMatch(subpathHomeHtml, /href=["']\/kontakt["']/);
   const subpathBuiltFiles = await readdir(distRoot, { recursive: true });
   for (const builtFile of subpathBuiltFiles.filter((file) => file.endsWith(".html"))) {

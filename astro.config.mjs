@@ -9,10 +9,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type {string} */
 const siteBase = process.env.SITE_BASE ?? "/";
+const siteUrl = process.env.SITE_URL;
 
 // https://astro.build/config
 export default defineConfig({
   output: "static",
+  ...(siteUrl ? { site: siteUrl } : {}),
   base: siteBase,
   trailingSlash: "ignore",
   build: {

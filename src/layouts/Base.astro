@@ -1,4 +1,6 @@
 ---
+import { assetPath } from "@/lib/paths";
+
 interface Props {
   title?: string;
   description?: string;
@@ -11,7 +13,7 @@ const {
   bodyClass,
 } = Astro.props;
 
-const favicon = import.meta.env.BASE_URL + "favicon.svg";
+const favicon = assetPath("favicon.svg");
 ---
 
 <!doctype html>
