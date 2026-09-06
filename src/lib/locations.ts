@@ -9,6 +9,14 @@ export interface LocationCity {
   description: string;
 }
 
+export interface LocationRegion {
+  slug: string;
+  citySlug: LocationCitySlug;
+  name: string;
+  description: string;
+  locationIds: readonly number[];
+}
+
 export interface Location {
   id: number;
   slug: string;
@@ -91,7 +99,7 @@ export const LOCATIONS: readonly Location[] = [
   },
   {
     id: 5,
-    slug: "vozdovac",
+    slug: "juzni-beograd",
     city: "Beograd",
     citySlug: "beograd",
     name: "Voždovac",
@@ -199,6 +207,65 @@ export const LOCATIONS: readonly Location[] = [
   },
 ];
 
+export const LOCATION_REGIONS: readonly LocationRegion[] = [
+  {
+    slug: "novi-beograd",
+    citySlug: "beograd",
+    name: "Novi Beograd",
+    description: "Arena, ImmoCentar i Stari Merkator.",
+    locationIds: [1, 2, 9],
+  },
+  {
+    slug: "centar",
+    citySlug: "beograd",
+    name: "Centar i Vračar",
+    description: "Stari grad i Vračar.",
+    locationIds: [3, 7],
+  },
+  {
+    slug: "istocni-beograd",
+    citySlug: "beograd",
+    name: "Istočni Beograd",
+    description: "Zvezdara.",
+    locationIds: [6],
+  },
+  {
+    slug: "vozdovac",
+    citySlug: "beograd",
+    name: "Voždovac",
+    description: "Centar u Vojvode Stepe.",
+    locationIds: [5],
+  },
+  {
+    slug: "cukarica",
+    citySlug: "beograd",
+    name: "Čukarica",
+    description: "Banovo brdo i Cerak.",
+    locationIds: [4, 8],
+  },
+  {
+    slug: "centar",
+    citySlug: "novi-sad",
+    name: "Centar",
+    description: "Braće Ribnikar.",
+    locationIds: [12],
+  },
+  {
+    slug: "detelinara",
+    citySlug: "novi-sad",
+    name: "Detelinara",
+    description: "Hadži Ruvimova.",
+    locationIds: [13],
+  },
+  {
+    slug: "centar",
+    citySlug: "pancevo",
+    name: "Centar Pančeva",
+    description: "Oslobođenja i Braće Jovanovića.",
+    locationIds: [10, 11],
+  },
+];
+
 export const isLocationCitySlug = (
   slug: string,
 ): slug is LocationCitySlug => CITY_SLUGS.includes(slug as LocationCitySlug);
@@ -209,6 +276,21 @@ export const getCityBySlug = (slug: string) =>
 export const getLocationsByCity = (slug: string) =>
   LOCATIONS.filter((location) => location.citySlug === slug);
 
+export const getRegionsByCity = (slug: string) =>
+  LOCATION_REGIONS.filter((region) => region.citySlug === slug);
+
+export const getRegionBySlug = (citySlug: string, regionSlug: string) =>
+  LOCATION_REGIONS.find(
+    (region) => region.citySlug === citySlug && region.slug === regionSlug,
+  );
+
+export const getLocationsByRegion = (citySlug: string, regionSlug: string) => {
+  const region = getRegionBySlug(citySlug, regionSlug);
+  return region
+    ? LOCATIONS.filter((location) => region.locationIds.includes(location.id))
+    : [];
+};
+
 export const getLocationBySlug = (citySlug: string, locationSlug: string) =>
   LOCATIONS.find(
     (location) =>
@@ -217,6 +299,9 @@ export const getLocationBySlug = (citySlug: string, locationSlug: string) =>
 
 export const locationPath = (location: Location) =>
   `/lokacije/${location.citySlug}/${location.slug}`;
+
+export const regionPath = (region: LocationRegion) =>
+  `/lokacije/${region.citySlug}/${region.slug}`;
 
 export const locationCountLabel = (count: number) =>
   `${count} ${count === 1 ? "lokacija" : count >= 2 && count <= 4 ? "lokacije" : "lokacija"}`;

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, MapPin, Phone } from "lucide-react";
+import { ArrowLeft, Clock3, ExternalLink, MapPin, Phone, ScanLine } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -140,6 +140,27 @@ function LocationDetail({
                       Otvori mapu
                     </a>
                   </Button>
+                </div>
+
+                <div className="mt-8 space-y-5 border-t border-border/70 pt-7">
+                  <div className="flex items-start gap-3">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
+                      <ScanLine className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Usluge</p>
+                      <p className="mt-1 text-sm font-medium leading-relaxed text-foreground">2D i 3D dentalna dijagnostika</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
+                      <Clock3 className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Radno vreme</p>
+                      <p className="mt-1 text-sm leading-relaxed text-foreground">Pozovite centar za aktuelno radno vreme.</p>
+                    </div>
+                  </div>
                 </div>
               </aside>
             </div>

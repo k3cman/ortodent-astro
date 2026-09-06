@@ -1,19 +1,24 @@
 ---
 import {
   LOCATIONS,
+  LOCATION_REGIONS,
   getLocationBySlug,
+  getRegionBySlug,
   isLocationCitySlug,
 } from "@/lib/locations";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import LocationDetailPage from "@/components/site/pages/LocationDetail";
+import RegionLocationsPage from "@/components/site/pages/RegionLocations";
 
 export function getStaticPaths() {
-  return LOCATIONS.map((location) => ({
-    params: {
-      city: location.citySlug,
-      location: location.slug,
-    },
-  }));
+  return [
+    ...LOCATIONS.map((location) => ({
+      params: { city: location.citySlug, location: location.slug },
+    })),
+    ...LOCATION_REGIONS.map((region) => ({
+      params: { city: region.citySlug, location: region.slug },
+    })),
+  ];
 }
 
 const city = Astro.params.city as string;
@@ -24,18 +29,26 @@ if (!isLocationCitySlug(city)) {
 }
 
 const location = getLocationBySlug(city, locationSlug);
+const region = getRegionBySlug(city, locationSlug);
 
-if (!location) {
+if (!location && !region) {
   return Astro.redirect(`${import.meta.env.BASE_URL}lokacije/${city}/`);
 }
 
-const title = `${location.name}, ${location.city} — OrtoDent`;
+const title = location
+  ? `${location.name}, ${location.city} — OrtoDent`
+  : `Snimanje zuba ${region!.name} — OrtoDent`;
 ---
 
 <SiteLayout title={title}>
-  <LocationDetailPage
+  {location && <LocationDetailPage
     client:load
     citySlug={city}
     locationSlug={locationSlug}
-  />
+  />}
+  {region && <RegionLocationsPage
+    client:load
+    citySlug={city}
+    regionSlug={locationSlug}
+  />}
 </SiteLayout>

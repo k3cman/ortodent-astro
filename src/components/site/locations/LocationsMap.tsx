@@ -49,7 +49,7 @@ export default function LocationsMap({
         const marker = L.marker([location.lat, location.lng], {
           icon: L.divIcon({
             className: "ortodent-map-marker",
-            html: '<span style="display:block;width:18px;height:18px;border:4px solid white;border-radius:9999px;background:#ed1e79;box-shadow:0 4px 14px rgba(33,29,46,.28)"></span>',
+            html: '<span style="display:block;width:18px;height:18px;border:4px solid white;border-radius:9999px;background:#d51155;box-shadow:0 4px 14px rgba(33,29,46,.28)"></span>',
             iconSize: [18, 18],
             iconAnchor: [9, 9],
           }),
