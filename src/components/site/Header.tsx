@@ -1,5 +1,5 @@
 import { ChevronDown, Cloud, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "@/assets/logo.png";
 import { SiteLink } from "@/components/site/SiteLink";
 
@@ -24,9 +24,17 @@ type HeaderProps = {
 export default function Header({ currentPath }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const updateHeader = () => setScrolled(window.scrollY > 12);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, []);
 
   return (
-    <header className="oc-header">
+    <header className={`oc-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="oc-container oc-header__inner">
         <SiteLink to="/" className="oc-logo" aria-label="OrtoDent naslovna"><img src={logo.src} alt="OrtoDent" /></SiteLink>
         <nav className="oc-nav" aria-label="Glavna navigacija">

@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { UslugeTabs } from "@/components/site/UslugeTabs";
 import { UslugeKefa } from "@/components/site/pages/usluge/UslugeKefa";
 import "./usluge/kefalometrija.css";
 
@@ -8,9 +7,6 @@ const UslugeKefaPage = () => (
   <div className="oc-site min-h-screen bg-background">
     <Header />
     <main className="oc-kefa-page">
-      <div className="oc-container">
-        <UslugeTabs currentTab="kefalometrija" />
-      </div>
       <UslugeKefa />
     </main>
     <Footer />

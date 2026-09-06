@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import {
   Accessibility,
-  ArrowRight,
   Bus,
   Car,
   Clock3,
@@ -20,6 +19,7 @@ import LocationActions from "@/components/site/locations/LocationActions";
 import LocationsMap from "@/components/site/locations/LocationsMap";
 import OpenNowStatus from "@/components/site/locations/OpenNowStatus";
 import OrtoCloudBanner from "@/components/site/locations/OrtoCloudBanner";
+import ServiceIndicators from "@/components/site/locations/ServiceIndicators";
 import WeeklyOpeningHours from "@/components/site/locations/WeeklyOpeningHours";
 import {
   distanceBetweenLocations,
@@ -121,6 +121,7 @@ function LocationDetail({
                     </div>
                   </div>
                 </div>
+                <ServiceIndicators location={location} />
 
               </aside>
             </div>
@@ -138,17 +139,6 @@ function LocationDetail({
             <div className="od-shell od-detail-section__grid">
               <header className="od-section-heading"><p className="od-kicker">Pre dolaska</p><h2>Radno vreme</h2><p>Kompletan nedeljni raspored centra {location.name}.</p></header>
               <WeeklyOpeningHours openingHours={location.openingHours} />
-            </div>
-          </section>
-        )}
-
-        {location.services && location.services.length > 0 && (
-          <section className="od-detail-section">
-            <div className="od-shell od-detail-section__grid">
-              <header className="od-section-heading"><p className="od-kicker">U centru</p><h2>Dostupne usluge</h2></header>
-              <div className="od-service-list">
-                {location.services.map((service) => <span key={service}>{service}<ArrowRight aria-hidden="true" /></span>)}
-              </div>
             </div>
           </section>
         )}

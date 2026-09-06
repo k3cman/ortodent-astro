@@ -21,6 +21,8 @@ export interface DayHours {
 }
 
 export type OpeningHours = Partial<Record<Weekday, DayHours | null>>;
+export type LocationService = "2d" | "3d";
+export const DEFAULT_LOCATION_SERVICES: readonly LocationService[] = ["2d", "3d"];
 
 export interface LocationPracticalInfo {
   parking?: string;
@@ -56,7 +58,7 @@ export interface Location {
   lat: number;
   lng: number;
   openingHours?: OpeningHours;
-  services?: readonly string[];
+  services?: readonly LocationService[];
   practicalInfo?: LocationPracticalInfo;
 }
 
@@ -340,6 +342,9 @@ export const getLocationBySlug = (citySlug: string, locationSlug: string) =>
     (location) =>
       location.citySlug === citySlug && location.slug === locationSlug,
   );
+
+export const getLocationServices = (location: Location) =>
+  location.services ?? DEFAULT_LOCATION_SERVICES;
 
 export const locationPath = (location: Location) =>
   `/lokacije/${location.citySlug}/${location.slug}`;

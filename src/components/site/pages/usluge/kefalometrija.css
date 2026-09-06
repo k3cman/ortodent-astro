@@ -1,5 +1,5 @@
 .oc-kefa-page {
-  padding-top: 132px;
+  padding-top: 0;
   background: var(--oc-white);
 }
 
@@ -30,6 +30,24 @@
   color: var(--oc-gray-500);
   font-size: 17px;
   line-height: 1.65;
+}
+
+.oc-kefa-hero__extras {
+  margin-top: 24px;
+}
+
+.oc-kefa-hero__extras .oc-kefa-hero__logo {
+  margin-bottom: 20px;
+}
+
+.oc-kefa-hero__extras .oc-kefa-callout {
+  padding: 18px 20px;
+  border-radius: 14px;
+}
+
+.oc-kefa-hero__extras .oc-kefa-callout p {
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .oc-kefa-hero {
@@ -356,7 +374,7 @@
 
 @media (max-width: 680px) {
   .oc-kefa-page {
-    padding-top: 110px;
+    padding-top: 0;
   }
 
   .oc-kefa-hero {

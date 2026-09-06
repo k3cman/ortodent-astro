@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { UslugeTabs } from "@/components/site/UslugeTabs";
 import { Usluge2D } from "@/components/site/pages/usluge/Usluge2D";
 
 const Usluge2DPage = () => (
@@ -8,7 +7,6 @@ const Usluge2DPage = () => (
     <Header />
     <main className="oc-2d-page">
       <div className="oc-container">
-        <UslugeTabs currentTab="2d" />
         <Usluge2D />
       </div>
     </main>

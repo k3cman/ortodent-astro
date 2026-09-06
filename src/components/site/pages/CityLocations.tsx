@@ -1,5 +1,8 @@
 import { useMemo, useState } from "react";
-import { Info, MapPin } from "lucide-react";
+import { Info } from "lucide-react";
+import belgradeImage from "@/assets/cities/beograd.jpg";
+import noviSadImage from "@/assets/cities/novi-sad.jpg";
+import pancevoImage from "@/assets/cities/pancevo.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SiteLink } from "@/components/site/SiteLink";
@@ -24,10 +27,29 @@ const cityLocatives: Record<LocationCitySlug, string> = {
   pancevo: "Pančevu",
 };
 
+const cityHeroImages: Record<LocationCitySlug, { src: string; alt: string; position: string }> = {
+  pancevo: {
+    src: pancevoImage.src,
+    alt: "Gradski centar Pančeva",
+    position: "center",
+  },
+  "novi-sad": {
+    src: noviSadImage.src,
+    alt: "Petrovaradinska tvrđava i Dunav u Novom Sadu",
+    position: "center 48%",
+  },
+  beograd: {
+    src: belgradeImage.src,
+    alt: "Panorama Beograda i reka Save i Dunava",
+    position: "center 56%",
+  },
+};
+
 function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
   const city = getCityBySlug(citySlug)!;
   const locations = useMemo(() => getLocationsByCity(citySlug), [citySlug]);
   const [selectedLocation, setSelectedLocation] = useState<Location>(locations[0]);
+  const heroImage = cityHeroImages[citySlug];
 
   return (
     <div className="od-page">
@@ -40,15 +62,15 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
             </nav>
             <div className="od-hero-grid">
               <div className="od-hero-copy">
-                <p className="od-kicker">{city.name}</p>
+                <p className="od-kicker">OrtoDent {city.name}</p>
                 <h1>Snimanje zuba <span>u {cityLocatives[citySlug]}</span>.</h1>
                 <p className="od-lead">{city.description} Digitalna 2D, 3D i kefalometrijska dijagnostika bez zakazivanja.</p>
                 <LocationBenefits />
               </div>
-              <div className="od-hero-map">
-                <LocationsMap locations={locations} selectedId={selectedLocation.id} onSelect={setSelectedLocation} className="od-map--hero" />
-                <div className="od-map-count"><MapPin aria-hidden="true" /><span><strong>{centerCountLabel(locations.length)}</strong><small>u {cityLocatives[citySlug]}</small></span></div>
-              </div>
+              <figure className="od-city-hero__image">
+                <img src={heroImage.src} alt={heroImage.alt} style={{ objectPosition: heroImage.position }} fetchPriority="high" decoding="async" />
+                <figcaption>{centerCountLabel(locations.length)} u {cityLocatives[citySlug]}</figcaption>
+              </figure>
             </div>
           </div>
         </section>

@@ -2,6 +2,7 @@ import { ArrowRight, ArrowUpRight, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { SiteLink } from "@/components/site/SiteLink";
 import OpenNowStatus from "@/components/site/locations/OpenNowStatus";
+import ServiceIndicators from "@/components/site/locations/ServiceIndicators";
 import {
   locationPath,
   openStreetMapPageUrl,
@@ -76,6 +77,7 @@ export default function LocationCard({
           </span>
         </p>
         <OpenNowStatus openingHours={location.openingHours} compact />
+        <ServiceIndicators location={location} />
       </div>
 
       <div className="od-location-item__actions">

@@ -142,6 +142,45 @@
   min-width: 0;
 }
 
+.od-city-hero__image {
+  position: relative;
+  height: 420px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--oc-off-white);
+  border-radius: 16px;
+}
+
+.od-city-hero__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgb(255 255 255 / .22), transparent 38%);
+}
+
+.od-city-hero__image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.od-city-hero__image figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 18px;
+  bottom: 18px;
+  padding: 11px 15px;
+  color: var(--oc-ink);
+  background: rgb(255 255 255 / .9);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgb(17 23 32 / .08);
+  backdrop-filter: blur(10px);
+  font-size: 13px;
+  font-weight: 650;
+}
+
 .od-locations-map {
   position: relative;
   width: 100%;
@@ -725,6 +764,29 @@
   margin: 10px 0 0 29px;
 }
 
+.od-service-indicators {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.od-service-indicators span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--oc-gray-700);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.od-service-indicators svg {
+  width: 15px;
+  height: 15px;
+  color: var(--oc-magenta);
+  stroke-width: 1.8;
+}
+
 .od-location-item__facts > p {
   margin: 0;
   color: var(--oc-gray-500);
@@ -849,7 +911,7 @@
 
 .od-sticky-map {
   position: sticky;
-  top: 20px;
+  top: 96px;
 }
 
 .od-region-hero__copy {
@@ -1033,6 +1095,12 @@
 
 .od-contact-panel__facts .od-open-status strong {
   color: var(--oc-gray-500);
+}
+
+.od-contact-panel > .od-service-indicators {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--oc-gray-300);
 }
 
 .od-location-actions--compact {
@@ -1252,6 +1320,11 @@
     gap: 38px;
   }
 
+  .od-city-hero__image {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
   .od-overview-hero .od-hero-map,
   .od-city-hero .od-hero-map {
     display: none;
@@ -1361,6 +1434,11 @@
 
   .od-map--hero {
     min-height: 340px;
+  }
+
+  .od-city-hero__image {
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
   }
 
   .od-map-count {

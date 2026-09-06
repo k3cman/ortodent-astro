@@ -1,6 +1,7 @@
 import { ArrowRight, Clock3, Cloud } from "lucide-react";
 import profileImage from "@/assets/site/kefalometrija/kefalometrija-profile.png";
 import protocolImage from "@/assets/site/kefalometrija/kefalometrija-protocol.png";
+import ServiceHero from "@/components/site/ServiceHero";
 import { SiteLink } from "@/components/site/SiteLink";
 import { assetPath } from "@/lib/paths";
 
@@ -50,11 +51,24 @@ const protocols = [
 
 export const UslugeKefa = () => (
   <div className="oc-kefa">
-    <section className="oc-kefa-hero" aria-labelledby="kefa-title">
-      <div className="oc-container oc-kefa-hero__layout">
-        <div className="oc-kefa-hero__intro">
-          <p className="oc-kefa-eyebrow">Kefalometrijske analize</p>
-          <h1 id="kefa-title">Kefalometrijske analize</h1>
+    <div className="oc-container">
+      <ServiceHero
+        eyebrow="Kefalometrijske analize"
+        title="Kefalometrijske analize"
+        lead={
+          <p>
+            Precizno planiranje terapije fiksnom protezom zahteva detaljan uvid
+            u odnos zuba i koštanih struktura lica. Tradicionalno, ortodonti
+            ove podatke dobijaju manuelnim merenjem razdaljina na kefalogramu,
+            što je jedan od najzahtevnijih i greškama najpodložnijih delova
+            procesa planiranja terapije.
+          </p>
+        }
+        image={imageSrc(profileImage)}
+        imageAlt="Profil pacijentkinje sa prikazom koštanih struktura lica"
+        imagePosition="center 42%"
+      >
+        <div className="oc-kefa-hero__extras">
           <img
             src={assetPath("/images/Kef-analize-logo.png")}
             alt="KefAnalize dentamed"
@@ -64,35 +78,16 @@ export const UslugeKefa = () => (
             loading="eager"
             decoding="async"
           />
-          <p className="oc-kefa-copy">
-            Precizno planiranje terapije fiksnom protezom zahteva detaljan uvid
-            u odnos zuba i koštanih struktura lica. Tradicionalno, ortodonti
-            ove podatke dobijaju manuelnim merenjem razdaljina na kefalogramu,
-            što je jedan od najzahtevnijih i greškama najpodložnijih delova
-            procesa planiranja terapije.
-          </p>
+          <div className="oc-kefa-callout">
+            <p>
+              Mi Vam nudimo <strong>KefAnalize</strong> – digitalna
+              kefalometrijska merenja i analizu uz korišćenje vodećeg svetskog
+              softvera <span>AudaxCeph</span>.
+            </p>
+          </div>
         </div>
-
-        <figure className="oc-kefa-hero__visual">
-          <img
-            src={imageSrc(profileImage)}
-            alt="Profil pacijentkinje sa prikazom koštanih struktura lica"
-            width="657"
-            height="655"
-            loading="eager"
-            decoding="async"
-          />
-        </figure>
-
-        <div className="oc-kefa-callout">
-          <p>
-            Mi Vam nudimo <strong>KefAnalize</strong> – digitalna
-            kefalometrijska merenja i analizu uz korišćenje vodećeg svetskog
-            softvera <span>AudaxCeph</span>.
-          </p>
-        </div>
-      </div>
-    </section>
+      </ServiceHero>
+    </div>
 
     <section className="oc-kefa-benefits" aria-labelledby="kefa-benefits-title">
       <div className="oc-container">

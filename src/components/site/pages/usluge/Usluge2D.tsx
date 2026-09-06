@@ -1,4 +1,5 @@
 import { Cloud } from "lucide-react";
+import ServiceHero from "@/components/site/ServiceHero";
 import {
   KEFALOGRAM_SRC,
   ORTOPANTOMOGRAM_SRC,
@@ -51,10 +52,13 @@ const EditorialCard = ({
 
 export const Usluge2D = () => (
   <section className="oc-2d">
-    <header className="oc-2d-intro">
-      <h1>2D rendgenski snimci</h1>
-      <span aria-hidden="true" />
-    </header>
+    <ServiceHero
+      eyebrow="2D dijagnostika"
+      title="2D rendgenski snimci"
+      lead="Ortopantomogram je panoramski snimak koji pruža sveobuhvatan prikaz obe vilice, svih zuba, viličnih zglobova i okolnih struktura."
+      image={ORTOPANTOMOGRAM_SRC}
+      imageAlt="Panoramski 2D ortopantomogram obe vilice"
+    />
 
     <div className="oc-2d-stack">
       <article className="oc-2d-card oc-2d-card--retro">

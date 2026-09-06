@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { UslugeTabs } from "@/components/site/UslugeTabs";
 import { Usluge3D } from "@/components/site/pages/usluge/Usluge3D";
 
 const Usluge3DPage = () => (
@@ -8,7 +7,6 @@ const Usluge3DPage = () => (
     <Header />
     <main className="od3d-page">
       <div className="oc-container">
-        <UslugeTabs currentTab="3d" />
         <Usluge3D />
       </div>
     </main>

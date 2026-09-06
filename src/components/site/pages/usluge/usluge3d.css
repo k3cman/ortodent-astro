@@ -4,7 +4,7 @@
 }
 
 .od3d-page {
-  padding: 112px 0;
+  padding: 0 0 112px;
 }
 
 .od3d-page .oc-service-tabs > div:first-child {
@@ -116,6 +116,12 @@
   grid-area: uses;
   padding-top: 26px;
   border-top: 1px solid var(--oc-gray-300);
+}
+
+.od3d-use-cases--standalone {
+  grid-area: auto;
+  margin: 0 0 clamp(64px, 7vw, 88px);
+  padding: 28px 0 0;
 }
 
 .od3d-use-cases h2 {
@@ -558,7 +564,7 @@
 
 @media (max-width: 760px) {
   .od3d-page {
-    padding: 92px 0 72px;
+    padding: 0 0 72px;
   }
 
   .od3d-page .oc-service-tabs > div:first-child {
@@ -588,6 +594,10 @@
 
   .od3d-use-cases ul {
     gap: 14px;
+  }
+
+  .od3d-use-cases--standalone {
+    margin-bottom: 56px;
   }
 
   .od3d-use-cases span {

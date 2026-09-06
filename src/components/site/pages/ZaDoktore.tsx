@@ -16,8 +16,8 @@ import Footer from "@/components/site/Footer";
 import { SiteLink } from "@/components/site/SiteLink";
 import { withSiteProviders } from "@/components/site/withSiteProviders";
 import { useToast } from "@/components/site/hooks/use-toast";
-import heroImage from "@/assets/home/hero-clinician.webp";
-import heroImageSmall from "@/assets/home/hero-clinician-960.webp";
+import heroImage from "@/assets/home/dentist-workstation.webp";
+import heroImageSmall from "@/assets/home/dentist-workstation-960.webp";
 import cloudMockup from "@/assets/ortocloud/hero-mockup.png";
 import diagnosticScreen from "@/assets/site/3d/cbct-diagnostic-screen.png";
 import kefaImage from "@/assets/site/kefalometrija/kefalometrija-protocol.png";
@@ -154,7 +154,7 @@ function ZaDoktore() {
               src={imageSrc(heroImage)}
               srcSet={`${imageSrc(heroImageSmall)} 960w, ${imageSrc(heroImage)} 1672w`}
               sizes="100vw"
-              alt="Stomatološkinja u radiološkom centru prikazuje digitalni snimak zuba"
+              alt="Stomatolog analizira digitalne dentalne snimke na monitoru"
               fetchPriority="high"
               decoding="async"
             />

@@ -1,6 +1,6 @@
 import { ArrowUpRight, Check, Cloud } from "lucide-react";
 import cbctPatient from "@/assets/home/cbct-patient.webp";
-import cbctPatientSmall from "@/assets/home/cbct-patient-640.webp";
+import ServiceHero from "@/components/site/ServiceHero";
 import diagnosticScreen from "@/assets/site/3d/cbct-diagnostic-screen.png";
 import jaw3d from "@/assets/site/3d/cbct-jaw-3d.png";
 import machine from "@/assets/site/3d/cbct-machine.png";
@@ -80,31 +80,23 @@ const diagnosticBenefits = [
 
 export const Usluge3D = () => (
   <div className="od3d">
-    <section className="od3d-hero" aria-labelledby="od3d-title">
-      <div className="od3d-hero__copy">
-        <p className="od3d-eyebrow">3D dijagnostika</p>
-        <h1 id="od3d-title">3D snimanja / CBCT</h1>
-        <p className="od3d-lead">
+    <ServiceHero
+      eyebrow="3D dijagnostika"
+      title="3D snimanja / CBCT"
+      lead={
+        <p>
           CBCT tehnologija koristi konusni snop rendgenskih zraka za dobijanje
           preciznog 3D prikaza Vaših zuba i vilica. Za razliku od klasičnog
           skenera (CT), CBCT koristi neuporedivo manje doze zračenja, čineći
           snimanje maksimalno bezbednim.
         </p>
+      }
+      image={imageSrc(cbctPatient)}
+      imageAlt="Pacijentkinja tokom 3D CBCT snimanja"
+      imagePosition="center 43%"
+    />
 
-      </div>
-
-      <figure className="od3d-hero__visual">
-        <img
-          src={imageSrc(cbctPatient)}
-          srcSet={`${imageSrc(cbctPatientSmall)} 640w, ${imageSrc(cbctPatient)} 1086w`}
-          sizes="(max-width: 760px) calc(100vw - 40px), 48vw"
-          alt="Pacijentkinja tokom 3D CBCT snimanja"
-          fetchPriority="high"
-          decoding="async"
-        />
-      </figure>
-
-      <div className="od3d-use-cases">
+      <section className="od3d-use-cases od3d-use-cases--standalone">
         <h2>Gde se sve koristi 3D snimak?</h2>
         <ul>
           {useCases.map((useCase) => (
@@ -114,8 +106,7 @@ export const Usluge3D = () => (
             </li>
           ))}
         </ul>
-      </div>
-    </section>
+      </section>
 
     <section className="od3d-fields" aria-labelledby="od3d-fields-title">
       <header className="od3d-section-heading od3d-section-heading--center">
