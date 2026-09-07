@@ -151,7 +151,6 @@ const Informacije = () => {
         <section className="oc-page-intro oc-page-intro--utility">
           <div className="oc-container">
             <div className="oc-page-intro__copy">
-              <p className="oc-eyebrow">Informacije za pacijente</p>
               <h1>
                 Sve što treba da znate o snimanju zuba.
               </h1>
@@ -180,9 +179,7 @@ const Informacije = () => {
         <section className="oc-information-process">
           <div className="oc-container">
             <header className="oc-section-heading">
-              <p className="oc-eyebrow">Proces snimanja</p>
               <h2>Kako izgleda proces?</h2>
-              <p>Od dolaska do digitalnog rezultata, bez nepotrebnog čekanja.</p>
             </header>
             <div className="oc-information-process__layout">
               <ol className="oc-information-steps">
@@ -210,9 +207,7 @@ const Informacije = () => {
         <section className="oc-information-faq">
           <div className="oc-container oc-information-faq__layout">
             <header className="oc-section-heading">
-              <p className="oc-eyebrow">Korisno pre dolaska</p>
               <h2>Česta pitanja</h2>
-              <p>Jasni odgovori na pitanja koja pacijenti najčešće postavljaju.</p>
             </header>
             <div className="oc-information-faq__items">
               <Accordion type="single" collapsible>
@@ -237,7 +232,7 @@ const Informacije = () => {
         <section className="oc-information-cta">
           <div className="oc-container">
             <div className="oc-information-cta__inner">
-              <div><MapPin aria-hidden="true" /><div><h2>Pronađite centar koji Vam odgovara.</h2><p>Za dolazak nije potrebno zakazivanje.</p></div></div>
+              <div><MapPin aria-hidden="true" /><div><h2>Posetite nas još danas.</h2></div></div>
               <SiteLink className="oc-button oc-button--primary" to="/lokacije">
                 Pronađi lokaciju <ArrowRight aria-hidden="true" />
               </SiteLink>

@@ -1,12 +1,8 @@
 import { useState } from "react";
 import {
-  ArrowDown,
-  ArrowRight,
   ChevronDown,
-  Clock3,
-  Cloud,
-  Mail,
-  MapPin,
+  Facebook,
+  Instagram,
   Send,
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -16,6 +12,11 @@ import { useToast } from "@/hooks/use-toast";
 import "./kontakt.css";
 
 const WRITING_AS_OPTIONS = ["Stomatologa", "Pacijenta"] as const;
+
+const socialLinks = [
+  { href: "#", label: "Instagram", icon: Instagram },
+  { href: "#", label: "Facebook", icon: Facebook },
+] as const;
 
 const Kontakt = () => {
   const { toast } = useToast();
@@ -66,108 +67,39 @@ const Kontakt = () => {
           <div className="oc-container oc-contact-hero__inner">
             <div className="oc-contact-hero__copy">
               <p className="oc-contact-eyebrow">Kontakt</p>
-              <h1 id="contact-title">
-                Kako možemo da vam
-                <br />{" "}
-                pomognemo?
-              </h1>
-              <p className="oc-contact-hero__lead">
-                Tu smo za pitanja, dodatne informacije i podršku
-                <br />{" "}u korišćenju naših usluga.
-              </p>
-            </div>
-
-            <div className="oc-contact-hero__detail" aria-hidden="true">
-              <span>Preciznost</span>
-              <span>u svakom planu</span>
-              <span>terapije</span>
-              <i />
+              <h1 id="contact-title">Kontakt</h1>
             </div>
           </div>
         </section>
 
         <div className="oc-container oc-contact-content">
-          <nav className="oc-contact-routes" aria-label="Načini kontakta">
-            <article className="oc-contact-route">
-              <MapPin aria-hidden="true" />
-              <div>
-                <h2>Centri i radno vreme</h2>
-                <p>
-                  Pronađite adresu, brojeve telefona
-                  <br />{" "}i radno vreme naših centara.
-                </p>
-                <SiteLink to="/lokacije">
-                  Lokacije <ArrowRight aria-hidden="true" />
-                </SiteLink>
-              </div>
-            </article>
-
-            <article className="oc-contact-route">
-              <Cloud aria-hidden="true" />
-              <div>
-                <h2>OrtoCloud podrška</h2>
-                <p>
-                  Pomoć oko pristupa, naloga
-                  <br />{" "}i preuzimanja snimaka.
-                </p>
-                <SiteLink to="/ortocloud#kontakt">
-                  OrtoCloud podrška <ArrowRight aria-hidden="true" />
-                </SiteLink>
-              </div>
-            </article>
-
-            <article className="oc-contact-route">
-              <Mail aria-hidden="true" />
-              <div>
-                <h2>Opšti upiti</h2>
-                <p>
-                  Imate opšte pitanje?
-                  <br />{" "}Pišite nam, rado ćemo vam pomoći.
-                </p>
-                <a href="#contact-form">
-                  Pišite nam <ArrowDown aria-hidden="true" />
-                </a>
-              </div>
-            </article>
-          </nav>
-
           <section className="oc-contact-main" aria-labelledby="contact-form-title">
             <div className="oc-contact-aside">
-              <h2 id="contact-form-title">Pošaljite nam poruku</h2>
+              <h2>
+                Tu smo da odgovorimo na Vaša pitanja, pružimo dodatne
+                informacije i podržimo Vas u korišćenju naših usluga.
+              </h2>
               <p className="oc-contact-aside__intro">
-                Ukoliko niste pronašli odgovor na svoje pitanje na stranicama
-                Lokacije ili OrtoCloud, možete direktno kontaktirati naš tim.
+                Ostanite informisani o svim novostima i promenama u radu naših
+                centara putem naših zvaničnih profila.
               </p>
 
-              <div className="oc-contact-detail-list">
-                <a href="mailto:info@ortodent.rs" className="oc-contact-detail">
-                  <span className="oc-contact-detail__icon">
-                    <Mail aria-hidden="true" />
-                  </span>
-                  <span>
-                    <small>Email</small>
-                    <strong>info@ortodent.rs</strong>
-                  </span>
-                </a>
-
-                <div className="oc-contact-detail">
-                  <span className="oc-contact-detail__icon">
-                    <Clock3 aria-hidden="true" />
-                  </span>
-                  <span>
-                    <small>Odgovaramo u najkraćem</small>
-                    <small>mogućem roku.</small>
-                  </span>
-                </div>
-              </div>
-
               <div className="oc-contact-aside__trust">
-                <p>Tu smo za vas</p>
-                <span>Vaše poverenje pokreće naš svakodnevni rad.</span>
+                <p>Pratite nas</p>
+                <div className="oc-contact-social-links">
+                  {socialLinks.map(({ href, label, icon: Icon }) => (
+                    <a key={label} href={href} aria-label={label}>
+                      <Icon aria-hidden="true" />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
             <form id="contact-form" className="oc-contact-form" onSubmit={handleSubmit}>
+              <h2 id="contact-form-title" className="oc-contact-form__title">
+                Pošaljite nam poruku
+              </h2>
               <div className="oc-contact-field">
                 <label htmlFor="writing-as">
                   Pišem u svojstvu <span aria-hidden="true">*</span>
@@ -231,8 +163,17 @@ const Kontakt = () => {
               </button>
             </form>
           </section>
-
         </div>
+
+        <section className="oc-contact-note">
+          <div className="oc-container">
+            <p>
+              Potrebne su Vam informacije o radnom vremenu ili direktan kontakt
+              sa centrom? Sve brojeve telefona i adrese po gradovima možete
+              pronaći na stranici <SiteLink to="/lokacije">Lokacije</SiteLink>.
+            </p>
+          </div>
+        </section>
       </main>
 
       <Footer />

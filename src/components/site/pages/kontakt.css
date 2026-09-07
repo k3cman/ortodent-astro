@@ -4,8 +4,8 @@
 
 .oc-contact-hero {
   position: relative;
-  min-height: 640px;
-  padding: 208px 0 88px;
+  min-height: 430px;
+  padding: 190px 0 86px;
   overflow: hidden;
   background: linear-gradient(105deg, #fafbfc 0%, #f8fafb 64%, #fbfbfc 100%);
 }
@@ -14,7 +14,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(210px, 0.62fr);
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 80px;
 }
@@ -34,7 +34,7 @@
 }
 
 .oc-contact-hero h1 {
-  margin-bottom: 34px;
+  margin-bottom: 0;
   color: var(--oc-ink);
   font-size: clamp(56px, 4.75vw, 68px);
   font-weight: 500;
@@ -179,7 +179,7 @@
   display: grid;
   grid-template-columns: minmax(300px, 4fr) minmax(0, 7.2fr);
   gap: clamp(64px, 7vw, 112px);
-  padding: 74px 0 72px;
+  padding: 88px 0 76px;
 }
 
 .oc-contact-aside {
@@ -274,6 +274,38 @@
   line-height: 1.55;
 }
 
+.oc-contact-social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.oc-contact-social-links a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--oc-gray-500);
+  border: 1px solid var(--oc-gray-300);
+  border-radius: 50%;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.oc-contact-social-links a:hover {
+  color: var(--oc-magenta);
+  background: #fff4f7;
+  border-color: var(--oc-magenta);
+}
+
+.oc-contact-social-links a:focus-visible {
+  outline: 2px solid var(--oc-magenta);
+  outline-offset: 3px;
+}
+
+.oc-contact-social-links svg {
+  width: 19px;
+  height: 19px;
+}
+
 .oc-contact-form {
   position: relative;
   align-self: start;
@@ -288,6 +320,15 @@
 
 .oc-contact-form::before {
   content: none;
+}
+
+.oc-contact-form__title {
+  margin-bottom: 3px;
+  color: var(--oc-ink);
+  font-size: clamp(26px, 2.3vw, 32px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
 }
 
 .oc-contact-field {
@@ -400,10 +441,30 @@
   stroke-width: 1.8;
 }
 
+.oc-contact-note {
+  padding: 0 0 82px;
+}
+
+.oc-contact-note p {
+  padding: 24px 28px;
+  color: var(--oc-gray-700);
+  background: #fff6f8;
+  border: 1px solid #f3cfdb;
+  border-radius: var(--oc-radius-md);
+  font-size: 15px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.oc-contact-note a {
+  color: var(--oc-magenta) !important;
+  font-weight: 600;
+}
+
 @media (max-width: 1080px) {
   .oc-contact-hero {
-    min-height: 570px;
-    padding-top: 174px;
+    min-height: 400px;
+    padding-top: 166px;
   }
 
   .oc-contact-route {
@@ -590,6 +651,15 @@
   .oc-contact-main {
     gap: 42px;
     padding: 50px 0 48px;
+  }
+
+  .oc-contact-note {
+    padding-bottom: 56px;
+  }
+
+  .oc-contact-note p {
+    padding: 20px;
+    text-align: left;
   }
 
   .oc-contact-aside h2 {

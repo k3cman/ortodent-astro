@@ -35,7 +35,19 @@ test("production build publishes only canonical unversioned routes", async () =>
     assert.equal(existsSync(path.join(distRoot, page)), true, `missing /${page}`);
   }
 
+  assert.equal(
+    existsSync(path.join(distRoot, "o-nama")),
+    false,
+    "removed /o-nama route must not be published",
+  );
+
   const homeHtml = await readFile(path.join(distRoot, "index.html"), "utf8");
+  assert.doesNotMatch(homeHtml, /href=["'][^"']*\/o-nama(?:\/|["'])/i);
+  assert.match(
+    homeHtml,
+    /Usluge[\s\S]*href=["']\/informacije["'][\s\S]*href=["']\/cenovnik["']/,
+    "Informacije must appear after Usluge and before Cenovnik in navigation",
+  );
   assert.doesNotMatch(homeHtml, /url=\/v[12]\//i);
   assert.match(homeHtml, /Precizna 2D i 3D dijagnostika\./);
   assert.match(homeHtml, /Dijagnostika na koju možete da se oslonite\./);
@@ -58,6 +70,33 @@ test("production build publishes only canonical unversioned routes", async () =>
   const quoteIcon = homeHtml.match(/<svg[^>]*oc-review-card__quote[^>]*>/)?.[0];
   assert.ok(quoteIcon, "missing testimonial quote icon");
   assert.match(quoteIcon, /fill="none"/, "testimonial quote icon must stay outlined");
+
+  const kontaktHtml = await readFile(
+    path.join(distRoot, "kontakt/index.html"),
+    "utf8",
+  );
+  assert.match(
+    kontaktHtml,
+    /Tu smo da odgovorimo na Vaša pitanja, pružimo dodatne informacije i podržimo Vas u korišćenju naših usluga\./,
+  );
+  assert.match(kontaktHtml, /Ostanite informisani o svim novostima i promenama/);
+  assert.match(kontaktHtml, /Potrebne su Vam informacije o radnom vremenu/);
+  assert.match(kontaktHtml, /<h1[^>]*>Kontakt<\/h1>/);
+  assert.match(kontaktHtml, /aria-label="Instagram"/);
+  assert.match(kontaktHtml, /aria-label="Facebook"/);
+  assert.doesNotMatch(kontaktHtml, /Centri i radno vreme/);
+  assert.doesNotMatch(kontaktHtml, /OrtoCloud podrška/);
+  assert.doesNotMatch(kontaktHtml, /Opšti upiti/);
+  assert.doesNotMatch(kontaktHtml, /info@ortodent\.rs/);
+
+  const informacijeHtml = await readFile(
+    path.join(distRoot, "informacije/index.html"),
+    "utf8",
+  );
+  assert.match(informacijeHtml, /Sve što treba da znate o snimanju zuba\./);
+  assert.match(informacijeHtml, /Vaš vodič kroz proces snimanja u OrtoDentu\./);
+  assert.match(informacijeHtml, /Posetite nas još danas\./);
+  assert.doesNotMatch(informacijeHtml, /Pronađite centar koji Vam odgovara\./);
 
   const designSystemHtml = await readFile(
     path.join(distRoot, "design-system/index.html"),

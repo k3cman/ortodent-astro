@@ -4,10 +4,10 @@ import logo from "@/assets/logo.png";
 import { SiteLink } from "@/components/site/SiteLink";
 
 const navItems = [
+  ["Informacije", "/informacije"],
   ["Cenovnik", "/cenovnik"],
   ["Za stomatologe", "/za-doktore"],
   ["Lokacije", "/lokacije"],
-  ["O nama", "/o-nama"],
   ["Kontakt", "/kontakt"],
 ] as const;
 
