@@ -10,6 +10,7 @@ import {
   Smartphone,
 } from "lucide-react";
 import { useState } from "react";
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from "@/components/site/ui/dialog";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import { SiteLink } from "@/components/site/SiteLink";
@@ -131,7 +132,7 @@ function ZaDoktore() {
                 decoding="async"
               />
             </motion.figure>
-            <motion.div className="od-pro-copy" {...revealProps}>
+            <motion.div className="od-pro-copy od-pro-cloud__copy" {...revealProps}>
               <p className="od-pro-eyebrow">Digitalni radni tok</p>
               <h2 id="od-pro-cloud-title">OrtoCloud: Vaša ordinacija na dlanu.</h2>
               <p className="od-pro-lead">
@@ -197,14 +198,21 @@ function ZaDoktore() {
                 pregledan proces. Interfejs je prilagođen potrebama stomatologa
                 i štedi vreme u svakodnevnom radu.
               </p>
-              <a
-                className="od-pro-text-link"
-                href="https://www.youtube.com/watch?v=GThBiiMpnQM"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Vatech tutorijali <ArrowRight aria-hidden="true" />
-              </a>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button type="button" className="od-pro-text-link">Vatech tutorijali <ArrowRight aria-hidden="true" /></button>
+                </DialogTrigger>
+                <DialogContent className="od-vatech-tutorials">
+                  <DialogTitle>Vatech tutorijali</DialogTitle>
+                  <DialogDescription>Video vodiči za rad u Ez3D-i softveru.</DialogDescription>
+                  <div className="od-vatech-tutorials__list">
+                    <p><strong>Osnove vizuelizacije:</strong> <a href="https://www.youtube.com/watch?v=GThBiiMpnQM" target="_blank" rel="noopener noreferrer">Coronalni, sagitalni, axial preseci i VR rekonstrukcija</a></p>
+                    <p><strong>Iscrtavanje panoramske krive:</strong> <a href="https://www.youtube.com/watch?v=q7IM6VH3FvY" target="_blank" rel="noopener noreferrer">Automatsko vs. manuelno iscrtavanje</a></p>
+                    <p><strong>Endodoncija:</strong> <a href="https://www.youtube.com/watch?v=vs-ZZgbCPQg" target="_blank" rel="noopener noreferrer">Napredna Endo analiza</a></p>
+                    <p><strong>Implantologija i hirurgija:</strong> <a href="https://www.youtube.com/watch?v=ROfCW5ATpLc" target="_blank" rel="noopener noreferrer">Mapiranje kanala</a>, <a href="https://www.youtube.com/watch?v=bUgsaJ4Rj1M" target="_blank" rel="noopener noreferrer">planiranje implantata</a>, <a href="https://www.youtube.com/watch?v=BVaZJr05lE8" target="_blank" rel="noopener noreferrer">provera gustine kosti</a></p>
+                  </div>
+                </DialogContent>
+              </Dialog>
               <p className="od-pro-software__note">
                 Kratki video vodiči za osnove vizuelizacije, panoramsku krivu,
                 naprednu endo analizu i planiranje implantata.
@@ -225,18 +233,18 @@ function ZaDoktore() {
         <section className="od-pro-section od-pro-support" aria-labelledby="od-pro-support-title">
           <div className="oc-container">
             <motion.div className="od-pro-support__inner" {...revealProps}>
+              <figure className="od-pro-support__visual">
+                <img src={supportImage.src} alt="Stomatolog i radiološka tehničarka zajedno pregledaju dentalni snimak" loading="lazy" decoding="async" />
+              </figure>
               <div className="od-pro-support__copy">
-              <h2 id="od-pro-support-title">Saradnja na koju možete da se oslonite</h2>
+              <p className="od-pro-eyebrow">Podrška</p>
+              <h2 id="od-pro-support-title">Saradnja na koju možete<br />da se oslonite.</h2>
               <div className="od-pro-support__text">
                 <p>Verujemo da kvalitetna saradnja podrazumeva više od vrhunske dijagnostike – ona podrazumeva dostupnost, brzu komunikaciju i podršku na koju možete da računate u svakom trenutku.</p>
                 <p>Naš tim pruža kompletnu podršku stomatolozima sa kojima sarađujemo – od izrade snimaka i prikaza ciljanih anatomskih struktura, do instalacije i korišćenja 3D softvera i OrtoCloud platforme.</p>
                 <p>Za sva pitanja, zahteve ili tehničke nedoumice, tu smo da brzo pronađemo rešenje. Bez komplikovanih procedura i nepotrebnog čekanja – bez obzira na to koji naš centar kontaktirate, Vaš zahtev brzo dolazi do odgovarajućeg člana našeg tima.</p>
-                <p className="od-pro-support__closing">Moderna dijagnostika, uz podršku ljudi na koje možete da računate. Precizno, brzo i ljudski.</p>
               </div>
               </div>
-              <figure className="od-pro-support__visual">
-                <img src={supportImage.src} alt="Stomatolog i radiološka tehničarka zajedno pregledaju dentalni snimak" loading="lazy" decoding="async" />
-              </figure>
             </motion.div>
           </div>
         </section>

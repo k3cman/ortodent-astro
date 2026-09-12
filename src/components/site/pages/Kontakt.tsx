@@ -50,24 +50,11 @@ const Kontakt = () => {
       <Header currentPath="/kontakt" />
 
       <main>
-        <section className="oc-contact-hero" aria-labelledby="contact-title">
-          <svg
-            className="oc-contact-hero__contours"
-            viewBox="0 0 620 520"
-            aria-hidden="true"
-          >
-            {Array.from({ length: 10 }, (_, index) => (
-              <path
-                key={index}
-                d={`M 620 ${-24 + index * 22} C ${525 - index * 3} ${58 + index * 9}, ${530 - index * 9} ${180 + index * 10}, ${455 - index * 13} ${255 + index * 15} C ${355 - index * 7} ${355 + index * 9}, ${220 - index * 13} ${390 + index * 10}, ${40 - index * 8} 520`}
-              />
-            ))}
-          </svg>
-
-          <div className="oc-container oc-contact-hero__inner">
-            <div className="oc-contact-hero__copy">
-              <p className="oc-contact-eyebrow">Kontakt</p>
-              <h1 id="contact-title">Kontakt</h1>
+        <section className="oc-page-intro oc-page-intro--utility" aria-labelledby="contact-title">
+          <div className="oc-container">
+            <div className="oc-page-intro__copy">
+              <p className="oc-eyebrow">Kontakt</p>
+              <h1 id="contact-title">Kontakt<span className="oc-dot">.</span></h1>
             </div>
           </div>
         </section>

@@ -1625,3 +1625,12 @@
 @media (max-width: 640px) {
   .od-center-gallery { grid-template-columns: 1fr; gap: 16px; }
 }
+
+.od-contact-panel__schedule p {
+  display: grid;
+  grid-template-columns: 100px 130px;
+  column-gap: 16px;
+  justify-content: center;
+}
+.od-contact-panel__schedule p > span { text-align: right; }
+.od-contact-panel__schedule p > strong { text-align: left; }

@@ -493,3 +493,13 @@
     font-size: 16px;
   }
 }
+
+.oc-kefa h2 {
+  font-size: clamp(30px, 3vw, 36px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+@media (max-width: 640px) {
+  .oc-kefa h2 { font-size: clamp(30px, 8vw, 36px); }
+}

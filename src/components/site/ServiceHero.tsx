@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 type ServiceHeroProps = {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   lead: ReactNode;
   image: string;
   imageAlt: string;

@@ -82,11 +82,10 @@ export const Usluge3D = () => (
   <div className="od3d">
     <ServiceHero
       eyebrow="3D dijagnostika"
-      title="3D snimanja / CBCT"
+      title={<>3D snimanja<br />CBCT</>}
       lead={
         <>
-          <p>CBCT — Cone Beam Computed Tomography</p>
-          <p>CBCT tehnologija koristi konusni snop rendgenskih zraka za dobijanje preciznog trodimenzionalnog prikaza zuba, vilica i okolnih anatomskih struktura. Detaljan 3D prikaz pruža stomatolozima važne informacije za dijagnostiku i precizno planiranje terapije.</p>
+          <p>CBCT (Cone beam computed tomography) tehnologija koristi konusni snop rendgenskih zraka za dobijanje preciznog trodimenzionalnog prikaza zuba, vilica i okolnih anatomskih struktura. Detaljan 3D prikaz pruža stomatolozima važne informacije za dijagnostiku i precizno planiranje terapije.</p>
         </>
       }
       image={imageSrc(cbctPatient)}

@@ -8,11 +8,13 @@ import {
 type OpenNowStatusProps = {
   openingHours?: OpeningHours;
   compact?: boolean;
+  showToday?: boolean;
 };
 
 export default function OpenNowStatus({
   openingHours,
   compact = false,
+  showToday = true,
 }: OpenNowStatusProps) {
   const [state, setState] = useState(() => getLocationOpenState());
 
@@ -34,7 +36,7 @@ export default function OpenNowStatus({
       )}
       <span>
         <strong>{state.statusLabel}</strong>
-        {state.todayLabel && !compact && <small>{state.todayLabel}</small>}
+        {state.todayLabel && showToday && !compact && <small>{state.todayLabel}</small>}
       </span>
     </div>
   );

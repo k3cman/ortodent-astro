@@ -732,3 +732,22 @@
   .od3d-fields { padding: 28px 18px 20px; }
   .od3d-field-card { padding: 18px; }
 }
+
+.od3d .od3d-software { display: none; }
+
+.od3d :is(.od3d-use-cases, .od3d-fields, .od3d-technology) h2 {
+  font-size: clamp(30px, 3vw, 36px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+@media (max-width: 640px) {
+  .od3d :is(.od3d-use-cases, .od3d-fields, .od3d-technology) h2 {
+    font-size: clamp(30px, 8vw, 36px);
+  }
+}
+
+@media (min-width: 821px) {
+  .od3d-use-cases--standalone, .od3d-technology { margin-inline: 48px; }
+  .od3d-fields { padding-inline: 48px; }
+}

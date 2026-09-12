@@ -729,3 +729,12 @@
   letter-spacing: normal;
   text-transform: none;
 }
+
+.oc-contact-main > .oc-contact-aside { align-self: center; }
+
+.oc-contact-content { padding-bottom: 0; }
+.oc-contact-main { padding-bottom: 36px; }
+
+.oc-contact-page .oc-page-intro .oc-eyebrow { align-items: center; }
+
+.oc-contact-page .oc-page-intro { background: linear-gradient(180deg, #fff6f8, #fff); }

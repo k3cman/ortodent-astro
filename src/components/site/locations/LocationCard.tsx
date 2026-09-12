@@ -1,11 +1,10 @@
-import { ArrowRight, ArrowUpRight, MapPin, Phone } from "lucide-react";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { SiteLink } from "@/components/site/SiteLink";
 import OpenNowStatus from "@/components/site/locations/OpenNowStatus";
 import ServiceIndicators from "@/components/site/locations/ServiceIndicators";
 import {
   locationPath,
-  openStreetMapPageUrl,
   phoneHref,
   type Location,
 } from "@/lib/locations";
@@ -85,31 +84,6 @@ export default function LocationCard({
         <ServiceIndicators location={location} />
       </div>
 
-      <div className="od-location-item__actions">
-        {onSelect && (
-          <button
-            type="button"
-            aria-pressed={selected}
-            onClick={() => onSelect(location)}
-          >
-            Prikaži na mapi <MapPin aria-hidden="true" />
-          </button>
-        )}
-        {!onSelect && (
-          <a
-            href={openStreetMapPageUrl(location)}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Prikaži na mapi <ArrowUpRight aria-hidden="true" />
-          </a>
-        )}
-        {showDetails && (
-          <SiteLink to={locationPath(location)}>
-            Detalji centra <ArrowRight aria-hidden="true" />
-          </SiteLink>
-        )}
-      </div>
     </motion.article>
   );
 }

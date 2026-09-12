@@ -57,7 +57,7 @@
 .od-pro-button:focus-visible, .od-pro-text-link:focus-visible, .od-pro input:focus-visible { outline: 2px solid var(--oc-magenta); outline-offset: 3px; }
 
 .od-pro-hero {
-  min-height: 700px;
+  min-height: 774px;
   position: relative;
   display: flex;
   align-items: center;
@@ -109,7 +109,7 @@
 .od-pro-capabilities h2 { margin: 0 0 5px; font-size: 14px; font-weight: 600; letter-spacing: -.02em; line-height: 1.3; }
 .od-pro-capabilities p { margin: 0; color: var(--oc-gray-500); font-size: 11px; line-height: 1.45; }
 
-.od-pro-section { padding-block: clamp(80px, 9vw, 124px); }
+.od-pro-section { padding-block: clamp(48px, 5vw, 72px); }
 .od-pro-split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -240,7 +240,7 @@
   .od-pro-hero__visual img { object-position: 70% center; }
   .od-pro-hero__wash { display: none; }
   .od-pro-capabilities-wrap { margin-top: 20px; }
-  .od-pro-section { padding-block: 76px; }
+  .od-pro-section { padding-block: 44px; }
   .od-pro-split, .od-pro-split--cloud, .od-pro-split--cbct, .od-pro-split--kefa, .od-pro-software__surface, .od-pro-partner__layout { grid-template-columns: 1fr; gap: 42px; }
   .od-pro-cloud { padding-top: 76px; }
   .od-pro-cloud__visual, .od-pro-kefa__visual { order: 0; }
@@ -265,7 +265,7 @@
   .od-pro-capabilities article:last-child { border-bottom: 0; }
   .od-pro-capabilities h2 { font-size: 15px; }
   .od-pro-capabilities p { font-size: 13px; }
-  .od-pro-section { padding-block: 64px; }
+  .od-pro-section { padding-block: 44px; }
   .od-pro-copy h2, .od-pro-partner h2 { margin-bottom: 20px; font-size: 36px; }
   .od-pro-split, .od-pro-software__surface, .od-pro-partner__layout { gap: 32px; }
   .od-pro-cloud__visual { margin-inline: -8px; padding: 8px; }
@@ -303,7 +303,7 @@
   .od-pro-service-card > img { height: 260px; min-height: 0; grid-row: 1; }
 }
 
-.od-pro-support__inner { display: grid; grid-template-columns: 1.15fr .85fr; align-items: stretch; gap: 40px; padding: clamp(28px, 4vw, 52px); background: var(--oc-off-white); border-radius: 16px; }
+.od-pro-support__inner { display: grid; grid-template-columns: .85fr 1.15fr; align-items: stretch; gap: 40px; padding: clamp(28px, 4vw, 52px); background: var(--oc-off-white); border-radius: 16px; }
 .od-pro-support h2 { margin: 0 0 24px; font-size: clamp(30px, 3.5vw, 44px); line-height: 1.12; }
 .od-pro-support__text p { margin-bottom: 20px; color: var(--oc-gray-500); font-size: 16px; line-height: 1.75; }
 .od-pro-support__text .od-pro-support__closing { margin-bottom: 0; color: var(--oc-ink); font-weight: 600; }
@@ -314,3 +314,19 @@
   .od-pro-support__inner { grid-template-columns: 1fr; }
   .od-pro-support__visual { aspect-ratio: 4 / 5; }
 }
+
+button.od-pro-text-link { border: 0; background: transparent; padding: 0; font: inherit; cursor: pointer; }
+.od-vatech-tutorials { width: min(960px, calc(100vw - 40px)); max-width: 960px; max-height: 85vh; overflow-y: auto; padding: clamp(28px, 4vw, 48px); background: #fff; border-radius: 16px; }
+.od-vatech-tutorials__list { display: grid; gap: 24px; margin-top: 20px; color: var(--oc-gray-500); font-size: 18px; line-height: 1.7; }
+.od-vatech-tutorials__list p { margin: 0; }
+.od-vatech-tutorials__list strong { color: var(--oc-ink); font-weight: 600; }
+.od-vatech-tutorials__list a { color: var(--oc-gray-700); text-decoration: underline; text-underline-offset: 5px; }
+.od-vatech-tutorials__list a:hover { color: var(--oc-magenta); }
+
+.od-pro-hero + .od-pro-cloud { padding-top: 36px; }
+@media (max-width: 640px) { .od-pro-hero + .od-pro-cloud { padding-top: 36px; } }
+
+.od-pro-cloud__copy { padding: 36px; }
+
+.od-pro-cloud__visual { aspect-ratio: 4 / 5; }
+.od-pro-cloud__visual img { height: 100%; object-fit: cover; object-position: center; }

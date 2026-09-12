@@ -216,14 +216,14 @@
 
 /* Match the main site's spacing between sections and content. */
 .ortocloud-theme :is(.odc-experiences, .odc-retention, .odc-access) {
-  padding-block: var(--oc-section, clamp(72px, 8vw, 112px));
+  padding-block: clamp(60px, 6vw, 88px);
 }
 .ortocloud-theme .odc-section-heading { margin-bottom: 56px; }
 .ortocloud-theme .odc-section-heading h2 { margin-bottom: 18px; }
 .odc-hero__copy { padding-block: 72px; }
 .odc-hero__logo { margin-bottom: 28px; }
 .odc-hero__lead { margin-bottom: 36px; }
-.odc-download__copy { padding-block: 80px; }
+.odc-download__copy { padding-block: 64px; }
 .odc-download h2 { margin-bottom: 24px; }
 .odc-download__copy > p:not(.odc-eyebrow) { margin-bottom: 36px; }
 .odc-store-row { gap: 14px; }
@@ -233,10 +233,14 @@
 .odc-retention__strip article { padding-block: 20px; }
 .odc-retention article strong { margin-block: 10px 16px; }
 @media (max-width: 640px) {
-  .ortocloud-theme :is(.odc-experiences, .odc-retention, .odc-access) { padding-block: 64px; }
+  .ortocloud-theme :is(.odc-experiences, .odc-retention, .odc-access) { padding-block: 52px; }
   .ortocloud-theme .odc-section-heading { margin-bottom: 36px; }
   .odc-hero__copy { padding-block: 56px; }
-  .odc-download__copy { padding-block: 56px; }
+  .odc-download__copy { padding-block: 48px; }
   .odc-access__paths article { padding-block: 32px; gap: 16px; }
   .odc-retention__strip article { padding-block: 28px; }
 }
+
+.odc-access__paths article { align-items: stretch; }
+.odc-access__paths article > div { display: flex; flex-direction: column; align-items: flex-start; }
+.odc-access__paths article > div > .odc-button { margin-top: auto; }

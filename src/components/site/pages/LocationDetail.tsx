@@ -74,7 +74,7 @@ function LocationDetail({
             </nav>
             <div className="od-detail-hero__grid">
               <div>
-                <p className="od-kicker">OrtoDent centar</p>
+                <p className="od-kicker">OrtoDent - snimanje zuba</p>
                 <h1>{location.name}</h1>
                 <p className="od-detail-address"><MapPin aria-hidden="true" /> {location.address}</p>
                 <OpenNowStatus openingHours={location.openingHours} />
@@ -116,8 +116,8 @@ function LocationDetail({
                   <div>
                     <span className="od-contact-panel__icon"><Clock3 aria-hidden="true" /></span>
                     <div>
-                      <small>Radno vreme</small>
-                      <OpenNowStatus openingHours={location.openingHours} />
+                      <small>Trenutni status</small>
+                      <OpenNowStatus openingHours={location.openingHours} showToday={false} />
                     </div>
                   </div>
                 </div>

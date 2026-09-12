@@ -1,8 +1,7 @@
-import { ArrowRight, Clock3, Cloud } from "lucide-react";
-import profileImage from "@/assets/site/kefalometrija/kefalometrija-profile.png";
+import { Clock3, Cloud } from "lucide-react";
+import profileImage from "@/assets/site/kefalometrija/kefalometrija-profile.jpg";
 import protocolImage from "@/assets/site/kefalometrija/kefalometrija-protocol.png";
 import ServiceHero from "@/components/site/ServiceHero";
-import { SiteLink } from "@/components/site/SiteLink";
 import { assetPath } from "@/lib/paths";
 
 const imageSrc = (image: string | { src: string }) =>
@@ -62,7 +61,7 @@ export const UslugeKefa = () => (
         }
         image={imageSrc(profileImage)}
         imageAlt="Profil pacijentkinje sa prikazom koštanih struktura lica"
-        imagePosition="78% 42%"
+        imagePosition="right center"
         variant="backdrop"
       >
         <div className="oc-kefa-hero__extras">
@@ -75,13 +74,6 @@ export const UslugeKefa = () => (
             loading="eager"
             decoding="async"
           />
-          <div className="oc-kefa-callout">
-            <p>
-              Mi Vam nudimo <strong>KefAnalize</strong> – digitalna
-              kefalometrijska merenja i analizu uz korišćenje vodećeg svetskog
-              softvera <span>AudaxCeph</span>.
-            </p>
-          </div>
         </div>
       </ServiceHero>
     </div>
@@ -149,34 +141,5 @@ export const UslugeKefa = () => (
       </div>
     </section>
 
-    <section className="oc-kefa-cta" aria-labelledby="kefa-cta-title">
-      <div className="oc-container">
-        <div className="oc-kefa-cta__surface">
-          <div>
-            <p className="oc-kefa-eyebrow">OrtoCloud</p>
-            <h2 id="kefa-cta-title">
-              Pošaljite kefalogram
-              <span>i dobijte analizu putem OrtoClouda</span>
-            </h2>
-            <p className="oc-kefa-copy">
-              Digitalna kefalometrijska merenja i analiza uz korišćenje vodećeg
-              svetskog softvera AudaxCeph.
-            </p>
-          </div>
-
-          <div className="oc-kefa-cta__actions">
-            <SiteLink
-              to="/za-doktore#partnerstvo"
-              className="oc-button oc-button--primary"
-            >
-              Pošalji snimak <ArrowRight aria-hidden="true" />
-            </SiteLink>
-            <SiteLink to="/ortocloud" className="oc-text-link">
-              Saznajte više o OrtoCloudu <ArrowRight aria-hidden="true" />
-            </SiteLink>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
 );

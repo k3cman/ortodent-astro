@@ -629,3 +629,41 @@ body.site-theme .oc-footer__brand > p { max-width: 340px; margin: 40px 0 26px; f
 @media (prefers-reduced-motion: reduce) {
   .oc-header, .oc-header__inner, .oc-header .oc-logo img { transition: none; }
 }
+
+.oc-kefa .oc-service-hero--backdrop .oc-service-hero__visual img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  margin-left: auto;
+  object-fit: contain;
+  object-position: right 80% !important;
+  transform: scale(2.5);
+  transform-origin: right 80%;
+  mask-image: linear-gradient(to right, transparent 0%, #000 38%, #000 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 38%, #000 100%);
+}
+
+.oc-kefa .oc-service-hero--backdrop {
+  background: #fff;
+  border: 0;
+}
+.oc-kefa .oc-service-hero--backdrop .oc-service-hero__visual { background: #fff; }
+.oc-kefa .oc-service-hero--backdrop .oc-service-hero__visual::before {
+  background: linear-gradient(90deg, #fff 0%, rgb(255 255 255 / .95) 33%, rgb(255 255 255 / .55) 47%, transparent 76%);
+}
+
+.oc-2d .oc-2d-card h2 {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+@media (max-width: 640px) {
+  .oc-2d .oc-2d-card h2 { font-size: 28px; }
+}
+
+/* Keep service content aligned with the inset hero copy. */
+@media (min-width: 821px) {
+  .oc-2d .oc-2d-card__copy { padding-inline: 48px; }
+  .oc-kefa > section > .oc-container { padding-inline: calc(var(--oc-gutter) + 48px); }
+}
