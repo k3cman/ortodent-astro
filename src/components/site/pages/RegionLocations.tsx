@@ -89,6 +89,7 @@ function RegionLocations({
               </div>
               <div className="od-sticky-map">
                 <LocationsMap
+                  collapsibleMobile
                   locations={visibleLocations}
                   selectedId={activeLocation?.id}
                   focusTarget={activeLocation}

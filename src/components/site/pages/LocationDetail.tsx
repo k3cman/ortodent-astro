@@ -21,6 +21,7 @@ import LocationActions from "@/components/site/locations/LocationActions";
 import LocationsMap from "@/components/site/locations/LocationsMap";
 import OpenNowStatus from "@/components/site/locations/OpenNowStatus";
 import OrtoCloudBanner from "@/components/site/locations/OrtoCloudBanner";
+import WeeklyOpeningHours from "@/components/site/locations/WeeklyOpeningHours";
 import ServiceIndicators from "@/components/site/locations/ServiceIndicators";
 import {
   distanceBetweenLocations,
@@ -84,10 +85,12 @@ function LocationDetail({
           </div>
         </section>
 
-        <section className="od-detail-main">
+        <section className="od-detail-main od-detail-main--utility">
           <div className="od-shell">
             <div className="od-detail-map-layout">
               <LocationsMap
+                collapsibleMobile
+                toggleLabel="Prikaži lokaciju na mapi"
                 locations={mapLocations}
                 selectedId={location.id}
                 className="od-map--detail"
@@ -136,6 +139,7 @@ function LocationDetail({
               <div><span><Box aria-hidden="true" /></span><div><strong>Dostupna snimanja</strong><ServiceIndicators location={location} /></div></div>
               <div><span><Cloud aria-hidden="true" /></span><p><strong>OrtoCloud rezultati</strong>Brz i siguran pristup rezultatima online.</p></div>
             </div>
+            <div className="od-mobile-weekly-hours"><h2>Radno vreme</h2><WeeklyOpeningHours openingHours={location.openingHours} /></div>
           </div>
         </section>
 
@@ -150,7 +154,7 @@ function LocationDetail({
           </section>
         )}
 
-        <section className="od-detail-section" aria-label={`Fotografije centra ${location.name}`}>
+        <section className="od-detail-section od-center-gallery-section" aria-label={`Fotografije centra ${location.name}`}>
           <div className="od-shell od-center-gallery">
             {[1, 2, 3].map((number) => (
               <figure key={number}>

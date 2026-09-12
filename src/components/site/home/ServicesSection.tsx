@@ -31,11 +31,12 @@ export default function ServicesSection() {
                   <h3>{service.title}</h3>
                   <span className="oc-rule" />
                   <p>{service.description}</p>
-                  <SiteLink to={service.href} className="oc-text-link">Saznajte više <ArrowRight aria-hidden="true" /></SiteLink>
+                  <SiteLink to={service.href} className="oc-text-link oc-service-card__desktop-action">Saznajte više <ArrowRight aria-hidden="true" /></SiteLink>
                 </div>
                 <div className="oc-service-card__visual">
                   <img src={image} srcSet={srcSet} sizes="(max-width: 820px) 100vw, 48vw" alt={alt} loading="lazy" decoding="async" />
                 </div>
+                <SiteLink to={service.href} className="oc-text-link oc-service-card__mobile-action">Saznajte više <ArrowRight aria-hidden="true" /></SiteLink>
               </article>
             );
           })}

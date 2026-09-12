@@ -1,0 +1,62 @@
+/* Approved desktop compositions stay intact; mobile imagery follows the copy. */
+body.site-theme .oc-service-card__mobile-action { display: none; }
+@media (max-width: 820px) {
+body.site-theme .oc-site .oc-section { padding-block: 60px; }
+body.site-theme .oc-section-heading { margin-bottom: 32px; }
+body.site-theme .oc-section-heading h2 { font-size: clamp(28px, 7vw, 34px); }
+body.site-theme .oc-hero { background: #fff; }
+body.site-theme .oc-hero__content { padding-bottom: 28px; }
+body.site-theme .oc-hero__image { aspect-ratio: 4 / 3; max-height: 320px; object-position: 68% center; mask-image: linear-gradient(to bottom, transparent, #000 18%); }
+body.site-theme .oc-hero h1 { font-size: clamp(40px, 10vw, 46px); }
+body.site-theme .oc-hero h1 br { display: block; }
+body.site-theme .oc-hero__city a { min-height: 44px; display: inline-flex; align-items: center; }
+body.site-theme .oc-services__grid { gap: 16px; }
+body.site-theme .oc-service-card__copy { min-height: 0; padding: 28px 24px 0; }
+body.site-theme .oc-service-card__desktop-action { display: none; }
+body.site-theme .oc-service-card__visual, body.site-theme .oc-service-card--1 .oc-service-card__visual { grid-row: auto; min-height: 0; height: 240px; margin-top: 24px; }
+body.site-theme .oc-service-card--1 .oc-service-card__visual { height: 280px; }
+body.site-theme .oc-service-card__visual img { object-position: center; }
+body.site-theme .oc-service-card__visual::after { content: none; }
+body.site-theme .oc-service-card__mobile-action { display: inline-flex; justify-self: start; margin: 20px 24px 28px; }
+body.site-theme .oc-cloud-promo__image { min-height: 0; height: 300px; }
+body.site-theme .oc-cloud-promo__copy { padding: 36px 24px 56px; }
+body.site-theme .oc-dentist__inner { padding-block: 56px 28px; }
+body.site-theme .oc-dentist > img { aspect-ratio: 4 / 3; max-height: 320px; object-position: 70% center; mask-image: linear-gradient(to bottom, transparent, #000 18%); }
+body.site-theme .oc-dentist h2 { font-size: clamp(28px, 7vw, 34px); }
+body.site-theme .oc-dentist__lead, body.site-theme .oc-benefit p, body.site-theme .oc-service-card__copy > p { font-size: 16px; }
+body.site-theme .oc-information-process, body.site-theme .oc-information-faq { padding-block: 60px; }
+body.site-theme .oc-information-process__visual { aspect-ratio: 4 / 3; max-height: 320px; position: static; }
+body.site-theme .oc-information-process__visual img { object-position: 68% center; }
+body.site-theme .oc-information-steps p, body.site-theme .oc-information-strip p { font-size: 16px; }
+body.site-theme .oc-information-steps h3 { font-size: 20px; }
+body.site-theme .od3d-section-heading h2, body.site-theme .od3d-applications h2, body.site-theme .oc-kefa h2 { font-size: clamp(28px, 7vw, 34px); }
+body.site-theme .oc-service-hero--backdrop .oc-service-hero__visual { max-height: 320px; aspect-ratio: 4 / 3; }
+body.site-theme .oc-kefa .oc-service-hero--backdrop .oc-service-hero__visual img { width: 100%; height: 100%; transform: none; object-fit: cover; object-position: center 58% !important; mask-image: none; -webkit-mask-image: none; }
+body.site-theme .oc-kefa-benefits, body.site-theme .oc-kefa-protocols { padding-block: 60px; }
+body.site-theme .oc-kefa .oc-kefa-protocols__visual { max-height: 300px; overflow: hidden; }
+body.site-theme .od-pro-cloud__visual { aspect-ratio: 4 / 3; max-height: 320px; }
+body.site-theme .od-pro-cloud__copy { padding: 0; }
+body.site-theme .od-pro-support__visual { aspect-ratio: 4 / 3; max-height: 320px; }
+body.site-theme .od-pro-support__visual img { object-position: center 35%; }
+body.site-theme .od-pro-service-card { min-height: 0; }
+body.site-theme .od-pro-copy h2, body.site-theme .od-pro-partner h2, body.site-theme .od-pro-support h2 { font-size: clamp(28px, 7vw, 34px); }
+body.site-theme .od-pro-capabilities p, body.site-theme .od-pro-service-card__copy > p:not(.od-pro-eyebrow), body.site-theme .od-pro-benefits li > span:last-child { font-size: 16px; }
+}
+@media (max-width: 640px) {
+body.site-theme .oc-component-grid { grid-template-columns: minmax(0, 1fr); }
+body.site-theme .oc-component-grid > * { min-width: 0; }
+body.site-theme .oc-ds-input { min-width: 0; max-width: 100%; }
+body.site-theme .oc-ds [role="tablist"] { flex-wrap: wrap; height: auto; }
+body.site-theme .oc-ds-rules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body.site-theme .oc-ds-guidelines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body.site-theme .oc-ds-guidelines > * { min-width: 0; overflow-wrap: anywhere; }
+body.site-theme .oc-ds-footer-preview .oc-footer__main { grid-template-columns: minmax(0, 1fr); }
+body.site-theme .oc-service-hero { padding-bottom: 0; margin-bottom: 32px; }
+body.site-theme .oc-service-hero h1 { font-size: clamp(36px, 10vw, 44px); overflow-wrap: anywhere; }
+body.site-theme .oc-2d-card h2 { overflow-wrap: anywhere; }
+body.site-theme .oc-service-hero__lead, body.site-theme .oc-2d-card__body { font-size: 16px; }
+body.site-theme .oc-2d-card__copy { padding: 26px 22px; }
+body.site-theme .oc-information-steps li { grid-template-columns: 32px 1fr; gap: 12px; }
+body.site-theme .oc-page-intro--utility h1 { font-size: clamp(32px, 9vw, 40px); }
+body.site-theme .oc-contact-main { padding-top: 44px; gap: 36px; }
+}

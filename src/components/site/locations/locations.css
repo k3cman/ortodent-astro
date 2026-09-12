@@ -1638,3 +1638,37 @@
 }
 .od-contact-panel__schedule p > span { text-align: right; }
 .od-contact-panel__schedule p > strong { text-align: left; }
+
+.od-mobile-weekly-hours { display: none; }
+@media (max-width: 820px) {
+  .od-map-disclosure--collapsible:not(.is-expanded) > div { display: none; }
+  .od-map-disclosure--collapsible .od-locations-map { min-height: 340px; height: 340px; }
+  .od-locations-map .leaflet-control-zoom a { width: 44px; height: 44px; line-height: 44px; }
+  .od-locations-map .leaflet-popup-close-button { width: 44px; height: 44px; line-height: 44px; }
+  .od-locations-map .od-leaflet-marker { width: 44px !important; height: 44px !important; margin-left: -22px !important; margin-top: -42px !important; }
+  .od-locations-map .od-leaflet-marker > span { position: absolute; left: 6px; top: 4px; }
+  .od-contact-panel__facts a { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .od-map-toggle { width: 100%; min-height: 48px; margin-bottom: 16px; }
+  .od-city-hero__image { aspect-ratio: 16 / 9; max-height: 260px; }
+  .od-city-hero__image img { height: 100%; object-fit: cover; }
+  .od-center-gallery-section { display: none; }
+  .od-detail-main--utility > .od-shell { display: flex; flex-direction: column; gap: 28px; }
+  .od-detail-main--utility .od-detail-map-layout { display: contents; }
+  .od-detail-main--utility .od-contact-panel { order: 1; }
+  .od-detail-main--utility .od-practical-strip { order: 2; margin-top: 0; }
+  .od-detail-main--utility .od-map-disclosure { order: 3; }
+  .od-detail-main--utility .od-mobile-weekly-hours { display: block; order: 4; }
+  .od-mobile-weekly-hours h2 { font-size: 28px; margin-bottom: 20px; }
+  .od-contact-panel__schedule { display: none; }
+  .od-location-item__facts a, .od-location-actions a { min-height: 44px; display: inline-flex; align-items: center; }
+  .od-location-item__facts p, .od-location-item__facts a, .od-contact-panel__facts a, .od-contact-panel__facts strong { font-size: 16px; }
+  .od-location-item { min-height: 0; }
+  .od-service-indicators { flex-wrap: wrap; }
+  .od-discovery-section, .od-detail-section, .od-nearby-section { padding-block: 44px; }
+  .od-map--hero { min-height: 340px; height: 340px; }
+  .od-open-status, .od-location-item__head { min-width: 0; }
+}
+@media (max-width: 640px) {
+  .od-page h1 { font-size: clamp(32px, 9vw, 40px); overflow-wrap: anywhere; }
+  .od-contact-panel__facts > div > div { min-width: 0; }
+}
