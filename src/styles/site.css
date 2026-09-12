@@ -64,6 +64,11 @@
 .oc-nav__dropdown { position: relative; padding-block: 20px; }
 .oc-nav__dropdown > button { display: flex; align-items: center; gap: 8px; padding: 0; }
 .oc-nav__dropdown svg { width: 14px; }
+.oc-nav__dropdown--locations { display: flex; align-items: center; gap: 8px; }
+.oc-nav__dropdown--locations > a { position: relative; transition: color .2s ease; }
+.oc-nav__dropdown--locations > a:hover { color: var(--oc-magenta); }
+.oc-nav__dropdown--locations > a[aria-current="page"] { color: var(--oc-magenta); font-weight: 600; }
+.oc-nav__dropdown--locations > a[aria-current="page"]::after { content: ""; position: absolute; right: 0; bottom: -9px; left: 0; height: 2px; background: var(--oc-magenta); }
 .oc-nav__menu { position: absolute; top: 58px; left: -18px; width: 230px; padding: 10px; display: grid; gap: 2px; opacity: 0; visibility: hidden; transform: translateY(-6px); background: rgb(255 255 255 / .98); border: 1px solid var(--oc-gray-300); border-radius: var(--oc-radius-lg); box-shadow: var(--oc-shadow-md); transition: .2s ease; }
 .oc-nav__menu[hidden] { display: none; }
 .oc-nav__menu:not([hidden]) { opacity: 1; visibility: visible; transform: none; }

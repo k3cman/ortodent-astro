@@ -94,6 +94,10 @@
   color: var(--oc-magenta);
 }
 
+.od-overview-hero .od-hero-copy h1 {
+  margin-bottom: 18px;
+}
+
 .od-region-hero h1 span { color: inherit; }
 
 .od-benefits {

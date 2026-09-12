@@ -1,5 +1,5 @@
 import { ChevronDown, Cloud, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import logo from "@/assets/logo.png";
 import { SiteLink } from "@/components/site/SiteLink";
 
@@ -17,6 +17,12 @@ const services = [
   ["Kefalometrijske analize", "/usluge/kefalometrija"],
 ] as const;
 
+const cities = [
+  ["Beograd", "/lokacije/beograd"],
+  ["Novi Sad", "/lokacije/novi-sad"],
+  ["Pančevo", "/lokacije/pancevo"],
+] as const;
+
 type HeaderProps = {
   currentPath?: string;
   transparent?: boolean;
@@ -25,6 +31,7 @@ type HeaderProps = {
 export default function Header({ currentPath, transparent = false }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [locationsOpen, setLocationsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -48,6 +55,18 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
             <div id="services-menu" hidden={!servicesOpen} className="oc-nav__menu">{services.map(([label, href]) => <SiteLink key={href} to={href}>{label}</SiteLink>)}</div>
           </div>
           {navItems.map(([label, href]) => (
+            href === "/lokacije" ? (
+              <div
+                key={href}
+                className="oc-nav__dropdown oc-nav__dropdown--locations"
+                onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setLocationsOpen(false); }}
+                onKeyDown={(event) => { if (event.key === "Escape") { setLocationsOpen(false); event.currentTarget.querySelector("button")?.focus(); } }}
+              >
+                <SiteLink to={href} aria-current={currentPath === href ? "page" : undefined}>{label}</SiteLink>
+                <button type="button" aria-label="Prikaži lokacije po gradovima" aria-expanded={locationsOpen} aria-controls="locations-menu" onClick={() => setLocationsOpen((value) => !value)}><ChevronDown aria-hidden="true" /></button>
+                <div id="locations-menu" hidden={!locationsOpen} className="oc-nav__menu">{cities.map(([city, cityHref]) => <SiteLink key={cityHref} to={cityHref} aria-current={currentPath === cityHref ? "page" : undefined}>{city}</SiteLink>)}</div>
+              </div>
+            ) : (
             <SiteLink
               key={href}
               to={href}
@@ -55,6 +74,7 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
             >
               {label}
             </SiteLink>
+            )
           ))}
         </nav>
         <div className="oc-header__actions">
@@ -66,6 +86,7 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
         <nav className="oc-mobile-nav" aria-label="Mobilna navigacija">
           {services.map(([label, href]) => <SiteLink key={href} to={href} onClick={() => setOpen(false)}>{label}</SiteLink>)}
           {navItems.map(([label, href]) => (
+            <Fragment key={href}>
             <SiteLink
               key={href}
               to={href}
@@ -74,6 +95,8 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
             >
               {label}
             </SiteLink>
+            {href === "/lokacije" && cities.map(([city, cityHref]) => <SiteLink key={cityHref} to={cityHref} aria-current={currentPath === cityHref ? "page" : undefined} onClick={() => setOpen(false)}>{city}</SiteLink>)}
+            </Fragment>
           ))}
           <SiteLink to="/ortocloud" onClick={() => setOpen(false)}>OrtoCloud</SiteLink>
         </nav>
