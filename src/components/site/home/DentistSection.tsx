@@ -13,7 +13,7 @@ export default function DentistSection() {
         <div className="oc-dentist__copy">
           <p className="oc-eyebrow">Za stomatologe</p>
           <h2 id="dentist-title" aria-label="Dijagnostika na koju možete da se oslonite.">Dijagnostika na koju<br />možete da se oslonite<span className="oc-dot">.</span></h2>
-          <p className="oc-dentist__lead">Brzi digitalni rezultati, OrtoCloud pristup i precizne 2D, 3D i kefalometrijske analize — bez komplikacija u svakodnevnom radu.</p>
+          <p className="oc-dentist__lead">Brzi digitalni rezultati, OrtoCloud pristup i precizne 2D, 3D i kefalometrijske analize.</p>
           <div className="oc-benefits">
             {homeContent.dentistBenefits.map(([number, title, description]) => (
               <div className="oc-benefit" key={number}>

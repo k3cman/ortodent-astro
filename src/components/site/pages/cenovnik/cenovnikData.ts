@@ -31,7 +31,7 @@ export const CENOVNIK_SECTIONS: CenovnikSection[] = [
     id: "3d",
     title: "3D SNIMCI",
     subtitle:
-      "U cenu je uključeno digitalno izdavanje na OrtoCloudu i na USB kartici.",
+      "U cenu je uključeno digitalno izdavanje na OrtoCloudu i na CD-u.",
     items: [
       { label: "3D polje 5×5 cm - S", amount: "4500" },
       { label: "3D polje 8×5 cm - M", amount: "5500" },
@@ -42,13 +42,13 @@ export const CENOVNIK_SECTIONS: CenovnikSection[] = [
   {
     id: "kefalometrija",
     title: "KEFALOMETRIJSKE ANALIZE",
+    subtitle: "Dostupne su putem OrtoCloud platforme stomatologu koji je uputio pacijenta na snimanje.",
     items: [{ label: "KefAnalize", amount: "1500" }],
   },
   {
     id: "dodaci",
     title: "DODATNE USLUGE IZDAVANJA",
     items: [
-      { label: "Izrada na filmu (mala folija)", amount: "100" },
       { label: "Izrada na filmu (velika folija)", amount: "200" },
       { label: "CD", amount: "200" },
     ],

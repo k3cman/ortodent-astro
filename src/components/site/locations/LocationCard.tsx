@@ -30,6 +30,11 @@ export default function LocationCard({
       layout
       className={`od-location-item${selected ? " is-selected" : ""}`}
       whileTap={onSelect ? { scale: 0.99 } : undefined}
+      onClick={onSelect ? (event) => {
+        if ((event.target as HTMLElement).closest("a, button, input, select, textarea")) return;
+        onSelect(location);
+      } : undefined}
+      style={onSelect ? { cursor: "pointer" } : undefined}
     >
       <div className="od-location-item__head">
         <div className="od-location-item__title">

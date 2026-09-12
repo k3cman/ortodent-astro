@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+import { SiteLink } from "@/components/site/SiteLink";
 import type { CenovnikSection } from "@/content/cenovnik";
 import { CENOVNIK_SECTIONS } from "@/content/cenovnik";
 
@@ -42,9 +44,12 @@ const CenovnikInfoBox = () => (
       ili CD-u se dodatno naplaćuje prema cenovniku. Uz svaki <strong>3D</strong>{" "}
       snimak, pored <strong className="oc-price-info__accent">OrtoCloud</strong>{" "}
       pristupa, besplatno dobijate i{" "}
-      <strong className="oc-price-info__accent">USB</strong> (pristup 3D
+      <strong className="oc-price-info__accent">CD</strong> (pristup 3D
       snimcima je moguć isključivo putem računara).
     </p>
+    <SiteLink to="/ortocloud#cuvanje-podataka" className="oc-text-link oc-price-info__link">
+      Pravila čuvanja snimaka na OrtoCloudu <ArrowRight aria-hidden="true" />
+    </SiteLink>
   </aside>
 );
 

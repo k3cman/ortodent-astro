@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import heroImage from "@/assets/home/hero-clinician.webp";
 import heroImageSmall from "@/assets/home/hero-clinician-960.webp";
 import { homeContent } from "@/content/home";
@@ -16,14 +16,13 @@ export default function HeroSection() {
           <p className="oc-eyebrow">{hero.eyebrow}</p>
           <h1 id="hero-title" aria-label={hero.title}>Precizna 2D i<br />3D dijagnostika<span className="oc-dot">.</span></h1>
           <p className="oc-hero__lead">{hero.description}</p>
-          <div className="oc-actions">
+          <div className="oc-hero__actions">
             <SiteLink to="/lokacije" className="oc-button oc-button--primary">
               <MapPin aria-hidden="true" /> Pronađite najbliži centar
             </SiteLink>
-            <a href="#usluge" className="oc-text-link">Pogledajte usluge <ArrowRight aria-hidden="true" /></a>
-          </div>
-          <div className="oc-hero__locations" aria-label="Gradovi">
-            {hero.locations.map((location) => <span key={location}>{location}</span>)}
+            <nav className="oc-hero__locations" aria-label="Lokacije po gradovima">
+              {hero.locations.map(({ label, href }) => <span key={href} className="oc-hero__city"><SiteLink to={href}>{label}</SiteLink></span>)}
+            </nav>
           </div>
         </div>
       </div>

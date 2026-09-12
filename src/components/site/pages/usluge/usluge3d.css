@@ -126,7 +126,7 @@
 
 .od3d-use-cases h2 {
   margin-bottom: 18px;
-  font-size: 19px;
+  font-size: clamp(28px, 3vw, 36px);
   font-weight: 600;
   letter-spacing: -.025em;
 }
@@ -162,15 +162,15 @@
 }
 
 .od3d-use-cases strong {
-  margin-bottom: 5px;
-  font-size: 13px;
+  margin-bottom: 8px;
+  font-size: 18px;
   font-weight: 600;
 }
 
 .od3d-use-cases span {
   color: var(--oc-gray-500);
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 .od3d-hero__visual {
@@ -601,7 +601,7 @@
   }
 
   .od3d-use-cases span {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .od3d-hero__visual {
@@ -708,4 +708,27 @@
   .od3d-tutorial-link svg {
     transition: none;
   }
+}
+
+@media (min-width: 821px) {
+  .od3d .oc-service-hero--backdrop .oc-service-hero__visual img {
+    transform: translateX(10%);
+  }
+}
+
+
+/* Compact overview of the available scanning regions. */
+.od3d-fields { padding: 36px 28px 28px; }
+.od3d-fields .od3d-section-heading { max-width: none; margin-bottom: 24px; text-align: left; }
+.od3d-fields .od3d-eyebrow::after { margin-inline: 0; }
+.od3d-fields .od3d-section-heading h2 { font-size: clamp(26px, 2.6vw, 32px); }
+.od3d-field-card { min-height: 0; padding: 20px; gap: 14px; }
+.od3d-field-card h3 { font-size: 19px; }
+.od3d-field-card .od3d-field-card__dimensions { margin-bottom: 10px; }
+.od3d-field-card p:last-child { margin-bottom: 0; }
+.od3d-field-card__region { width: 56px; height: 56px; flex: 0 0 56px; color: var(--oc-gray-500); }
+.od3d-field-card__region-highlight { fill: rgb(210 0 80 / .08); stroke: var(--oc-magenta); stroke-width: 1.5; }
+@media (max-width: 600px) {
+  .od3d-fields { padding: 28px 18px 20px; }
+  .od3d-field-card { padding: 18px; }
 }

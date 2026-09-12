@@ -75,17 +75,15 @@ const Kontakt = () => {
         <div className="oc-container oc-contact-content">
           <section className="oc-contact-main" aria-labelledby="contact-form-title">
             <div className="oc-contact-aside">
-              <h2>
-                Tu smo da odgovorimo na Vaša pitanja, pružimo dodatne
-                informacije i podržimo Vas u korišćenju naših usluga.
-              </h2>
+              <h2>Tu smo za Vas.</h2>
               <p className="oc-contact-aside__intro">
-                Ostanite informisani o svim novostima i promenama u radu naših
-                centara putem naših zvaničnih profila.
+                Kontaktirajte nas za sve dodatne informacije i podršku.
               </p>
 
               <div className="oc-contact-aside__trust">
-                <p>Pratite nas</p>
+                <p className="oc-contact-social-intro">
+                  Ostanite informisani o svim novostima i promenama u radu naših centara putem naših zvaničnih profila.
+                </p>
                 <div className="oc-contact-social-links">
                   {socialLinks.map(({ href, label, icon: Icon }) => (
                     <a key={label} href={href} aria-label={label}>
@@ -168,9 +166,7 @@ const Kontakt = () => {
         <section className="oc-contact-note">
           <div className="oc-container">
             <p>
-              Potrebne su Vam informacije o radnom vremenu ili direktan kontakt
-              sa centrom? Sve brojeve telefona i adrese po gradovima možete
-              pronaći na stranici <SiteLink to="/lokacije">Lokacije</SiteLink>.
+              Detaljne informacije o radnom vremenu i kontakt telefonima naših centara dostupne su na stranici <SiteLink to="/lokacije">Lokacije</SiteLink>.
             </p>
           </div>
         </section>

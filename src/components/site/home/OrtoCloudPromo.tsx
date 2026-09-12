@@ -1,4 +1,4 @@
-import { CheckCircle2, Cloud } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import cloudImage from "@/assets/home/ortocloud-phone.webp";
 import cloudImageSmall from "@/assets/home/ortocloud-phone-960.webp";
 import { SiteLink } from "@/components/site/SiteLink";
@@ -15,7 +15,7 @@ export default function OrtoCloudPromo() {
         <span className="oc-rule" />
         <p>Pristupite svojim snimcima bilo kada i bilo gde putem OrtoCloud platforme.</p>
         <ul>{benefits.map((benefit) => <li key={benefit}><CheckCircle2 aria-hidden="true" /> {benefit}</li>)}</ul>
-        <SiteLink to="/ortocloud" className="oc-button oc-button--primary"><Cloud aria-hidden="true" /> OrtoCloud Login</SiteLink>
+        <SiteLink to="/ortocloud" className="oc-button oc-button--primary">Saznaj više <ArrowRight aria-hidden="true" /></SiteLink>
       </div>
     </section>
   );

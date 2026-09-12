@@ -199,3 +199,44 @@
 @media (prefers-reduced-motion: reduce) {
   .ortocloud-theme *, .ortocloud-theme *::before, .ortocloud-theme *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+.odc-platform-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin: 0 auto; }
+.odc-platform-cards article { display: flex; flex-direction: column; padding: clamp(28px, 3vw, 40px); background: var(--odc-soft); border: 0; border-radius: var(--oc-radius-lg); }
+.odc-platform-cards__icon { display: grid; place-items: center; width: 40px; height: 40px; background: transparent; color: var(--oc-magenta); border-radius: 0; }
+.odc-platform-cards__icon svg { width: 24px; height: 24px; }
+.odc-platform-cards h3 { margin: 28px 0 20px; font-size: 24px; font-weight: 500; line-height: 1.25; letter-spacing: -.035em; }
+.odc-platform-cards p { margin: 0; color: var(--oc-gray-500); font-size: 16px; line-height: 1.75; }
+.odc-platform-cards small { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--odc-line); color: var(--oc-ink); font-size: 13px; font-weight: 600; }
+@media (max-width: 800px) { .odc-platform-cards { grid-template-columns: 1fr; gap: 16px; } .odc-platform-cards h3 { margin-top: 20px; } }
+
+.odc-retention__strip article { grid-template-columns: 1fr; }
+.odc-retention article div > small { max-width: none; font-size: 14px; line-height: 1.6; }
+
+.odc-experiences > .odc-container > .odc-section-heading { margin-bottom: 56px; }
+
+/* Match the main site's spacing between sections and content. */
+.ortocloud-theme :is(.odc-experiences, .odc-retention, .odc-access) {
+  padding-block: var(--oc-section, clamp(72px, 8vw, 112px));
+}
+.ortocloud-theme .odc-section-heading { margin-bottom: 56px; }
+.ortocloud-theme .odc-section-heading h2 { margin-bottom: 18px; }
+.odc-hero__copy { padding-block: 72px; }
+.odc-hero__logo { margin-bottom: 28px; }
+.odc-hero__lead { margin-bottom: 36px; }
+.odc-download__copy { padding-block: 80px; }
+.odc-download h2 { margin-bottom: 24px; }
+.odc-download__copy > p:not(.odc-eyebrow) { margin-bottom: 36px; }
+.odc-store-row { gap: 14px; }
+.odc-access__paths article { padding-block: 40px; gap: 20px; }
+.odc-access article p { margin-bottom: 28px; font-size: 16px; line-height: 1.7; }
+.odc-access .odc-button { min-height: 48px; font-size: 14px; padding: 12px 20px; }
+.odc-retention__strip article { padding-block: 20px; }
+.odc-retention article strong { margin-block: 10px 16px; }
+@media (max-width: 640px) {
+  .ortocloud-theme :is(.odc-experiences, .odc-retention, .odc-access) { padding-block: 64px; }
+  .ortocloud-theme .odc-section-heading { margin-bottom: 36px; }
+  .odc-hero__copy { padding-block: 56px; }
+  .odc-download__copy { padding-block: 56px; }
+  .odc-access__paths article { padding-block: 32px; gap: 16px; }
+  .odc-retention__strip article { padding-block: 28px; }
+}

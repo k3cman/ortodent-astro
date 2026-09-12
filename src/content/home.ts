@@ -2,8 +2,12 @@ export const homeContent = {
   hero: {
     eyebrow: "Dentalna radiologija",
     title: "Precizna 2D i 3D dijagnostika.",
-    description: "13 centara. Bez zakazivanja.\nRezultati dostupni putem OrtoClouda.",
-    locations: ["Beograd", "Novi Sad", "Pančevo"],
+    description: "Snimanje zuba bez zakazivanja. Na 14 lokacija.\nRezultati dostupni odmah putem OrtoCloud platforme.",
+    locations: [
+      { label: "Beograd", href: "/lokacije/beograd" },
+      { label: "Novi Sad", href: "/lokacije/novi-sad" },
+      { label: "Pančevo", href: "/lokacije/pancevo" },
+    ],
   },
   services: [
     {
@@ -28,10 +32,10 @@ export const homeContent = {
   dentistBenefits: [
     ["01", "Rezultati online", "Pristupite nalazima odmah, bilo kada i bilo gde."],
     ["02", "Precizna dijagnostika", "2D, 3D/CBCT i kefalometrijske analize visoke preciznosti."],
-    ["03", "Jednostavna saradnja", "Delite nalaze, komunikacija i podrška bez zastoja."],
+    ["03", "Jednostavna saradnja", "Komunikacija i podrška bez zastoja."],
   ],
   stats: [
-    ["13", "centara"],
+    ["14", "lokacija"],
     ["500K+", "snimaka"],
     ["17", "godina iskustva"],
   ],

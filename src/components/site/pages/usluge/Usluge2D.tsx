@@ -1,4 +1,3 @@
-import { Cloud } from "lucide-react";
 import ServiceHero from "@/components/site/ServiceHero";
 import heroClinician from "@/assets/site/2d/hero-clinician.png";
 import {
@@ -13,7 +12,6 @@ import {
 } from "@/content/usluge/images";
 
 type EditorialCardProps = {
-  eyebrow: string;
   title: string;
   children: React.ReactNode;
   image: string;
@@ -23,7 +21,6 @@ type EditorialCardProps = {
 };
 
 const EditorialCard = ({
-  eyebrow,
   title,
   children,
   image,
@@ -33,7 +30,6 @@ const EditorialCard = ({
 }: EditorialCardProps) => (
   <article className="oc-2d-card oc-2d-card--secondary">
     <div className="oc-2d-card__copy">
-      <p className="oc-2d-eyebrow">{eyebrow}</p>
       <h2>{title}</h2>
       <div className="oc-2d-card__body">{children}</div>
     </div>
@@ -56,7 +52,7 @@ export const Usluge2D = () => (
     <ServiceHero
       eyebrow="2D dijagnostika"
       title="2D rendgenski snimci"
-      lead="Ortopantomogram je panoramski snimak koji pruža sveobuhvatan prikaz obe vilice, svih zuba, viličnih zglobova i okolnih struktura."
+      lead="Dvodimenzionalni rendgenski snimci pružaju jasan prikaz zuba, vilica i okolnih anatomskih struktura i predstavljaju važan deo svakodnevne stomatološke dijagnostike. U zavisnosti od indikacije, dostupne su različite vrste snimaka prilagođene potrebama pacijenta i terapije."
       image={heroClinician.src}
       imageAlt="Radiološki tehničar analizira panoramski snimak zuba"
       imagePosition="center"
@@ -66,7 +62,6 @@ export const Usluge2D = () => (
     <div className="oc-2d-stack">
       <article className="oc-2d-card oc-2d-card--retro">
         <div className="oc-2d-card__copy">
-          <p className="oc-2d-eyebrow">Retroalveolarno i retrokoronalno</p>
           <h2>Retroalveolarni i retrokoronalni snimak</h2>
           <div className="oc-2d-card__body">
             <p>
@@ -117,7 +112,6 @@ export const Usluge2D = () => (
 
       <article className="oc-2d-card oc-2d-card--wide">
         <div className="oc-2d-card__copy">
-          <p className="oc-2d-eyebrow">Ortopantomogram</p>
           <h2>Ortopantomogram</h2>
           <div className="oc-2d-card__body">
             <p>
@@ -142,7 +136,6 @@ export const Usluge2D = () => (
 
       <div className="oc-2d-grid">
         <EditorialCard
-          eyebrow="Kefalometrija"
           title="Lateralni kefalogram"
           image={KEFALOGRAM_SRC}
           imageAlt="Lateralni kefalogram glave u profilnoj projekciji"
@@ -159,7 +152,6 @@ export const Usluge2D = () => (
         </EditorialCard>
 
         <EditorialCard
-          eyebrow="Kefalometrija"
           title="PA (posteroanteriorni) kefalogram"
           image={PA_KEFALOGRAM_SRC}
           imageAlt="PA kefalogram glave iz prednje projekcije"
@@ -175,7 +167,6 @@ export const Usluge2D = () => (
         </EditorialCard>
 
         <EditorialCard
-          eyebrow="Dodatna dijagnostika"
           title="Snimak paranazalnih šupljina"
           image={PARANAZALNE_SUPLJINE_SRC}
           imageAlt="Rendgenski snimak paranazalnih šupljina"
@@ -191,7 +182,6 @@ export const Usluge2D = () => (
         </EditorialCard>
 
         <EditorialCard
-          eyebrow="Dodatna dijagnostika"
           title="Snimak TM zglobova"
           image={TM_ZGLOBOVI_SRC}
           imageAlt="Rendgenski snimak temporomandibularnih zglobova"
@@ -209,7 +199,6 @@ export const Usluge2D = () => (
 
       <article className="oc-2d-card oc-2d-card--wide oc-2d-card--analysis">
         <div className="oc-2d-card__copy">
-          <p className="oc-2d-eyebrow">Napredne analize</p>
           <h2>Tomografske analize</h2>
           <div className="oc-2d-card__body">
             <p>
@@ -232,13 +221,6 @@ export const Usluge2D = () => (
       </article>
     </div>
 
-    <aside className="oc-2d-cloud-note">
-      <Cloud aria-hidden="true" />
-      <p>
-        Svi 2D rendgenski snimci dostupni su i putem <strong>OrtoCloud</strong>{" "}
-        platforme,
-        <br /> za brz i siguran pristup vašim snimcima, bilo gde i bilo kada.
-      </p>
-    </aside>
+
   </section>
 );

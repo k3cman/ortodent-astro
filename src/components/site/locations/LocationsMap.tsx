@@ -8,6 +8,7 @@ import "leaflet/dist/leaflet.css";
 interface LocationsMapProps {
   locations: readonly Location[];
   selectedId?: number;
+  focusTarget?: Location;
   onSelect?: (location: Location) => void;
   className?: string;
 }
@@ -15,6 +16,7 @@ interface LocationsMapProps {
 export default function LocationsMap({
   locations,
   selectedId,
+  focusTarget,
   onSelect,
   className = "min-h-[480px]",
 }: LocationsMapProps) {
@@ -119,7 +121,7 @@ export default function LocationsMap({
       duration: 0.6,
     });
     marker.openPopup();
-  }, [selectedId]);
+  }, [selectedId, focusTarget]);
 
   return (
     <div

@@ -1,20 +1,17 @@
 import {
   ChevronRight,
-  Cloud,
   Facebook,
-  Headphones,
   Instagram,
-  Linkedin,
-  MapPin,
 } from "lucide-react";
+import footerLogo from "@/assets/footer-logo.png";
 import { SiteLink } from "@/components/site/SiteLink";
 
 const quickLinks = [
   ["Lokacije", "/lokacije"],
-  ["Kontakt", "/kontakt"],
   ["Cenovnik", "/cenovnik"],
-  ["Za stomatologe", "/za-doktore"],
   ["Informacije", "/informacije"],
+  ["Za stomatologe", "/za-doktore"],
+  ["Kontakt", "/kontakt"],
 ] as const;
 
 const serviceLinks = [
@@ -27,7 +24,6 @@ const serviceLinks = [
 const socialLinks = [
   { label: "Facebook", icon: Facebook },
   { label: "Instagram", icon: Instagram },
-  { label: "LinkedIn", icon: Linkedin },
 ] as const;
 
 export default function Footer() {
@@ -54,8 +50,7 @@ export default function Footer() {
               className="oc-footer__brandmark"
               aria-label="OrtoDent naslovna"
             >
-              <span aria-hidden="true">D</span>
-              <strong>OrtoDent</strong>
+              <img src={footerLogo.src} alt="OrtoDent 3D — Digitalna dentalna radiologija" width={footerLogo.width} height={footerLogo.height} />
             </SiteLink>
             <p>
               Digitalna dijagnostika koja donosi preciznost, sigurnost i
@@ -95,26 +90,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="oc-footer__features">
-          <SiteLink to="/lokacije" className="oc-footer__feature">
-            <MapPin aria-hidden="true" />
-            <span>13 centara širom regiona</span>
-          </SiteLink>
-          <SiteLink to="/ortocloud" className="oc-footer__feature">
-            <Cloud aria-hidden="true" />
-            <span>OrtoCloud platforma</span>
-          </SiteLink>
-          <SiteLink to="/kontakt" className="oc-footer__feature">
-            <Headphones aria-hidden="true" />
-            <span>Podrška 24/7</span>
-          </SiteLink>
-        </div>
-
         <div className="oc-footer__bottom">
           <span>© 2026 OrtoDent. Sva prava zadržana.</span>
           <nav aria-label="Pravne informacije">
-            <a href="#">Politika privatnosti</a>
-            <a href="#">Uslovi korišćenja</a>
+            <SiteLink to="/politika-privatnosti">Politika privatnosti</SiteLink>
+            <SiteLink to="/uslovi-koriscenja">Uslovi korišćenja</SiteLink>
           </nav>
         </div>
       </div>

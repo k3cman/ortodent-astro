@@ -30,8 +30,8 @@ export const DAILY_LOCATION_OPENING_HOURS: OpeningHours = {
   wednesday: { open: "08:00", close: "20:00" },
   thursday: { open: "08:00", close: "20:00" },
   friday: { open: "08:00", close: "20:00" },
-  saturday: { open: "08:00", close: "20:00" },
-  sunday: { open: "08:00", close: "20:00" },
+  saturday: { open: "09:00", close: "16:00" },
+  sunday: null,
 };
 
 export interface LocationPracticalInfo {

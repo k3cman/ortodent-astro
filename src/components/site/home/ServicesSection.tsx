@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import cbctImage from "@/assets/home/cbct-patient.webp";
 import cbctImageSmall from "@/assets/home/cbct-patient-640.webp";
 import { homeContent } from "@/content/home";
@@ -17,8 +17,8 @@ export default function ServicesSection() {
       <div className="oc-container">
         <header className="oc-section-heading">
           <p className="oc-eyebrow">Usluge</p>
-          <h2 id="services-title">Naše usluge</h2>
-          <p>Napredna dijagnostika za precizne rezultate<br />i sigurnije planiranje vašeg lečenja.</p>
+          <h2 id="services-title">Najsavremenija tehnologija, minimalno zračenje</h2>
+          <p>Napredna dijagnostika za precizne rezultate<br />i sigurnije planiranje Vašeg lečenja.</p>
         </header>
 
         <div className="oc-services__grid">
@@ -41,7 +41,6 @@ export default function ServicesSection() {
           })}
         </div>
 
-        <p className="oc-services__note"><ShieldCheck aria-hidden="true" /> Svi snimci se rade uz najnižu moguću dozu zračenja i po najvišim standardima kvaliteta.</p>
       </div>
     </section>
   );

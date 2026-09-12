@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { Info } from "lucide-react";
 import belgradeImage from "@/assets/cities/beograd.jpg";
 import noviSadImage from "@/assets/cities/novi-sad.jpg";
 import pancevoImage from "@/assets/cities/pancevo.jpg";
@@ -14,6 +13,7 @@ import LocationsMap from "@/components/site/locations/LocationsMap";
 import OrtoCloudBanner from "@/components/site/locations/OrtoCloudBanner";
 import {
   centerCountLabel,
+  getLocationServices,
   getCityBySlug,
   getLocationsByCity,
   type Location,
@@ -49,6 +49,13 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
   const city = getCityBySlug(citySlug)!;
   const locations = useMemo(() => getLocationsByCity(citySlug), [citySlug]);
   const [selectedLocation, setSelectedLocation] = useState<Location>(locations[0]);
+  const selectLocation = (location: Location) => setSelectedLocation({ ...location });
+  const [only3D, setOnly3D] = useState(false);
+  const visibleLocations = useMemo(
+    () => only3D ? locations.filter((location) => getLocationServices(location).includes("3d")) : locations,
+    [locations, only3D],
+  );
+  const activeLocation = visibleLocations.find((location) => location.id === selectedLocation.id) ?? visibleLocations[0];
   const heroImage = cityHeroImages[citySlug];
 
   return (
@@ -64,7 +71,6 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
               <div className="od-hero-copy">
                 <p className="od-kicker">OrtoDent {city.name}</p>
                 <h1>Snimanje zuba <span>u {cityLocatives[citySlug]}</span>.</h1>
-                <p className="od-lead">{city.description} Digitalna 2D, 3D i kefalometrijska dijagnostika bez zakazivanja.</p>
                 <LocationBenefits />
               </div>
               <figure className="od-city-hero__image">
@@ -77,33 +83,44 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
 
         <section className="od-discovery-section">
           <div className="od-shell">
-            <div className="od-info-note"><Info aria-hidden="true" /><span>Za dolazak nije potrebno zakazivanje. Izaberite centar koji Vam najviše odgovara.</span></div>
-            <div className="od-region-block">
-              <p className="od-kicker">Delovi grada</p>
-              <RegionCards citySlug={citySlug} />
-            </div>
+            {citySlug === "beograd" && (
+              <div className="od-region-block">
+                <p className="od-kicker">Delovi grada</p>
+                <RegionCards citySlug={citySlug} />
+              </div>
+            )}
             <header className="od-centered-heading"><h2>Pregled centara u {cityLocatives[citySlug]}</h2><span /></header>
-            <div className="od-list-map-layout">
+            <div className="od-location-filter">
+              <label>
+                <input type="checkbox" checked={only3D} onChange={(event) => setOnly3D(event.target.checked)} />
+                <span>Samo centri sa 3D snimanjem</span>
+              </label>
+              <span role="status">{centerCountLabel(visibleLocations.length)}</span>
+            </div>
+            {visibleLocations.length === 0 ? (
+              <p className="od-info-note">U ovom području trenutno nema centara sa 3D snimanjem.</p>
+            ) : <div className="od-list-map-layout">
               <div className="od-location-list">
-                {locations.map((location) => (
+                {visibleLocations.map((location) => (
                   <LocationCard
                     key={location.id}
                     location={location}
-                    selected={selectedLocation.id === location.id}
+                    selected={activeLocation?.id === location.id}
                     showDetails
-                    onSelect={setSelectedLocation}
+                    onSelect={selectLocation}
                   />
                 ))}
               </div>
               <div className="od-sticky-map">
                 <LocationsMap
-                  locations={locations}
-                  selectedId={selectedLocation.id}
-                  onSelect={setSelectedLocation}
+                  locations={visibleLocations}
+                  selectedId={activeLocation?.id}
+                  focusTarget={activeLocation}
+                  onSelect={selectLocation}
                   className="od-map--listing"
                 />
               </div>
-            </div>
+            </div>}
             <OrtoCloudBanner />
           </div>
         </section>

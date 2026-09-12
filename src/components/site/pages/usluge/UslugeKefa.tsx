@@ -57,11 +57,7 @@ export const UslugeKefa = () => (
         title="Kefalometrijske analize"
         lead={
           <p>
-            Precizno planiranje terapije fiksnom protezom zahteva detaljan uvid
-            u odnos zuba i koštanih struktura lica. Tradicionalno, ortodonti
-            ove podatke dobijaju manuelnim merenjem razdaljina na kefalogramu,
-            što je jedan od najzahtevnijih i greškama najpodložnijih delova
-            procesa planiranja terapije.
+            Kefalometrijska analiza pruža detaljan uvid u odnose zuba, vilica i koštanih struktura lica, što ortodontu pomaže u planiranju terapije. Umesto klasičnog manuelnog merenja, analizu radimo digitalno, uz pomoć specijalizovanog softvera AudaxCeph.
           </p>
         }
         image={imageSrc(profileImage)}

@@ -721,3 +721,11 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+.oc-contact-aside__trust .oc-contact-social-intro {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: normal;
+  text-transform: none;
+}

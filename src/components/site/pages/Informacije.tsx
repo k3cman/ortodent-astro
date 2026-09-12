@@ -3,7 +3,7 @@ import { ArrowRight, Clock, CalendarX, Sparkles, MapPin } from "lucide-react";
 import { SiteLink } from "@/components/site/SiteLink";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
-import { assetPath } from "@/lib/paths";
+import processImage from "@/assets/home/imaging-process.png";
 import {
   Accordion,
   AccordionContent,
@@ -123,18 +123,18 @@ const faqItems = [
   {
     question: "Da li deca smeju da snimaju zube?",
     answer:
-      "Da, snimanje zuba kod dece je potpuno bezbedno i od velike važnosti u pravilnom planiranju ortodontske terapije (ispravljanja zuba) kao i praćenju rasta zuba i vilica. Kod dece se koriste posebno prilagođene, niže doze zračenja, u skladu sa uzrastom i građom deteta. U našim rendgen centrima, uz savremene digitalne aparate i zaštitne mere, Vaše dete ćemo snimiti bezbolno, brzo i bezbedno.",
+      "Da, snimanje zuba kod dece je bezbedno i od velike važnosti u pravilnom planiranju ortodontske terapije kao i praćenju rasta zuba i vilica.\n\nKod dece se koriste posebno prilagođene, niže doze zračenja, u skladu sa uzrastom i građom deteta.\n\nU našim rendgen centrima, uz savremene digitalne aparate i zaštitne mere, Vaše dete ćemo snimiti bezbolno, brzo i bezbedno.\n\n**Deca** **mlađa od 15 godina** koja dolaze na snimanje zuba moraju biti **u pratnji roditelja ili staratelja.**",
   },
   {
     question: "Da li trudnice i dojilje smeju da snimaju zube?",
     answer:
-      "Savet je da se sve elektivne stomatološke dijagnostičke i terapijske procedure odlože za period nakon porođaja. Međutim, ukoliko je stomatološko lečenje neophodno, u hitnim slučajevima, snimanje se može uraditi uz dostavljen uput stomatologa i potpisanu saglasnost trudnice. Rendgenski snimci zuba imaju veoma malu dozu zračenja, a uz upotrebu zaštitne olovne kecelje, rizik za Vašu bebu je gotovo nepostojeći. Za dojilje, dijagnostičko snimanje zuba je potpuno bezbedno i ne zahteva prekid u dojenju.",
+      "Savet je da se sve elektivne stomatološke dijagnostičke i terapijske procedure odlože za period nakon porođaja. Međutim, ukoliko je stomatološko lečenje neophodno, **u hitnim slučajevima, snimanje se može uraditi** uz dostavljen uput stomatologa i potpisanu saglasnost trudnice.\n\nRendgenski snimci zuba imaju veoma malu dozu zračenja, a uz upotrebu zaštitne olovne kecelje, rizik za Vašu bebu je gotovo nepostojeći.\n\nIzuzetno je važno da pre snimanja naglasite Vašem stomatologu i našem osoblju da ste u drugom stanju, kako bismo prilagodili protokol Vašem stanju.\n\nŠto se tiče dojilja, dijagnostičko snimanje zuba je potpuno bezbedno. **Snimanje ne zahteva nikakav prekid u dojenju**, jer se zračenje ne zadržava u majčinom mleku.",
   },
   {
     question:
       "Kada i na koji način dobijam svoj snimak i kako mogu da ga podelim sa stomatologom?",
     answer:
-      "**Vaš snimak je dostupan odmah** nakon završetka procesa snimanja putem Vašeg ličnog OrtoCloud naloga. Stomatolog koji Vas je uputio na snimanje dobija pristup snimku putem naše platforme čim se proces završi.\n\n**Lako deljenje i čuvanje:** Putem aplikacije snimak možete preuzeti na svoj uređaj ili ga proslediti bilo kom drugom stomatologu putem e-maila.\n\n**Fizički format:** Na Vaš zahtev, snimke možemo izraditi i u fizičkom obliku (film ili CD) uz odgovarajuću doplatu.",
+      "Vaš **snimak je dostupan odmah** nakon završetka procesa snimanja **putem** Vašeg ličnog **OrtoCloud naloga**. Stomatolog koji Vas je uputio na snimanje dobija pristup snimku putem naše platforme čim se proces završi.\n\nPutem aplikacije snimak možete **preuzeti** na svoj uređaj ili ga **proslediti** bilo kome putem e-maila ili drugih društvenih mreža.\n\nNa Vaš zahtev, snimke možemo izraditi i u fizičkom obliku (film ili CD) uz odgovarajuću doplatu.",
   },
   {
     question: "Koliko dugo je snimak zuba validan za stomatologa?",
@@ -151,8 +151,9 @@ const Informacije = () => {
         <section className="oc-page-intro oc-page-intro--utility">
           <div className="oc-container">
             <div className="oc-page-intro__copy">
+              <p className="oc-eyebrow">Informacije za pacijente</p>
               <h1>
-                Sve što treba da znate o snimanju zuba.
+                Sve što treba da znate o snimanju zuba<span className="oc-dot">.</span>
               </h1>
               <p className="oc-page-intro__lead">
                 Vaš vodič kroz proces snimanja u OrtoDentu.
@@ -194,8 +195,8 @@ const Informacije = () => {
               </ol>
               <figure className="oc-information-process__visual">
                 <img
-                  src={assetPath("/images/informacije.jpg")}
-                  alt="Stomatolog u ordinaciji pregleda 3D snimak zuba na tabletu"
+                  src={processImage.src}
+                  alt="Zaposlena priprema pacijentkinju uz aparat za dentalno snimanje"
                   loading="eager"
                   decoding="async"
                 />
@@ -232,9 +233,9 @@ const Informacije = () => {
         <section className="oc-information-cta">
           <div className="oc-container">
             <div className="oc-information-cta__inner">
-              <div><MapPin aria-hidden="true" /><div><h2>Posetite nas još danas.</h2></div></div>
+              <div><MapPin aria-hidden="true" /><div><h2>Pronađite svoj OrtoDent centar.</h2><p>Pogledajte adrese, radno vreme i kontakt podatke naših 14 lokacija.</p></div></div>
               <SiteLink className="oc-button oc-button--primary" to="/lokacije">
-                Pronađi lokaciju <ArrowRight aria-hidden="true" />
+                Pronađite najbližu lokaciju <ArrowRight aria-hidden="true" />
               </SiteLink>
             </div>
           </div>

@@ -1,21 +1,13 @@
 import { useEffect, useState } from "react";
-import { Map, MapPin, ScanLine } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SiteLink } from "@/components/site/SiteLink";
 import CityCards from "@/components/site/locations/CityCards";
-import LocationBenefits from "@/components/site/locations/LocationBenefits";
 import LocationsMap from "@/components/site/locations/LocationsMap";
-import OrtoCloudBanner from "@/components/site/locations/OrtoCloudBanner";
 import { centerCountLabel, LOCATIONS } from "@/lib/locations";
 import { withSiteProviders } from "@/components/site/withSiteProviders";
 import "@/components/site/locations/locations.css";
-
-const steps = [
-  [Map, "01", "Izaberite grad", "Odaberite grad u kojem želite da pronađete OrtoDent centar."],
-  [MapPin, "02", "Pronađite centar", "Pogledajte dostupne centre po regionima, na mapi ili u listi."],
-  [ScanLine, "03", "Snimajte bez čekanja", "Dođite bez zakazivanja i uradite snimanje."],
-] as const;
 
 function Lokacije() {
   const [compactLayout, setCompactLayout] = useState(false);
@@ -41,11 +33,10 @@ function Lokacije() {
             <div className="od-hero-grid">
               <div className="od-hero-copy">
                 <p className="od-kicker"><MapPin aria-hidden="true" /> Lokacije</p>
-                <h1>Pronađite najbliži <span>OrtoDent</span> centar.</h1>
+                <h1>Pronađite najbliži <span>OrtoDent</span> rendgen centar.</h1>
                 <p className="od-lead">
-                  Digitalna preciznost dostupna na više lokacija. Izaberite grad i pronađite centar najbliži Vama.
+                  Izaberite grad i pronađite centar za snimanje zuba najbliži Vama.
                 </p>
-                <LocationBenefits />
               </div>
 
               {!compactLayout && <div className="od-hero-map">
@@ -73,22 +64,7 @@ function Lokacije() {
           </div>
         </section>
 
-        <section className="od-process-section">
-          <div className="od-shell">
-            <header className="od-centered-heading"><h2>Kako funkcioniše?</h2><span /></header>
-            <div className="od-process-grid">
-              {steps.map(([Icon, number, title, description]) => (
-                <article key={number}>
-                  <span className="od-process-grid__icon"><Icon aria-hidden="true" /></span>
-                  <strong>{number}</strong>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
-            <OrtoCloudBanner />
-          </div>
-        </section>
+
       </main>
       <Footer />
     </div>

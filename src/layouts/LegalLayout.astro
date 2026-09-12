@@ -1,0 +1,32 @@
+---
+import SiteLayout from "./SiteLayout.astro";
+import Header from "@/components/site/Header";
+import Footer from "@/components/site/Footer";
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+---
+<SiteLayout title={`${title} — OrtoDent`} description={description}>
+  <div class="oc-site">
+    <Header client:load />
+    <main>
+      <section class="oc-page-intro">
+        <div class="oc-container">
+          <p class="oc-eyebrow">OrtoDent</p>
+          <h1>{title}</h1>
+          <p class="oc-page-intro__lead">{description}</p>
+        </div>
+      </section>
+      <article class="oc-container oc-legal-content"><slot /></article>
+    </main>
+    <Footer />
+  </div>
+</SiteLayout>
+<style>
+  .oc-legal-content { max-width: 900px; padding-block: 64px 96px; }
+  .oc-legal-content :global(section + section) { margin-top: 40px; }
+  .oc-legal-content :global(h2) { font-size: clamp(24px, 3vw, 30px); line-height: 1.25; margin-bottom: 16px; }
+  .oc-legal-content :global(p), .oc-legal-content :global(li) { color: var(--oc-gray-700); line-height: 1.8; }
+  .oc-legal-content :global(a) { color: var(--oc-magenta); text-decoration: underline; text-underline-offset: 4px; }
+  .oc-legal-content :global(ul) { list-style: disc; padding-left: 24px; }
+  .oc-legal-content :global(li + li) { margin-top: 8px; }
+</style>

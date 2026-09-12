@@ -4,10 +4,10 @@ import logo from "@/assets/logo.png";
 import { SiteLink } from "@/components/site/SiteLink";
 
 const navItems = [
-  ["Informacije", "/informacije"],
   ["Cenovnik", "/cenovnik"],
-  ["Za stomatologe", "/za-doktore"],
+  ["Informacije", "/informacije"],
   ["Lokacije", "/lokacije"],
+  ["Za stomatologe", "/za-doktore"],
   ["Kontakt", "/kontakt"],
 ] as const;
 
@@ -19,9 +19,10 @@ const services = [
 
 type HeaderProps = {
   currentPath?: string;
+  transparent?: boolean;
 };
 
-export default function Header({ currentPath }: HeaderProps) {
+export default function Header({ currentPath, transparent = false }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -34,7 +35,7 @@ export default function Header({ currentPath }: HeaderProps) {
   }, []);
 
   return (
-    <header className={`oc-header${scrolled ? " is-scrolled" : ""}`}>
+    <header className={`oc-header${transparent ? " oc-header--home" : ""}${scrolled ? " is-scrolled" : ""}`}>
       <div className="oc-container oc-header__inner">
         <SiteLink to="/" className="oc-logo" aria-label="OrtoDent naslovna"><img src={logo.src} alt="OrtoDent" /></SiteLink>
         <nav className="oc-nav" aria-label="Glavna navigacija">

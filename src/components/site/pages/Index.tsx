@@ -11,13 +11,13 @@ import { withSiteProviders } from "@/components/site/withSiteProviders";
 function Index() {
   return (
     <div className="oc-site">
-      <Header />
+      <Header transparent />
       <main>
         <HeroSection />
         <ServicesSection />
-        <DentistSection />
-        <StatsSection />
         <OrtoCloudPromo />
+        <StatsSection />
+        <DentistSection />
         <ReviewsSection />
       </main>
       <Footer />

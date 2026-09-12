@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check, Cloud } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import cbctPatient from "@/assets/home/cbct-patient.webp";
 import ServiceHero from "@/components/site/ServiceHero";
 import diagnosticScreen from "@/assets/site/3d/cbct-diagnostic-screen.png";
@@ -84,12 +84,10 @@ export const Usluge3D = () => (
       eyebrow="3D dijagnostika"
       title="3D snimanja / CBCT"
       lead={
-        <p>
-          CBCT tehnologija koristi konusni snop rendgenskih zraka za dobijanje
-          preciznog 3D prikaza Vaših zuba i vilica. Za razliku od klasičnog
-          skenera (CT), CBCT koristi neuporedivo manje doze zračenja, čineći
-          snimanje maksimalno bezbednim.
-        </p>
+        <>
+          <p>CBCT — Cone Beam Computed Tomography</p>
+          <p>CBCT tehnologija koristi konusni snop rendgenskih zraka za dobijanje preciznog trodimenzionalnog prikaza zuba, vilica i okolnih anatomskih struktura. Detaljan 3D prikaz pruža stomatolozima važne informacije za dijagnostiku i precizno planiranje terapije.</p>
+        </>
       }
       image={imageSrc(cbctPatient)}
       imageAlt="Pacijentkinja tokom 3D CBCT snimanja"
@@ -118,9 +116,11 @@ export const Usluge3D = () => (
       <div className="od3d-fields__grid">
         {fieldSizes.map((field) => (
           <article className="od3d-field-card" key={field.size}>
-            <span className="od3d-field-card__marker" aria-hidden="true">
-              {field.size}
-            </span>
+            <svg className="od3d-field-card__region" viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M12 27 Q32 5 52 27 M12 37 Q32 59 52 37" fill="none" stroke="currentColor" strokeWidth="2" />
+              <path d="M18 22v9m9-13v11m10-11v11m9-7v9M18 42v-9m9 13V35m10 11V35m9 7v-9" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <rect x={field.size === "S" ? 13 : 8} y={field.size === "L" ? 8 : 13} width={field.size === "S" ? 22 : 48} height={field.size === "L" ? 48 : 22} rx="5" className="od3d-field-card__region-highlight" />
+            </svg>
             <div>
               <h3>{field.title}</h3>
               <p className="od3d-field-card__dimensions">{field.dimensions}</p>
@@ -130,14 +130,7 @@ export const Usluge3D = () => (
         ))}
       </div>
 
-      <aside className="od3d-cloud-note" aria-label="Informacije o OrtoCloud platformi">
-        <Cloud aria-hidden="true" />
-        <p>
-          3D snimci se izdaju na USB-u i otpremaju na <strong>OrtoCloud</strong>,
-          gde su 15 dana dostupni Vama i Vašem stomatologu. Pristup je moguć
-          isključivo putem računara.
-        </p>
-      </aside>
+
     </section>
 
     <section className="od3d-technology" aria-labelledby="od3d-technology-title">

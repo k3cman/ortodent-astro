@@ -10,6 +10,7 @@ import OrtoCloudBanner from "@/components/site/locations/OrtoCloudBanner";
 import RegionCards from "@/components/site/locations/RegionCards";
 import {
   centerCountLabel,
+  getLocationServices,
   getCityBySlug,
   getLocationsByRegion,
   getRegionBySlug,
@@ -32,6 +33,13 @@ function RegionLocations({
     [citySlug, regionSlug],
   );
   const [selectedLocation, setSelectedLocation] = useState<Location>(locations[0]);
+  const selectLocation = (location: Location) => setSelectedLocation({ ...location });
+  const [only3D, setOnly3D] = useState(false);
+  const visibleLocations = useMemo(
+    () => only3D ? locations.filter((location) => getLocationServices(location).includes("3d")) : locations,
+    [locations, only3D],
+  );
+  const activeLocation = visibleLocations.find((location) => location.id === selectedLocation.id) ?? visibleLocations[0];
 
   return (
     <div className="od-page">
@@ -58,27 +66,37 @@ function RegionLocations({
               <RegionCards citySlug={citySlug} activeRegion={regionSlug} />
             </div>
             <header className="od-section-heading"><p className="od-kicker">Lokalni centri</p><h2>Centri u području {region.name}</h2></header>
-            <div className="od-list-map-layout">
+            <div className="od-location-filter">
+              <label>
+                <input type="checkbox" checked={only3D} onChange={(event) => setOnly3D(event.target.checked)} />
+                <span>Samo centri sa 3D snimanjem</span>
+              </label>
+              <span role="status">{centerCountLabel(visibleLocations.length)}</span>
+            </div>
+            {visibleLocations.length === 0 ? (
+              <p className="od-info-note">U ovom području trenutno nema centara sa 3D snimanjem.</p>
+            ) : <div className="od-list-map-layout">
               <div className="od-location-list">
-                  {locations.map((location) => (
+                  {visibleLocations.map((location) => (
                     <LocationCard
                       key={location.id}
                       location={location}
-                      selected={selectedLocation.id === location.id}
+                      selected={activeLocation?.id === location.id}
                       showDetails
-                      onSelect={setSelectedLocation}
+                      onSelect={selectLocation}
                     />
                   ))}
               </div>
               <div className="od-sticky-map">
                 <LocationsMap
-                  locations={locations}
-                  selectedId={selectedLocation.id}
-                  onSelect={setSelectedLocation}
+                  locations={visibleLocations}
+                  selectedId={activeLocation?.id}
+                  focusTarget={activeLocation}
+                  onSelect={selectLocation}
                   className="od-map--region"
                 />
               </div>
-            </div>
+            </div>}
             <OrtoCloudBanner />
           </div>
         </section>

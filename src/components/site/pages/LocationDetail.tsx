@@ -1,7 +1,9 @@
 import { useMemo } from "react";
+import { sitePath } from "@/lib/paths";
 import {
   Accessibility,
   Bus,
+  Box,
   Car,
   Clock3,
   Cloud,
@@ -20,7 +22,6 @@ import LocationsMap from "@/components/site/locations/LocationsMap";
 import OpenNowStatus from "@/components/site/locations/OpenNowStatus";
 import OrtoCloudBanner from "@/components/site/locations/OrtoCloudBanner";
 import ServiceIndicators from "@/components/site/locations/ServiceIndicators";
-import WeeklyOpeningHours from "@/components/site/locations/WeeklyOpeningHours";
 import {
   distanceBetweenLocations,
   getLocationBySlug,
@@ -94,7 +95,6 @@ function LocationDetail({
 
               <aside className="od-contact-panel">
                 <h2>Kontakt i adresa</h2>
-                <p>Kontakt podaci i precizna lokacija centra.</p>
 
                 <div className="od-contact-panel__facts">
                   <div>
@@ -121,27 +121,23 @@ function LocationDetail({
                     </div>
                   </div>
                 </div>
-                <ServiceIndicators location={location} />
+                <div className="od-contact-panel__schedule">
+                  <h3>Radno vreme</h3>
+                  <p><span>Radni dani</span><strong>08:00–20:00</strong></p>
+                  <p><span>Subota</span><strong>09:00–16:00</strong></p>
+                  <p><span>Nedelja</span><strong>Ne radimo</strong></p>
+                </div>
 
               </aside>
             </div>
 
             <div className="od-practical-strip">
               <div><span><ShieldCheck aria-hidden="true" /></span><p><strong>Bez zakazivanja</strong>Dođite direktno u centar koji Vam odgovara.</p></div>
-              <div><span><Clock3 aria-hidden="true" /></span><p><strong>Radno vreme</strong>Svakog dana od 08:00 do 20:00.</p></div>
+              <div><span><Box aria-hidden="true" /></span><div><strong>Dostupna snimanja</strong><ServiceIndicators location={location} /></div></div>
               <div><span><Cloud aria-hidden="true" /></span><p><strong>OrtoCloud rezultati</strong>Brz i siguran pristup rezultatima online.</p></div>
             </div>
           </div>
         </section>
-
-        {location.openingHours && (
-          <section className="od-detail-section">
-            <div className="od-shell od-detail-section__grid">
-              <header className="od-section-heading"><p className="od-kicker">Pre dolaska</p><h2>Radno vreme</h2><p>Kompletan nedeljni raspored centra {location.name}.</p></header>
-              <WeeklyOpeningHours openingHours={location.openingHours} />
-            </div>
-          </section>
-        )}
 
         {practicalItems.length > 0 && (
           <section className="od-detail-section">
@@ -153,6 +149,16 @@ function LocationDetail({
             </div>
           </section>
         )}
+
+        <section className="od-detail-section" aria-label={`Fotografije centra ${location.name}`}>
+          <div className="od-shell od-center-gallery">
+            {[1, 2, 3].map((number) => (
+              <figure key={number}>
+                <img src={sitePath("/placeholder.svg")} alt={`Mesto za fotografiju centra ${location.name} — ${number}`} loading="lazy" />
+              </figure>
+            ))}
+          </div>
+        </section>
 
         {relatedLocations.length > 0 && (
           <section className="od-nearby-section">

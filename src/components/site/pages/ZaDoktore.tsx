@@ -5,7 +5,6 @@ import {
   Check,
   Cloud,
   Headphones,
-  MonitorSmartphone,
   Play,
   Send,
   Smartphone,
@@ -18,37 +17,16 @@ import { withSiteProviders } from "@/components/site/withSiteProviders";
 import { useToast } from "@/components/site/hooks/use-toast";
 import heroImage from "@/assets/home/dentist-workstation.webp";
 import heroImageSmall from "@/assets/home/dentist-workstation-960.webp";
-import cloudMockup from "@/assets/ortocloud/hero-mockup.png";
-import diagnosticScreen from "@/assets/site/3d/cbct-diagnostic-screen.png";
+import supportImage from "@/assets/home/dental-team-support.png";
+import cloudPhoto from "@/assets/home/dentist-patient-tablet.png";
+import cbctMachine from "@/assets/site/3d/cbct-machine.png";
 import kefaImage from "@/assets/site/kefalometrija/kefalometrija-protocol.png";
-import { assetPath } from "@/lib/paths";
 import "./za-doktore.css";
 
 const imageSrc = (image: string | { src: string }) =>
   typeof image === "string" ? image : image.src;
 
-const capabilities = [
-  {
-    title: "Digitalni pristup snimcima",
-    description: "Bez instalacija, uvek dostupno kroz OrtoCloud.",
-    Icon: Cloud,
-  },
-  {
-    title: "Brza razmena nalaza",
-    description: "Nalazi i snimci dostupni odmah nakon obrade.",
-    Icon: Send,
-  },
-  {
-    title: "Podrška za ordinacije",
-    description: "Stručna podrška našeg tima kada Vam je potrebna.",
-    Icon: Headphones,
-  },
-  {
-    title: "Pristup sa svih uređaja",
-    description: "Telefon, tablet ili računar — gde god da radite.",
-    Icon: MonitorSmartphone,
-  },
-];
+
 
 const cloudBenefits = [
   "Brz i siguran pristup snimcima",
@@ -57,46 +35,9 @@ const cloudBenefits = [
   "Pristup sa telefona, tableta ili računara",
 ];
 
-const cbctBenefits = [
-  {
-    title: "Vatech Green CT tehnologija",
-    description:
-      "Visok kvalitet slike i tehnologija niske doze za pouzdano planiranje terapije.",
-  },
-  {
-    title: "Napredna redukcija artefakata",
-    description:
-      "Čistiji prikaz regije oko metalnih krunica i implantata.",
-  },
-  {
-    title: "Brza ekspozicija",
-    description:
-      "Skeniranje traje svega nekoliko sekundi i smanjuje artefakte pokreta.",
-  },
-  {
-    title: "Digitalna dostava",
-    description:
-      "Svi 3D snimci dostupni su putem OrtoCloud platforme odmah nakon snimanja.",
-  },
-];
 
-const protocols = [
-  "Beograd",
-  "Bjork",
-  "Downs",
-  "Eastman",
-  "Hasund-Rakosi",
-  "Jarabak",
-  "McLaughlin",
-  "McNamara",
-  "Ricketts leteral",
-  "Roth-Jarabak",
-  "Sassouni plus",
-  "Schwarz",
-  "Segner-Hasund",
-  "Steiner",
-  "Tweed-Merrifield itd.",
-];
+
+
 
 const appBadges = [
   { label: "OrtoCloud", detail: "Otvorite", Icon: Cloud },
@@ -180,30 +121,12 @@ function ZaDoktore() {
           </div>
         </section>
 
-        <div className="oc-container od-pro-capabilities-wrap">
-          <motion.section
-            className="od-pro-capabilities"
-            aria-label="Prednosti saradnje sa OrtoDentom"
-            {...revealProps}
-          >
-            {capabilities.map(({ title, description, Icon }) => (
-              <article key={title}>
-                <Icon aria-hidden="true" />
-                <div>
-                  <h2>{title}</h2>
-                  <p>{description}</p>
-                </div>
-              </article>
-            ))}
-          </motion.section>
-        </div>
-
         <section className="od-pro-section od-pro-cloud" aria-labelledby="od-pro-cloud-title">
           <div className="oc-container od-pro-split od-pro-split--cloud">
             <motion.figure className="od-pro-cloud__visual" {...revealProps}>
               <img
-                src={imageSrc(cloudMockup)}
-                alt="OrtoCloud platforma na laptopu i mobilnom telefonu"
+                src={imageSrc(cloudPhoto)}
+                alt="Stomatolog pokazuje pacijentkinji panoramski snimak zuba na tabletu"
                 loading="lazy"
                 decoding="async"
               />
@@ -240,33 +163,26 @@ function ZaDoktore() {
           </div>
         </section>
 
-        <section className="od-pro-section od-pro-cbct" aria-labelledby="od-pro-cbct-title">
-          <div className="oc-container od-pro-split od-pro-split--cbct">
-            <motion.div className="od-pro-copy" {...revealProps}>
-              <p className="od-pro-eyebrow">3D dijagnostika</p>
-              <h2 id="od-pro-cbct-title">3D / CBCT dijagnostika</h2>
-              <p className="od-pro-lead">
-                Naši centri su opremljeni Vatech aparatima najnovije generacije
-                za precizno planiranje implantata, hirurških zahvata i složenih
-                endodontskih tretmana.
-              </p>
-              <ul className="od-pro-benefits">
-                {cbctBenefits.map((benefit) => (
-                  <li key={benefit.title}>
-                    <span className="od-pro-benefits__mark"><Check aria-hidden="true" /></span>
-                    <span><strong>{benefit.title}</strong>{benefit.description}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-            <motion.figure className="od-pro-diagnostic" {...revealProps}>
-              <img
-                src={imageSrc(diagnosticScreen)}
-                alt="CBCT dijagnostički prikaz u Ez3D-i softveru"
-                loading="lazy"
-                decoding="async"
-              />
-            </motion.figure>
+        <section className="od-pro-section od-pro-services" aria-label="Dijagnostička podrška za stomatologe">
+          <div className="oc-container od-pro-services__grid">
+            <motion.article className="od-pro-service-card" {...revealProps}>
+              <div className="od-pro-service-card__copy">
+                <p className="od-pro-eyebrow">Vatech tehnologija</p>
+                <h2>Precizan 3D prikaz. Pouzdano planiranje.</h2>
+                <p>Vatech aparati najnovije generacije pružaju detaljan uvid u zube i vilice za planiranje implantata, hirurških zahvata i endodontskih tretmana.</p>
+                <SiteLink to="/usluge/3d" className="od-pro-text-link">Više o 3D snimanju <ArrowRight aria-hidden="true" /></SiteLink>
+              </div>
+              <img src={imageSrc(cbctMachine)} alt="Vatech aparat za 3D CBCT snimanje" loading="lazy" decoding="async" />
+            </motion.article>
+            <motion.article className="od-pro-service-card" {...revealProps}>
+              <div className="od-pro-service-card__copy">
+                <p className="od-pro-eyebrow">KefAnalize</p>
+                <h2>Digitalne analize. Podrška ortodontu.</h2>
+                <p>Kefalometrijska merenja priprema naš stručni tim uz AudaxCeph softver i nadzor specijalista ortodoncije. Analize su dostupne putem OrtoClouda.</p>
+                <SiteLink to="/usluge/kefalometrija" className="od-pro-text-link">Više o kefalometrijskim analizama <ArrowRight aria-hidden="true" /></SiteLink>
+              </div>
+              <img src={imageSrc(kefaImage)} alt="Lateralni kefalogram i kefalometrijski crtež" loading="lazy" decoding="async" />
+            </motion.article>
           </div>
         </section>
 
@@ -306,36 +222,21 @@ function ZaDoktore() {
           </div>
         </section>
 
-        <section className="od-pro-section od-pro-kefa" aria-labelledby="od-pro-kefa-title">
-          <div className="oc-container od-pro-split od-pro-split--kefa">
-            <motion.figure className="od-pro-kefa__visual" {...revealProps}>
-              <img
-                src={imageSrc(kefaImage)}
-                alt="Lateralni kefalogram i kefalometrijski crtež"
-                loading="lazy"
-                decoding="async"
-              />
-            </motion.figure>
-            <motion.div className="od-pro-copy" {...revealProps}>
-              <p className="od-pro-eyebrow">KefAnalize</p>
-              <h2 id="od-pro-kefa-title">Kefalometrijske analize</h2>
-              <img
-                className="od-pro-kefa__logo"
-                src={assetPath("/images/Kef-analize-logo.png")}
-                alt="KefAnalize dentamed"
-                loading="lazy"
-                decoding="async"
-              />
-              <p className="od-pro-lead">
-                Digitalna kefalometrijska merenja priprema naš stručni tim uz
-                AudaxCeph softver i nadzor specijalista ortodoncije. Analize su
-                standardizovane, spremne za planiranje terapije i dostupne na
-                OrtoCloudu maksimalno 48h od snimanja kefalograma.
-              </p>
-              <div className="od-pro-protocols">
-                <h3>Podržani standardi</h3>
-                <ul>{protocols.map((protocol) => <li key={protocol}>{protocol}</li>)}</ul>
+        <section className="od-pro-section od-pro-support" aria-labelledby="od-pro-support-title">
+          <div className="oc-container">
+            <motion.div className="od-pro-support__inner" {...revealProps}>
+              <div className="od-pro-support__copy">
+              <h2 id="od-pro-support-title">Saradnja na koju možete da se oslonite</h2>
+              <div className="od-pro-support__text">
+                <p>Verujemo da kvalitetna saradnja podrazumeva više od vrhunske dijagnostike – ona podrazumeva dostupnost, brzu komunikaciju i podršku na koju možete da računate u svakom trenutku.</p>
+                <p>Naš tim pruža kompletnu podršku stomatolozima sa kojima sarađujemo – od izrade snimaka i prikaza ciljanih anatomskih struktura, do instalacije i korišćenja 3D softvera i OrtoCloud platforme.</p>
+                <p>Za sva pitanja, zahteve ili tehničke nedoumice, tu smo da brzo pronađemo rešenje. Bez komplikovanih procedura i nepotrebnog čekanja – bez obzira na to koji naš centar kontaktirate, Vaš zahtev brzo dolazi do odgovarajućeg člana našeg tima.</p>
+                <p className="od-pro-support__closing">Moderna dijagnostika, uz podršku ljudi na koje možete da računate. Precizno, brzo i ljudski.</p>
               </div>
+              </div>
+              <figure className="od-pro-support__visual">
+                <img src={supportImage.src} alt="Stomatolog i radiološka tehničarka zajedno pregledaju dentalni snimak" loading="lazy" decoding="async" />
+              </figure>
             </motion.div>
           </div>
         </section>

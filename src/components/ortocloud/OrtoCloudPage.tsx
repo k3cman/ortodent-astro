@@ -5,7 +5,6 @@ import HeroSection from "./sections/HeroSection";
 import FeaturesSection from "./sections/FeaturesSection";
 import DownloadSection from "./sections/DownloadSection";
 import AccessSection from "./sections/AccessSection";
-import ContactSection from "./sections/ContactSection";
 import "./ortocloud.css";
 
 export default function OrtoCloudPage() {
@@ -18,7 +17,6 @@ export default function OrtoCloudPage() {
           <FeaturesSection />
           <DownloadSection />
           <AccessSection />
-          <ContactSection />
         </main>
         <SiteFooter />
       </div>
