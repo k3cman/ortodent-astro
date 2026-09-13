@@ -1,8 +1,9 @@
 import { FolderOpen, Share2, Zap } from "lucide-react";
+import type { ReactNode } from "react";
 
 const platformFeatures = [
   { icon: Zap, title: "Snimci na dohvat ruke", text: "Stomatolozima i pacijentima snimci su dostupni odmah nakon snimanja. Pristupite im putem svog naloga, gde god da se nalazite.", detail: "Bez odlaska po snimke." },
-  { icon: Share2, title: "Lakši pregled i konsultacije", text: "Pregledajte detalje na ekranu i jednostavno prosledite snimak stomatologu ili kolegama radi konsultacije i drugog mišljenja.", detail: "Brže do potrebnih informacija." },
+  { icon: Share2, title: "Lakši pregled i konsultacije", text: "Jasniji prikaz na ekranu i mogućnost uveličavanja olakšavaju pregled snimaka. Jednostavno deljenje sa stomatolozima ili kolegama radi konsultacije i drugog mišljenja.", detail: "Brže do potrebnih informacija." },
   { icon: FolderOpen, title: "Sve na svom mestu", text: "Organizovana digitalna arhiva olakšava pronalaženje snimaka. Podaci se čuvaju na sigurnim serverima, uz manje potrebe za fizičkim kopijama.", detail: "Pregledno. Dostupno. Sigurno." },
 ] as const;
 
@@ -12,7 +13,7 @@ const retentionPolicies = [
   { icon: "K", label: "Kefalometrijske analize", value: "Dva dokumenta", text: "Detaljna analiza i obeležen snimak za stručnu upotrebu. Pristup isključivo preko korisničkog naloga stomatologa." },
 ] as const;
 
-export default function FeaturesSection() {
+export default function FeaturesSection({ children }: { children?: ReactNode }) {
   return (
     <>
       <section id="iskustva" className="odc-experiences" aria-labelledby="odc-experiences-title">
@@ -29,6 +30,8 @@ export default function FeaturesSection() {
           </div>
         </div>
       </section>
+
+      {children}
 
       <section id="cuvanje-podataka" className="odc-retention" aria-labelledby="odc-retention-title">
         <div className="odc-container">

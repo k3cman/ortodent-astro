@@ -144,7 +144,7 @@ const Kontakt = () => {
 
               <button type="submit" className="oc-contact-submit">
                 <Send aria-hidden="true" />
-                Pošalji poruku
+                Pošaljite poruku
               </button>
             </form>
           </section>

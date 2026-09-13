@@ -79,11 +79,13 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
         </nav>
         <div className="oc-header__actions">
           <SiteLink to="/ortocloud" className="oc-cloud-link"><Cloud aria-hidden="true" /> OrtoCloud</SiteLink>
-          <button className="oc-menu-toggle" type="button" aria-label={open ? "Zatvori meni" : "Otvori meni"} aria-expanded={open} onClick={() => setOpen((value) => !value)}>{open ? <X /> : <Menu />}</button>
+          <button className="oc-menu-toggle" type="button" aria-label={open ? "Zatvori meni" : "Otvori meni"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen((value) => !value)}>{open ? <X /> : <Menu />}</button>
         </div>
       </div>
       {open && (
-        <nav className="oc-mobile-nav" aria-label="Mobilna navigacija">
+        <>
+        <button className="oc-mobile-nav-backdrop" type="button" aria-label="Zatvori mobilnu navigaciju" onClick={() => setOpen(false)} />
+        <nav id="mobile-navigation" className="oc-mobile-nav" aria-label="Mobilna navigacija" onKeyDown={(event) => { if (event.key === "Escape") { setOpen(false); document.querySelector<HTMLButtonElement>(".oc-menu-toggle")?.focus(); } }}>
           {services.map(([label, href]) => <SiteLink key={href} to={href} onClick={() => setOpen(false)}>{label}</SiteLink>)}
           {navItems.map(([label, href]) => (
             <Fragment key={href}>
@@ -100,6 +102,7 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
           ))}
           <SiteLink to="/ortocloud" onClick={() => setOpen(false)}>OrtoCloud</SiteLink>
         </nav>
+        </>
       )}
     </header>
   );

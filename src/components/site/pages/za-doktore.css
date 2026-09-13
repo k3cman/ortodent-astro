@@ -317,7 +317,8 @@
 
 button.od-pro-text-link { border: 0; background: transparent; padding: 0; font: inherit; cursor: pointer; }
 .od-vatech-tutorials { width: min(960px, calc(100vw - 40px)); max-width: 960px; max-height: 85vh; overflow-y: auto; padding: clamp(28px, 4vw, 48px); background: #fff; border-radius: 16px; }
-.od-vatech-tutorials__list { display: grid; gap: 24px; margin-top: 20px; color: var(--oc-gray-500); font-size: 18px; line-height: 1.7; }
+.od-vatech-tutorials h2 { font-size: 24px; line-height: 1.2; }
+.od-vatech-tutorials__list { display: grid; gap: 24px; margin-top: 20px; color: var(--oc-gray-500); font-size: 16px; line-height: 1.7; }
 .od-vatech-tutorials__list p { margin: 0; }
 .od-vatech-tutorials__list strong { color: var(--oc-ink); font-weight: 600; }
 .od-vatech-tutorials__list a { color: var(--oc-gray-700); text-decoration: underline; text-underline-offset: 5px; }
@@ -330,3 +331,19 @@ button.od-pro-text-link { border: 0; background: transparent; padding: 0; font: 
 
 .od-pro-cloud__visual { aspect-ratio: 4 / 5; }
 .od-pro-cloud__visual img { height: 100%; object-fit: cover; object-position: center; }
+
+/* Keep the platform links below the complete photo/copy composition. */
+.od-pro-split--cloud { align-items: stretch; row-gap: 24px; }
+.od-pro-cloud__visual { aspect-ratio: auto; min-height: 0; }
+.od-pro-cloud__visual img { height: 100%; }
+
+.od-pro-store-row.od-pro-platforms-row {
+  display: flex; flex-wrap: nowrap; align-items: center; justify-content: center;
+  justify-self: center; width: fit-content; min-width: 0; max-width: 100%; gap: 32px;
+}
+.od-pro-platforms-row__logo { width: auto; height: 46px; flex: 0 0 auto; }
+.od-pro-platforms-row .oc-platforms { width: 560px; max-width: 100%; flex: 0 1 560px; }
+@media (max-width: 640px) {
+  .od-pro-store-row.od-pro-platforms-row { flex-direction: column; width: 100%; gap: 24px; }
+  .od-pro-platforms-row .oc-platforms { width: 100%; flex: 0 1 auto; }
+}

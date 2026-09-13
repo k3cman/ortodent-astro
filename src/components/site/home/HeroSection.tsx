@@ -15,7 +15,7 @@ export default function HeroSection() {
         <div className="oc-hero__copy">
           <p className="oc-eyebrow">{hero.eyebrow}</p>
           <h1 id="hero-title" aria-label={hero.title}>Precizna 2D i<br />3D dijagnostika<span className="oc-dot">.</span></h1>
-          <p className="oc-hero__lead">{hero.description}</p>
+          <p className="oc-hero__lead">{hero.description.split(' Na 14 lokacija.')[0]}{' '}<br className="oc-hero__location-break" />Na 14 lokacija.{hero.description.split(' Na 14 lokacija.')[1]}</p>
           <div className="oc-hero__actions">
             <SiteLink to="/lokacije" className="oc-button oc-button--primary">
               <MapPin aria-hidden="true" /> Pronađite najbliži centar

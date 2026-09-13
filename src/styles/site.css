@@ -211,9 +211,9 @@
 .oc-footer__main { min-height: 390px; display: grid; grid-template-columns: minmax(300px, 1.4fr) 1fr 1fr; gap: clamp(42px, 6vw, 112px); }
 .oc-footer__brandmark { width: fit-content; display: inline-flex; align-items: center; gap: 16px; color: var(--oc-white) !important; }
 .oc-footer__brandmark > span { width: 52px; height: 52px; display: grid; place-items: center; flex: 0 0 auto; color: var(--oc-white); background: var(--oc-magenta); border-radius: 50%; font-size: 26px; font-weight: 650; }
-.oc-footer__brandmark img { display: block; width: 300px; max-width: 100%; height: auto; }
+.oc-footer__brandmark img { display: block; width: 200px; max-width: 100%; height: auto; }
 .oc-footer__brandmark strong { font-size: 23px; font-weight: 600; letter-spacing: -.045em; }
-body.site-theme .oc-footer__brand > p { max-width: 340px; margin: 40px 0 26px; font-size: 17px; line-height: 1.66; }
+body.site-theme .oc-footer__brand > p { max-width: 300px; margin: 28px 0 24px; font-size: 14px; line-height: 1.66; }
 .oc-footer h2 { margin-bottom: 22px; color: var(--oc-white); font-size: 20px; font-weight: 600; letter-spacing: -.025em; }
 .oc-footer__column nav { display: grid; gap: 14px; }
 .oc-footer__column nav a { width: fit-content; display: inline-flex; align-items: center; gap: 11px; font-size: 16px; transition: color .2s ease, transform .2s ease; }

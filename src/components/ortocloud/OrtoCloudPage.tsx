@@ -14,8 +14,7 @@ export default function OrtoCloudPage() {
       <div className="ortocloud-theme">
         <main>
           <HeroSection />
-          <FeaturesSection />
-          <DownloadSection />
+          <FeaturesSection><DownloadSection /></FeaturesSection>
           <AccessSection />
         </main>
         <SiteFooter />

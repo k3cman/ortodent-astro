@@ -1,0 +1,14 @@
+.oc-platforms { width: 100%; min-width: 0; container-type: inline-size; }
+.od-pro-store-row:has(.oc-platforms) { display: block; grid-column: 1 / -1; margin-top: 0; }
+.oc-platforms__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; max-width: 560px; }
+.oc-platforms .oc-platforms__badge { min-width: 0; min-height: 46px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 7px 11px; border: 1px solid var(--oc-gray-300); border-radius: 9px; background: #fff; color: var(--oc-gray-700); }
+.oc-platforms .oc-platforms__badge:hover { border-color: var(--oc-magenta); }
+.oc-platforms__badge:focus-visible { outline: 2px solid var(--oc-magenta); outline-offset: 4px; }
+.oc-platforms__badge > svg { width: 20px; height: 20px; flex: 0 0 auto; color: var(--oc-magenta); stroke-width: 1.6; }
+.oc-platforms__badge > span { display: grid; line-height: 1.1; }
+.oc-platforms__badge small { color: var(--oc-gray-500); font-size: 8px; text-transform: uppercase; }
+.oc-platforms__badge strong { font-size: 10px; font-weight: 600; white-space: nowrap; }
+.oc-platforms--download .oc-platforms__badge { border-color: #c7c9cd; border-radius: 7px; }
+.oc-platforms--download .oc-platforms__badge > svg { width: 17px; height: 17px; color: var(--oc-ink); }
+.oc-platforms--download .oc-platforms__badge strong { font-size: 11px; font-weight: 550; }
+@container (min-width: 480px) { .oc-platforms__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

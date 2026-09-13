@@ -233,7 +233,7 @@ const Informacije = () => {
         <section className="oc-information-cta">
           <div className="oc-container">
             <div className="oc-information-cta__inner">
-              <div><MapPin aria-hidden="true" /><div><h2>Pronađite svoj OrtoDent centar.</h2><p>Pogledajte adrese, radno vreme i kontakt podatke naših 14 lokacija.</p></div></div>
+              <div><h2>Posetite nas još danas.</h2></div>
               <SiteLink className="oc-button oc-button--primary" to="/lokacije">
                 Pronađite najbližu lokaciju <ArrowRight aria-hidden="true" />
               </SiteLink>

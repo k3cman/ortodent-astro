@@ -1,13 +1,11 @@
+import OrtoCloudPlatforms from "@/components/OrtoCloudPlatforms";
+import ortoCloudLogo from "@/assets/ortocloud/logo.png";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  Apple,
   ArrowRight,
   Check,
-  Cloud,
   Headphones,
-  Play,
   Send,
-  Smartphone,
 } from "lucide-react";
 import { useState } from "react";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription } from "@/components/site/ui/dialog";
@@ -39,13 +37,6 @@ const cloudBenefits = [
 
 
 
-
-const appBadges = [
-  { label: "OrtoCloud", detail: "Otvorite", Icon: Cloud },
-  { label: "Google Play", detail: "Dostupno na", Icon: Play },
-  { label: "App Store", detail: "Preuzmite u", Icon: Apple },
-  { label: "AppGallery", detail: "Istraži u", Icon: Smartphone },
-];
 
 const reveal = {
   hidden: { opacity: 0, y: 18 },
@@ -152,15 +143,11 @@ function ZaDoktore() {
                   Saznajte više <ArrowRight aria-hidden="true" />
                 </SiteLink>
               </div>
-              <div className="od-pro-store-row" aria-label="OrtoCloud platforme">
-                {appBadges.map(({ label, detail, Icon }) => (
-                  <span key={label} className="od-pro-store-badge">
-                    <Icon aria-hidden="true" />
-                    <span><small>{detail}</small><strong>{label}</strong></span>
-                  </span>
-                ))}
-              </div>
             </motion.div>
+            <div className="od-pro-store-row od-pro-platforms-row">
+              <img src={ortoCloudLogo.src} alt="OrtoCloud Dentamed" className="od-pro-platforms-row__logo" loading="lazy" />
+              <OrtoCloudPlatforms />
+            </div>
           </div>
         </section>
 
@@ -188,7 +175,8 @@ function ZaDoktore() {
         </section>
 
         <section className="od-pro-section od-pro-software" aria-labelledby="od-pro-software-title">
-          <div className="oc-container od-pro-software__surface">
+          <div className="oc-container">
+          <div className="od-pro-software__surface">
             <motion.div className="od-pro-copy" {...revealProps}>
               <p className="od-pro-eyebrow">Vatech · Ez3D-i</p>
               <h2 id="od-pro-software-title">Moćan softver za jednostavan rad</h2>
@@ -227,6 +215,7 @@ function ZaDoktore() {
                 loading="lazy"
               />
             </motion.div>
+          </div>
           </div>
         </section>
 
@@ -285,7 +274,7 @@ function ZaDoktore() {
                 </label>
               </div>
               <button className="od-pro-button od-pro-button--primary od-pro-form__submit" type="submit">
-                Pošalji zahtev <ArrowRight aria-hidden="true" />
+                Pošaljite zahtev <ArrowRight aria-hidden="true" />
               </button>
             </motion.form>
           </div>

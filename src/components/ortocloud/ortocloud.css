@@ -33,7 +33,7 @@
 .odc-hero__veil { position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, rgb(255 255 255 / .98) 0%, rgb(255 255 255 / .93) 34%, rgb(255 255 255 / .58) 48%, rgb(255 255 255 / .06) 68%, transparent 100%); }
 .odc-hero__layout { position: relative; z-index: 2; min-height: 560px; display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr auto; align-items: center; }
 .odc-hero__copy { z-index: 2; min-width: 0; max-width: 600px; padding-block: 48px 30px; }
-.odc-hero__logo { width: clamp(130px, 12vw, 168px); height: auto; display: block; margin-bottom: 18px; mix-blend-mode: multiply; }
+.odc-hero__logo { width: clamp(130px, 12vw, 168px); height: auto; display: block; margin-bottom: 18px; }
 .odc-hero h1 { margin-bottom: 24px; font-size: clamp(50px, 4.15vw, 60px); font-weight: 500; line-height: .98; }
 .odc-hero h1 span { color: var(--oc-magenta); }
 .odc-hero__lead { max-width: 54ch; margin-bottom: 28px; color: var(--oc-gray-700); font-size: 16px; line-height: 1.62; }
@@ -209,7 +209,7 @@
 .odc-platform-cards small { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--odc-line); color: var(--oc-ink); font-size: 13px; font-weight: 600; }
 @media (max-width: 800px) { .odc-platform-cards { grid-template-columns: 1fr; gap: 16px; } .odc-platform-cards h3 { margin-top: 20px; } }
 
-.odc-retention__strip article { grid-template-columns: 1fr; }
+.odc-retention__strip article { grid-template-columns: 1fr; align-items: start; }
 .odc-retention article div > small { max-width: none; font-size: 14px; line-height: 1.6; }
 
 .odc-experiences > .odc-container > .odc-section-heading { margin-bottom: 56px; }
