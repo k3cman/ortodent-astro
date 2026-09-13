@@ -303,7 +303,7 @@
   .od-pro-service-card > img { height: 260px; min-height: 0; grid-row: 1; }
 }
 
-.od-pro-support__inner { display: grid; grid-template-columns: .85fr 1.15fr; align-items: stretch; gap: 40px; padding: clamp(28px, 4vw, 52px); background: var(--oc-off-white); border-radius: 16px; }
+.od-pro-support__inner { display: grid; grid-template-columns: .85fr 1.15fr; align-items: stretch; gap: 40px; padding: clamp(28px, 4vw, 52px); background: transparent; border-radius: 16px; }
 .od-pro-support h2 { margin: 0 0 24px; font-size: clamp(30px, 3.5vw, 44px); line-height: 1.12; }
 .od-pro-support__text p { margin-bottom: 20px; color: var(--oc-gray-500); font-size: 16px; line-height: 1.75; }
 .od-pro-support__text .od-pro-support__closing { margin-bottom: 0; color: var(--oc-ink); font-weight: 600; }

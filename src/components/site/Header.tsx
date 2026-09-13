@@ -1,5 +1,5 @@
 import { ChevronDown, Cloud, Menu, X } from "lucide-react";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "@/assets/logo.png";
 import { SiteLink } from "@/components/site/SiteLink";
 
@@ -86,19 +86,22 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
         <>
         <button className="oc-mobile-nav-backdrop" type="button" aria-label="Zatvori mobilnu navigaciju" onClick={() => setOpen(false)} />
         <nav id="mobile-navigation" className="oc-mobile-nav" aria-label="Mobilna navigacija" onKeyDown={(event) => { if (event.key === "Escape") { setOpen(false); document.querySelector<HTMLButtonElement>(".oc-menu-toggle")?.focus(); } }}>
-          {services.map(([label, href]) => <SiteLink key={href} to={href} onClick={() => setOpen(false)}>{label}</SiteLink>)}
-          {navItems.map(([label, href]) => (
-            <Fragment key={href}>
-            <SiteLink
-              key={href}
-              to={href}
-              aria-current={currentPath === href ? "page" : undefined}
-              onClick={() => setOpen(false)}
-            >
-              {label}
-            </SiteLink>
-            {href === "/lokacije" && cities.map(([city, cityHref]) => <SiteLink key={cityHref} to={cityHref} aria-current={currentPath === cityHref ? "page" : undefined} onClick={() => setOpen(false)}>{city}</SiteLink>)}
-            </Fragment>
+          <details className="oc-mobile-nav__group">
+            <summary>Usluge <ChevronDown aria-hidden="true" /></summary>
+            <div className="oc-mobile-nav__links">
+              {services.map(([label, href]) => <SiteLink key={href} to={href} aria-current={currentPath === href ? "page" : undefined} onClick={() => setOpen(false)}>{label}</SiteLink>)}
+            </div>
+          </details>
+          {navItems.map(([label, href]) => href === "/lokacije" ? (
+            <details className="oc-mobile-nav__group" key={href}>
+              <summary>Lokacije <ChevronDown aria-hidden="true" /></summary>
+              <div className="oc-mobile-nav__links">
+                <SiteLink to={href} aria-current={currentPath === href ? "page" : undefined} onClick={() => setOpen(false)}>Sve lokacije</SiteLink>
+                {cities.map(([city, cityHref]) => <SiteLink key={cityHref} to={cityHref} aria-current={currentPath === cityHref ? "page" : undefined} onClick={() => setOpen(false)}>{city}</SiteLink>)}
+              </div>
+            </details>
+          ) : (
+            <SiteLink key={href} to={href} aria-current={currentPath === href ? "page" : undefined} onClick={() => setOpen(false)}>{label}</SiteLink>
           ))}
           <SiteLink to="/ortocloud" onClick={() => setOpen(false)}>OrtoCloud</SiteLink>
         </nav>

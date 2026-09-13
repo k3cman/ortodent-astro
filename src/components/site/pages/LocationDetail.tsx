@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { sitePath } from "@/lib/paths";
+import { LOCATION_GALLERIES } from "@/lib/location-gallery";
+import LocationGallery from "@/components/site/locations/LocationGallery";
 import {
   Accessibility,
   Bus,
@@ -40,6 +41,7 @@ function LocationDetail({
   locationSlug: string;
 }) {
   const location = getLocationBySlug(citySlug, locationSlug)!;
+  const photos = LOCATION_GALLERIES[`${citySlug}/${locationSlug}`] ?? [];
   const mapLocations = useMemo(() => [location], [location]);
   const relatedLocations = useMemo(
     () =>
@@ -81,6 +83,9 @@ function LocationDetail({
                 <OpenNowStatus openingHours={location.openingHours} />
               </div>
               <LocationActions location={location} />
+              <div className="od-detail-hero__mobile-map">
+                <LocationsMap locations={mapLocations} selectedId={location.id} className="od-map--detail" />
+              </div>
             </div>
           </div>
         </section>
@@ -88,13 +93,13 @@ function LocationDetail({
         <section className="od-detail-main od-detail-main--utility">
           <div className="od-shell">
             <div className="od-detail-map-layout">
+              <div className="od-detail-desktop-map">
               <LocationsMap
-                collapsibleMobile
-                toggleLabel="Prikaži lokaciju na mapi"
                 locations={mapLocations}
                 selectedId={location.id}
                 className="od-map--detail"
               />
+              </div>
 
               <aside className="od-contact-panel">
                 <h2>Kontakt i adresa</h2>
@@ -112,7 +117,7 @@ function LocationDetail({
                     <div>
                       <small>Telefoni</small>
                       <a href={`tel:${phoneHref(location.phone)}`}>{location.phone}</a>
-                      <a href={`tel:${phoneHref(location.phone2)}`}>{location.phone2}</a>
+                      {location.phone2 && <a href={`tel:${phoneHref(location.phone2)}`}>{location.phone2}</a>}
                     </div>
                   </div>
 
@@ -124,12 +129,12 @@ function LocationDetail({
                     </div>
                   </div>
                 </div>
-                <div className="od-contact-panel__schedule">
+                {location.openingHours && <div className="od-contact-panel__schedule">
                   <h3>Radno vreme</h3>
                   <p><span>Radni dani</span><strong>08:00–20:00</strong></p>
                   <p><span>Subota</span><strong>09:00–16:00</strong></p>
                   <p><span>Nedelja</span><strong>Ne radimo</strong></p>
-                </div>
+                </div>}
 
               </aside>
             </div>
@@ -139,7 +144,7 @@ function LocationDetail({
               <div><span><Box aria-hidden="true" /></span><div><strong>Dostupna snimanja</strong><ServiceIndicators location={location} /></div></div>
               <div><span><Cloud aria-hidden="true" /></span><p><strong>OrtoCloud rezultati</strong>Brz i siguran pristup rezultatima online.</p></div>
             </div>
-            <div className="od-mobile-weekly-hours"><h2>Radno vreme</h2><WeeklyOpeningHours openingHours={location.openingHours} /></div>
+            <div className="od-mobile-weekly-hours"><h2>Radno vreme</h2><WeeklyOpeningHours openingHours={location.openingHours} compact /></div>
           </div>
         </section>
 
@@ -154,15 +159,7 @@ function LocationDetail({
           </section>
         )}
 
-        <section className="od-detail-section od-center-gallery-section" aria-label={`Fotografije centra ${location.name}`}>
-          <div className="od-shell od-center-gallery">
-            {[1, 2, 3].map((number) => (
-              <figure key={number}>
-                <img src={sitePath("/placeholder.svg")} alt={`Mesto za fotografiju centra ${location.name} — ${number}`} loading="lazy" />
-              </figure>
-            ))}
-          </div>
-        </section>
+        {photos.length > 0 && <LocationGallery photos={photos} name={location.name} />}
 
         {relatedLocations.length > 0 && (
           <section className="od-nearby-section">

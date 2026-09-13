@@ -18,12 +18,28 @@ const labels: Record<Weekday, string> = {
 
 export default function WeeklyOpeningHours({
   openingHours,
+  compact = false,
 }: {
   openingHours?: OpeningHours;
+  compact?: boolean;
 }) {
   if (!openingHours) return null;
 
   const today = getBelgradeWeekday();
+
+  if (compact) {
+    const rows = [
+      ["Radni dani", "monday"],
+      ["Subota", "saturday"],
+      ["Nedelja", "sunday"],
+    ] as const;
+    return <div className="od-weekly-hours">{rows.map(([label, day]) => (
+      <div key={day} className="od-weekly-hours__row">
+        <span>{label}</span>
+        <strong>{openingHours[day] ? formatDayHours(openingHours[day]) : openingHours[day] === null ? "Ne radimo" : "Nije navedeno"}</strong>
+      </div>
+    ))}</div>;
+  }
 
   return (
     <div className="od-weekly-hours">

@@ -82,7 +82,7 @@ export const LOCATION_CITIES: readonly LocationCity[] = [
   {
     slug: "beograd",
     name: "Beograd",
-    description: "Devet OrtoDent centara širom grada.",
+    description: "Deset OrtoDent centara širom grada.",
   },
   {
     slug: "novi-sad",
@@ -266,6 +266,20 @@ export const LOCATIONS: readonly Location[] = [
     lng: 19.8131542,
     openingHours: DAILY_LOCATION_OPENING_HOURS,
   },
+  {
+    id: 14,
+    slug: "juzni-bulevar",
+    city: "Beograd",
+    citySlug: "beograd",
+    name: "Južni bulevar",
+    address: "Grahovska 27, Beograd",
+    phone: "011 439 63 47",
+    phone2: "063 811 43 52",
+    openingHours: DAILY_LOCATION_OPENING_HOURS,
+    lat: 44.79391,
+    lng: 20.4791388,
+    services: ["2d", "3d"],
+  },
 ];
 
 export const LOCATION_REGIONS: readonly LocationRegion[] = [
@@ -280,26 +294,10 @@ export const LOCATION_REGIONS: readonly LocationRegion[] = [
   {
     slug: "centar",
     citySlug: "beograd",
-    name: "Centar i Vračar",
-    locative: "u centru i na Vračaru",
-    description: "Stari grad i Vračar.",
-    locationIds: [3, 7],
-  },
-  {
-    slug: "istocni-beograd",
-    citySlug: "beograd",
-    name: "Istočni Beograd",
-    locative: "u istočnom Beogradu",
-    description: "Zvezdara.",
-    locationIds: [6],
-  },
-  {
-    slug: "vozdovac",
-    citySlug: "beograd",
-    name: "Voždovac",
-    locative: "na Voždovcu",
-    description: "Centar u Vojvode Stepe.",
-    locationIds: [5],
+    name: "Centar",
+    locative: "u centru Beograda",
+    description: "Stari grad, Vračar, Zvezdara, Voždovac i Južni bulevar.",
+    locationIds: [3, 7, 6, 5, 14],
   },
   {
     slug: "cukarica",

@@ -72,12 +72,14 @@ export default function LocationCard({
             >
               {location.phone}
             </a>
+            {location.phone2 && <>
             <span aria-hidden="true">·</span>
             <a
               href={`tel:${phoneHref(location.phone2)}`}
             >
               {location.phone2}
             </a>
+            </>}
           </span>
         </p>
         <OpenNowStatus openingHours={location.openingHours} compact />

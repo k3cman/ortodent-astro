@@ -1,3 +1,4 @@
+import { Map as MapIcon, X } from "lucide-react";
 import { useEffect, useRef, useState, useId } from "react";
 import type { Map as LeafletMap, Marker as LeafletMarker } from "leaflet";
 import type { Location } from "@/lib/locations";
@@ -141,8 +142,8 @@ export default function LocationsMap({
   return (
     <div className={`od-map-disclosure${collapsibleMobile ? " od-map-disclosure--collapsible" : ""}${expanded ? " is-expanded" : ""}`}>
       {collapsibleMobile && isMobile && (
-        <button type="button" className="od-button od-button--secondary od-map-toggle" aria-expanded={expanded} aria-controls={mapId} onClick={() => setExpanded(!expanded)}>
-          {expanded ? "Sakrij mapu" : toggleLabel} <span aria-hidden="true">{expanded ? "↑" : "↓"}</span>
+        <button type="button" className="od-button od-button--secondary od-map-toggle" aria-label={expanded ? "Sakrij mapu" : toggleLabel} aria-expanded={expanded} aria-controls={mapId} onClick={() => { setExpanded(!expanded); if (!expanded) requestAnimationFrame(() => document.getElementById(mapId)?.scrollIntoView({ behavior: "smooth", block: "center" })); }}>
+          {expanded ? <X aria-hidden="true" /> : <MapIcon aria-hidden="true" />} Mapa
         </button>
       )}
       <div id={mapId} hidden={!visible}>
