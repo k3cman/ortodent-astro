@@ -1666,6 +1666,9 @@
 .od-gallery-controls button:disabled { opacity: .3; cursor: default; }
 .od-gallery-controls button:focus-visible { outline: 2px solid var(--oc-magenta); outline-offset: 4px; }
 .od-gallery-controls svg { width: 20px; height: 20px; }
+@media (min-width: 821px) {
+  .od-gallery-controls { display: none; }
+}
 @media (max-width: 640px) {
   .od-center-gallery { gap: 16px; }
 }

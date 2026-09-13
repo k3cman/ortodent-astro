@@ -15,12 +15,6 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
       "height": 1600
     },
     {
-      "src": "/images/locations/beograd/arena/arena-ulaz-snimanje-zuba-ortodent-novi-beograd-2.webp",
-      "alt": "Ulaz — OrtoDent Arena",
-      "width": 1067,
-      "height": 1600
-    },
-    {
       "src": "/images/locations/beograd/arena/arena-cekaonica-snimanje-zuba-ortodent-novi-beograd.webp",
       "alt": "Čekaonica — OrtoDent Arena",
       "width": 1067,
@@ -37,12 +31,6 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
     {
       "src": "/images/locations/beograd/immocentar/immo-ulaz-snimanje-zuba-ortodent-novi-beograd.webp",
       "alt": "Ulaz — OrtoDent ImmoCentar",
-      "width": 1200,
-      "height": 1600
-    },
-    {
-      "src": "/images/locations/beograd/immocentar/immo-cekaonica-snimanje-zuba-ortodent-novi-beograd.webp",
-      "alt": "Čekaonica — OrtoDent ImmoCentar",
       "width": 1200,
       "height": 1600
     },
@@ -97,23 +85,11 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
       "alt": "Oprema za snimanje zuba — OrtoDent Banovo brdo",
       "width": 1600,
       "height": 1067
-    },
-    {
-      "src": "/images/locations/beograd/banovo-brdo/banovo-brdo-ortopan-snimanje-zuba-ortodent-beograd.webp",
-      "alt": "Oprema za snimanje zuba — OrtoDent Banovo brdo",
-      "width": 1067,
-      "height": 1600
     }
   ],
   "beograd/juzni-beograd": [
     {
       "src": "/images/locations/beograd/juzni-beograd/autokomanda-ulaz-snimanje-zuba-ortodent-vozdovac-beograd.webp",
-      "alt": "Ulaz — OrtoDent Voždovac",
-      "width": 1600,
-      "height": 1067
-    },
-    {
-      "src": "/images/locations/beograd/juzni-beograd/autokomanda-ulaz-snimanje-zuba-ortodent-vozdovac-beograd-2.webp",
       "alt": "Ulaz — OrtoDent Voždovac",
       "width": 1600,
       "height": 1067
@@ -133,22 +109,10 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
   ],
   "beograd/zvezdara": [
     {
-      "src": "/images/locations/beograd/zvezdara/crveni-krst-ulaz-snimanje-zuba-ortodent-beograd.webp",
-      "alt": "Ulaz — OrtoDent Zvezdara",
-      "width": 1075,
-      "height": 1600
-    },
-    {
       "src": "/images/locations/beograd/zvezdara/crveni-krst-ulaz-snimanje-zuba-ortodent-beograd-2.webp",
       "alt": "Ulaz — OrtoDent Zvezdara",
       "width": 1067,
       "height": 1600
-    },
-    {
-      "src": "/images/locations/beograd/zvezdara/crveni-krst-cekaonica-snimanje-zuba-ortodent-beograd.webp",
-      "alt": "Čekaonica — OrtoDent Zvezdara",
-      "width": 1600,
-      "height": 1067
     },
     {
       "src": "/images/locations/beograd/zvezdara/crveni-krst-recepcija-snimanje-zuba-ortodent-beograd.webp",
@@ -161,21 +125,9 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
       "alt": "Oprema za snimanje zuba — OrtoDent Zvezdara",
       "width": 1600,
       "height": 1067
-    },
-    {
-      "src": "/images/locations/beograd/zvezdara/crveni-krst-logo-snimanje-zuba-ortodent-beograd.webp",
-      "alt": "Logo — OrtoDent Zvezdara",
-      "width": 1600,
-      "height": 1067
     }
   ],
   "beograd/vracar": [
-    {
-      "src": "/images/locations/beograd/vracar/vracar-ulaz-snimanje-zuba-ortodent-beograd.webp",
-      "alt": "Ulaz — OrtoDent Vračar",
-      "width": 1067,
-      "height": 1600
-    },
     {
       "src": "/images/locations/beograd/vracar/vracar-ulaz-snimanje-zuba-ortodent-beograd-2.webp",
       "alt": "Ulaz — OrtoDent Vračar",
@@ -189,12 +141,6 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
       "height": 1600
     },
     {
-      "src": "/images/locations/beograd/vracar/vracar-recepcija-snimanje-zuba-ortodent-beograd.webp",
-      "alt": "Recepcija — OrtoDent Vračar",
-      "width": 1600,
-      "height": 1033
-    },
-    {
       "src": "/images/locations/beograd/vracar/vracar-2d-3d-snimanje-zuba-ortodent-beograd.webp",
       "alt": "Oprema za snimanje zuba — OrtoDent Vračar",
       "width": 1067,
@@ -203,22 +149,10 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
   ],
   "beograd/cerak": [
     {
-      "src": "/images/locations/beograd/cerak/cerak-ulaz-snimanje-zuba-ortodent-beograd.webp",
-      "alt": "Ulaz — OrtoDent Cerak",
-      "width": 1283,
-      "height": 1600
-    },
-    {
       "src": "/images/locations/beograd/cerak/cerak-ulaz-snimanje-zuba-ortodent-beograd-2.webp",
       "alt": "Ulaz — OrtoDent Cerak",
       "width": 1600,
       "height": 1067
-    },
-    {
-      "src": "/images/locations/beograd/cerak/cerak-ulaz-snimanje-zuba-ortodent-beograd-3.webp",
-      "alt": "Ulaz — OrtoDent Cerak",
-      "width": 1162,
-      "height": 1600
     },
     {
       "src": "/images/locations/beograd/cerak/cerak-cekaonica-snimanje-zuba-ortodent-beograd.webp",
@@ -275,12 +209,6 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
   ],
   "pancevo/brace-jovanovica": [
     {
-      "src": "/images/locations/pancevo/brace-jovanovica/pancevo-brace-jovanovica-ulaz-snimanje-zuba-ortodent.webp",
-      "alt": "Ulaz — OrtoDent Braće Jovanovića",
-      "width": 1600,
-      "height": 1066
-    },
-    {
       "src": "/images/locations/pancevo/brace-jovanovica/pancevo-brace-jovanovica-ulaz-snimanje-zuba-ortodent-2.webp",
       "alt": "Ulaz — OrtoDent Braće Jovanovića",
       "width": 1600,
@@ -301,28 +229,10 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
   ],
   "novi-sad/brace-ribnikar": [
     {
-      "src": "/images/locations/novi-sad/brace-ribnikar/novi-sad-brace-ribnikar-ulaz-snimanje-zuba-ortodent.webp",
-      "alt": "Ulaz — OrtoDent Braće Ribnikar",
-      "width": 1600,
-      "height": 1067
-    },
-    {
       "src": "/images/locations/novi-sad/brace-ribnikar/novi-sad-brace-ribnikar-ulaz-snimanje-zuba-ortodent-2.webp",
       "alt": "Ulaz — OrtoDent Braće Ribnikar",
       "width": 1600,
       "height": 1066
-    },
-    {
-      "src": "/images/locations/novi-sad/brace-ribnikar/novi-sad-brace-ribnikar-2d-3d-cekaonica-snimanje-zuba-ortodent-2.webp",
-      "alt": "Čekaonica — OrtoDent Braće Ribnikar",
-      "width": 1200,
-      "height": 1600
-    },
-    {
-      "src": "/images/locations/novi-sad/brace-ribnikar/novi-sad-brace-ribnikar-cekaonica-snimanje-zuba-ortodent.webp",
-      "alt": "Čekaonica — OrtoDent Braće Ribnikar",
-      "width": 1067,
-      "height": 1600
     },
     {
       "src": "/images/locations/novi-sad/brace-ribnikar/novi-sad-brace-ribnikar-cekaonica-snimanje-zuba-ortodent-3.webp",
@@ -339,12 +249,6 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
   ],
   "novi-sad/hadzi-ruvimova": [
     {
-      "src": "/images/locations/novi-sad/hadzi-ruvimova/novi-sad-hadzi-ruvimova-ulaz-snimanje-zuba-ortodent.webp",
-      "alt": "Ulaz — OrtoDent Hadži Ruvimova",
-      "width": 1600,
-      "height": 1067
-    },
-    {
       "src": "/images/locations/novi-sad/hadzi-ruvimova/novi-sad-hadzi-ruvimova-ulaz-snimanje-zuba-ortodent-2.webp",
       "alt": "Ulaz — OrtoDent Hadži Ruvimova",
       "width": 1200,
@@ -355,12 +259,6 @@ export const LOCATION_GALLERIES: Readonly<Record<string, readonly LocationPhoto[
       "alt": "Čekaonica — OrtoDent Hadži Ruvimova",
       "width": 1600,
       "height": 1067
-    },
-    {
-      "src": "/images/locations/novi-sad/hadzi-ruvimova/novi-sad-hadzi-ruvimova-recepcija-snimanje-zuba-ortodent.webp",
-      "alt": "Recepcija — OrtoDent Hadži Ruvimova",
-      "width": 1067,
-      "height": 1600
     },
     {
       "src": "/images/locations/novi-sad/hadzi-ruvimova/novi-sad-hadzi-ruvimova-2d-3d-snimanje-zuba-ortodent.webp",
