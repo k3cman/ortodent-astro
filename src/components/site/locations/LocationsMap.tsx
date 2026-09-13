@@ -1,4 +1,5 @@
 import { Map as MapIcon, X } from "lucide-react";
+import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useRef, useState, useId } from "react";
 import type { Map as LeafletMap, Marker as LeafletMarker } from "leaflet";
 import type { Location } from "@/lib/locations";
@@ -16,26 +17,7 @@ interface LocationsMapProps {
   className?: string;
 }
 
-export default function LocationsMap({
-  locations,
-  selectedId,
-  focusTarget,
-  collapsibleMobile = false,
-  toggleLabel = "Prikaži mapu",
-  onSelect,
-  className = "min-h-[480px]",
-}: LocationsMapProps) {
-  const [isMobile, setIsMobile] = useState(false);
-  const [expanded, setExpanded] = useState(false);
-  const mapId = useId();
-  const visible = !collapsibleMobile || !isMobile || expanded;
-  useEffect(() => {
-    const query = window.matchMedia("(max-width: 820px)");
-    const update = () => setIsMobile(query.matches);
-    update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
-  }, []);
+function MapCanvas({ locations, selectedId, focusTarget, onSelect, className }: LocationsMapProps) {
   const elementRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const markersRef = useRef(new Map<number, LeafletMarker>());
@@ -46,7 +28,7 @@ export default function LocationsMap({
   selectedIdRef.current = selectedId;
 
   useEffect(() => {
-    if (!visible || !elementRef.current || locations.length === 0) return;
+    if (!elementRef.current || locations.length === 0) return;
 
     let cancelled = false;
 
@@ -121,7 +103,7 @@ export default function LocationsMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [locations, visible]);
+  }, [locations]);
 
   useEffect(() => {
     if (!selectedId) return;
@@ -140,17 +122,54 @@ export default function LocationsMap({
   }, [selectedId, focusTarget]);
 
   return (
-    <div className={`od-map-disclosure${collapsibleMobile ? " od-map-disclosure--collapsible" : ""}${expanded ? " is-expanded" : ""}`}>
-      {collapsibleMobile && isMobile && (
-        <button type="button" className="od-button od-button--secondary od-map-toggle" aria-label={expanded ? "Sakrij mapu" : toggleLabel} aria-expanded={expanded} aria-controls={mapId} onClick={() => { setExpanded(!expanded); if (!expanded) requestAnimationFrame(() => document.getElementById(mapId)?.scrollIntoView({ behavior: "smooth", block: "center" })); }}>
-          {expanded ? <X aria-hidden="true" /> : <MapIcon aria-hidden="true" />} Mapa
-        </button>
-      )}
-      <div id={mapId} hidden={!visible}>
-        {visible && <div className={`od-locations-map ${className}`} aria-label="Mapa OrtoDent lokacija">
-          <div ref={elementRef} className="absolute inset-0 z-0" />
-        </div>}
-      </div>
+    <div className={`od-locations-map ${className}`} aria-label="Mapa OrtoDent lokacija">
+      <div ref={elementRef} className="absolute inset-0 z-0" />
+    </div>
+  );
+}
+
+export default function LocationsMap({
+  collapsibleMobile = false,
+  toggleLabel = "Prikaži mapu",
+  className = "min-h-[480px]",
+  ...mapProps
+}: LocationsMapProps) {
+  const [isMobile, setIsMobile] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const mapId = useId();
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 820px)");
+    const update = () => { setIsMobile(query.matches); if (!query.matches) setExpanded(false); };
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  if (!collapsibleMobile || !isMobile) {
+    return <div className="od-map-disclosure"><MapCanvas {...mapProps} className={className} /></div>;
+  }
+
+  return (
+    <div className="od-map-disclosure od-map-disclosure--collapsible">
+      <Dialog.Root open={expanded} onOpenChange={setExpanded}>
+        <Dialog.Trigger asChild>
+          <button type="button" className="od-button od-button--secondary od-map-toggle" aria-label={toggleLabel}>
+            <MapIcon aria-hidden="true" /> Mapa
+          </button>
+        </Dialog.Trigger>
+        <Dialog.Portal>
+          <Dialog.Overlay className="od-map-dialog-overlay" />
+          <Dialog.Content className="od-map-dialog" aria-describedby={undefined}>
+            <header className="od-map-dialog-header">
+              <Dialog.Title>Mapa OrtoDent lokacija</Dialog.Title>
+              <Dialog.Close className="od-map-dialog-close" aria-label="Zatvorite mapu"><X aria-hidden="true" /></Dialog.Close>
+            </header>
+            <div id={mapId} className="od-map-dialog-body">
+              <MapCanvas {...mapProps} className={className} />
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </div>
   );
 }

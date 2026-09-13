@@ -406,6 +406,22 @@ export const distanceBetweenLocations = (
   return earthRadiusKm * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
 };
 
+export const getNearestLocation = (
+  position: Pick<Location, "lat" | "lng">,
+  candidates: readonly Location[] = LOCATIONS,
+): Location | undefined => {
+  if (!Number.isFinite(position.lat) || !Number.isFinite(position.lng) ||
+      Math.abs(position.lat) > 90 || Math.abs(position.lng) > 180) return undefined;
+
+  let nearest: Location | undefined;
+  let shortestDistance = Infinity;
+  for (const candidate of candidates) {
+    const distance = distanceBetweenLocations(position, candidate);
+    if (distance < shortestDistance) { nearest = candidate; shortestDistance = distance; }
+  }
+  return nearest;
+};
+
 const weekdayLabels: Record<Weekday, string> = {
   monday: "ponedeljak",
   tuesday: "utorak",

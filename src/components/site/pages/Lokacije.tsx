@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { SiteLink } from "@/components/site/SiteLink";
 import CityCards from "@/components/site/locations/CityCards";
 import LocationsMap from "@/components/site/locations/LocationsMap";
+import NearestLocationFinder from "@/components/site/locations/NearestLocationFinder";
 import { centerCountLabel, LOCATIONS } from "@/lib/locations";
 import { withSiteProviders } from "@/components/site/withSiteProviders";
 import "@/components/site/locations/locations.css";
@@ -37,6 +38,7 @@ function Lokacije() {
                 <p className="od-lead">
                   Izaberite grad i pronađite centar za snimanje zuba najbliži Vama.
                 </p>
+                <NearestLocationFinder />
               </div>
 
               {!compactLayout && <div className="od-hero-map">
