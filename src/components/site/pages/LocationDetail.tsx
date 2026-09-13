@@ -83,9 +83,6 @@ function LocationDetail({
                 <OpenNowStatus openingHours={location.openingHours} />
               </div>
               <LocationActions location={location} />
-              <div className="od-detail-hero__mobile-map">
-                <LocationsMap collapsibleMobile locations={mapLocations} selectedId={location.id} className="od-map--detail" />
-              </div>
             </div>
           </div>
         </section>
@@ -139,6 +136,9 @@ function LocationDetail({
               </aside>
             </div>
 
+            <div className="od-detail-inline-mobile-map">
+              <LocationsMap locations={mapLocations} selectedId={location.id} className="od-map--detail" />
+            </div>
             <div className="od-practical-strip">
               <div><span><ShieldCheck aria-hidden="true" /></span><p><strong>Bez zakazivanja</strong>Dođite direktno u centar koji Vam odgovara.</p></div>
               <div><span><Box aria-hidden="true" /></span><div><strong>Dostupna snimanja</strong><ServiceIndicators location={location} /></div></div>
