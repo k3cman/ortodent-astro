@@ -84,7 +84,7 @@ function LocationDetail({
               </div>
               <LocationActions location={location} />
               <div className="od-detail-hero__mobile-map">
-                <LocationsMap locations={mapLocations} selectedId={location.id} className="od-map--detail" />
+                <LocationsMap collapsibleMobile locations={mapLocations} selectedId={location.id} className="od-map--detail" />
               </div>
             </div>
           </div>

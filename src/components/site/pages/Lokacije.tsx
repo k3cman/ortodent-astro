@@ -57,11 +57,7 @@ function Lokacije() {
             <header className="od-centered-heading"><h2>Izaberite grad</h2><span /></header>
             <CityCards />
             {compactLayout && <div className="od-overview-mobile-map">
-              <LocationsMap locations={LOCATIONS} className="od-map--mobile-overview" />
-              <div className="od-map-count">
-                <MapPin aria-hidden="true" />
-                <span><strong>{centerCountLabel(LOCATIONS.length)}</strong><small>u Srbiji</small></span>
-              </div>
+              <LocationsMap collapsibleMobile locations={LOCATIONS} className="od-map--mobile-overview" />
             </div>}
           </div>
         </section>
