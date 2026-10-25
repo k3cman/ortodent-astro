@@ -11,7 +11,7 @@ const benefits = [
   {
     title: "Vrhunska preciznost i standardizacija",
     description:
-      "Digitalni pristup eliminiše subjektivnost i omogućava nepogrešivu analizu, čak i kod najkompleksnijih slučajeva.",
+      "Digitalni pristup omogućava nepogrešivu analizu, čak i kod najkompleksnijih slučajeva.",
   },
   {
     title: "Brzina i dostupnost",
@@ -21,7 +21,7 @@ const benefits = [
   {
     title: "Stručna kontrola kvaliteta",
     description:
-      "Svaku analizu dodatno proverava naš tim stomatologa uz nadzor i ekspertizu specijalista ortodoncije.",
+      "Svaku analizu dodatno proverava specijalista ortodoncije.",
   },
   {
     title: "Lakši protokoli do novog osmeha",

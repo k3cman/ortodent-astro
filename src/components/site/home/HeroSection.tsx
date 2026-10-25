@@ -27,7 +27,7 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="oc-hero__marker oc-hero__marker--one" aria-hidden="true"><span>VOXEL SIZE</span><small>0.200 mm</small></div>
-      <div className="oc-hero__marker oc-hero__marker--two" aria-hidden="true"><span>FOV</span><small>16 × 9 cm</small></div>
+      <div className="oc-hero__marker oc-hero__marker--two" aria-hidden="true"><span>FOV</span><small>12 × 9 cm</small></div>
     </section>
   );
 }

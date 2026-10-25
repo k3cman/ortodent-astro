@@ -3,8 +3,8 @@ import { assetPath } from "@/lib/paths";
 export const RETROALVEOLARNI_SNIMAK_SRC = encodeURI(
   assetPath("/images/Retroalveolarni snimak.jpg"),
 );
-export const RETROKORONALNI_SNIMAK_SRC = assetPath(
-  "/images/Retrokoronalni snimak.jpg",
+export const RETROKORONARNI_SNIMAK_SRC = assetPath(
+  "/images/Retrokoronarni snimak.jpg",
 );
 export const ORTOPANTOMOGRAM_SRC = assetPath("/images/Ortopan.jpg");
 export const KEFALOGRAM_SRC = assetPath("/images/Lateralni kefalogram.jpg");

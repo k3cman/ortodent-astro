@@ -80,6 +80,7 @@ function LocationDetail({
                 <p className="od-kicker">OrtoDent - snimanje zuba</p>
                 <h1>{location.name}</h1>
                 <p className="od-detail-address"><MapPin aria-hidden="true" /> {location.address}</p>
+                {location.entranceNote && <p className="od-detail-entrance-note">{location.entranceNote}</p>}
                 <OpenNowStatus openingHours={location.openingHours} />
               </div>
               <LocationActions location={location} />
@@ -106,6 +107,7 @@ function LocationDetail({
                     <span className="od-contact-panel__icon"><MapPin aria-hidden="true" /></span>
                     <div>
                       <small>Adresa</small><strong>{location.address}</strong>
+                      {location.entranceNote && <span className="od-contact-panel__note">{location.entranceNote}</span>}
                     </div>
                   </div>
 

@@ -6,7 +6,7 @@ import {
   PA_KEFALOGRAM_SRC,
   PARANAZALNE_SUPLJINE_SRC,
   RETROALVEOLARNI_SNIMAK_SRC,
-  RETROKORONALNI_SNIMAK_SRC,
+  RETROKORONARNI_SNIMAK_SRC,
   TM_ZGLOBOVI_SRC,
   TOMOGRAFSKA_ANALIZA_SRC,
 } from "@/content/usluge/images";
@@ -62,7 +62,7 @@ export const Usluge2D = () => (
     <div className="oc-2d-stack">
       <article className="oc-2d-card oc-2d-card--retro">
         <div className="oc-2d-card__copy">
-          <h2>Retroalveolarni i retrokoronalni snimak</h2>
+          <h2>Retroalveolarni i retrokoronarni snimak</h2>
           <div className="oc-2d-card__body">
             <p>
               Ovi <strong>intraoralni snimci</strong> (
@@ -77,7 +77,7 @@ export const Usluge2D = () => (
               kontrolu nakon terapijskih zahvata.
             </p>
             <p className="oc-2d-detail">
-              <strong>Retrokoronalni snimak (RK / Bite-wing):</strong>{" "}
+              <strong>Retrokoronarni snimak (RK / Bite-wing):</strong>{" "}
               Prikazuje samo krune zuba gornje i donje vilice, idealan je za
               otkrivanje karijesa u međuzubnim prostorima kao i za ranu
               detekciju problema na spojevima postojećih plombi i krunica.
@@ -99,13 +99,13 @@ export const Usluge2D = () => (
           <figure>
             <div className="oc-2d-film">
               <img
-                src={RETROKORONALNI_SNIMAK_SRC}
-                alt="Retrokoronalni bite-wing snimak kruna gornje i donje vilice"
+                src={RETROKORONARNI_SNIMAK_SRC}
+                alt="Retrokoronarni bite-wing snimak kruna gornje i donje vilice"
                 loading="eager"
                 decoding="async"
               />
             </div>
-            <figcaption>Retrokoronalni snimak (RK) – bite-wing</figcaption>
+            <figcaption>Retrokoronarni snimak (RK) – bite-wing</figcaption>
           </figure>
         </div>
       </article>
@@ -117,10 +117,8 @@ export const Usluge2D = () => (
             <p>
               Ortopantomogram („<strong>ortopan</strong>“) je panoramski snimak
               koji pruža sveobuhvatan prikaz obe vilice, svih zuba, viličnih
-              zglobova i okolnih struktura. Zahvaljujući svom većem obimu
-              zahvaćenosti dentalnih struktura, ortopantomogram predstavlja
-              osnovni alat u početnoj dijagnostici i stomatolozima je često
-              potreban već pri prvoj poseti, kao i pri kontrolnim pregledima.
+              zglobova i okolnih struktura. Predstavlja važan deo dijagnostike
+              već pri prvoj poseti stomatologu, ali i tokom kontrolnih pregleda.
             </p>
           </div>
         </div>

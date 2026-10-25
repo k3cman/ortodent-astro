@@ -233,9 +233,9 @@ const Informacije = () => {
         <section className="oc-information-cta">
           <div className="oc-container">
             <div className="oc-information-cta__inner">
-              <div><h2>Posetite nas još danas.</h2></div>
+              <div><h2>Pronađite najbliži rendgen centar.</h2></div>
               <SiteLink className="oc-button oc-button--primary" to="/lokacije">
-                Pronađite najbližu lokaciju <ArrowRight aria-hidden="true" />
+                Pogledajte lokacije <ArrowRight aria-hidden="true" />
               </SiteLink>
             </div>
           </div>

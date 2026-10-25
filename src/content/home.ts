@@ -30,7 +30,7 @@ export const homeContent = {
     },
   ],
   dentistBenefits: [
-    ["01", "Rezultati online", "Pristupite nalazima odmah, bilo kada i bilo gde."],
+    ["01", "Snimci online", "Pristup rendgen snimcima."],
     ["02", "Precizna dijagnostika", "2D, 3D/CBCT i kefalometrijske analize visoke preciznosti."],
     ["03", "Jednostavna saradnja", "Komunikacija i podrška bez zastoja."],
   ],

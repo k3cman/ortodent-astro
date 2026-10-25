@@ -3,7 +3,7 @@ import { SiteLink } from "@/components/site/SiteLink";
 import type { CenovnikSection } from "@/content/cenovnik";
 import { CENOVNIK_SECTIONS } from "@/content/cenovnik";
 
-const currency = "din";
+const currency = "RSD";
 
 const PriceSection = ({ section }: { section: CenovnikSection }) => (
   <section

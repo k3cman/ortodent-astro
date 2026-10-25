@@ -1,7 +1,7 @@
 export const RETROALVEOLARNI_SNIMAK_SRC = encodeURI(
   "/images/Retroalveolarni snimak.jpg",
 );
-export const RETROKORONALNI_SNIMAK_SRC = "/images/Retrokoronalni snimak.jpg";
+export const RETROKORONARNI_SNIMAK_SRC = "/images/Retrokoronarni snimak.jpg";
 export const ORTOPANTOMOGRAM_SRC = "/images/Ortopan.jpg";
 export const KEFALOGRAM_SRC = "/images/Lateralni kefalogram.jpg";
 export const PA_KEFALOGRAM_SRC = "/images/PA kefalogram.jpg";

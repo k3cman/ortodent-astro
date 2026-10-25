@@ -63,6 +63,7 @@ export interface Location {
   citySlug: LocationCitySlug;
   name: string;
   address: string;
+  entranceNote?: string;
   phone: string;
   phone2: string;
   lat: number;
@@ -234,6 +235,7 @@ export const LOCATIONS: readonly Location[] = [
     citySlug: "pancevo",
     name: "Braće Jovanovića",
     address: "Braće Jovanovića 40, lokal 4, Pančevo",
+    entranceNote: "Ulaz iz Karađorđeve ulice",
     phone: "013 231 07 35",
     phone2: "063 120 89 69",
     lat: 44.8731616,
@@ -245,7 +247,7 @@ export const LOCATIONS: readonly Location[] = [
     slug: "brace-ribnikar",
     city: "Novi Sad",
     citySlug: "novi-sad",
-    name: "Braće Ribnikar",
+    name: "Centar",
     address: "Braće Ribnikar 3, Novi Sad",
     phone: "021 661 11 66",
     phone2: "062 871 78 61",
@@ -258,7 +260,7 @@ export const LOCATIONS: readonly Location[] = [
     slug: "hadzi-ruvimova",
     city: "Novi Sad",
     citySlug: "novi-sad",
-    name: "Hadži Ruvimova",
+    name: "Detelinara",
     address: "Hadži Ruvimova 52, lokal 3, Novi Sad",
     phone: "021 510 036",
     phone2: "062 148 32 48",

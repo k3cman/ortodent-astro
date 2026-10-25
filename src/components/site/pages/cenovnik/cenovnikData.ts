@@ -18,7 +18,7 @@ export const CENOVNIK_SECTIONS: CenovnikSection[] = [
     subtitle:
       "Osnovna cena obuhvata digitalno izdavanje putem OrtoCloud platforme.",
     items: [
-      { label: "Retroalveolarni / retrokoronalni snimak", amount: "800" },
+      { label: "Retroalveolarni / retrokoronarni snimak", amount: "800" },
       { label: "Ortopantomogram", amount: "2500" },
       { label: "Lateralni kefalogram", amount: "2500" },
       { label: "PA kefalogram", amount: "2500" },
@@ -49,8 +49,9 @@ export const CENOVNIK_SECTIONS: CenovnikSection[] = [
     id: "dodaci",
     title: "DODATNE USLUGE IZDAVANJA",
     items: [
-      { label: "Izrada na filmu (velika folija)", amount: "200" },
-      { label: "CD", amount: "200" },
+      { label: "Izrada na filmu (mala folija)", amount: "200" },
+      { label: "Izrada na filmu (velika folija)", amount: "500" },
+      { label: "CD", amount: "500" },
     ],
   },
 ];
