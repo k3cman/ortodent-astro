@@ -72,7 +72,7 @@ export const CenovnikPricing = () => (
 
       <p className="oc-pricing__payment">
         Plaćanje je moguće izvršiti gotovinom ili platnim karticama, isključivo
-        u dinarskoj protivvrednosti.
+        u RSD.
       </p>
     </div>
   </div>

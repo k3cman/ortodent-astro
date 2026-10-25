@@ -1,6 +1,6 @@
-import { Clock3, Cloud } from "lucide-react";
+import { ArrowUpRight, Clock3, Cloud, FileText } from "lucide-react";
 import profileImage from "@/assets/site/kefalometrija/kefalometrija-profile.jpg";
-import protocolImage from "@/assets/site/kefalometrija/kefalometrija-protocol.png";
+import protocolImage from "@/assets/site/kefalometrija/kefalometrija-patient-analysis.webp";
 import ServiceHero from "@/components/site/ServiceHero";
 import { assetPath } from "@/lib/paths";
 
@@ -115,16 +115,32 @@ export const UslugeKefa = () => (
           </ul>
         </div>
 
-        <figure className="oc-kefa-protocols__visual">
-          <img
-            src={imageSrc(protocolImage)}
-            alt="Lateralni kefalogram i kefalometrijski crtež"
-            width="648"
-            height="408"
-            loading="eager"
-            decoding="async"
-          />
-        </figure>
+        <div className="oc-kefa-protocols__visual-column">
+          <figure className="oc-kefa-protocols__visual">
+            <img
+              src={imageSrc(protocolImage)}
+              alt="Lateralni kefalogram sa digitalno ucrtanim kefalometrijskim merenjima"
+              width="800"
+              height="853"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+
+          <a
+            href={assetPath("/documents/primer-kefalometrijske-analize.pdf")}
+            className="oc-kefa-pdf-button"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Pogledajte primer kefalometrijske analize u PDF formatu"
+            title="Otvori PDF primer u novom tabu"
+          >
+            <FileText aria-hidden="true" />
+            <span>Pogledajte primer analize</span>
+            <strong>PDF</strong>
+            <ArrowUpRight aria-hidden="true" />
+          </a>
+        </div>
       </div>
 
       <div className="oc-container">
