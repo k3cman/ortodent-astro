@@ -51,6 +51,10 @@ body.site-theme .oc-reviews__layout { grid-template-columns: minmax(0, 1fr); gap
 body.site-theme .oc-reviews__summary, body.site-theme .oc-reviews__carousel, body.site-theme .oc-review-panels, body.site-theme .oc-review-grid, body.site-theme .oc-review-card { min-width: 0; max-width: 100%; }
 body.site-theme .oc-review-grid { grid-template-columns: minmax(0, 1fr); }
 body.site-theme .oc-review-card blockquote, body.site-theme .oc-reviews__summary p { overflow-wrap: anywhere; }
+body.site-theme .oc-review-card--long blockquote { font-size: 15px; }
+body.site-theme .oc-review-card--featured.oc-review-card--long blockquote { font-size: 18px; }
+body.site-theme .oc-review-card--very-long blockquote { font-size: 14px; }
+body.site-theme .oc-review-card--featured.oc-review-card--very-long blockquote { font-size: 16px; }
 body.site-theme .oc-review-card footer > span { flex-shrink: 0; }
 body.site-theme .oc-review-card footer div { min-width: 0; overflow-wrap: anywhere; }
 body.site-theme .oc-carousel-controls { display: flex; justify-content: space-between; gap: 6px; }

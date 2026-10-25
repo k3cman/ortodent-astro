@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import { homeContent } from "@/content/home";
+import { getReviewLengthClass } from "@/lib/review-card";
 
 export default function ReviewsSection() {
   const [active, setActive] = useState(0);
@@ -22,8 +23,14 @@ export default function ReviewsSection() {
               <div className="oc-review-grid" key={panelIndex} aria-hidden={panelIndex !== active}>
                 {Array.from({ length: 3 }, (_, offset) => {
                   const [name, review] = homeContent.reviews[(panelIndex + offset) % total];
+                  const lengthClass = getReviewLengthClass(review);
+                  const cardClass = [
+                    "oc-review-card",
+                    offset === 0 ? "oc-review-card--featured" : "",
+                    lengthClass,
+                  ].filter(Boolean).join(" ");
                   return (
-                    <article className={offset === 0 ? "oc-review-card oc-review-card--featured" : "oc-review-card"} key={name}>
+                    <article className={cardClass} key={name}>
                       <Quote aria-hidden="true" className="oc-review-card__quote" />
                       <blockquote>{review}</blockquote>
                       <footer><span>{name.split(" ").map((part) => part[0]).join("").toUpperCase()}</span><div><strong>{name}</strong></div></footer>
