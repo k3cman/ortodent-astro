@@ -15,6 +15,7 @@ body.site-theme .oc-mobile-nav__group summary::-webkit-details-marker { display:
 body.site-theme .oc-mobile-nav__group summary svg { width: 18px; height: 18px; transition: transform .2s ease; }
 body.site-theme .oc-mobile-nav__group[open] summary svg { transform: rotate(180deg); }
 body.site-theme .oc-mobile-nav__group summary:focus-visible { outline: 2px solid var(--oc-magenta); outline-offset: -2px; }
+body.site-theme .oc-mobile-nav__group summary[aria-current="page"] { color: var(--oc-magenta); font-weight: 600; }
 body.site-theme .oc-mobile-nav__links { padding: 0 0 8px 16px; }
 body.site-theme .oc-mobile-nav__links a { border: 0; color: var(--oc-ink); font-size: 14px; }
 body.site-theme .oc-mobile-nav__links a[aria-current="page"] { color: var(--oc-magenta); }

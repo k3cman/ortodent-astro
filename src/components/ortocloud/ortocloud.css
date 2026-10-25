@@ -34,7 +34,7 @@
 .odc-hero__layout { position: relative; z-index: 2; min-height: 560px; display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr auto; align-items: center; }
 .odc-hero__copy { z-index: 2; min-width: 0; max-width: 600px; padding-block: 48px 30px; }
 .odc-hero__logo { width: clamp(130px, 12vw, 168px); height: auto; display: block; margin-bottom: 18px; }
-.odc-hero h1 { margin-bottom: 24px; font-size: clamp(50px, 4.15vw, 60px); font-weight: 500; line-height: .98; }
+.odc-hero h1 { margin-bottom: 24px; font-size: clamp(50px, 4.15vw, 60px); font-weight: 500; line-height: 1.06; }
 .odc-hero h1 span { color: var(--oc-magenta); }
 .odc-hero__lead { max-width: 54ch; margin-bottom: 28px; color: var(--oc-gray-700); font-size: 16px; line-height: 1.62; }
 .odc-hero__signals { z-index: 3; grid-column: 1 / -1; width: min(760px, 92%); display: grid; grid-template-columns: repeat(3, 1fr); padding-bottom: 28px; }
@@ -100,6 +100,7 @@
 .odc-access h3 { margin: 4px 0 6px; font-size: 16px; font-weight: 650; letter-spacing: -.02em; }
 .odc-access article p { min-height: 48px; margin-bottom: 15px; color: var(--oc-gray-500); font-size: 12px; line-height: 1.5; }
 .odc-access .odc-button { min-height: 40px; padding: 8px 16px; font-size: 11px; }
+.odc-access__actions { justify-content: center; margin-top: 28px; }
 
 .odc-support { padding: 26px 0; background: #f7fbfd; }
 .odc-support__inner { min-height: 96px; display: grid; grid-template-columns: minmax(320px, 1.4fr) .75fr .75fr auto; align-items: center; gap: clamp(20px, 3vw, 42px); padding-block: 18px; }
@@ -152,7 +153,7 @@
   .ortocloud-theme { --oc-gutter: 20px; }
   .odc-hero__copy { width: calc(100vw - 40px); max-width: calc(100vw - 40px); padding-top: 58px; }
   .odc-hero__logo { width: 132px; margin-bottom: 16px; }
-  .odc-hero h1 { margin-bottom: 20px; font-size: clamp(39px, 10.8vw, 43px); line-height: 1.02; }
+  .odc-hero h1 { margin-bottom: 20px; font-size: clamp(39px, 10.8vw, 43px); line-height: 1.06; }
   .odc-hero__lead { font-size: 16px; }
   .odc-actions { display: grid; grid-template-columns: 1fr; }
   .odc-actions .odc-button { width: 100%; }

@@ -4,7 +4,7 @@ import { Usluge3D } from "@/components/site/pages/usluge/Usluge3D";
 
 const Usluge3DPage = () => (
   <div className="oc-site min-h-screen bg-background">
-    <Header />
+    <Header currentPath="/usluge/3d" />
     <main className="od3d-page">
       <div className="oc-container">
         <Usluge3D />

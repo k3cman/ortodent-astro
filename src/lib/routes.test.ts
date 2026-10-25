@@ -62,8 +62,7 @@ test("production build publishes only canonical unversioned routes", async () =>
   assert.match(homeHtml, /13 centara širom regiona/);
   assert.match(homeHtml, /OrtoCloud platforma/);
   assert.match(homeHtml, /Podrška 24\/7/);
-  assert.match(homeHtml, /aria-label="Facebook"/);
-  assert.match(homeHtml, /aria-label="Instagram"/);
+  assert.doesNotMatch(homeHtml, /aria-label="Facebook"|aria-label="Instagram"/);
   assert.match(homeHtml, /aria-label="LinkedIn"/);
   assert.match(homeHtml, />Politika privatnosti</);
   assert.match(homeHtml, />Uslovi korišćenja</);
@@ -79,11 +78,10 @@ test("production build publishes only canonical unversioned routes", async () =>
     kontaktHtml,
     /Tu smo da odgovorimo na Vaša pitanja, pružimo dodatne informacije i podržimo Vas u korišćenju naših usluga\./,
   );
-  assert.match(kontaktHtml, /Ostanite informisani o svim novostima i promenama/);
+  assert.doesNotMatch(kontaktHtml, /Ostanite informisani o svim novostima i promenama/);
   assert.match(kontaktHtml, /Potrebne su Vam informacije o radnom vremenu/);
   assert.match(kontaktHtml, /<h1[^>]*>Kontakt<\/h1>/);
-  assert.match(kontaktHtml, /aria-label="Instagram"/);
-  assert.match(kontaktHtml, /aria-label="Facebook"/);
+  assert.doesNotMatch(kontaktHtml, /aria-label="Instagram"|aria-label="Facebook"/);
   assert.doesNotMatch(kontaktHtml, /Centri i radno vreme/);
   assert.doesNotMatch(kontaktHtml, /OrtoCloud podrška/);
   assert.doesNotMatch(kontaktHtml, /Opšti upiti/);

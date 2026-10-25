@@ -42,7 +42,7 @@ export const CENOVNIK_SECTIONS: CenovnikSection[] = [
   {
     id: "kefalometrija",
     title: "KEFALOMETRIJSKE ANALIZE",
-    subtitle: "Dostupne su putem OrtoCloud platforme stomatologu koji je uputio pacijenta na snimanje.",
+    subtitle: "Dostupne su putem OrtoCloud platforme.",
     items: [{ label: "KefAnalize", amount: "1500" }],
   },
   {

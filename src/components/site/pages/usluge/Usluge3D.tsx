@@ -1,11 +1,8 @@
 import { ArrowUpRight, Check } from "lucide-react";
 import cbctPatient from "@/assets/home/cbct-patient.webp";
 import ServiceHero from "@/components/site/ServiceHero";
-import diagnosticScreen from "@/assets/site/3d/cbct-diagnostic-screen.png";
-import jaw3d from "@/assets/site/3d/cbct-jaw-3d.png";
+import clinicalAnalysis from "@/assets/site/3d/cbct-clinical-analysis-original.png";
 import machine from "@/assets/site/3d/cbct-machine.png";
-import slicesLeft from "@/assets/site/3d/cbct-slices-left.png";
-import slicesRight from "@/assets/site/3d/cbct-slices-right.png";
 import "./usluge3d.css";
 
 const imageSrc = (image: string | { src: string }) =>
@@ -152,51 +149,30 @@ export const Usluge3D = () => (
           </p>
         </div>
 
-        <ul className="od3d-benefits">
-          {diagnosticBenefits.map((benefit) => (
-            <li key={benefit.title}>
-              <span className="od3d-benefits__icon">
-                <Check aria-hidden="true" />
-              </span>
-              <span>
-                <strong>{benefit.title}</strong>
-                {benefit.description}
-              </span>
-            </li>
-          ))}
-        </ul>
       </div>
 
-      <div className="od3d-collage" aria-label="Primeri CBCT dijagnostičkih prikaza">
+      <figure className="od3d-technology__visual">
         <img
-          className="od3d-collage__screen"
-          src={imageSrc(diagnosticScreen)}
-          alt="CBCT dijagnostički prikaz u Ez3D-i softveru"
+          src={imageSrc(clinicalAnalysis)}
+          alt="Stomatolog analizira trodimenzionalni CBCT prikaz vilice"
           loading="lazy"
           decoding="async"
         />
-        <img
-          className="od3d-collage__jaw"
-          src={imageSrc(jaw3d)}
-          alt="Trodimenzionalni prikaz vilice"
-          loading="lazy"
-          decoding="async"
-        />
-        <div className="od3d-collage__slices">
-          <img
-            src={imageSrc(slicesLeft)}
-            alt="Koronarni i aksijalni CBCT presek vilice"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src={imageSrc(slicesRight)}
-            alt="Sagitalni CBCT presek i 3D prikaz vilice"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
+      </figure>
+
+      <ul className="od3d-benefits">
+        {diagnosticBenefits.map((benefit) => (
+          <li key={benefit.title}>
+            <span className="od3d-benefits__icon">
+              <Check aria-hidden="true" />
+            </span>
+            <span>
+              <strong>{benefit.title}</strong>
+              {benefit.description}
+            </span>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section className="od3d-software" aria-label="Ez3D-i softver i Vatech oprema">

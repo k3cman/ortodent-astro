@@ -150,7 +150,7 @@ export const UslugeKefa = () => (
             <Clock3 />
           </div>
           <p>
-            KefAnalize su dostupne stomatolozima putem <strong>OrtoCloud</strong>{" "}
+            KefAnalize su dostupne putem <strong>OrtoCloud</strong>{" "}
             platforme, maksimalno 48h od trenutka snimanja kefalograma.
           </p>
         </aside>

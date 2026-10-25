@@ -146,7 +146,7 @@ const faqItems = [
 const Informacije = () => {
   return (
     <div className="oc-site oc-information-page">
-      <Header />
+      <Header currentPath="/informacije" />
       <main>
         <section className="oc-page-intro oc-page-intro--utility">
           <div className="oc-container">

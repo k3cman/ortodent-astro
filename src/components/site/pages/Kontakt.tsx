@@ -1,8 +1,6 @@
 import { useState } from "react";
 import {
   ChevronDown,
-  Facebook,
-  Instagram,
   Send,
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -12,11 +10,6 @@ import { useToast } from "@/hooks/use-toast";
 import "./kontakt.css";
 
 const WRITING_AS_OPTIONS = ["Stomatologa", "Pacijenta"] as const;
-
-const socialLinks = [
-  { href: "#", label: "Instagram", icon: Instagram },
-  { href: "#", label: "Facebook", icon: Facebook },
-] as const;
 
 const Kontakt = () => {
   const { toast } = useToast();
@@ -66,19 +59,6 @@ const Kontakt = () => {
               <p className="oc-contact-aside__intro">
                 Kontaktirajte nas za sve dodatne informacije i podršku.
               </p>
-
-              <div className="oc-contact-aside__trust">
-                <p className="oc-contact-social-intro">
-                  Ostanite informisani o svim novostima i promenama u radu naših centara putem naših zvaničnih profila.
-                </p>
-                <div className="oc-contact-social-links">
-                  {socialLinks.map(({ href, label, icon: Icon }) => (
-                    <a key={label} href={href} aria-label={label}>
-                      <Icon aria-hidden="true" />
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
 
             <form id="contact-form" className="oc-contact-form" onSubmit={handleSubmit}>
@@ -155,6 +135,23 @@ const Kontakt = () => {
             <p>
               Detaljne informacije o radnom vremenu i kontakt telefonima naših centara dostupne su na stranici <SiteLink to="/lokacije">Lokacije</SiteLink>.
             </p>
+          </div>
+        </section>
+
+        <section className="oc-contact-careers" aria-labelledby="contact-careers-title">
+          <div className="oc-container">
+            <div className="oc-contact-careers__panel">
+              <div className="oc-contact-careers__copy">
+                <p className="oc-eyebrow">Karijera u OrtoDentu</p>
+                <h2 id="contact-careers-title">Želite da postanete deo našeg tima?</h2>
+                <p>
+                  Ukoliko ste doktor stomatologije ili strukovni medicinski radiolog i želite da postanete deo našeg tima, pošaljite nam svoj CV. Vašu prijavu uzećemo u razmatranje prilikom narednog konkursa. Prethodno radno iskustvo nije uslov.
+                </p>
+              </div>
+              <p className="oc-contact-careers__email">
+                Prijave možete slati na <a href="mailto:info@ortodent.rs?subject=Prijava%20za%20posao%20-%20CV">info@ortodent.rs</a>.
+              </p>
+            </div>
           </div>
         </section>
       </main>

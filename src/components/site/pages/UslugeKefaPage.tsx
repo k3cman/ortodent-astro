@@ -5,7 +5,7 @@ import "./usluge/kefalometrija.css";
 
 const UslugeKefaPage = () => (
   <div className="oc-site min-h-screen bg-background">
-    <Header />
+    <Header currentPath="/usluge/kefalometrija" />
     <main className="oc-kefa-page">
       <UslugeKefa />
     </main>

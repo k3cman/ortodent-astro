@@ -1,8 +1,4 @@
-import {
-  ChevronRight,
-  Facebook,
-  Instagram,
-} from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import footerLogo from "@/assets/footer-logo.png";
 import { SiteLink } from "@/components/site/SiteLink";
 
@@ -19,11 +15,6 @@ const serviceLinks = [
   ["3D / CBCT", "/usluge/3d"],
   ["Kefalometrija", "/usluge/kefalometrija"],
   ["OrtoCloud", "/ortocloud"],
-] as const;
-
-const socialLinks = [
-  { label: "Facebook", icon: Facebook },
-  { label: "Instagram", icon: Instagram },
 ] as const;
 
 export default function Footer() {
@@ -56,13 +47,6 @@ export default function Footer() {
               Digitalna dijagnostika koja donosi preciznost, sigurnost i
               poverenje u svaki plan terapije.
             </p>
-            <nav className="oc-socials" aria-label="Društvene mreže">
-              {socialLinks.map(({ label, icon: Icon }) => (
-                <a key={label} href="#" aria-label={label}>
-                  <Icon aria-hidden="true" />
-                </a>
-              ))}
-            </nav>
           </div>
 
           <div className="oc-footer__column">

@@ -25,7 +25,7 @@ const UslugeLayout = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header currentPath={pathname} />
 
       <main className="pt-32 pb-24">
         <div className="container mx-auto px-6">

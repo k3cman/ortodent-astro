@@ -4,7 +4,7 @@ import { Usluge2D } from "@/components/site/pages/usluge/Usluge2D";
 
 const Usluge2DPage = () => (
   <div className="oc-site min-h-screen bg-background">
-    <Header />
+    <Header currentPath="/usluge/2d" />
     <main className="oc-2d-page">
       <div className="oc-container">
         <Usluge2D />

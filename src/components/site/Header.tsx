@@ -33,6 +33,8 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
   const [servicesOpen, setServicesOpen] = useState(false);
   const [locationsOpen, setLocationsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const servicesActive = services.some(([, href]) => currentPath === href);
+  const locationsActive = currentPath === "/lokacije" || currentPath?.startsWith("/lokacije/");
 
   useEffect(() => {
     const updateHeader = () => setScrolled(window.scrollY > 12);
@@ -51,8 +53,8 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
             onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setServicesOpen(false); }}
             onKeyDown={(event) => { if (event.key === "Escape") { setServicesOpen(false); event.currentTarget.querySelector("button")?.focus(); } }}
           >
-            <button type="button" aria-expanded={servicesOpen} aria-controls="services-menu" onClick={() => setServicesOpen((value) => !value)}>Usluge <ChevronDown aria-hidden="true" /></button>
-            <div id="services-menu" hidden={!servicesOpen} className="oc-nav__menu">{services.map(([label, href]) => <SiteLink key={href} to={href}>{label}</SiteLink>)}</div>
+            <button type="button" aria-current={servicesActive ? "page" : undefined} aria-expanded={servicesOpen} aria-controls="services-menu" onClick={() => setServicesOpen((value) => !value)}>Usluge <ChevronDown aria-hidden="true" /></button>
+            <div id="services-menu" hidden={!servicesOpen} className="oc-nav__menu">{services.map(([label, href]) => <SiteLink key={href} to={href} aria-current={currentPath === href ? "page" : undefined}>{label}</SiteLink>)}</div>
           </div>
           {navItems.map(([label, href]) => (
             href === "/lokacije" ? (
@@ -62,7 +64,7 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
                 onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setLocationsOpen(false); }}
                 onKeyDown={(event) => { if (event.key === "Escape") { setLocationsOpen(false); event.currentTarget.querySelector("button")?.focus(); } }}
               >
-                <SiteLink to={href} aria-current={currentPath === href ? "page" : undefined}>{label}</SiteLink>
+                <SiteLink to={href} aria-current={locationsActive ? "page" : undefined}>{label}</SiteLink>
                 <button type="button" aria-label="Prikaži lokacije po gradovima" aria-expanded={locationsOpen} aria-controls="locations-menu" onClick={() => setLocationsOpen((value) => !value)}><ChevronDown aria-hidden="true" /></button>
                 <div id="locations-menu" hidden={!locationsOpen} className="oc-nav__menu">{cities.map(([city, cityHref]) => <SiteLink key={cityHref} to={cityHref} aria-current={currentPath === cityHref ? "page" : undefined}>{city}</SiteLink>)}</div>
               </div>
@@ -78,7 +80,7 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
           ))}
         </nav>
         <div className="oc-header__actions">
-          <SiteLink to="/ortocloud" className="oc-cloud-link"><Cloud aria-hidden="true" /> OrtoCloud</SiteLink>
+          <SiteLink to="/ortocloud" className="oc-cloud-link" aria-current={currentPath === "/ortocloud" ? "page" : undefined}><Cloud aria-hidden="true" /> OrtoCloud</SiteLink>
           <button className="oc-menu-toggle" type="button" aria-label={open ? "Zatvori meni" : "Otvori meni"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen((value) => !value)}>{open ? <X /> : <Menu />}</button>
         </div>
       </div>
@@ -87,14 +89,14 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
         <button className="oc-mobile-nav-backdrop" type="button" aria-label="Zatvori mobilnu navigaciju" onClick={() => setOpen(false)} />
         <nav id="mobile-navigation" className="oc-mobile-nav" aria-label="Mobilna navigacija" onKeyDown={(event) => { if (event.key === "Escape") { setOpen(false); document.querySelector<HTMLButtonElement>(".oc-menu-toggle")?.focus(); } }}>
           <details className="oc-mobile-nav__group">
-            <summary>Usluge <ChevronDown aria-hidden="true" /></summary>
+            <summary aria-current={servicesActive ? "page" : undefined}>Usluge <ChevronDown aria-hidden="true" /></summary>
             <div className="oc-mobile-nav__links">
               {services.map(([label, href]) => <SiteLink key={href} to={href} aria-current={currentPath === href ? "page" : undefined} onClick={() => setOpen(false)}>{label}</SiteLink>)}
             </div>
           </details>
           {navItems.map(([label, href]) => href === "/lokacije" ? (
             <details className="oc-mobile-nav__group" key={href}>
-              <summary>Lokacije <ChevronDown aria-hidden="true" /></summary>
+              <summary aria-current={locationsActive ? "page" : undefined}>Lokacije <ChevronDown aria-hidden="true" /></summary>
               <div className="oc-mobile-nav__links">
                 <SiteLink to={href} aria-current={currentPath === href ? "page" : undefined} onClick={() => setOpen(false)}>Sve lokacije</SiteLink>
                 {cities.map(([city, cityHref]) => <SiteLink key={cityHref} to={cityHref} aria-current={currentPath === cityHref ? "page" : undefined} onClick={() => setOpen(false)}>{city}</SiteLink>)}
@@ -103,7 +105,7 @@ export default function Header({ currentPath, transparent = false }: HeaderProps
           ) : (
             <SiteLink key={href} to={href} aria-current={currentPath === href ? "page" : undefined} onClick={() => setOpen(false)}>{label}</SiteLink>
           ))}
-          <SiteLink to="/ortocloud" onClick={() => setOpen(false)}>OrtoCloud</SiteLink>
+          <SiteLink to="/ortocloud" aria-current={currentPath === "/ortocloud" ? "page" : undefined} onClick={() => setOpen(false)}>OrtoCloud</SiteLink>
         </nav>
         </>
       )}

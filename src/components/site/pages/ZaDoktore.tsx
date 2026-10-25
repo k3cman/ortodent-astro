@@ -105,9 +105,14 @@ function ZaDoktore() {
                 <a className="od-pro-button od-pro-button--primary" href="#partnerstvo">
                   Postanite partner <ArrowRight aria-hidden="true" />
                 </a>
-                <SiteLink className="od-pro-text-link" to="/ortocloud">
-                  OrtoCloud Login <ArrowRight aria-hidden="true" />
-                </SiteLink>
+                <a
+                  className="od-pro-text-link"
+                  href="https://cloud.ortodent.rs/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  OrtoCloud prijava <ArrowRight aria-hidden="true" />
+                </a>
               </div>
             </motion.div>
           </div>
@@ -136,9 +141,14 @@ function ZaDoktore() {
                 ))}
               </ul>
               <div className="od-pro-actions">
-                <SiteLink className="od-pro-button od-pro-button--primary" to="/ortocloud">
+                <a
+                  className="od-pro-button od-pro-button--primary"
+                  href="https://cloud.ortodent.rs/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Prijava na OrtoCloud <ArrowRight aria-hidden="true" />
-                </SiteLink>
+                </a>
                 <SiteLink className="od-pro-text-link" to="/ortocloud">
                   Saznajte više <ArrowRight aria-hidden="true" />
                 </SiteLink>

@@ -13,5 +13,5 @@ export const PARANAZALNE_SUPLJINE_SRC =
   assetPath("/images/Snimak paranazalnih supljina.jpg");
 export const TM_ZGLOBOVI_SRC = assetPath("/images/Snimak TM zgloba.jpg");
 export const TOMOGRAFSKA_ANALIZA_SRC = encodeURI(
-  assetPath("/images/Tomografska analiza 2.jpg"),
+  assetPath("/images/Tomografska analiza anonimna.png"),
 );

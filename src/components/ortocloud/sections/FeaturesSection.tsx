@@ -10,7 +10,7 @@ const platformFeatures = [
 const retentionPolicies = [
   { icon: "2D", label: "2D snimci", value: "5 godina", text: "Pregled, preuzimanje i deljenje putem mobilne aplikacije ili računara (App & Web)." },
   { icon: "3D", label: "3D snimci (CBCT)", value: "15 dana", text: "Pristup i preuzimanje isključivo putem računara (PC)." },
-  { icon: "K", label: "Kefalometrijske analize", value: "Dva dokumenta", text: "Detaljna analiza i obeležen snimak za stručnu upotrebu. Pristup isključivo preko korisničkog naloga stomatologa." },
+  { icon: "K", label: "Kefalometrijske analize", value: "Dva dokumenta", text: "Detaljna analiza i obeležen snimak za stručnu upotrebu." },
 ] as const;
 
 export default function FeaturesSection({ children }: { children?: ReactNode }) {

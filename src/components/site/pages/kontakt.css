@@ -461,6 +461,54 @@
   font-weight: 600;
 }
 
+.oc-contact-careers {
+  padding: clamp(64px, 7vw, 88px) 0;
+  background: #f8f8f8;
+  border-top: 1px solid var(--oc-gray-300);
+}
+
+.oc-contact-careers__panel {
+  padding: clamp(38px, 5vw, 64px);
+  background: #fff;
+  border: 1px solid #eadde2;
+  border-radius: var(--oc-radius-lg);
+}
+
+.oc-contact-careers__copy .oc-eyebrow {
+  margin-bottom: 18px;
+}
+
+.oc-contact-careers__copy h2 {
+  max-width: 15ch;
+  margin: 0 0 22px;
+  color: var(--oc-ink);
+  font-size: clamp(32px, 3.4vw, 46px);
+  font-weight: 550;
+  line-height: 1.08;
+  letter-spacing: -.04em;
+}
+
+.oc-contact-careers__copy > p:last-child {
+  max-width: 72ch;
+  margin: 0;
+  color: var(--oc-gray-700);
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.oc-contact-careers__email {
+  margin: 32px 0 0;
+  padding-top: 24px;
+  color: var(--oc-gray-700);
+  border-top: 1px solid var(--oc-gray-300);
+  font-size: 15px;
+}
+
+.oc-contact-careers__email a {
+  color: var(--oc-magenta) !important;
+  font-weight: 650;
+}
+
 @media (max-width: 1080px) {
   .oc-contact-hero {
     min-height: 400px;
@@ -558,6 +606,7 @@
     margin-top: 42px;
     padding-top: 32px;
   }
+
 }
 
 @media (max-width: 560px) {
@@ -660,6 +709,28 @@
   .oc-contact-note p {
     padding: 20px;
     text-align: left;
+  }
+
+  .oc-contact-careers {
+    padding: 48px 0;
+  }
+
+  .oc-contact-careers__panel {
+    padding: 30px 22px;
+    border-radius: 16px;
+  }
+
+  .oc-contact-careers__copy h2 {
+    font-size: 34px;
+  }
+
+  .oc-contact-careers__copy > p:last-child {
+    font-size: 15px;
+  }
+
+  .oc-contact-careers__email {
+    margin-top: 26px;
+    padding-top: 20px;
   }
 
   .oc-contact-aside h2 {
