@@ -197,10 +197,19 @@
 
 .oc-contact-aside__intro {
   max-width: 34ch;
-  margin-bottom: 54px;
+  margin-bottom: 20px;
   color: var(--oc-gray-500);
   font-size: 17px;
   line-height: 1.62;
+}
+
+.oc-contact-aside__email {
+  display: inline-flex;
+  color: var(--oc-magenta) !important;
+  font-size: 17px;
+  font-weight: 650;
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
 }
 
 .oc-contact-detail-list {
@@ -465,6 +474,11 @@
   padding: clamp(64px, 7vw, 88px) 0;
   background: #f8f8f8;
   border-top: 1px solid var(--oc-gray-300);
+}
+
+.oc-contact-careers > .oc-container {
+  width: 100%;
+  max-width: none;
 }
 
 .oc-contact-careers__panel {

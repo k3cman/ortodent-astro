@@ -1,4 +1,4 @@
-import { ChevronDown, Cloud, Languages, Menu, X } from "lucide-react";
+import { ChevronDown, Cloud, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import logo from "@/assets/logo.png";
 import { SiteLink } from "@/components/site/SiteLink";
@@ -92,18 +92,18 @@ export default function Header({ currentPath, transparent = false, locale }: Hea
           ))}
         </nav>
         <div className="oc-header__actions">
+          <SiteLink to="/ortocloud" className="oc-cloud-link" aria-current={activePath === localizePath("/ortocloud", activeLocale) ? "page" : undefined}><Cloud aria-hidden="true" /> {content.navigation.cloud}</SiteLink>
           <div
             className="oc-language-switcher"
             onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setLanguageOpen(false); }}
             onKeyDown={(event) => { if (event.key === "Escape") { setLanguageOpen(false); event.currentTarget.querySelector("button")?.focus(); } }}
           >
-            <button type="button" aria-label={content.header.language} aria-expanded={languageOpen} aria-controls="language-menu" onClick={() => setLanguageOpen((value) => !value)}><Languages aria-hidden="true" /> {activeLocale.toUpperCase()} <ChevronDown aria-hidden="true" /></button>
+            <button type="button" aria-label={content.header.language} aria-expanded={languageOpen} aria-controls="language-menu" onClick={() => setLanguageOpen((value) => !value)}>{activeLocale.toUpperCase()} <ChevronDown aria-hidden="true" /></button>
             <div id="language-menu" className="oc-language-switcher__menu" hidden={!languageOpen}>
               <a href={sitePath(serbianPath)} aria-current={activeLocale === "sr" ? "page" : undefined}>SR</a>
               <a href={sitePath(englishPath)} aria-current={activeLocale === "en" ? "page" : undefined}>EN</a>
             </div>
           </div>
-          <SiteLink to="/ortocloud" className="oc-cloud-link" aria-current={activePath === localizePath("/ortocloud", activeLocale) ? "page" : undefined}><Cloud aria-hidden="true" /> {content.navigation.cloud}</SiteLink>
           <button className="oc-menu-toggle" type="button" aria-label={open ? content.header.closeMenu : content.header.openMenu} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen((value) => !value)}>{open ? <X /> : <Menu />}</button>
         </div>
       </div>

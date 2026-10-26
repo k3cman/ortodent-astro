@@ -63,6 +63,9 @@ const Kontakt = () => {
               <p className="oc-contact-aside__intro">
                 {locale === "sr" ? "Kontaktirajte nas za sve dodatne informacije i podršku." : "Contact us for any additional information or support."}
               </p>
+              <a className="oc-contact-aside__email" href="mailto:info@ortodent.rs?subject=Prijava%20za%20posao%20-%20CV">
+                info@ortodent.rs
+              </a>
             </div>
 
             <form id="contact-form" className="oc-contact-form" onSubmit={handleSubmit}>
