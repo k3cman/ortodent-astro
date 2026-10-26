@@ -4,6 +4,7 @@ import {
   phoneHref,
   type Location,
 } from "@/lib/locations";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 export default function LocationActions({
   location,
@@ -12,11 +13,12 @@ export default function LocationActions({
   location: Location;
   compact?: boolean;
 }) {
+  const en = useLocale() === "en";
   return (
     <div className={`od-location-actions${compact ? " od-location-actions--compact" : ""}`}>
       <a className="od-button od-button--primary" href={`tel:${phoneHref(location.phone)}`}>
         <Phone aria-hidden="true" />
-        Pozovite centar
+        {en ? "Call the centre" : "Pozovite centar"}
       </a>
       <a
         className="od-button od-button--secondary"
@@ -24,7 +26,7 @@ export default function LocationActions({
         target="_blank"
         rel="noreferrer"
       >
-        Otvori navigaciju
+        {en ? "Open directions" : "Otvori navigaciju"}
         <ArrowUpRight aria-hidden="true" />
       </a>
     </div>

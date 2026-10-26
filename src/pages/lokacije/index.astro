@@ -3,6 +3,6 @@ import SiteLayout from "@/layouts/SiteLayout.astro";
 import LokacijePage from "@/components/site/pages/Lokacije";
 ---
 
-<SiteLayout title="Lokacije — OrtoDent">
-  <LokacijePage client:load />
+<SiteLayout title="Lokacije — OrtoDent" locale="sr" currentPath="/lokacije">
+  <LokacijePage client:load locale="sr" />
 </SiteLayout>

@@ -1,0 +1,8 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import KontaktPage from "@/components/site/pages/Kontakt";
+---
+
+<SiteLayout locale="en" currentPath="/en/contact" title="Contact — OrtoDent" description="Contact OrtoDent for information and support.">
+  <KontaktPage client:load locale="en" />
+</SiteLayout>

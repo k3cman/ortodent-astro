@@ -6,11 +6,12 @@ import FeaturesSection from "./sections/FeaturesSection";
 import DownloadSection from "./sections/DownloadSection";
 import AccessSection from "./sections/AccessSection";
 import "./ortocloud.css";
+import { localizePath, type Locale } from "@/lib/i18n";
 
-export default function OrtoCloudPage() {
+export default function OrtoCloudPage({ locale = "sr" }: { locale?: Locale }) {
   return (
-    <SiteProviders>
-      <Header currentPath="/ortocloud" />
+    <SiteProviders locale={locale}>
+      <Header currentPath={localizePath("/ortocloud", locale)} />
       <div className="ortocloud-theme">
         <main>
           <HeroSection />

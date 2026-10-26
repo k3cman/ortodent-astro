@@ -1,0 +1,26 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import Usluge2DPage from "@/components/site/pages/Usluge2DPage";
+import Usluge3DPage from "@/components/site/pages/Usluge3DPage";
+import UslugeKefaPage from "@/components/site/pages/UslugeKefaPage";
+
+type Service = "2d" | "3d" | "cephalometry";
+
+export function getStaticPaths() {
+  const services = ["2d", "3d", "cephalometry"] as const;
+  return services.map((service) => ({ params: { service } }));
+}
+
+const service = Astro.params.service as Service;
+const titles: Record<Service, string> = {
+  "2d": "2D imaging — OrtoDent",
+  "3d": "3D imaging / CBCT — OrtoDent",
+  cephalometry: "Cephalometric analyses — OrtoDent",
+};
+---
+
+<SiteLayout locale="en" currentPath={`/en/services/${service}`} title={titles[service]}>
+  {service === "2d" && <Usluge2DPage client:load locale="en" />}
+  {service === "3d" && <Usluge3DPage client:load locale="en" />}
+  {service === "cephalometry" && <UslugeKefaPage client:load locale="en" />}
+</SiteLayout>

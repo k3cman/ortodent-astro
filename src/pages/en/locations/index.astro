@@ -1,0 +1,8 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import LokacijePage from "@/components/site/pages/Lokacije";
+---
+
+<SiteLayout locale="en" currentPath="/en/locations" title="Locations — OrtoDent" description="Find your nearest OrtoDent dental imaging centre.">
+  <LokacijePage client:load locale="en" />
+</SiteLayout>

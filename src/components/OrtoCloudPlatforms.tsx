@@ -1,5 +1,6 @@
 import { Cloud, Play, Apple, Smartphone } from "lucide-react";
 import "./ortocloud-platforms.css";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 const platforms = [
   { name: "OrtoCloud", caption: "Web aplikacija", href: "https://ortocloud.org/", icon: "web" },
@@ -14,11 +15,12 @@ function PlatformIcon({ type }: { type: string }) {
 }
 
 export default function OrtoCloudPlatforms({ variant = "compact" }: { variant?: "compact" | "download" }) {
-  return <nav className={`oc-platforms oc-platforms--${variant}`} aria-label="OrtoCloud platforme">
+  const en = useLocale() === "en";
+  return <nav className={`oc-platforms oc-platforms--${variant}`} aria-label={en ? "OrtoCloud platforms" : "OrtoCloud platforme"}>
     <div className="oc-platforms__grid">
-      {platforms.map(({ name, href, icon }) => <a key={name} href={href} target="_blank" rel="noopener noreferrer" className="oc-platforms__badge" aria-label={`${name} — otvara se u novom tabu`}>
+      {platforms.map(({ name, href, icon }) => <a key={name} href={href} target="_blank" rel="noopener noreferrer" className="oc-platforms__badge" aria-label={en ? `${name} — opens in a new tab` : `${name} — otvara se u novom tabu`}>
         <PlatformIcon type={icon} />
-        <span>{variant === "compact" && <small>{icon === "web" ? "Otvorite" : icon === "google" ? "Dostupno na" : icon === "apple" ? "Preuzmite u" : "Istraži u"}</small>}<strong>{variant === "download" && icon === "web" ? "Web aplikacija" : name}</strong></span>
+        <span>{variant === "compact" && <small>{en ? (icon === "web" ? "Open" : icon === "google" ? "Available on" : icon === "apple" ? "Download on the" : "Explore it on") : (icon === "web" ? "Otvorite" : icon === "google" ? "Dostupno na" : icon === "apple" ? "Preuzmite u" : "Istraži u")}</small>}<strong>{variant === "download" && icon === "web" ? (en ? "Web app" : "Web aplikacija") : name}</strong></span>
       </a>)}
     </div>
   </nav>;

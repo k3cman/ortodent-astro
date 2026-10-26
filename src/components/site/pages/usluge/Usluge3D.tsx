@@ -4,6 +4,7 @@ import ServiceHero from "@/components/site/ServiceHero";
 import clinicalAnalysis from "@/assets/site/3d/cbct-clinical-analysis-original.png";
 import machine from "@/assets/site/3d/cbct-machine.png";
 import "./usluge3d.css";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 const imageSrc = (image: string | { src: string }) =>
   typeof image === "string" ? image : image.src;
@@ -75,26 +76,50 @@ const diagnosticBenefits = [
   },
 ];
 
-export const Usluge3D = () => (
+const fieldSizesEn = [
+  { size: "S", title: "Small field", dimensions: "5 × 5 cm", description: "A targeted region covering 2–3 adjacent teeth." },
+  { size: "M", title: "Medium field", dimensions: "8 × 5 cm", description: "Covers the entire upper or lower jaw." },
+  { size: "L", title: "Large field", dimensions: "12 × 9 cm", description: "Covers both jaws." },
+];
+const useCasesEn = [
+  { title: "Implantology and surgery", description: "Safe implant placement and wisdom-tooth extraction with a clear view of nerves, alveolar bone and the maxillary sinus." },
+  { title: "Endodontics", description: "Precise visualisation of root canals and inflammatory processes around root tips." },
+  { title: "Orthodontics", description: "Analysis of facial bone structures and the relationship between teeth and temporomandibular joints." },
+  { title: "Maxillofacial surgery", description: "Detection of trauma, fractures and pathological changes in bone tissue." },
+];
+const diagnosticBenefitsEn = [
+  { title: "Advanced artefact reduction", description: "Intelligent algorithms reduce glare around metal crowns and implants for a clearer view of clinically important regions." },
+  { title: "Fast exposure", description: "Scanning takes only a few seconds, reducing motion artefacts and producing a sharp image on the first attempt." },
+  { title: "Low-dose Vatech 3D technology", description: "Advanced sensors provide high diagnostic precision with a significantly reduced radiation dose." },
+  { title: "Digital availability", description: "All 3D scans are available through OrtoCloud immediately after imaging." },
+];
+
+export const Usluge3D = () => {
+  const locale = useLocale();
+  const en = locale === "en";
+  const fields = en ? fieldSizesEn : fieldSizes;
+  const cases = en ? useCasesEn : useCases;
+  const benefits = en ? diagnosticBenefitsEn : diagnosticBenefits;
+  return (
   <div className="od3d">
     <ServiceHero
-      eyebrow="3D dijagnostika"
-      title={<>3D snimanja<br />CBCT</>}
+      eyebrow={en ? "3D diagnostics" : "3D dijagnostika"}
+      title={en ? <>3D imaging<br />CBCT</> : <>3D snimanja<br />CBCT</>}
       lead={
         <>
-          <p>CBCT (Cone beam computed tomography) tehnologija koristi konusni snop rendgenskih zraka za dobijanje preciznog trodimenzionalnog prikaza zuba, vilica i okolnih anatomskih struktura. Detaljan 3D prikaz pruža stomatolozima važne informacije za dijagnostiku i precizno planiranje terapije.</p>
+          <p>{en ? "CBCT (cone beam computed tomography) uses a cone-shaped X-ray beam to create a precise three-dimensional view of the teeth, jaws and surrounding anatomical structures. Detailed 3D imaging provides essential information for diagnosis and treatment planning." : "CBCT (Cone beam computed tomography) tehnologija koristi konusni snop rendgenskih zraka za dobijanje preciznog trodimenzionalnog prikaza zuba, vilica i okolnih anatomskih struktura. Detaljan 3D prikaz pruža stomatolozima važne informacije za dijagnostiku i precizno planiranje terapije."}</p>
         </>
       }
       image={imageSrc(cbctPatient)}
-      imageAlt="Pacijentkinja tokom 3D CBCT snimanja"
+      imageAlt={en ? "Patient during a 3D CBCT scan" : "Pacijentkinja tokom 3D CBCT snimanja"}
       imagePosition="72% 43%"
       variant="backdrop"
     />
 
       <section className="od3d-use-cases od3d-use-cases--standalone">
-        <h2>Gde se sve koristi 3D snimak?</h2>
+        <h2>{en ? "Where is 3D imaging used?" : "Gde se sve koristi 3D snimak?"}</h2>
         <ul>
-          {useCases.map((useCase) => (
+          {cases.map((useCase) => (
             <li key={useCase.title}>
               <strong>{useCase.title}</strong>
               <span>{useCase.description}</span>
@@ -105,12 +130,12 @@ export const Usluge3D = () => (
 
     <section className="od3d-fields" aria-labelledby="od3d-fields-title">
       <header className="od3d-section-heading od3d-section-heading--center">
-        <p className="od3d-eyebrow">Prilagođeno regiji snimanja</p>
-        <h2 id="od3d-fields-title">Tri veličine polja snimanja</h2>
+        <p className="od3d-eyebrow">{en ? "Tailored to the area being scanned" : "Prilagođeno regiji snimanja"}</p>
+        <h2 id="od3d-fields-title">{en ? "Three field-of-view sizes" : "Tri veličine polja snimanja"}</h2>
       </header>
 
       <div className="od3d-fields__grid">
-        {fieldSizes.map((field) => (
+        {fields.map((field) => (
           <article className="od3d-field-card" key={field.size}>
             <svg className="od3d-field-card__region" viewBox="0 0 64 64" aria-hidden="true">
               <path d="M12 27 Q32 5 52 27 M12 37 Q32 59 52 37" fill="none" stroke="currentColor" strokeWidth="2" />
@@ -131,21 +156,16 @@ export const Usluge3D = () => (
 
     <section className="od3d-technology" aria-labelledby="od3d-technology-title">
       <div className="od3d-technology__copy">
-        <p className="od3d-eyebrow">Tehnologija</p>
+        <p className="od3d-eyebrow">{en ? "Technology" : "Tehnologija"}</p>
         <h2 id="od3d-technology-title">
-          Superiorna Vatech tehnologija za najprecizniju dijagnostiku
+          {en ? "Superior Vatech technology for precise diagnostics" : "Superiorna Vatech tehnologija za najprecizniju dijagnostiku"}
         </h2>
         <div className="od3d-technology__intro">
           <p>
-            Vrhunska stomatološka nega zahteva besprekorno jasnu sliku. Naši
-            centri su opremljeni <strong>Vatech</strong> aparatima najnovije
-            generacije sa specijalizovanim programima za endodonciju visoke
-            rezolucije.
+            {en ? <>Excellent dental care requires a perfectly clear image. Our centres use latest-generation <strong>Vatech</strong> equipment with specialised high-resolution endodontic programmes.</> : <>Vrhunska stomatološka nega zahteva besprekorno jasnu sliku. Naši centri su opremljeni <strong>Vatech</strong> aparatima najnovije generacije sa specijalizovanim programima za endodonciju visoke rezolucije.</>}
           </p>
           <p>
-            Korišćenjem vodeće svetske tehnologije dobijaju se kristalno jasni
-            snimci koji su osnova za precizno planiranje implantata, hirurških
-            zahvata i složenih endodontskih tretmana.
+            {en ? "Leading technology produces crystal-clear images for precise planning of implants, surgical procedures and complex endodontic treatment." : "Korišćenjem vodeće svetske tehnologije dobijaju se kristalno jasni snimci koji su osnova za precizno planiranje implantata, hirurških zahvata i složenih endodontskih tretmana."}
           </p>
         </div>
 
@@ -154,14 +174,14 @@ export const Usluge3D = () => (
       <figure className="od3d-technology__visual">
         <img
           src={imageSrc(clinicalAnalysis)}
-          alt="Stomatolog analizira trodimenzionalni CBCT prikaz vilice"
+          alt={en ? "Dentist reviewing a three-dimensional CBCT view of the jaw" : "Stomatolog analizira trodimenzionalni CBCT prikaz vilice"}
           loading="lazy"
           decoding="async"
         />
       </figure>
 
       <ul className="od3d-benefits">
-        {diagnosticBenefits.map((benefit) => (
+        {benefits.map((benefit) => (
           <li key={benefit.title}>
             <span className="od3d-benefits__icon">
               <Check aria-hidden="true" />
@@ -175,24 +195,20 @@ export const Usluge3D = () => (
       </ul>
     </section>
 
-    <section className="od3d-software" aria-label="Ez3D-i softver i Vatech oprema">
+    <section className="od3d-software" aria-label={en ? "Ez3D-i software and Vatech equipment" : "Ez3D-i softver i Vatech oprema"}>
       <article className="od3d-software-card od3d-software-card--analysis">
         <p className="od3d-eyebrow">Ez3D-i</p>
-        <h2>Intuitivna analiza uz Ez3D-i softver</h2>
+        <h2>{en ? "Intuitive analysis with Ez3D-i" : "Intuitivna analiza uz Ez3D-i softver"}</h2>
         <p>
-          Preciznost Vatech tehnologije upotpunjena je Ez3D-i softverom, koji
-          kompleksnu 3D dijagnostiku pretvara u jednostavan i pregledan proces.
-          Interfejs prilagođen potrebama stomatologa omogućava brzu i efikasnu
-          navigaciju kroz snimak, bez potrebe za komplikovanim obukama.
+          {en ? "Ez3D-i complements Vatech precision by turning complex 3D diagnostics into a clear, straightforward workflow. Its dentist-focused interface enables fast, efficient navigation without complicated training." : "Preciznost Vatech tehnologije upotpunjena je Ez3D-i softverom, koji kompleksnu 3D dijagnostiku pretvara u jednostavan i pregledan proces. Interfejs prilagođen potrebama stomatologa omogućava brzu i efikasnu navigaciju kroz snimak, bez potrebe za komplikovanim obukama."}
         </p>
       </article>
 
       <article className="od3d-software-card od3d-software-card--tutorial">
-        <p className="od3d-eyebrow">Podrška</p>
-        <h2>Savet za rad sa softverom</h2>
+        <p className="od3d-eyebrow">{en ? "Support" : "Podrška"}</p>
+        <h2>{en ? "Software guidance" : "Savet za rad sa softverom"}</h2>
         <p>
-          Iskoristite kratka video uputstva sa zvaničnog Vatech YouTube kanala
-          kako biste se lakše upoznali sa funkcionalnostima softvera.
+          {en ? "Use short video guides from the official Vatech YouTube channel to become familiar with the software." : "Iskoristite kratka video uputstva sa zvaničnog Vatech YouTube kanala kako biste se lakše upoznali sa funkcionalnostima softvera."}
         </p>
         <a
           className="od3d-tutorial-link"
@@ -200,17 +216,18 @@ export const Usluge3D = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          Vatech tutorijali <ArrowUpRight aria-hidden="true" />
+          {en ? "Vatech tutorials" : "Vatech tutorijali"} <ArrowUpRight aria-hidden="true" />
         </a>
       </article>
 
       <img
         className="od3d-software__machine"
         src={imageSrc(machine)}
-        alt="Vatech 3D CBCT aparat"
+        alt={en ? "Vatech 3D CBCT unit" : "Vatech 3D CBCT aparat"}
         loading="lazy"
         decoding="async"
       />
     </section>
   </div>
-);
+  );
+};

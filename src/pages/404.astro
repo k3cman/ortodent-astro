@@ -1,37 +1,13 @@
 ---
-import Header from "@/components/site/Header";
-import Footer from "@/components/site/Footer";
-import { sitePath } from "@/lib/paths";
+import NotFoundPage from "@/components/site/pages/NotFoundPage";
 import SiteLayout from "@/layouts/SiteLayout.astro";
-
-const links = [
-  ["Početna", "/"],
-  ["Lokacije", "/lokacije"],
-  ["Cenovnik", "/cenovnik"],
-  ["2D snimanja", "/usluge/2d"],
-] as const;
 ---
 
-<SiteLayout title="Stranica nije pronađena | OrtoDent">
-  <div class="oc-site oc-not-found">
-    <Header client:load />
-    <main>
-      <div class="oc-container oc-not-found__inner">
-        <p class="oc-eyebrow">Greška 404</p>
-        <h1>Ova stranica ne postoji<span class="oc-dot">.</span></h1>
-        <p>Možda je adresa promenjena ili ste otvorili zastareo link. Nastavite ka jednoj od glavnih stranica.</p>
-        <nav aria-label="Korisni linkovi">
-          {links.map(([label, path], index) => (
-            <a href={sitePath(path)} class={index === 0 ? "oc-button oc-button--primary" : "oc-text-link"}>{label}</a>
-          ))}
-        </nav>
-      </div>
-    </main>
-    <Footer />
-  </div>
+<SiteLayout title="Stranica nije pronađena | OrtoDent" locale="sr" currentPath="/404">
+  <NotFoundPage client:load />
 </SiteLayout>
 
-<style>
+<style is:global>
   .oc-not-found main { min-height: 680px; display: grid; place-items: center; padding: 116px 0 72px; background: var(--oc-off-white); }
   .oc-not-found__inner { text-align: center; }
   .oc-not-found .oc-eyebrow { align-items: center; }

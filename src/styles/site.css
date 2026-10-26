@@ -76,6 +76,16 @@
 .oc-nav__menu a { padding: 11px 12px; border-radius: var(--oc-radius-md); font-size: 13px; }
 .oc-nav__menu a:hover { background: var(--oc-magenta-light); color: var(--oc-magenta-dark); }
 .oc-header__actions { display: flex; align-items: center; gap: 12px; }
+.oc-language-switcher { position: relative; }
+.oc-language-switcher > button { min-height: 40px; padding: 0 10px; display: inline-flex; align-items: center; gap: 6px; color: var(--oc-gray-700); background: transparent; border: 1px solid var(--oc-gray-300); border-radius: 999px; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+.oc-language-switcher > button svg { width: 15px; height: 15px; }
+.oc-language-switcher__menu { position: absolute; top: calc(100% + 8px); right: 0; z-index: 3; min-width: 76px; padding: 6px; display: grid; background: #fff; border: 1px solid var(--oc-gray-300); border-radius: var(--oc-radius-md); box-shadow: var(--oc-shadow-md); }
+.oc-language-switcher__menu[hidden] { display: none; }
+.oc-language-switcher__menu a { padding: 7px 9px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+.oc-language-switcher__menu a:hover, .oc-language-switcher__menu a[aria-current="page"] { color: var(--oc-magenta); background: var(--oc-magenta-light); }
+.oc-mobile-nav__language { margin-top: 14px; padding-top: 12px; display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--oc-gray-300); }
+.oc-mobile-nav__language a { min-height: 40px; border: 0; font-weight: 600; }
+.oc-mobile-nav__language a[aria-current="page"] { color: var(--oc-magenta); }
 .oc-cloud-link { position: relative; display: inline-flex; align-items: center; gap: 8px; color: var(--oc-magenta) !important; font-size: 14px; font-weight: 500; }
 .oc-cloud-link[aria-current="page"]::after { content: ""; position: absolute; right: 0; bottom: -9px; left: 0; height: 2px; background: var(--oc-magenta); }
 .oc-cloud-link svg { width: 22px; }
@@ -531,7 +541,7 @@ body.site-theme .oc-footer__brand > p { max-width: 300px; margin: 28px 0 24px; f
 }
 
 @media (max-width: 820px) {
-  .oc-nav, .oc-cloud-link { display: none; }
+  .oc-nav, .oc-cloud-link, .oc-language-switcher { display: none; }
   .oc-menu-toggle { display: inline-flex; }
   .oc-header { --oc-header-height: 78px; --oc-header-logo-width: 126px; }
   .oc-header--home:not(.is-scrolled) { --oc-header-height: 92px; --oc-header-logo-width: 164px; }

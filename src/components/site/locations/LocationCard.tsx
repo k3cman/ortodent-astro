@@ -8,6 +8,7 @@ import {
   phoneHref,
   type Location,
 } from "@/lib/locations";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 interface LocationCardProps {
   location: Location;
@@ -24,6 +25,7 @@ export default function LocationCard({
   showDetails = false,
   onSelect,
 }: LocationCardProps) {
+  const en = useLocale() === "en";
   return (
     <motion.article
       layout
@@ -55,7 +57,7 @@ export default function LocationCard({
           <SiteLink
             to={locationPath(location)}
             className="od-location-item__arrow"
-            aria-label={`Detalji centra ${location.name}`}
+            aria-label={en ? `Details for ${location.name}` : `Detalji centra ${location.name}`}
           >
             <ArrowRight aria-hidden="true" />
           </SiteLink>

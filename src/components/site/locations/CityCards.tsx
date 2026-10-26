@@ -6,12 +6,14 @@ import {
   getLocationsByCity,
   type LocationCitySlug,
 } from "@/lib/locations";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 export default function CityCards({
   activeCity,
 }: {
   activeCity?: LocationCitySlug;
 }) {
+  const en = useLocale() === "en";
   return (
     <div className="od-city-grid">
       {LOCATION_CITIES.map((city) => {
@@ -27,8 +29,8 @@ export default function CityCards({
               <span className="od-city-card__icon"><MapPin aria-hidden="true" /></span>
               <span>
                 <strong>{city.name}</strong>
-                <span>{centerCountLabel(count)}</span>
-                <small>Snimanje zuba · {city.name}</small>
+                <span>{en ? `${count} locations` : centerCountLabel(count)}</span>
+                <small>{en ? "Dental imaging" : "Snimanje zuba"} · {city.name}</small>
               </span>
             </div>
             <ArrowRight aria-hidden="true" />

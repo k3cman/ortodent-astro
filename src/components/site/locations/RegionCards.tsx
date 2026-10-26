@@ -7,6 +7,7 @@ import {
   regionPath,
   type LocationCitySlug,
 } from "@/lib/locations";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 export default function RegionCards({
   citySlug,
@@ -15,8 +16,9 @@ export default function RegionCards({
   citySlug: LocationCitySlug;
   activeRegion?: string;
 }) {
+  const en = useLocale() === "en";
   return (
-    <nav className="od-region-nav" aria-label="Delovi grada">
+    <nav className="od-region-nav" aria-label={en ? "City areas" : "Delovi grada"}>
       {getRegionsByCity(citySlug).map((region) => {
         const count = getLocationsByRegion(citySlug, region.slug).length;
 
@@ -28,7 +30,7 @@ export default function RegionCards({
           >
             <span>
               <strong>{region.name}</strong>
-              <small>{centerCountLabel(count)}</small>
+              <small>{en ? `${count} locations` : centerCountLabel(count)}</small>
             </span>
             <ArrowRight aria-hidden="true" />
           </SiteLink>

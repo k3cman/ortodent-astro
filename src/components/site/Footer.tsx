@@ -1,24 +1,29 @@
 import { ChevronRight } from "lucide-react";
 import footerLogo from "@/assets/footer-logo.png";
 import { SiteLink } from "@/components/site/SiteLink";
+import { LocaleProvider, useLocale } from "@/components/site/i18n/LocaleContext";
+import { commonContent } from "@/content/i18n/common";
+import type { Locale } from "@/lib/i18n";
 
-const quickLinks = [
-  ["Lokacije", "/lokacije"],
-  ["Cenovnik", "/cenovnik"],
-  ["Informacije", "/informacije"],
-  ["Za stomatologe", "/za-doktore"],
-  ["Kontakt", "/kontakt"],
-] as const;
-
-const serviceLinks = [
-  ["2D snimanja", "/usluge/2d"],
-  ["3D / CBCT", "/usluge/3d"],
-  ["Kefalometrija", "/usluge/kefalometrija"],
-  ["OrtoCloud", "/ortocloud"],
-] as const;
-
-export default function Footer() {
+export default function Footer({ locale }: { locale?: Locale }) {
+  const contextLocale = useLocale();
+  const activeLocale = locale ?? contextLocale;
+  const content = commonContent[activeLocale];
+  const quickLinks = [
+    [content.navigation.locations, "/lokacije"],
+    [content.navigation.pricing, "/cenovnik"],
+    [content.navigation.information, "/informacije"],
+    [content.navigation.forDentists, "/za-doktore"],
+    [content.navigation.contact, "/kontakt"],
+  ] as const;
+  const serviceLinks = [
+    [content.navigation.service2d, "/usluge/2d"],
+    [content.navigation.service3d, "/usluge/3d"],
+    [content.navigation.cephalometry, "/usluge/kefalometrija"],
+    [content.navigation.cloud, "/ortocloud"],
+  ] as const;
   return (
+    <LocaleProvider locale={activeLocale}>
     <footer className="oc-footer">
       <svg
         className="oc-footer__contours"
@@ -39,19 +44,21 @@ export default function Footer() {
             <SiteLink
               to="/"
               className="oc-footer__brandmark"
-              aria-label="OrtoDent naslovna"
+              aria-label={content.footer.homeLabel}
             >
-              <img src={footerLogo.src} alt="OrtoDent 3D — Digitalna dentalna radiologija" width={footerLogo.width} height={footerLogo.height} />
+              <img
+                src={footerLogo.src}
+                alt={activeLocale === "en" ? "OrtoDent 3D — Digital dental radiology" : "OrtoDent 3D — Digitalna dentalna radiologija"}
+                width={footerLogo.width}
+                height={footerLogo.height}
+              />
             </SiteLink>
-            <p>
-              Digitalna dijagnostika koja donosi preciznost, sigurnost i
-              poverenje u svaki plan terapije.
-            </p>
+            <p>{content.footer.tagline}</p>
           </div>
 
           <div className="oc-footer__column">
-            <h2>Brzi linkovi</h2>
-            <nav aria-label="Brzi linkovi">
+            <h2>{content.footer.quickLinks}</h2>
+            <nav aria-label={content.footer.quickLinks}>
               {quickLinks.map(([label, path]) => (
                 <SiteLink key={path} to={path}>
                   <ChevronRight aria-hidden="true" />
@@ -62,8 +69,8 @@ export default function Footer() {
           </div>
 
           <div className="oc-footer__column">
-            <h2>Usluge</h2>
-            <nav aria-label="Usluge u podnožju">
+            <h2>{content.footer.services}</h2>
+            <nav aria-label={content.footer.servicesNavigation}>
               {serviceLinks.map(([label, path]) => (
                 <SiteLink key={path} to={path}>
                   <ChevronRight aria-hidden="true" />
@@ -75,13 +82,14 @@ export default function Footer() {
         </div>
 
         <div className="oc-footer__bottom">
-          <span>© 2026 OrtoDent. Sva prava zadržana.</span>
-          <nav aria-label="Pravne informacije">
-            <SiteLink to="/politika-privatnosti">Politika privatnosti</SiteLink>
-            <SiteLink to="/uslovi-koriscenja">Uslovi korišćenja</SiteLink>
+          <span>{content.footer.copyright}</span>
+          <nav aria-label={content.footer.legalNavigation}>
+            <SiteLink to="/politika-privatnosti">{content.footer.privacy}</SiteLink>
+            <SiteLink to="/uslovi-koriscenja">{content.footer.terms}</SiteLink>
           </nav>
         </div>
       </div>
     </footer>
+    </LocaleProvider>
   );
 }

@@ -2,8 +2,10 @@ import { useState } from "react";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import { homeContent } from "@/content/home";
 import { getReviewLengthClass } from "@/lib/review-card";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 export default function ReviewsSection() {
+  const locale = useLocale();
   const [active, setActive] = useState(0);
   const total = homeContent.reviews.length;
   const change = (direction: number) => setActive((current) => (current + direction + total) % total);
@@ -12,12 +14,12 @@ export default function ReviewsSection() {
     <section className="oc-section oc-reviews" aria-labelledby="reviews-title">
       <div className="oc-container oc-reviews__layout">
         <div className="oc-reviews__summary">
-          <p className="oc-eyebrow">Recenzije</p>
-          <h2 id="reviews-title">Šta kažu naši<br /><span>korisnici</span></h2>
-          <p>Poverenje koje gradimo svakim snimkom.</p>
+          <p className="oc-eyebrow">{locale === "sr" ? "Recenzije" : "Reviews"}</p>
+          <h2 id="reviews-title">{locale === "sr" ? <>Šta kažu naši<br /><span>korisnici</span></> : <>What our<br /><span>customers say</span></>}</h2>
+          <p>{locale === "sr" ? "Poverenje koje gradimo svakim snimkom." : "Trust built with every X-ray."}</p>
         </div>
 
-        <div className="oc-reviews__carousel" role="region" aria-roledescription="carousel" aria-label="Recenzije korisnika" tabIndex={0} onKeyDown={(event) => { if (event.key === "ArrowLeft") change(-1); if (event.key === "ArrowRight") change(1); }}>
+        <div className="oc-reviews__carousel" role="region" aria-roledescription="carousel" aria-label={locale === "sr" ? "Recenzije korisnika" : "Customer reviews"} tabIndex={0} onKeyDown={(event) => { if (event.key === "ArrowLeft") change(-1); if (event.key === "ArrowRight") change(1); }}>
           <div className="oc-review-panels" id="reviews-panel" aria-live="polite">
             {homeContent.reviews.map((_, panelIndex) => (
               <div className="oc-review-grid" key={panelIndex} aria-hidden={panelIndex !== active}>
@@ -41,9 +43,9 @@ export default function ReviewsSection() {
             ))}
           </div>
           <div className="oc-carousel-controls">
-            <button type="button" onClick={() => change(-1)} aria-label="Prethodna recenzija" aria-controls="reviews-panel"><ArrowLeft /></button>
-            <div className="oc-carousel-dots" aria-label={`Recenzija ${active + 1} od ${total}`}>{homeContent.reviews.map(([name], index) => <button type="button" key={`${name}-${index}`} aria-label={`Prikaži recenziju ${index + 1}`} aria-current={index === active ? "true" : undefined} onClick={() => setActive(index)} />)}</div>
-            <button type="button" onClick={() => change(1)} aria-label="Sledeća recenzija" aria-controls="reviews-panel"><ArrowRight /></button>
+            <button type="button" onClick={() => change(-1)} aria-label={locale === "sr" ? "Prethodna recenzija" : "Previous review"} aria-controls="reviews-panel"><ArrowLeft /></button>
+            <div className="oc-carousel-dots" aria-label={locale === "sr" ? `Recenzija ${active + 1} od ${total}` : `Review ${active + 1} of ${total}`}>{homeContent.reviews.map(([name], index) => <button type="button" key={`${name}-${index}`} aria-label={locale === "sr" ? `Prikaži recenziju ${index + 1}` : `Show review ${index + 1}`} aria-current={index === active ? "true" : undefined} onClick={() => setActive(index)} />)}</div>
+            <button type="button" onClick={() => change(1)} aria-label={locale === "sr" ? "Sledeća recenzija" : "Next review"} aria-controls="reviews-panel"><ArrowRight /></button>
           </div>
         </div>
       </div>

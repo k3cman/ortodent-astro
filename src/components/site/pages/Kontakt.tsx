@@ -8,10 +8,14 @@ import Footer from "@/components/Footer";
 import { SiteLink } from "@/components/site/SiteLink";
 import { useToast } from "@/hooks/use-toast";
 import "./kontakt.css";
-
-const WRITING_AS_OPTIONS = ["Stomatologa", "Pacijenta"] as const;
+import { useLocale } from "@/components/site/i18n/LocaleContext";
+import { localizePath } from "@/lib/i18n";
 
 const Kontakt = () => {
+  const locale = useLocale();
+  const t = locale === "sr" ? {
+    options: ["Stomatologa", "Pacijenta"], missingTitle: "Izaberite u kojem svojstvu pišete", missingText: "Molimo izaberite Stomatologa ili Pacijenta.", sent: "Poruka poslata!", sentText: "Odgovorićemo vam u najkraćem roku.",
+  } : { options: ["Dentist", "Patient"], missingTitle: "Please select who you are writing as", missingText: "Choose Dentist or Patient.", sent: "Message sent!", sentText: "We will reply as soon as possible." };
   const { toast } = useToast();
   const [writingAs, setWritingAs] = useState("");
   const [email, setEmail] = useState("");
@@ -22,16 +26,16 @@ const Kontakt = () => {
 
     if (!writingAs) {
       toast({
-        title: "Izaberite u kojem svojstvu pišete",
-        description: "Molimo izaberite Stomatologa ili Pacijenta.",
+        title: t.missingTitle,
+        description: t.missingText,
         variant: "destructive",
       });
       return;
     }
 
     toast({
-      title: "Poruka poslata!",
-      description: "Odgovorićemo vam u najkraćem roku.",
+      title: t.sent,
+      description: t.sentText,
     });
     setWritingAs("");
     setEmail("");
@@ -40,14 +44,14 @@ const Kontakt = () => {
 
   return (
     <div className="oc-site oc-contact-page">
-      <Header currentPath="/kontakt" />
+      <Header currentPath={localizePath("/kontakt", locale)} />
 
       <main>
         <section className="oc-page-intro oc-page-intro--utility" aria-labelledby="contact-title">
           <div className="oc-container">
             <div className="oc-page-intro__copy">
-              <p className="oc-eyebrow">Kontakt</p>
-              <h1 id="contact-title">Kontakt<span className="oc-dot">.</span></h1>
+              <p className="oc-eyebrow">{locale === "sr" ? "Kontakt" : "Contact"}</p>
+              <h1 id="contact-title">{locale === "sr" ? "Kontakt" : "Contact"}<span className="oc-dot">.</span></h1>
             </div>
           </div>
         </section>
@@ -55,19 +59,19 @@ const Kontakt = () => {
         <div className="oc-container oc-contact-content">
           <section className="oc-contact-main" aria-labelledby="contact-form-title">
             <div className="oc-contact-aside">
-              <h2>Tu smo za Vas.</h2>
+              <h2>{locale === "sr" ? "Tu smo za Vas." : "We are here for you."}</h2>
               <p className="oc-contact-aside__intro">
-                Kontaktirajte nas za sve dodatne informacije i podršku.
+                {locale === "sr" ? "Kontaktirajte nas za sve dodatne informacije i podršku." : "Contact us for any additional information or support."}
               </p>
             </div>
 
             <form id="contact-form" className="oc-contact-form" onSubmit={handleSubmit}>
               <h2 id="contact-form-title" className="oc-contact-form__title">
-                Pošaljite nam poruku
+                {locale === "sr" ? "Pošaljite nam poruku" : "Send us a message"}
               </h2>
               <div className="oc-contact-field">
                 <label htmlFor="writing-as">
-                  Pišem u svojstvu <span aria-hidden="true">*</span>
+                  {locale === "sr" ? "Pišem u svojstvu" : "I am writing as"} <span aria-hidden="true">*</span>
                 </label>
                 <div className="oc-contact-select">
                   <select
@@ -78,8 +82,8 @@ const Kontakt = () => {
                     aria-required="true"
                     aria-describedby="writing-as-help"
                   >
-                    <option value="">Izaberite...</option>
-                    {WRITING_AS_OPTIONS.map((option) => (
+                    <option value="">{locale === "sr" ? "Izaberite..." : "Select..."}</option>
+                    {t.options.map((option) => (
                       <option key={option} value={option}>
                         {option}
                       </option>
@@ -88,7 +92,7 @@ const Kontakt = () => {
                   <ChevronDown aria-hidden="true" />
                 </div>
                 <span id="writing-as-help" className="sr-only">
-                  Obavezno polje. Izaberite Stomatologa ili Pacijenta.
+                  {locale === "sr" ? "Obavezno polje. Izaberite Stomatologa ili Pacijenta." : "Required field. Choose Dentist or Patient."}
                 </span>
               </div>
 
@@ -110,7 +114,7 @@ const Kontakt = () => {
 
               <div className="oc-contact-field">
                 <label htmlFor="message">
-                  Poruka <span aria-hidden="true">*</span>
+                  {locale === "sr" ? "Poruka" : "Message"} <span aria-hidden="true">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -118,13 +122,13 @@ const Kontakt = () => {
                   required
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
-                  placeholder="Vaša poruka..."
+                  placeholder={locale === "sr" ? "Vaša poruka..." : "Your message..."}
                 />
               </div>
 
               <button type="submit" className="oc-contact-submit">
                 <Send aria-hidden="true" />
-                Pošaljite poruku
+                {locale === "sr" ? "Pošaljite poruku" : "Send message"}
               </button>
             </form>
           </section>
@@ -133,7 +137,7 @@ const Kontakt = () => {
         <section className="oc-contact-note">
           <div className="oc-container">
             <p>
-              Detaljne informacije o radnom vremenu i kontakt telefonima naših centara dostupne su na stranici <SiteLink to="/lokacije">Lokacije</SiteLink>.
+              {locale === "sr" ? <>Detaljne informacije o radnom vremenu i kontakt telefonima naših centara dostupne su na stranici <SiteLink to="/lokacije">Lokacije</SiteLink>.</> : <>Detailed opening hours and telephone numbers for our centres are available on the <SiteLink to="/lokacije">Locations</SiteLink> page.</>}
             </p>
           </div>
         </section>
@@ -142,14 +146,14 @@ const Kontakt = () => {
           <div className="oc-container">
             <div className="oc-contact-careers__panel">
               <div className="oc-contact-careers__copy">
-                <p className="oc-eyebrow">Karijera u OrtoDentu</p>
-                <h2 id="contact-careers-title">Želite da postanete deo našeg tima?</h2>
+                <p className="oc-eyebrow">{locale === "sr" ? "Karijera u OrtoDentu" : "Careers at OrtoDent"}</p>
+                <h2 id="contact-careers-title">{locale === "sr" ? "Želite da postanete deo našeg tima?" : "Would you like to join our team?"}</h2>
                 <p>
-                  Ukoliko ste doktor stomatologije ili strukovni medicinski radiolog i želite da postanete deo našeg tima, pošaljite nam svoj CV. Vašu prijavu uzećemo u razmatranje prilikom narednog konkursa. Prethodno radno iskustvo nije uslov.
+                  {locale === "sr" ? "Ukoliko ste doktor stomatologije ili strukovni medicinski radiolog i želite da postanete deo našeg tima, pošaljite nam svoj CV. Vašu prijavu uzećemo u razmatranje prilikom narednog konkursa. Prethodno radno iskustvo nije uslov." : "If you are a dentist or a qualified medical radiographer and would like to join our team, send us your CV. We will consider your application for our next vacancy. Previous work experience is not required."}
                 </p>
               </div>
               <p className="oc-contact-careers__email">
-                Prijave možete slati na <a href="mailto:info@ortodent.rs?subject=Prijava%20za%20posao%20-%20CV">info@ortodent.rs</a>.
+                {locale === "sr" ? "Prijave možete slati na" : "Applications can be sent to"} <a href="mailto:info@ortodent.rs?subject=Prijava%20za%20posao%20-%20CV">info@ortodent.rs</a>.
               </p>
             </div>
           </div>

@@ -3,6 +3,6 @@ import SiteLayout from "@/layouts/SiteLayout.astro";
 import CenovnikPage from "@/components/site/pages/Cenovnik";
 ---
 
-<SiteLayout title="Cenovnik — OrtoDent">
-  <CenovnikPage client:load />
+<SiteLayout title="Cenovnik — OrtoDent" locale="sr" currentPath="/cenovnik">
+  <CenovnikPage client:load locale="sr" />
 </SiteLayout>

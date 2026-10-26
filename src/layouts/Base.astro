@@ -1,28 +1,40 @@
 ---
 import { assetPath } from "@/lib/paths";
+import { localizePath, type Locale } from "@/lib/i18n";
+import { sitePath } from "@/lib/paths";
 
 interface Props {
   title?: string;
   description?: string;
   bodyClass?: string;
+  locale?: Locale;
+  currentPath?: string;
 }
 
+const locale = Astro.props.locale ?? "sr";
 const {
-  title = "OrtoDent — Dentalna radiologija",
-  description = "Najpreciznija 2D i 3D dijagnostika u Beogradu, Novom Sadu i Pančevu.",
+  title = locale === "en" ? "OrtoDent — Dental radiology" : "OrtoDent — Dentalna radiologija",
+  description = locale === "en" ? "Precise 2D and 3D dental diagnostics in Belgrade, Novi Sad and Pančevo." : "Najpreciznija 2D i 3D dijagnostika u Beogradu, Novom Sadu i Pančevu.",
   bodyClass,
+  currentPath = Astro.url.pathname,
 } = Astro.props;
 
 const favicon = assetPath("favicon.svg");
+const srPath = sitePath(localizePath(currentPath, "sr"));
+const enPath = sitePath(localizePath(currentPath, "en"));
+const absoluteHref = (path: string) => Astro.site ? new URL(path.replace(/^\//, ""), Astro.site).toString() : path;
 ---
 
 <!doctype html>
-<html lang="sr">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href={favicon} />
+    <link rel="alternate" hreflang="sr" href={absoluteHref(srPath)} />
+    <link rel="alternate" hreflang="en" href={absoluteHref(enPath)} />
+    <link rel="alternate" hreflang="x-default" href={absoluteHref(srPath)} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <slot name="head" />

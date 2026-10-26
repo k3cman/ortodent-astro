@@ -1,5 +1,6 @@
 import { FolderOpen, Share2, Zap } from "lucide-react";
 import type { ReactNode } from "react";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 const platformFeatures = [
   { icon: Zap, title: "Snimci na dohvat ruke", text: "Stomatolozima i pacijentima snimci su dostupni odmah nakon snimanja. Pristupite im putem svog naloga, gde god da se nalazite.", detail: "Bez odlaska po snimke." },
@@ -13,14 +14,28 @@ const retentionPolicies = [
   { icon: "K", label: "Kefalometrijske analize", value: "Dva dokumenta", text: "Detaljna analiza i obeležen snimak za stručnu upotrebu." },
 ] as const;
 
+const platformFeaturesEn = [
+  { icon: Zap, title: "X-rays at your fingertips", text: "Dentists and patients can access X-rays immediately after imaging, wherever they are." },
+  { icon: Share2, title: "Easier review and consultation", text: "Clear on-screen viewing, zooming and simple sharing support consultations and second opinions." },
+  { icon: FolderOpen, title: "Everything in one place", text: "An organised digital archive makes X-rays easy to find and stores data securely with less need for physical copies." },
+];
+const retentionPoliciesEn = [
+  { label: "2D X-rays", value: "5 years", text: "View, download and share through the mobile app or a computer (App & Web)." },
+  { label: "3D scans (CBCT)", value: "30 days", text: "Access and download exclusively on a computer (PC)." },
+  { label: "Cephalometric analyses", value: "Two documents", text: "A detailed analysis and an annotated image for professional use." },
+];
+
 export default function FeaturesSection({ children }: { children?: ReactNode }) {
+  const en = useLocale() === "en";
+  const features = en ? platformFeaturesEn : platformFeatures;
+  const policies = en ? retentionPoliciesEn : retentionPolicies;
   return (
     <>
       <section id="iskustva" className="odc-experiences" aria-labelledby="odc-experiences-title">
         <div className="odc-container">
-          <div className="odc-section-heading odc-section-heading--center"><h2 id="odc-experiences-title">Jedna platforma</h2><p>Za jednostavniji pristup snimcima i bolju saradnju.</p></div>
+          <div className="odc-section-heading odc-section-heading--center"><h2 id="odc-experiences-title">{en ? "One platform" : "Jedna platforma"}</h2><p>{en ? "For easier access to X-rays and better collaboration." : "Za jednostavniji pristup snimcima i bolju saradnju."}</p></div>
           <div className="odc-platform-cards">
-            {platformFeatures.map(({ icon: Icon, title, text }) => (
+            {features.map(({ icon: Icon, title, text }) => (
               <article key={title}>
                 <span className="odc-platform-cards__icon"><Icon aria-hidden="true" /></span>
                 <h3>{title}</h3>
@@ -35,9 +50,9 @@ export default function FeaturesSection({ children }: { children?: ReactNode }) 
 
       <section id="cuvanje-podataka" className="odc-retention" aria-labelledby="odc-retention-title">
         <div className="odc-container">
-          <div className="odc-section-heading odc-section-heading--center"><h2 id="odc-retention-title">Pravila čuvanja podataka</h2></div>
+          <div className="odc-section-heading odc-section-heading--center"><h2 id="odc-retention-title">{en ? "Data retention policy" : "Pravila čuvanja podataka"}</h2></div>
           <div className="odc-retention__strip">
-            {retentionPolicies.map((policy) => <article key={policy.label}><div><p>{policy.label}</p><strong>{policy.value}</strong><small>{policy.text}</small></div></article>)}
+            {policies.map((policy) => <article key={policy.label}><div><p>{policy.label}</p><strong>{policy.value}</strong><small>{policy.text}</small></div></article>)}
           </div>
         </div>
       </section>

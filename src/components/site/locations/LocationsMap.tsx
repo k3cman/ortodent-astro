@@ -6,6 +6,7 @@ import type { Location } from "@/lib/locations";
 import { locationPath } from "@/lib/locations";
 import { sitePath } from "@/lib/paths";
 import "leaflet/dist/leaflet.css";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 interface LocationsMapProps {
   locations: readonly Location[];
@@ -18,6 +19,7 @@ interface LocationsMapProps {
 }
 
 function MapCanvas({ locations, selectedId, focusTarget, onSelect, className }: LocationsMapProps) {
+  const locale = useLocale(); const en = locale === "en";
   const elementRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const markersRef = useRef(new Map<number, LeafletMarker>());
@@ -72,7 +74,7 @@ function MapCanvas({ locations, selectedId, focusTarget, onSelect, className }: 
         })
           .addTo(map)
           .bindPopup(
-            `<div class="od-map-popup"><strong>${escapeHtml(location.name)}</strong><span>${escapeHtml(location.address)}</span><a href="${sitePath(locationPath(location))}">Detalji centra →</a></div>`,
+            `<div class="od-map-popup"><strong>${escapeHtml(location.name)}</strong><span>${escapeHtml(location.address)}</span><a href="${sitePath(locationPath(location), locale)}">${en ? "Centre details" : "Detalji centra"} →</a></div>`,
           );
 
         marker.on("click", () => onSelectRef.current?.(location));
@@ -103,7 +105,7 @@ function MapCanvas({ locations, selectedId, focusTarget, onSelect, className }: 
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [locations]);
+  }, [locations, locale, en]);
 
   useEffect(() => {
     if (!selectedId) return;
@@ -122,7 +124,7 @@ function MapCanvas({ locations, selectedId, focusTarget, onSelect, className }: 
   }, [selectedId, focusTarget]);
 
   return (
-    <div className={`od-locations-map ${className}`} aria-label="Mapa OrtoDent lokacija">
+    <div className={`od-locations-map ${className}`} aria-label={en ? "Map of OrtoDent locations" : "Mapa OrtoDent lokacija"}>
       <div ref={elementRef} className="absolute inset-0 z-0" />
     </div>
   );
@@ -134,6 +136,8 @@ export default function LocationsMap({
   className = "min-h-[480px]",
   ...mapProps
 }: LocationsMapProps) {
+  const en = useLocale() === "en";
+  const localizedToggleLabel = toggleLabel === "Prikaži mapu" && en ? "Show map" : toggleLabel;
   const [isMobile, setIsMobile] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const mapId = useId();
@@ -153,16 +157,16 @@ export default function LocationsMap({
     <div className="od-map-disclosure od-map-disclosure--collapsible">
       <Dialog.Root open={expanded} onOpenChange={setExpanded}>
         <Dialog.Trigger asChild>
-          <button type="button" className="od-button od-button--secondary od-map-toggle" aria-label={toggleLabel}>
-            <MapIcon aria-hidden="true" /> Mapa
+          <button type="button" className="od-button od-button--secondary od-map-toggle" aria-label={localizedToggleLabel}>
+            <MapIcon aria-hidden="true" /> {en ? "Map" : "Mapa"}
           </button>
         </Dialog.Trigger>
         <Dialog.Portal>
           <Dialog.Overlay className="od-map-dialog-overlay" />
           <Dialog.Content className="od-map-dialog" aria-describedby={undefined}>
             <header className="od-map-dialog-header">
-              <Dialog.Title>Mapa OrtoDent lokacija</Dialog.Title>
-              <Dialog.Close className="od-map-dialog-close" aria-label="Zatvorite mapu"><X aria-hidden="true" /></Dialog.Close>
+              <Dialog.Title>{en ? "Map of OrtoDent locations" : "Mapa OrtoDent lokacija"}</Dialog.Title>
+              <Dialog.Close className="od-map-dialog-close" aria-label={en ? "Close map" : "Zatvorite mapu"}><X aria-hidden="true" /></Dialog.Close>
             </header>
             <div id={mapId} className="od-map-dialog-body">
               <MapCanvas {...mapProps} className={className} />

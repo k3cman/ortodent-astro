@@ -5,6 +5,7 @@ import {
   type OpeningHours,
   type Weekday,
 } from "@/lib/locations";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 const labels: Record<Weekday, string> = {
   monday: "Ponedeljak",
@@ -23,20 +24,21 @@ export default function WeeklyOpeningHours({
   openingHours?: OpeningHours;
   compact?: boolean;
 }) {
+  const en = useLocale() === "en";
   if (!openingHours) return null;
 
   const today = getBelgradeWeekday();
 
   if (compact) {
     const rows = [
-      ["Radni dani", "monday"],
-      ["Subota", "saturday"],
-      ["Nedelja", "sunday"],
+      [en ? "Weekdays" : "Radni dani", "monday"],
+      [en ? "Saturday" : "Subota", "saturday"],
+      [en ? "Sunday" : "Nedelja", "sunday"],
     ] as const;
     return <div className="od-weekly-hours">{rows.map(([label, day]) => (
       <div key={day} className="od-weekly-hours__row">
         <span>{label}</span>
-        <strong>{openingHours[day] ? formatDayHours(openingHours[day]) : openingHours[day] === null ? "Ne radimo" : "Nije navedeno"}</strong>
+        <strong>{openingHours[day] ? formatDayHours(openingHours[day]) : openingHours[day] === null ? (en ? "Closed" : "Ne radimo") : (en ? "Not specified" : "Nije navedeno")}</strong>
       </div>
     ))}</div>;
   }
@@ -52,9 +54,9 @@ export default function WeeklyOpeningHours({
             key={day}
             className={`od-weekly-hours__row${today === day ? " is-today" : ""}`}
           >
-            <span>{labels[day]}</span>
+            <span>{en ? ({ monday: "Monday", tuesday: "Tuesday", wednesday: "Wednesday", thursday: "Thursday", friday: "Friday", saturday: "Saturday", sunday: "Sunday" } as const)[day] : labels[day]}</span>
             <strong>
-              {!hasValue ? "Nije navedeno" : hours ? formatDayHours(hours) : "Ne radi"}
+              {!hasValue ? (en ? "Not specified" : "Nije navedeno") : hours ? formatDayHours(hours) : (en ? "Closed" : "Ne radi")}
             </strong>
           </div>
         );

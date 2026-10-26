@@ -15,7 +15,7 @@ test("OrtoCloud login CTAs open the platform in a new tab", async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), "ortodent-cta-"));
 
   try {
-    await execFileAsync("npm", ["run", "build", "--", "--outDir", outputRoot], {
+    await execFileAsync(process.execPath, ["node_modules/astro/bin/astro.mjs", "build", "--outDir", outputRoot], {
       cwd: projectRoot,
       maxBuffer: 10 * 1024 * 1024,
     });

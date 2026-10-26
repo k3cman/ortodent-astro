@@ -1,0 +1,8 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import OrtoCloudPage from "@/components/ortocloud/OrtoCloudPage";
+---
+
+<SiteLayout locale="en" currentPath="/en/ortocloud" title="OrtoCloud — OrtoDent" description="OrtoCloud platform for viewing, archiving and sharing dental images.">
+  <OrtoCloudPage client:load locale="en" />
+</SiteLayout>

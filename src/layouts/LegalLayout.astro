@@ -2,12 +2,13 @@
 import SiteLayout from "./SiteLayout.astro";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
-interface Props { title: string; description: string; }
-const { title, description } = Astro.props;
+import type { Locale } from "@/lib/i18n";
+interface Props { title: string; description: string; locale?: Locale; currentPath?: string; }
+const { title, description, locale = "sr", currentPath } = Astro.props;
 ---
-<SiteLayout title={`${title} — OrtoDent`} description={description}>
+<SiteLayout title={`${title} — OrtoDent`} description={description} locale={locale} currentPath={currentPath}>
   <div class="oc-site">
-    <Header client:load />
+    <Header client:load locale={locale} currentPath={currentPath} />
     <main>
       <section class="oc-page-intro">
         <div class="oc-container">
@@ -18,7 +19,7 @@ const { title, description } = Astro.props;
       </section>
       <article class="oc-container oc-legal-content"><slot /></article>
     </main>
-    <Footer />
+    <Footer client:load locale={locale} />
   </div>
 </SiteLayout>
 <style>

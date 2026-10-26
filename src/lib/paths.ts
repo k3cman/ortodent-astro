@@ -1,3 +1,5 @@
+import { localizePath, type Locale } from "./i18n.ts";
+
 function siteBase(): string {
   const base = import.meta.env?.BASE_URL ?? "/";
   if (base === "/") return "";
@@ -10,8 +12,9 @@ export function assetPath(path: string): string {
   return base + "/" + stripped;
 }
 
-export function sitePath(path: string): string {
-  const stripped = path.startsWith("/") ? path.slice(1) : path;
+export function sitePath(path: string, locale?: Locale): string {
+  const localized = locale ? localizePath(path, locale) : path;
+  const stripped = localized.startsWith("/") ? localized.slice(1) : localized;
   const base = siteBase();
   return stripped ? `${base}/${stripped}` : `${base}/`;
 }

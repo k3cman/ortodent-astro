@@ -16,3 +16,12 @@ test("mobile footer styles do not override circular social-button layout", async
     "a generic footer link rule changes social buttons from centered grid to flex",
   );
 });
+
+test("footer has complete Serbian and English navigation labels", async () => {
+  const common = (await import("../content/i18n/common.ts")) as typeof import("../content/i18n/common.ts");
+
+  assert.equal(common.commonContent.sr.footer.quickLinks, "Brzi linkovi");
+  assert.equal(common.commonContent.en.footer.quickLinks, "Quick links");
+  assert.equal(common.commonContent.en.footer.privacy, "Privacy Policy");
+  assert.equal(common.commonContent.en.footer.terms, "Terms of Use");
+});

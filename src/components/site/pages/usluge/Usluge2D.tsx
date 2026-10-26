@@ -10,6 +10,7 @@ import {
   TM_ZGLOBOVI_SRC,
   TOMOGRAFSKA_ANALIZA_SRC,
 } from "@/content/usluge/images";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 type EditorialCardProps = {
   title: string;
@@ -47,7 +48,27 @@ const EditorialCard = ({
   </article>
 );
 
-export const Usluge2D = () => (
+const englishCards = [
+  { title: "Panoramic X-ray", image: ORTOPANTOMOGRAM_SRC, alt: "Panoramic X-ray of both jaws", text: "A panoramic X-ray provides a comprehensive view of both jaws, all teeth, jaw joints and surrounding structures. It is an important diagnostic tool at the first dental visit and during follow-up examinations." },
+  { title: "Lateral cephalogram", image: KEFALOGRAM_SRC, alt: "Lateral cephalogram", text: "A profile X-ray of the head showing bones, teeth and soft tissue. It is essential in orthodontics for assessing jaw relationships, planning fixed-appliance treatment and monitoring progress." },
+  { title: "PA (posteroanterior) cephalogram", image: PA_KEFALOGRAM_SRC, alt: "PA cephalogram", text: "A frontal projection used to assess facial symmetry, jaw width and the position of dentoalveolar structures, particularly for orthodontic and surgical planning." },
+  { title: "Paranasal sinus X-ray", image: PARANAZALNE_SUPLJINE_SRC, alt: "Paranasal sinus X-ray", text: "Shows the maxillary, frontal and other sinuses, helping assess inflammation, cysts or polyps and the relationship between upper teeth and the sinus cavity." },
+  { title: "TMJ X-ray", image: TM_ZGLOBOVI_SRC, alt: "Temporomandibular joint X-ray", text: "Assesses the position and shape of joint surfaces with the mouth open and closed, supporting diagnosis of pain, clicking, trauma and degenerative changes." },
+];
+
+export const Usluge2D = () => {
+  const locale = useLocale();
+  if (locale === "en") return (
+    <section className="oc-2d">
+      <ServiceHero eyebrow="2D diagnostics" title="2D dental X-rays" lead="Two-dimensional X-rays provide a clear view of teeth, jaws and surrounding anatomical structures. Different scan types are available according to the clinical indication and treatment needs." image={heroClinician.src} imageAlt="Radiology technician reviewing a panoramic dental X-ray" imagePosition="center" variant="backdrop" />
+      <div className="oc-2d-stack">
+        <article className="oc-2d-card oc-2d-card--retro"><div className="oc-2d-card__copy"><h2>Periapical and bitewing X-rays</h2><div className="oc-2d-card__body"><p>These <strong>intraoral X-rays</strong>, also known as small dental X-rays, provide a detailed view of individual teeth and surrounding structures.</p><p className="oc-2d-detail"><strong>Periapical X-ray (PA):</strong> shows the entire tooth, including crown and root, together with surrounding bone. It is used for root-canal analysis, inflammation at the root tip and post-treatment checks.</p><p className="oc-2d-detail"><strong>Bitewing X-ray:</strong> shows the crowns of upper and lower teeth and is ideal for detecting decay between teeth and early problems around existing fillings and crowns.</p></div></div><div className="oc-2d-retro-images"><figure><div className="oc-2d-film"><img src={RETROALVEOLARNI_SNIMAK_SRC} alt="Periapical dental X-ray" /></div><figcaption>Periapical X-ray</figcaption></figure><figure><div className="oc-2d-film"><img src={RETROKORONARNI_SNIMAK_SRC} alt="Bitewing dental X-ray" /></div><figcaption>Bitewing X-ray</figcaption></figure></div></article>
+        <div className="oc-2d-grid">{englishCards.map((card) => <EditorialCard key={card.title} title={card.title} image={card.image} imageAlt={card.alt}><p>{card.text}</p></EditorialCard>)}</div>
+        <article className="oc-2d-card oc-2d-card--wide oc-2d-card--analysis"><div className="oc-2d-card__copy"><h2>Tomographic analyses</h2><div className="oc-2d-card__body"><p>Special 2D cross-sections derived from 3D scans provide detailed views of specific regions and bone cross-sections, supporting safe implant planning and placement.</p></div></div><div className="oc-2d-visual oc-2d-visual--wide"><img src={TOMOGRAFSKA_ANALIZA_SRC} alt="Tomographic analysis with cross-sections and measurements" /></div></article>
+      </div>
+    </section>
+  );
+  return (
   <section className="oc-2d">
     <ServiceHero
       eyebrow="2D dijagnostika"
@@ -221,4 +242,5 @@ export const Usluge2D = () => (
 
 
   </section>
-);
+  );
+};

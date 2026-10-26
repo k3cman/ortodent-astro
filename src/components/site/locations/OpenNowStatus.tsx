@@ -4,6 +4,7 @@ import {
   getLocationOpenState,
   type OpeningHours,
 } from "@/lib/locations";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 type OpenNowStatusProps = {
   openingHours?: OpeningHours;
@@ -16,7 +17,16 @@ export default function OpenNowStatus({
   compact = false,
   showToday = true,
 }: OpenNowStatusProps) {
+  const en = useLocale() === "en";
   const [state, setState] = useState(() => getLocationOpenState());
+  const englishLabel = (label: string) => label
+    .replace("Radno vreme proverite telefonom", "Please confirm opening hours by phone")
+    .replace("Otvoreno sada", "Open now")
+    .replace("Zatvoreno", "Closed")
+    .replace("otvara danas u", "opens today at")
+    .replace("otvara sutra u", "opens tomorrow at")
+    .replace("Danas", "Today")
+    .replace("Ne radi", "Closed");
 
   useEffect(() => {
     const updateState = () => setState(getLocationOpenState(openingHours));
@@ -35,8 +45,8 @@ export default function OpenNowStatus({
         <span className="od-open-status__dot" aria-hidden="true" />
       )}
       <span>
-        <strong>{state.statusLabel}</strong>
-        {state.todayLabel && showToday && !compact && <small>{state.todayLabel}</small>}
+        <strong>{en ? englishLabel(state.statusLabel) : state.statusLabel}</strong>
+        {state.todayLabel && showToday && !compact && <small>{en ? englishLabel(state.todayLabel) : state.todayLabel}</small>}
       </span>
     </div>
   );

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SiteLink } from "@/components/site/SiteLink";
 import { SiteProviders } from "@/components/site/SiteProviders";
+import type { Locale } from "@/lib/i18n";
 import RegionCards from "@/components/site/locations/RegionCards";
 import LocationCard from "@/components/site/locations/LocationCard";
 import LocationBenefits from "@/components/site/locations/LocationBenefits";
@@ -19,6 +20,8 @@ import {
   type LocationCitySlug,
 } from "@/lib/locations";
 import "@/components/site/locations/locations.css";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
+import { localizePath } from "@/lib/i18n";
 
 const cityLocatives: Record<LocationCitySlug, string> = {
   beograd: "Beogradu",
@@ -45,6 +48,7 @@ const cityHeroImages: Record<LocationCitySlug, { src: string; alt: string; posit
 };
 
 function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
+  const locale = useLocale(); const en = locale === "en";
   const city = getCityBySlug(citySlug)!;
   const locations = useMemo(() => getLocationsByCity(citySlug), [citySlug]);
   const [selectedLocation, setSelectedLocation] = useState<Location>(locations[0]);
@@ -55,22 +59,22 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
 
   return (
     <div className="od-page">
-      <Header currentPath="/lokacije" />
+      <Header currentPath={localizePath(`/lokacije/${citySlug}`, locale)} />
       <main>
         <section className="od-city-hero">
           <div className="od-shell">
-            <nav className="od-breadcrumb" aria-label="Putanja">
-              <SiteLink to="/">Početna</SiteLink><span>›</span><SiteLink to="/lokacije">Lokacije</SiteLink><span>›</span><span>{city.name}</span>
+            <nav className="od-breadcrumb" aria-label={en ? "Breadcrumb" : "Putanja"}>
+              <SiteLink to="/">{en ? "Home" : "Početna"}</SiteLink><span>›</span><SiteLink to="/lokacije">{en ? "Locations" : "Lokacije"}</SiteLink><span>›</span><span>{city.name}</span>
             </nav>
             <div className="od-hero-grid">
               <div className="od-hero-copy">
                 <p className="od-kicker">OrtoDent {city.name}</p>
-                <h1>Snimanje zuba <span>u {cityLocatives[citySlug]}</span>.</h1>
+                <h1>{en ? <>Dental imaging <span>in {city.name}</span>.</> : <>Snimanje zuba <span>u {cityLocatives[citySlug]}</span>.</>}</h1>
                 <LocationBenefits />
               </div>
               <figure className="od-city-hero__image">
                 <img src={heroImage.src} alt={heroImage.alt} style={{ objectPosition: heroImage.position }} fetchPriority="high" decoding="async" />
-                <figcaption>{centerCountLabel(locations.length)} u {cityLocatives[citySlug]}</figcaption>
+                <figcaption>{en ? `${locations.length} locations in ${city.name}` : `${centerCountLabel(locations.length)} u ${cityLocatives[citySlug]}`}</figcaption>
               </figure>
             </div>
           </div>
@@ -80,11 +84,11 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
           <div className="od-shell">
             {citySlug === "beograd" && (
               <div className="od-region-block">
-                <p className="od-kicker">Delovi grada</p>
+                <p className="od-kicker">{en ? "City areas" : "Delovi grada"}</p>
                 <RegionCards citySlug={citySlug} />
               </div>
             )}
-            <header className="od-centered-heading"><h2>Pregled centara u {cityLocatives[citySlug]}</h2><span /></header>
+            <header className="od-centered-heading"><h2>{en ? `Centres in ${city.name}` : `Pregled centara u ${cityLocatives[citySlug]}`}</h2><span /></header>
             <div className="od-list-map-layout">
               <div className="od-location-list">
                 {visibleLocations.map((location) => (
@@ -117,6 +121,6 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
   );
 }
 
-export default function CityLocationsPage({ citySlug }: { citySlug: LocationCitySlug }) {
-  return <SiteProviders><CityLocations citySlug={citySlug} /></SiteProviders>;
+export default function CityLocationsPage({ citySlug, locale = "sr" }: { citySlug: LocationCitySlug; locale?: Locale }) {
+  return <SiteProviders locale={locale}><CityLocations citySlug={citySlug} /></SiteProviders>;
 }

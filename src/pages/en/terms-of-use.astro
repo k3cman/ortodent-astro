@@ -1,0 +1,14 @@
+---
+import LegalLayout from "@/layouts/LegalLayout.astro";
+import { sitePath } from "@/lib/paths";
+---
+<LegalLayout locale="en" currentPath="/en/terms-of-use" title="Terms of Use" description="Rules for using the informational OrtoDent website.">
+  <section><h2>1. Purpose of the website</h2><p>The OrtoDent website provides information about dental imaging, locations, prices and OrtoCloud. The content is informational and does not constitute individual medical advice, a diagnosis or a treatment plan. Ask your dentist or relevant healthcare professional which type of imaging is appropriate.</p></section>
+  <section><h2>2. Service and price information</h2><p>Prices, opening hours and service availability may change. Before visiting, confirm current information with your chosen centre on the <a href={sitePath("/lokacije", "en")}>Locations</a> page. Browsing this website does not itself constitute an appointment, purchase or healthcare service contract.</p></section>
+  <section><h2>3. Permitted use</h2><p>You may use the website to view information and access publicly available links. You may not disrupt the website, attempt unauthorised access, introduce malicious content or use another person's data without authorisation.</p></section>
+  <section><h2>4. Content and intellectual property</h2><p>Text, photographs, graphic elements and marks belong to their respective rights holders. Using the website does not transfer rights to its content. Publication or commercial use requires appropriate authorisation unless permitted by law.</p></section>
+  <section><h2>5. OrtoCloud and external websites</h2><p>These terms apply to the informational website. Login, image access and use of the OrtoCloud application are governed by that platform's terms. External websites have their own terms and privacy policies.</p></section>
+  <section><h2>6. Availability and contact</h2><p>The website may occasionally be unavailable due to maintenance or technical issues. For service information or to report inaccurate information, email <a href="mailto:info@ortodent.rs">info@ortodent.rs</a> or call your chosen centre. The contact form is not currently connected to a message-delivery service.</p></section>
+  <section><h2>7. Privacy</h2><p>Data-protection information is available in our <a href={sitePath("/politika-privatnosti", "en")}>Privacy Policy</a>. These terms do not restrict your rights under applicable Serbian law.</p></section>
+  <section><h2>8. Changes to these terms</h2><p>These terms may be updated when website content or functionality changes. Last updated: 12 September 2026.</p></section>
+</LegalLayout>

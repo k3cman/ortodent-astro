@@ -10,7 +10,7 @@ const execFileAsync = promisify(execFile);
 const projectRoot = fileURLToPath(new URL("../..", import.meta.url));
 
 test("kefalometrija protocol visual offers a PDF example preview", async () => {
-  await execFileAsync("npm", ["run", "build"], {
+  await execFileAsync(process.execPath, ["node_modules/astro/bin/astro.mjs", "build"], {
     cwd: projectRoot,
     maxBuffer: 10 * 1024 * 1024,
   });

@@ -1,0 +1,8 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import ZaDoktorePage from "@/components/site/pages/ZaDoktore";
+---
+
+<SiteLayout locale="en" currentPath="/en/for-dentists" title="For dentists — OrtoDent" description="OrtoDent diagnostic support, OrtoCloud access and collaboration for dental practices.">
+  <ZaDoktorePage client:load locale="en" />
+</SiteLayout>

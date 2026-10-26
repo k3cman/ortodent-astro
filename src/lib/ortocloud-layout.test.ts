@@ -22,7 +22,7 @@ test("OrtoCloud hero uses a full-width right-aligned backdrop", async () => {
   );
 });
 
-test("OrtoCloud hero includes a compact brand logo", async () => {
+test("OrtoCloud hero keeps the removed compact brand logo out of the hero", async () => {
   const [hero, css] = await Promise.all([
     readFile(
       new URL("../components/ortocloud/sections/HeroSection.tsx", import.meta.url),
@@ -34,7 +34,5 @@ test("OrtoCloud hero includes a compact brand logo", async () => {
     ),
   ]);
 
-  assert.match(hero, /className="odc-hero__logo"/);
-  assert.match(hero, /alt="OrtoCloud Dentamed"/);
-  assert.match(css, /\.odc-hero__logo\s*\{[^}]*width:\s*clamp\(130px, 12vw, 168px\)/s);
+  assert.doesNotMatch(hero, /className="odc-hero__logo"/);
 });

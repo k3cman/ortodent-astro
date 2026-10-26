@@ -1,7 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import { SiteLink } from "@/components/site/SiteLink";
 import type { CenovnikSection } from "@/content/cenovnik";
-import { CENOVNIK_SECTIONS } from "@/content/cenovnik";
+import { CENOVNIK_SECTIONS, PRICING_SECTIONS_EN } from "@/content/cenovnik";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
 
 const currency = "RSD";
 
@@ -35,45 +36,47 @@ const PriceSection = ({ section }: { section: CenovnikSection }) => (
   </section>
 );
 
-const CenovnikInfoBox = () => (
-  <aside className="oc-price-info" aria-label="Informacije o izdavanju snimaka">
+const CenovnikInfoBox = ({ locale }: { locale: "sr" | "en" }) => (
+  <aside className="oc-price-info" aria-label={locale === "sr" ? "Informacije o izdavanju snimaka" : "X-ray delivery information"}>
     <p>
-      Osnovne cene <strong>2D</strong> snimaka odnose se na digitalno izdavanje
+      {locale === "sr" ? <>Osnovne cene <strong>2D</strong> snimaka odnose se na digitalno izdavanje
       putem <strong className="oc-price-info__accent">OrtoCloud</strong>{" "}
       platforme (pregled, preuzimanje i deljenje). Izdavanje 2D snimaka na filmu
       ili CD-u se dodatno naplaćuje prema cenovniku. Uz svaki <strong>3D</strong>{" "}
       snimak, pored <strong className="oc-price-info__accent">OrtoCloud</strong>{" "}
       pristupa, besplatno dobijate i{" "}
       <strong className="oc-price-info__accent">CD</strong> (pristup 3D
-      snimcima je moguć isključivo putem računara).
+      snimcima je moguć isključivo putem računara).</> : <>Base prices for <strong>2D</strong> X-rays include digital delivery through the <strong className="oc-price-info__accent">OrtoCloud</strong> platform (viewing, downloading and sharing). Film or CD delivery is charged separately according to the price list. Every <strong>3D</strong> scan includes <strong className="oc-price-info__accent">OrtoCloud</strong> access and a complimentary <strong className="oc-price-info__accent">CD</strong> (3D scans can only be viewed on a computer).</>}
     </p>
     <SiteLink to="/ortocloud#cuvanje-podataka" className="oc-text-link oc-price-info__link">
-      Pravila čuvanja snimaka na OrtoCloudu <ArrowRight aria-hidden="true" />
+      {locale === "sr" ? "Pravila čuvanja snimaka na OrtoCloudu" : "OrtoCloud X-ray retention policy"} <ArrowRight aria-hidden="true" />
     </SiteLink>
   </aside>
 );
 
-export const CenovnikPricing = () => (
+export const CenovnikPricing = () => {
+  const locale = useLocale();
+  const sections = locale === "sr" ? CENOVNIK_SECTIONS : PRICING_SECTIONS_EN;
+  return (
   <div className="oc-pricing">
     <header className="oc-pricing__intro">
-      <h1>Cenovnik</h1>
+      <h1>{locale === "sr" ? "Cenovnik" : "Price list"}</h1>
       <p>
-        Pregled cena za 2D i 3D / CBCT dijagnostiku, kefalometrijske analize i
-        dodatne usluge izdavanja.
+        {locale === "sr" ? "Pregled cena za 2D i 3D / CBCT dijagnostiku, kefalometrijske analize i dodatne usluge izdavanja." : "Prices for 2D and 3D / CBCT diagnostics, cephalometric analyses and additional delivery services."}
       </p>
     </header>
 
     <div className="oc-pricing__content">
-      {CENOVNIK_SECTIONS.map((section) => (
+      {sections.map((section) => (
         <PriceSection key={section.id} section={section} />
       ))}
 
-      <CenovnikInfoBox />
+      <CenovnikInfoBox locale={locale} />
 
       <p className="oc-pricing__payment">
-        Plaćanje je moguće izvršiti gotovinom ili platnim karticama, isključivo
-        u RSD.
+        {locale === "sr" ? "Plaćanje je moguće izvršiti gotovinom ili platnim karticama, isključivo u RSD." : "Payment is accepted in cash or by card, exclusively in RSD."}
       </p>
     </div>
   </div>
-);
+  );
+};

@@ -40,15 +40,17 @@ const title = location
   : `Snimanje zuba ${region!.name} — OrtoDent`;
 ---
 
-<SiteLayout title={title}>
+<SiteLayout title={title} locale="sr" currentPath={`/lokacije/${city}/${locationSlug}`}>
   {location && <LocationDetailPage
     client:load
     citySlug={city}
     locationSlug={locationSlug}
+    locale="sr"
   />}
   {region && <RegionLocationsPage
     client:load
     citySlug={city}
     regionSlug={locationSlug}
+    locale="sr"
   />}
 </SiteLayout>

@@ -3,6 +3,6 @@ import SiteLayout from "@/layouts/SiteLayout.astro";
 import IndexPage from "@/components/site/pages/Index";
 ---
 
-<SiteLayout>
-  <IndexPage client:load />
+<SiteLayout locale="sr" currentPath="/">
+  <IndexPage client:load locale="sr" />
 </SiteLayout>

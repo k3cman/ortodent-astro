@@ -1,0 +1,8 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import IndexPage from "@/components/site/pages/Index";
+---
+
+<SiteLayout locale="en" currentPath="/en/" title="OrtoDent — Dental radiology" description="Precise 2D and 3D dental diagnostics in Belgrade, Novi Sad and Pančevo.">
+  <IndexPage client:load locale="en" />
+</SiteLayout>

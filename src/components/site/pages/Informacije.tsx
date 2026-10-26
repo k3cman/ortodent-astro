@@ -11,6 +11,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import "./informacije.css";
+import { useLocale } from "@/components/site/i18n/LocaleContext";
+import { localizePath } from "@/lib/i18n";
 
 /** Renders FAQ answers: paragraphs separated by blank lines (`\\n\\n`), inline `**bold**`. */
 function FaqAnswerBody({ text }: { text: string }) {
@@ -143,29 +145,56 @@ const faqItems = [
   },
 ];
 
+const infoCardsEn = [
+  { icon: CalendarX, title: "No appointment", text: "Dental and jaw imaging does not require an appointment. Visit whenever it suits you." },
+  { icon: Clock, title: "Duration", text: "The entire process takes between 5 and 15 minutes." },
+  { icon: Sparkles, title: "Preparation", text: "No special preparation is needed before your visit." },
+];
+const processStepsEn = [
+  { number: "1", title: "Arrival", text: "Visit one of our X-ray centres. A referral is not required, but is recommended for accuracy." },
+  { number: "2", title: "Registration", text: "We enter your basic details and select the required type of scan." },
+  { number: "3", title: "Preparation", text: "Remove metal objects such as jewellery and glasses, as well as removable dentures." },
+  { number: "4", title: "Positioning", text: "A member of our team will position you precisely." },
+  { number: "5", title: "Imaging", text: "The scan itself takes only a few seconds." },
+  { number: "6", title: "Results (OrtoCloud)", text: "You receive a username and password." },
+];
+const faqItemsEn = [
+  { question: "Why do I need a dental X-ray?", answer: "A dental X-ray helps your dentist accurately assess your teeth and gums because not every issue is visible to the naked eye. It is used to detect early decay, assess tooth roots and bone, identify inflammation and many other conditions. It enables your dentist to establish an accurate diagnosis, plan suitable treatment and monitor its progress." },
+  { question: "Do I need a dentist's referral, and must it be on paper?", answer: "A referral **is not required, but it is recommended**, because it tells us exactly which scan your dentist needs.\n\nYour dentist can also send an **online referral** directly through OrtoCloud, removing the need for paper and reducing the risk of errors or loss." },
+  { question: "Is dental imaging safe?", answer: "**Yes, dental imaging is safe.** Digital technology keeps the radiation dose to a minimum.\n\nThe dose from one scan is comparable to only a few days of natural background radiation.\n\nOur latest-generation equipment is designed to protect patients, and every scan is performed in line with all prescribed safety measures." },
+  { question: "Can children have dental X-rays?", answer: "Yes. Dental imaging is safe for children and important for orthodontic planning and monitoring the growth of teeth and jaws.\n\nWe use specially adapted lower doses according to the child's age and build.\n\nWith modern digital equipment and protective measures, the process is painless, quick and safe.\n\n**Children under 15** must be accompanied by a parent or guardian." },
+  { question: "Can pregnant or breastfeeding patients have dental X-rays?", answer: "Elective diagnostic and treatment procedures should generally be postponed until after birth. If dental treatment is necessary, **imaging may be performed in an emergency** with a dentist's referral and the patient's signed consent.\n\nDental X-rays use a very low dose and, with a protective lead apron, the risk to the baby is negligible. Always tell your dentist and our team if you are pregnant.\n\nDental imaging is safe while breastfeeding and **does not require any interruption of breastfeeding**." },
+  { question: "When and how do I receive my X-ray, and how can I share it with my dentist?", answer: "Your **X-ray is available immediately** after imaging through your personal **OrtoCloud account**. The referring dentist receives access as soon as the process is complete.\n\nYou can **download** the X-ray to your device or forward it by email or other channels.\n\nAt your request, we can also provide film or CD copies for an additional fee." },
+  { question: "How long is a dental X-ray valid?", answer: "A dental X-ray remains useful until the condition in the mouth changes significantly. For adults this is often 6–12 months, while children's scans may become outdated sooner because of growth and development. A dentist may request a new scan if symptoms appear or a major procedure is planned." },
+];
+
 const Informacije = () => {
+  const locale = useLocale();
+  const cards = locale === "sr" ? infoCards : infoCardsEn;
+  const steps = locale === "sr" ? processSteps : processStepsEn;
+  const faqs = locale === "sr" ? faqItems : faqItemsEn;
   return (
     <div className="oc-site oc-information-page">
-      <Header currentPath="/informacije" />
+      <Header currentPath={localizePath("/informacije", locale)} />
       <main>
         <section className="oc-page-intro oc-page-intro--utility">
           <div className="oc-container">
             <div className="oc-page-intro__copy">
-              <p className="oc-eyebrow">Informacije za pacijente</p>
+              <p className="oc-eyebrow">{locale === "sr" ? "Informacije za pacijente" : "Patient information"}</p>
               <h1>
-                Sve što treba da znate o snimanju zuba<span className="oc-dot">.</span>
+                {locale === "sr" ? "Sve što treba da znate o snimanju zuba" : "Everything you need to know about dental imaging"}<span className="oc-dot">.</span>
               </h1>
               <p className="oc-page-intro__lead">
-                Vaš vodič kroz proces snimanja u OrtoDentu.
+                {locale === "sr" ? "Vaš vodič kroz proces snimanja u OrtoDentu." : "Your guide to the imaging process at OrtoDent."}
               </p>
             </div>
           </div>
         </section>
 
-        <section className="oc-information-summary" aria-label="Osnovne informacije">
+        <section className="oc-information-summary" aria-label={locale === "sr" ? "Osnovne informacije" : "Essential information"}>
           <div className="oc-container">
             <div className="oc-info-strip oc-information-strip">
-              {infoCards.map((card) => (
+              {cards.map((card) => (
                 <article
                   key={card.title}
                 >
@@ -180,11 +209,11 @@ const Informacije = () => {
         <section className="oc-information-process">
           <div className="oc-container">
             <header className="oc-section-heading">
-              <h2>Kako izgleda proces?</h2>
+              <h2>{locale === "sr" ? "Kako izgleda proces?" : "What does the process look like?"}</h2>
             </header>
             <div className="oc-information-process__layout">
               <ol className="oc-information-steps">
-                {processSteps.map((step) => (
+                {steps.map((step) => (
                   <li
                     key={step.number}
                   >
@@ -196,7 +225,7 @@ const Informacije = () => {
               <figure className="oc-information-process__visual">
                 <img
                   src={processImage.src}
-                  alt="Zaposlena priprema pacijentkinju uz aparat za dentalno snimanje"
+                  alt={locale === "sr" ? "Zaposlena priprema pacijentkinju uz aparat za dentalno snimanje" : "A team member prepares a patient for dental imaging"}
                   loading="eager"
                   decoding="async"
                 />
@@ -208,11 +237,11 @@ const Informacije = () => {
         <section className="oc-information-faq">
           <div className="oc-container oc-information-faq__layout">
             <header className="oc-section-heading">
-              <h2>Česta pitanja</h2>
+              <h2>{locale === "sr" ? "Česta pitanja" : "Frequently asked questions"}</h2>
             </header>
             <div className="oc-information-faq__items">
               <Accordion type="single" collapsible>
-                {faqItems.map((item, index) => (
+                {faqs.map((item, index) => (
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}
@@ -233,9 +262,9 @@ const Informacije = () => {
         <section className="oc-information-cta">
           <div className="oc-container">
             <div className="oc-information-cta__inner">
-              <div><h2>Pronađite najbliži rendgen centar.</h2></div>
+              <div><h2>{locale === "sr" ? "Pronađite najbliži rendgen centar." : "Find your nearest X-ray centre."}</h2></div>
               <SiteLink className="oc-button oc-button--primary" to="/lokacije">
-                Pogledajte lokacije <ArrowRight aria-hidden="true" />
+                {locale === "sr" ? "Pogledajte lokacije" : "View locations"} <ArrowRight aria-hidden="true" />
               </SiteLink>
             </div>
           </div>

@@ -1,0 +1,8 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import InformacijePage from "@/components/site/pages/Informacije";
+---
+
+<SiteLayout locale="en" currentPath="/en/information" title="Patient information — OrtoDent" description="Everything you need to know about dental imaging at OrtoDent.">
+  <InformacijePage client:load locale="en" />
+</SiteLayout>

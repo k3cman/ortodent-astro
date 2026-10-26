@@ -21,6 +21,6 @@ const cityData = getCityBySlug(city)!;
 const title = `Lokacije ${cityData.name} — OrtoDent`;
 ---
 
-<SiteLayout title={title}>
-  <CityLocationsPage client:load citySlug={city} />
+<SiteLayout title={title} locale="sr" currentPath={`/lokacije/${city}`}>
+  <CityLocationsPage client:load citySlug={city} locale="sr" />
 </SiteLayout>

@@ -1,0 +1,8 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import CenovnikPage from "@/components/site/pages/Cenovnik";
+---
+
+<SiteLayout locale="en" currentPath="/en/pricing" title="Pricing — OrtoDent" description="OrtoDent dental imaging and analysis prices.">
+  <CenovnikPage client:load locale="en" />
+</SiteLayout>

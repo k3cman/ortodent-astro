@@ -53,3 +53,26 @@ export const homeContent = {
     ["Maja Makivic", "Vrlo profesionalni pristup pacijentima ,higijena za 10 ,super snimci .Bravo za ekipu-za svaku preporuku!"],
   ],
 } as const;
+
+export const homeContentEn = {
+  hero: {
+    eyebrow: "Dental radiology",
+    title: "Precise 2D and 3D diagnostics.",
+    description: "Dental imaging without an appointment. At 14 locations.\nResults available immediately through the OrtoCloud platform.",
+    locations: homeContent.hero.locations,
+  },
+  services: [
+    { eyebrow: "3D diagnostics", title: "3D imaging / CBCT", description: "A detailed 3D view of anatomical structures for precise planning of implants, surgical procedures and orthodontic treatment.", href: "/usluge/3d" },
+    { eyebrow: "2D diagnostics", title: "2D imaging", description: "Panoramic and intraoral X-rays for a fast, reliable and safe diagnosis at every stage of treatment.", href: "/usluge/2d" },
+    { eyebrow: "Functional analysis", title: "Cephalometric analyses", description: "Precise analyses for orthodontic planning and monitoring growth and development in children and adolescents.", href: "/usluge/kefalometrija" },
+  ],
+  dentistBenefits: [
+    ["01", "X-rays online", "Access to dental X-rays."],
+    ["02", "Precise diagnostics", "High-precision 2D, 3D/CBCT and cephalometric analyses."],
+    ["03", "Easy collaboration", "Seamless communication and support."],
+  ],
+  stats: [["14", "locations"], ["500K+", "scans"], ["17", "years of experience"]],
+  reviews: homeContent.reviews,
+} as const;
+
+export const homeContentByLocale = { sr: homeContent, en: homeContentEn } as const;

@@ -11,8 +11,8 @@ const execFileAsync = promisify(execFile);
 const projectRoot = fileURLToPath(new URL("../..", import.meta.url));
 const distRoot = path.join(projectRoot, "dist");
 
-test("production build publishes only canonical unversioned routes", async () => {
-  await execFileAsync("npm", ["run", "build"], {
+test("production build publishes Serbian defaults and complete English routes", async () => {
+  await execFileAsync(process.execPath, ["node_modules/astro/bin/astro.mjs", "build"], {
     cwd: projectRoot,
     maxBuffer: 10 * 1024 * 1024,
   });
@@ -29,6 +29,20 @@ test("production build publishes only canonical unversioned routes", async () =>
     "ortocloud/index.html",
     "usluge/2d/index.html",
     "za-doktore/index.html",
+    "en/index.html",
+    "en/pricing/index.html",
+    "en/information/index.html",
+    "en/contact/index.html",
+    "en/locations/index.html",
+    "en/locations/beograd/index.html",
+    "en/locations/beograd/arena/index.html",
+    "en/ortocloud/index.html",
+    "en/services/2d/index.html",
+    "en/services/3d/index.html",
+    "en/services/cephalometry/index.html",
+    "en/for-dentists/index.html",
+    "en/privacy-policy/index.html",
+    "en/terms-of-use/index.html",
   ];
 
   for (const page of canonicalPages) {
@@ -42,6 +56,28 @@ test("production build publishes only canonical unversioned routes", async () =>
   );
 
   const homeHtml = await readFile(path.join(distRoot, "index.html"), "utf8");
+  const englishHomeHtml = await readFile(path.join(distRoot, "en/index.html"), "utf8");
+  assert.match(homeHtml, /<html lang="sr">/);
+  assert.match(englishHomeHtml, /<html lang="en">/);
+  assert.match(englishHomeHtml, /hreflang="sr"/);
+  assert.match(englishHomeHtml, /hreflang="en"/);
+  assert.match(englishHomeHtml, /Precise 2D and[\s\S]*?3D diagnostics/);
+  assert.match(englishHomeHtml, /Find the nearest centre/);
+  assert.match(englishHomeHtml, /What our[\s\S]*?customers say/);
+  const englishPrivacyHtml = await readFile(path.join(distRoot, "en/privacy-policy/index.html"), "utf8");
+  assert.match(englishPrivacyHtml, /href=["']\/en\/locations["']/);
+  assert.match(englishPrivacyHtml, /href=["']\/en\/pricing["']/);
+  assert.doesNotMatch(englishPrivacyHtml, /href=["']\/(?:lokacije|cenovnik|informacije|kontakt|za-doktore)["']/);
+  const englishLocationHtml = await readFile(path.join(distRoot, "en/locations/beograd/arena/index.html"), "utf8");
+  assert.match(englishLocationHtml, /href=["']\/lokacije\/beograd\/arena["'][^>]*>SR</);
+  assert.match(englishLocationHtml, /href=["']\/en\/locations\/beograd\/arena["'][^>]*aria-current="page"[^>]*>EN</);
+  const englishOrtoCloudHtml = await readFile(path.join(distRoot, "en/ortocloud/index.html"), "utf8");
+  assert.match(englishOrtoCloudHtml, /aria-label="OrtoCloud platforms"/);
+  assert.match(englishOrtoCloudHtml, /opens in a new tab/);
+  assert.doesNotMatch(englishOrtoCloudHtml, /OrtoCloud platforme|otvara se u novom tabu/);
+  const englishPricingHtml = await readFile(path.join(distRoot, "en/pricing/index.html"), "utf8");
+  assert.match(englishPricingHtml, />KefAnalize</);
+  assert.doesNotMatch(englishPricingHtml, />CephAnalysis</);
   assert.doesNotMatch(homeHtml, /href=["'][^"']*\/o-nama(?:\/|["'])/i);
   assert.match(
     homeHtml,
@@ -50,7 +86,7 @@ test("production build publishes only canonical unversioned routes", async () =>
   );
   assert.doesNotMatch(homeHtml, /url=\/v[12]\//i);
   assert.match(homeHtml, /Precizna 2D i 3D dijagnostika\./);
-  assert.match(homeHtml, /Dijagnostika na koju možete da se oslonite\./);
+  assert.match(homeHtml, /Dijagnostika na koju[\s\S]*?možete da se oslonite/);
   assert.doesNotMatch(homeHtml, /href=["']\/design-system/);
   assert.match(homeHtml, /Sve preporuke,ljubazno osoblje i vrhunski kvalitet usluge/);
   assert.match(homeHtml, />Tanja Macura</);
@@ -59,11 +95,10 @@ test("production build publishes only canonical unversioned routes", async () =>
   assert.doesNotMatch(homeHtml, /oc-icon-tile/);
   assert.doesNotMatch(homeHtml, /oc-stars|5 od 5 zvezdica/);
   assert.match(homeHtml, /Digitalna dijagnostika koja donosi/);
-  assert.match(homeHtml, /13 centara širom regiona/);
+  assert.match(homeHtml, /Na 14 lokacija/);
   assert.match(homeHtml, /OrtoCloud platforma/);
-  assert.match(homeHtml, /Podrška 24\/7/);
+  assert.match(homeHtml, /Komunikacija i podrška bez zastoja\./);
   assert.doesNotMatch(homeHtml, /aria-label="Facebook"|aria-label="Instagram"/);
-  assert.match(homeHtml, /aria-label="LinkedIn"/);
   assert.match(homeHtml, />Politika privatnosti</);
   assert.match(homeHtml, />Uslovi korišćenja</);
   const quoteIcon = homeHtml.match(/<svg[^>]*oc-review-card__quote[^>]*>/)?.[0];
@@ -76,25 +111,28 @@ test("production build publishes only canonical unversioned routes", async () =>
   );
   assert.match(
     kontaktHtml,
-    /Tu smo da odgovorimo na Vaša pitanja, pružimo dodatne informacije i podržimo Vas u korišćenju naših usluga\./,
+    /Kontaktirajte nas za sve dodatne informacije i podršku\./,
   );
   assert.doesNotMatch(kontaktHtml, /Ostanite informisani o svim novostima i promenama/);
-  assert.match(kontaktHtml, /Potrebne su Vam informacije o radnom vremenu/);
-  assert.match(kontaktHtml, /<h1[^>]*>Kontakt<\/h1>/);
+  assert.match(kontaktHtml, /Prijave možete slati na/);
+  assert.match(kontaktHtml, /<h1[^>]*>Kontakt[\s\S]*?<\/h1>/);
   assert.doesNotMatch(kontaktHtml, /aria-label="Instagram"|aria-label="Facebook"/);
   assert.doesNotMatch(kontaktHtml, /Centri i radno vreme/);
   assert.doesNotMatch(kontaktHtml, /OrtoCloud podrška/);
   assert.doesNotMatch(kontaktHtml, /Opšti upiti/);
-  assert.doesNotMatch(kontaktHtml, /info@ortodent\.rs/);
+  assert.match(kontaktHtml, /info@ortodent\.rs/);
 
   const informacijeHtml = await readFile(
     path.join(distRoot, "informacije/index.html"),
     "utf8",
   );
-  assert.match(informacijeHtml, /Sve što treba da znate o snimanju zuba\./);
+  assert.match(
+    informacijeHtml,
+    /Sve što treba da znate o snimanju zuba[\s\S]*?<\/h1>/,
+  );
   assert.match(informacijeHtml, /Vaš vodič kroz proces snimanja u OrtoDentu\./);
-  assert.match(informacijeHtml, /Posetite nas još danas\./);
-  assert.doesNotMatch(informacijeHtml, /Pronađite centar koji Vam odgovara\./);
+  assert.match(informacijeHtml, /Pronađite najbliži rendgen centar\./);
+  assert.match(informacijeHtml, /Pogledajte lokacije/);
 
   const designSystemHtml = await readFile(
     path.join(distRoot, "design-system/index.html"),
@@ -133,7 +171,7 @@ test("production build publishes only canonical unversioned routes", async () =>
   assert.equal(existsSync(path.join(distRoot, "v1")), false);
   assert.equal(existsSync(path.join(distRoot, "v2")), false);
 
-  await execFileAsync("npm", ["run", "build"], {
+  await execFileAsync(process.execPath, ["node_modules/astro/bin/astro.mjs", "build"], {
     cwd: projectRoot,
     env: { ...process.env, SITE_BASE: "/ortodent" },
     maxBuffer: 10 * 1024 * 1024,

@@ -5,14 +5,18 @@ import "@/styles/site.css";
 interface Props {
   title?: string;
   description?: string;
+  locale?: import("@/lib/i18n").Locale;
+  currentPath?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, locale = "sr", currentPath } = Astro.props;
 ---
 
 <Base
   title={title}
   description={description}
+  locale={locale}
+  currentPath={currentPath}
   bodyClass="site-theme"
 >
   <slot />
