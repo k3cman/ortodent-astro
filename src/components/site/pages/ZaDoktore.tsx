@@ -18,7 +18,7 @@ import heroImageSmall from "@/assets/home/dentist-workstation-960.webp";
 import supportImage from "@/assets/home/dental-team-support.png";
 import cloudPhoto from "@/assets/home/dentist-patient-tablet.png";
 import cbctMachine from "@/assets/site/3d/cbct-machine.png";
-import kefaImage from "@/assets/site/kefalometrija/kefalometrija-protocol.png";
+import kefaImage from "@/assets/site/kefalometrija/kefalometrija-patient-analysis.webp";
 import "./za-doktore.css";
 import { useLocale } from "@/components/site/i18n/LocaleContext";
 import { localizePath } from "@/lib/i18n";
@@ -181,7 +181,7 @@ function ZaDoktore() {
                 <p>{en ? "Our specialist team prepares cephalometric measurements in AudaxCeph under the supervision of an orthodontic specialist. Analyses are available through OrtoCloud." : "Kefalometrijska merenja priprema naš stručni tim uz AudaxCeph softver i nadzor specijalista ortodoncije. Analize su dostupne putem OrtoClouda."}</p>
                 <SiteLink to="/usluge/kefalometrija" className="od-pro-text-link">{en ? "More about cephalometric analyses" : "Više o kefalometrijskim analizama"} <ArrowRight aria-hidden="true" /></SiteLink>
               </div>
-              <img src={imageSrc(kefaImage)} alt={en ? "Lateral cephalogram and cephalometric tracing" : "Lateralni kefalogram i kefalometrijski crtež"} loading="lazy" decoding="async" />
+              <img src={imageSrc(kefaImage)} alt={en ? "Lateral cephalogram with digital cephalometric measurements" : "Lateralni kefalogram sa digitalno ucrtanim kefalometrijskim merenjima"} loading="lazy" decoding="async" />
             </motion.article>
           </div>
         </section>

@@ -16,7 +16,7 @@ export default function DentistSection() {
         <div className="oc-dentist__copy">
           <p className="oc-eyebrow">{locale === "sr" ? "Za stomatologe" : "For dentists"}</p>
           <h2 id="dentist-title">{locale === "sr" ? <>Dijagnostika na koju<br /> možete da se oslonite</> : <>Diagnostics you<br /> can rely on</>}<span className="oc-dot">.</span></h2>
-          <p className="oc-dentist__lead">{locale === "sr" ? "Brzi digitalni rezultati, OrtoCloud pristup i precizne 2D i 3D Snimke, kefalometrijske analize." : "Fast digital results, OrtoCloud access, precise 2D and 3D imaging, and cephalometric analyses."}</p>
+          <p className="oc-dentist__lead">{locale === "sr" ? "Brzi digitalni rezultati, OrtoCloud pristup i precizni 2D i 3D snimci, kefalometrijske analize." : "Fast digital results, OrtoCloud access, precise 2D and 3D imaging, and cephalometric analyses."}</p>
           <div className="oc-benefits">
             {content.dentistBenefits.map(([number, title, description]) => (
               <div className="oc-benefit" key={number}>

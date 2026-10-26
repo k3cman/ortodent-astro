@@ -68,7 +68,7 @@ const infoCards = [
   {
     icon: Sparkles,
     title: "Priprema",
-    text: "Nije potrebna nikakva specijalna priprema pre dolaska.",
+    text: "Preporučuje se da pre dolaska na snimanje uklonite nakit i pirsinge iz predela glave i vrata.",
   },
 ];
 
@@ -86,7 +86,7 @@ const processSteps = [
   {
     number: "3",
     title: "Priprema",
-    text: "Uklanjanje metalnih predmeta (nakit, naočare) i mobilnih proteza.",
+    text: "Uklanjanje metalnih predmeta (nakit, pirsing, naočare) i mobilnih proteza.",
   },
   {
     number: "4",
@@ -148,12 +148,12 @@ const faqItems = [
 const infoCardsEn = [
   { icon: CalendarX, title: "No appointment", text: "Dental and jaw imaging does not require an appointment. Visit whenever it suits you." },
   { icon: Clock, title: "Duration", text: "The entire process takes between 5 and 15 minutes." },
-  { icon: Sparkles, title: "Preparation", text: "No special preparation is needed before your visit." },
+  { icon: Sparkles, title: "Preparation", text: "Before your visit, we recommend removing jewellery and piercings from the head and neck area." },
 ];
 const processStepsEn = [
   { number: "1", title: "Arrival", text: "Visit one of our X-ray centres. A referral is not required, but is recommended for accuracy." },
   { number: "2", title: "Registration", text: "We enter your basic details and select the required type of scan." },
-  { number: "3", title: "Preparation", text: "Remove metal objects such as jewellery and glasses, as well as removable dentures." },
+  { number: "3", title: "Preparation", text: "Remove metal objects such as jewellery, piercings and glasses, as well as removable dentures." },
   { number: "4", title: "Positioning", text: "A member of our team will position you precisely." },
   { number: "5", title: "Imaging", text: "The scan itself takes only a few seconds." },
   { number: "6", title: "Results (OrtoCloud)", text: "You receive a username and password." },

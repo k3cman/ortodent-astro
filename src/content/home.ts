@@ -30,7 +30,7 @@ export const homeContent = {
     },
   ],
   dentistBenefits: [
-    ["01", "Snimci online", "Pristup rendgen snimcima."],
+    ["01", "Snimci dostupni odmah", "Brzi elektronski pristup rendgen snimcima."],
     ["02", "Precizna dijagnostika", "2D, 3D/CBCT i kefalometrijske analize visoke preciznosti."],
     ["03", "Jednostavna saradnja", "Komunikacija i podrška bez zastoja."],
   ],
@@ -44,7 +44,6 @@ export const homeContent = {
     ["Vera Nikolić", "Very nice, clean and quick. The staff is polite and friendly. They are connected to the local dentists via app and they can send them files digitally."],
     ["Nemanja Blagojevic", "Sve pohvale za ovu ordinaciju. Snimanje zuba je uradjeno brzo i profesionalno. Prostor je lep, aparati novi, a posebna pohvala za izuzetno ljubazno osoblje. Preporuka!"],
     ["Zorica", "professionan staff, quick service, safety measures in place"],
-    ["Filip Rodić", "Sve pohvale za stručnost i vrhunsku uslugu! Od samog dolaska u ordinaciju osjeća se ugodna i opuštena atmosfera, što odmah smanjuje uobičajeni strah od stomatoloških pregleda. Osoblje je iznimno ljubazno, strpljivo i profesionalno. Cijeli postupak snimanja zuba prošao je brzo, bezbolno i potpuno ugodno. Svaki korak su mi detaljno objasnili, a vrhunska i moderna oprema ulijeva dodatno povjerenje. Prostor je besprijekorno čist i uredan. Toplo preporučujem svima koji traže brzu uslugu i predivan pristup pacijentu!"],
     ["Mina", "Ljubazni, stručni i što je najbitnije kvalitetan snimak."],
     ["Veronika Vieyra", "Everything was done quickly, efficiently, and at a reasonable price!"],
     ["Andrej", "OrtoDent za svaku pohvalu. Upravo sam bio kod njih. Bez prethodnog zakazivanja, zadržavanje svega 5 minuta uz prijatan razgovor, sve smo završili. Posebno bih pohvalio devojku koja radi tamo. Prijatna, nasmejana, profesionalna."],
@@ -67,7 +66,7 @@ export const homeContentEn = {
     { eyebrow: "Functional analysis", title: "Cephalometric analyses", description: "Precise analyses for orthodontic planning and monitoring growth and development in children and adolescents.", href: "/usluge/kefalometrija" },
   ],
   dentistBenefits: [
-    ["01", "X-rays online", "Access to dental X-rays."],
+    ["01", "X-rays available immediately", "Fast electronic access to dental X-rays."],
     ["02", "Precise diagnostics", "High-precision 2D, 3D/CBCT and cephalometric analyses."],
     ["03", "Easy collaboration", "Seamless communication and support."],
   ],
