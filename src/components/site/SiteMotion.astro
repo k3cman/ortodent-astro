@@ -1,0 +1,58 @@
+<script>
+  const desktopQuery = window.matchMedia("(min-width: 821px)");
+  const motionQuery = window.matchMedia("(prefers-reduced-motion: no-preference)");
+  const heroSelector = ".oc-hero, .oc-service-hero, .odc-hero, .od-pro-hero, .od-locations-hero, .od-detail-hero, .oc-page-intro";
+
+  let observer: IntersectionObserver | undefined;
+  let targets: HTMLElement[] = [];
+
+  const resetMotion = () => {
+    observer?.disconnect();
+    observer = undefined;
+    document.body.classList.remove("oc-motion-enabled");
+    targets.forEach((target) => target.classList.remove("oc-reveal", "is-revealed"));
+    targets = [];
+  };
+
+  const startMotion = () => {
+    resetMotion();
+
+    if (!desktopQuery.matches || !motionQuery.matches) return;
+
+    targets = Array.from(document.querySelectorAll<HTMLElement>("main section")).filter((section) => {
+      const nested = section.parentElement?.closest("section");
+      const alreadyAnimated = section.querySelector('[style*="transform"]');
+      return !nested && !section.matches(heroSelector) && !alreadyAnimated;
+    });
+
+    if (targets.length === 0) return;
+
+    targets.forEach((target) => target.classList.add("oc-reveal"));
+    const initialTargets = targets.filter(
+      (target) => target.getBoundingClientRect().top <= window.innerHeight * 0.9,
+    );
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-revealed");
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -8%" },
+    );
+
+    observer = revealObserver;
+    targets.filter((target) => !initialTargets.includes(target)).forEach((target) => revealObserver.observe(target));
+    document.body.classList.add("oc-motion-enabled");
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      initialTargets.forEach((target) => target.classList.add("is-revealed"));
+    }));
+  };
+
+  startMotion();
+  desktopQuery.addEventListener("change", startMotion);
+  motionQuery.addEventListener("change", startMotion);
+  window.addEventListener("pagehide", resetMotion, { once: true });
+</script>

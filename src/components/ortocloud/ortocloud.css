@@ -208,6 +208,10 @@
 .odc-platform-cards h3 { margin: 28px 0 20px; font-size: 24px; font-weight: 500; line-height: 1.25; letter-spacing: -.035em; }
 .odc-platform-cards p { margin: 0; color: var(--oc-gray-500); font-size: 16px; line-height: 1.75; }
 .odc-platform-cards small { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--odc-line); color: var(--oc-ink); font-size: 13px; font-weight: 600; }
+@media (min-width: 821px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .odc-platform-cards article { transition: transform 260ms cubic-bezier(.22, 1, .36, 1), box-shadow 260ms ease, background-color 260ms ease; }
+  .odc-platform-cards article:hover { transform: translateY(-4px); background: #fff; box-shadow: 0 18px 42px rgb(17 23 32 / .07); }
+}
 @media (max-width: 800px) { .odc-platform-cards { grid-template-columns: 1fr; gap: 16px; } .odc-platform-cards h3 { margin-top: 20px; } }
 
 .odc-retention__strip article { grid-template-columns: 1fr; align-items: start; }
