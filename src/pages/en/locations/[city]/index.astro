@@ -1,5 +1,5 @@
 ---
-import { CITY_SLUGS, getCityBySlug, isLocationCitySlug } from "@/lib/locations";
+import { CITY_SLUGS, getCityBySlug, isLocationCitySlug, localizeLocationText } from "@/lib/locations";
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import CityLocationsPage from "@/components/site/pages/CityLocations";
 
@@ -12,6 +12,6 @@ if (!isLocationCitySlug(city)) return Astro.redirect(`${import.meta.env.BASE_URL
 const cityData = getCityBySlug(city)!;
 ---
 
-<SiteLayout locale="en" currentPath={`/en/locations/${city}`} title={`Locations in ${cityData.name} — OrtoDent`}>
+<SiteLayout locale="en" currentPath={`/en/locations/${city}`} title={`Locations in ${localizeLocationText(cityData.name, "en")} — OrtoDent`}>
   <CityLocationsPage client:load citySlug={city} locale="en" />
 </SiteLayout>

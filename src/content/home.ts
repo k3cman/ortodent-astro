@@ -57,8 +57,12 @@ export const homeContentEn = {
   hero: {
     eyebrow: "Dental radiology",
     title: "Precise 2D and 3D diagnostics.",
-    description: "Dental imaging without an appointment. At 14 locations.\nResults available immediately through the OrtoCloud platform.",
-    locations: homeContent.hero.locations,
+    description: "Dental imaging without an appointment. 14 locations.\nResults available immediately through the OrtoCloud platform.",
+    locations: [
+      { label: "Belgrade", href: "/lokacije/beograd" },
+      { label: "Novi Sad", href: "/lokacije/novi-sad" },
+      { label: "Pančevo", href: "/lokacije/pancevo" },
+    ],
   },
   services: [
     { eyebrow: "3D diagnostics", title: "3D imaging / CBCT", description: "A detailed 3D view of anatomical structures for precise planning of implants, surgical procedures and orthodontic treatment.", href: "/usluge/3d" },

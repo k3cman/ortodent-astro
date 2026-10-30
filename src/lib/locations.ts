@@ -375,6 +375,13 @@ export const locationPath = (location: Location) =>
 export const regionPath = (region: LocationRegion) =>
   `/lokacije/${region.citySlug}/${region.slug}`;
 
+export const localizeLocationText = (
+  value: string,
+  locale: "sr" | "en",
+) => locale === "en"
+  ? value.replace(/Novi Beograd/g, "New Belgrade").replace(/Beograd/g, "Belgrade")
+  : value;
+
 export const locationCountLabel = (count: number) =>
   `${count} ${count === 1 ? "lokacija" : count >= 2 && count <= 4 ? "lokacije" : "lokacija"}`;
 

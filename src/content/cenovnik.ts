@@ -58,13 +58,13 @@ export const CENOVNIK_SECTIONS: CenovnikSection[] = [
 
 export const PRICING_SECTIONS_EN: CenovnikSection[] = [
   { id: "2d", title: "2D X-RAYS", subtitle: "The base price includes digital delivery through the OrtoCloud platform.", items: [
-    { label: "Periapical / bitewing X-ray", amount: "800" }, { label: "Panoramic X-ray", amount: "2500" }, { label: "Lateral cephalogram", amount: "2500" }, { label: "PA cephalogram", amount: "2500" }, { label: "Paranasal sinus X-ray", amount: "2500" }, { label: "TMJ X-ray", amount: "2500" }, { label: "Tomographic analysis", amount: "2500" },
+    { label: "Periapical / bitewing X-ray", amount: "800" }, { label: "Panoramic X-ray", amount: "2500" }, { label: "Lateral cephalogram", amount: "2500" }, { label: "PA cephalogram", amount: "2500" }, { label: "Paranasal sinuses X-ray", amount: "2500" }, { label: "TMJ X-ray", amount: "2500" }, { label: "Tomographic analysis", amount: "2500" },
   ] },
   { id: "3d", title: "3D IMAGING", subtitle: "The price includes digital delivery through OrtoCloud and a CD.", items: [
     { label: "3D field 5×5 cm - S", amount: "4500" }, { label: "3D field 8×5 cm - M", amount: "5500" }, { label: "3D field 12×9 cm - L", amount: "6500" }, { label: "3D maxillary sinus scan", amount: "6500" },
   ] },
   { id: "kefalometrija", title: "CEPHALOMETRIC ANALYSES", subtitle: "Available through the OrtoCloud platform.", items: [{ label: "KefAnalize", amount: "1500" }] },
-  { id: "dodaci", title: "ADDITIONAL DELIVERY SERVICES", items: [
+  { id: "dodaci", title: "ADDITIONAL SERVICES", items: [
     { label: "Film print (small film)", amount: "200" }, { label: "Film print (large film)", amount: "500" }, { label: "CD", amount: "500" },
   ] },
 ];

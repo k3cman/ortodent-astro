@@ -44,7 +44,7 @@ const useCases = [
   {
     title: "Ortodoncija",
     description:
-      "Analiza koštanih struktura lica i jasan prikaz odnosa zuba i temporomandibularnih zglobova.",
+      "Analiza koštanih struktura lica i jasan prikaz položaja zuba u vilici i njihovih međusobnih odnosa.",
   },
   {
     title: "Maksilofacijalna hirurgija",
@@ -131,7 +131,7 @@ export const Usluge3D = () => {
     <section className="od3d-fields" aria-labelledby="od3d-fields-title">
       <header className="od3d-section-heading od3d-section-heading--center">
         <p className="od3d-eyebrow">{en ? "Tailored to the area being scanned" : "Prilagođeno regiji snimanja"}</p>
-        <h2 id="od3d-fields-title">{en ? "Three field-of-view sizes" : "Tri veličine polja snimanja"}</h2>
+        <h2 id="od3d-fields-title">{en ? "Three fields of view" : "Tri veličine polja snimanja"}</h2>
       </header>
 
       <div className="od3d-fields__grid">

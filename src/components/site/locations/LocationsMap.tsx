@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useRef, useState, useId } from "react";
 import type { Map as LeafletMap, Marker as LeafletMarker } from "leaflet";
 import type { Location } from "@/lib/locations";
-import { locationPath } from "@/lib/locations";
+import { localizeLocationText, locationPath } from "@/lib/locations";
 import { sitePath } from "@/lib/paths";
 import "leaflet/dist/leaflet.css";
 import { useLocale } from "@/components/site/i18n/LocaleContext";
@@ -62,6 +62,7 @@ function MapCanvas({ locations, selectedId, focusTarget, onSelect, className }: 
 
       locations.forEach((location) => {
         const isSelected = location.id === selectedIdRef.current;
+        const address = localizeLocationText(location.address, locale);
         const marker = L.marker([location.lat, location.lng], {
           icon: L.divIcon({
             className: `od-leaflet-marker${isSelected ? " is-selected" : ""}`,
@@ -70,11 +71,11 @@ function MapCanvas({ locations, selectedId, focusTarget, onSelect, className }: 
             iconAnchor: [16, 38],
             popupAnchor: [0, -32],
           }),
-          title: `${location.name}, ${location.address}`,
+          title: `${location.name}, ${address}`,
         })
           .addTo(map)
           .bindPopup(
-            `<div class="od-map-popup"><strong>${escapeHtml(location.name)}</strong><span>${escapeHtml(location.address)}</span><a href="${sitePath(locationPath(location), locale)}">${en ? "Centre details" : "Detalji centra"} →</a></div>`,
+            `<div class="od-map-popup"><strong>${escapeHtml(location.name)}</strong><span>${escapeHtml(address)}</span><a href="${sitePath(locationPath(location), locale)}">${en ? "Centre details" : "Detalji centra"} →</a></div>`,
           );
 
         marker.on("click", () => onSelectRef.current?.(location));

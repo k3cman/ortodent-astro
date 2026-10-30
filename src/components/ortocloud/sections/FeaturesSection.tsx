@@ -16,7 +16,7 @@ const retentionPolicies = [
 
 const platformFeaturesEn = [
   { icon: Zap, title: "X-rays at your fingertips", text: "Dentists and patients can access X-rays immediately after imaging, wherever they are." },
-  { icon: Share2, title: "Easier review and consultation", text: "Clear on-screen viewing, zooming and simple sharing support consultations and second opinions." },
+  { icon: Share2, title: "Easier review and consultation", text: "A clearer on-screen display and zoom functionality make reviewing images easier. Images can be easily shared with dentists or colleagues for consultation and a second opinion." },
   { icon: FolderOpen, title: "Everything in one place", text: "An organised digital archive makes X-rays easy to find and stores data securely with less need for physical copies." },
 ];
 const retentionPoliciesEn = [

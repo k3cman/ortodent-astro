@@ -46,7 +46,7 @@ const CenovnikInfoBox = ({ locale }: { locale: "sr" | "en" }) => (
       snimak, pored <strong className="oc-price-info__accent">OrtoCloud</strong>{" "}
       pristupa, besplatno dobijate i{" "}
       <strong className="oc-price-info__accent">CD</strong> (pristup 3D
-      snimcima je moguć isključivo putem računara).</> : <>Base prices for <strong>2D</strong> X-rays include digital delivery through the <strong className="oc-price-info__accent">OrtoCloud</strong> platform (viewing, downloading and sharing). Film or CD delivery is charged separately according to the price list. Every <strong>3D</strong> scan includes <strong className="oc-price-info__accent">OrtoCloud</strong> access and a complimentary <strong className="oc-price-info__accent">CD</strong> (3D scans can only be viewed on a computer).</>}
+      snimcima je moguć isključivo putem računara).</> : <>Base prices for <strong>2D</strong> X-rays include digital delivery through the <strong className="oc-price-info__accent">OrtoCloud</strong> platform (viewing, downloading and sharing). Issuing film or CD copies is charged separately according to the price list. Every <strong>3D</strong> scan includes <strong className="oc-price-info__accent">OrtoCloud</strong> access and a complimentary <strong className="oc-price-info__accent">CD</strong> (3D scans can only be viewed on a computer).</>}
     </p>
     <SiteLink to="/ortocloud#cuvanje-podataka" className="oc-text-link oc-price-info__link">
       {locale === "sr" ? "Pravila čuvanja snimaka na OrtoCloudu" : "OrtoCloud X-ray retention policy"} <ArrowRight aria-hidden="true" />

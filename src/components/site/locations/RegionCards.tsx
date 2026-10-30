@@ -4,6 +4,7 @@ import {
   centerCountLabel,
   getLocationsByRegion,
   getRegionsByCity,
+  localizeLocationText,
   regionPath,
   type LocationCitySlug,
 } from "@/lib/locations";
@@ -16,11 +17,13 @@ export default function RegionCards({
   citySlug: LocationCitySlug;
   activeRegion?: string;
 }) {
-  const en = useLocale() === "en";
+  const locale = useLocale();
+  const en = locale === "en";
   return (
     <nav className="od-region-nav" aria-label={en ? "City areas" : "Delovi grada"}>
       {getRegionsByCity(citySlug).map((region) => {
         const count = getLocationsByRegion(citySlug, region.slug).length;
+        const regionName = localizeLocationText(region.name, locale);
 
         return (
           <SiteLink
@@ -29,7 +32,7 @@ export default function RegionCards({
             className={activeRegion === region.slug ? "is-active" : undefined}
           >
             <span>
-              <strong>{region.name}</strong>
+              <strong>{regionName}</strong>
               <small>{en ? `${count} locations` : centerCountLabel(count)}</small>
             </span>
             <ArrowRight aria-hidden="true" />

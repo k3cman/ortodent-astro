@@ -50,7 +50,7 @@ const protocols = [
 ];
 
 const protocolsEn = protocols.map((protocol) =>
-  protocol === "Tweed-Merrifield itd." ? "Tweed-Merrifield etc." : protocol,
+  protocol === "Tweed-Merrifield itd." ? "Tweed-Merrifield etc." : protocol === "Beograd" ? "Belgrade" : protocol,
 );
 
 const benefitsEn = [

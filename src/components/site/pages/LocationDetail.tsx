@@ -30,6 +30,7 @@ import {
   distanceBetweenLocations,
   getLocationBySlug,
   getLocationsByCity,
+  localizeLocationText,
   phoneHref,
   type LocationCitySlug,
 } from "@/lib/locations";
@@ -45,6 +46,8 @@ function LocationDetail({
   const locale = useLocale(); const en = locale === "en";
   const location = getLocationBySlug(citySlug, locationSlug)!;
   const photos = LOCATION_GALLERIES[`${citySlug}/${locationSlug}`] ?? [];
+  const cityName = localizeLocationText(location.city, locale);
+  const address = localizeLocationText(location.address, locale);
   const mapLocations = useMemo(() => [location], [location]);
   const relatedLocations = useMemo(
     () =>
@@ -76,13 +79,13 @@ function LocationDetail({
         <section className="od-detail-hero">
           <div className="od-shell">
             <nav className="od-breadcrumb" aria-label={en ? "Breadcrumb" : "Putanja"}>
-              <SiteLink to="/lokacije">{en ? "Locations" : "Lokacije"}</SiteLink><span>›</span><SiteLink to={`/lokacije/${citySlug}`}>{location.city}</SiteLink><span>›</span><span>{location.name}</span>
+              <SiteLink to="/lokacije">{en ? "Locations" : "Lokacije"}</SiteLink><span>›</span><SiteLink to={`/lokacije/${citySlug}`}>{cityName}</SiteLink><span>›</span><span>{location.name}</span>
             </nav>
             <div className="od-detail-hero__grid">
               <div>
                 <p className="od-kicker">{en ? "OrtoDent - dental imaging" : "OrtoDent - snimanje zuba"}</p>
                 <h1>{location.name}</h1>
-                <p className="od-detail-address"><MapPin aria-hidden="true" /> {location.address}</p>
+                <p className="od-detail-address"><MapPin aria-hidden="true" /> {address}</p>
                 {location.entranceNote && <p className="od-detail-entrance-note">{en ? "Entrance from Karađorđeva Street" : location.entranceNote}</p>}
                 <OpenNowStatus openingHours={location.openingHours} />
               </div>
@@ -109,7 +112,7 @@ function LocationDetail({
                   <div>
                     <span className="od-contact-panel__icon"><MapPin aria-hidden="true" /></span>
                     <div>
-                      <small>{en ? "Address" : "Adresa"}</small><strong>{location.address}</strong>
+                      <small>{en ? "Address" : "Adresa"}</small><strong>{address}</strong>
                       {location.entranceNote && <span className="od-contact-panel__note">{en ? "Entrance from Karađorđeva Street" : location.entranceNote}</span>}
                     </div>
                   </div>
@@ -169,7 +172,7 @@ function LocationDetail({
         {relatedLocations.length > 0 && (
           <section className="od-nearby-section">
             <div className="od-shell">
-              <header className="od-section-heading"><p className="od-kicker">{en ? "Nearby" : "U blizini"}</p><h2>{en ? "Other nearby centres" : "Ostali centri u blizini"}</h2><p>{en ? `More OrtoDent centres in ${location.city}.` : `Još nekoliko OrtoDent centara u gradu ${location.city}.`}</p></header>
+              <header className="od-section-heading"><p className="od-kicker">{en ? "Nearby" : "U blizini"}</p><h2>{en ? "Other nearby centres" : "Ostali centri u blizini"}</h2><p>{en ? `More OrtoDent centres in ${cityName}.` : `Još nekoliko OrtoDent centara u gradu ${location.city}.`}</p></header>
               <div className="od-nearby-grid">
                 {relatedLocations.map((relatedLocation) => (
                   <LocationCard

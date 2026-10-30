@@ -50,9 +50,9 @@ const EditorialCard = ({
 
 const englishCards = [
   { title: "Panoramic X-ray", image: ORTOPANTOMOGRAM_SRC, alt: "Panoramic X-ray of both jaws", text: "A panoramic X-ray provides a comprehensive view of both jaws, all teeth, jaw joints and surrounding structures. It is an important diagnostic tool at the first dental visit and during follow-up examinations." },
-  { title: "Lateral cephalogram", image: KEFALOGRAM_SRC, alt: "Lateral cephalogram", text: "A profile X-ray of the head showing bones, teeth and soft tissue. It is essential in orthodontics for assessing jaw relationships, planning fixed-appliance treatment and monitoring progress." },
+  { title: "Lateral cephalogram", image: KEFALOGRAM_SRC, alt: "Lateral cephalogram", text: "A profile X-ray of the head showing bones, teeth and soft tissue. It is essential in orthodontics for assessing jaw relationships, treatment planning and monitoring progress." },
   { title: "PA (posteroanterior) cephalogram", image: PA_KEFALOGRAM_SRC, alt: "PA cephalogram", text: "A frontal projection used to assess facial symmetry, jaw width and the position of dentoalveolar structures, particularly for orthodontic and surgical planning." },
-  { title: "Paranasal sinus X-ray", image: PARANAZALNE_SUPLJINE_SRC, alt: "Paranasal sinus X-ray", text: "Shows the maxillary, frontal and other sinuses, helping assess inflammation, cysts or polyps and the relationship between upper teeth and the sinus cavity." },
+  { title: "Paranasal sinuses X-ray", image: PARANAZALNE_SUPLJINE_SRC, alt: "Paranasal sinuses X-ray", text: "Shows the maxillary, frontal and other sinuses, helping assess inflammation, cysts or polyps and the relationship between upper teeth and the sinus cavity." },
   { title: "TMJ X-ray", image: TM_ZGLOBOVI_SRC, alt: "Temporomandibular joint X-ray", text: "Assesses the position and shape of joint surfaces with the mouth open and closed, supporting diagnosis of pain, clicking, trauma and degenerative changes." },
 ];
 
@@ -165,7 +165,7 @@ export const Usluge2D = () => {
             Lateralni kefalogram („<strong>telerendgen</strong>“) je profilni
             rendgenski snimak glave koji prikazuje kosti, zube i meka tkiva u
             bočnoj projekciji. Neophodan je u ortodonciji za analizu odnosa
-            vilica, planiranje terapije fiksnom protezom i praćenje napretka
+            vilica, planiranje terapije i praćenje napretka
             lečenja.
           </p>
         </EditorialCard>

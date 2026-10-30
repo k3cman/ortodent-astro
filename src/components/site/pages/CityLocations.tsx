@@ -16,6 +16,7 @@ import {
   centerCountLabel,
   getCityBySlug,
   getLocationsByCity,
+  localizeLocationText,
   type Location,
   type LocationCitySlug,
 } from "@/lib/locations";
@@ -56,6 +57,10 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
   const visibleLocations = locations;
   const activeLocation = visibleLocations.find((location) => location.id === selectedLocation.id) ?? visibleLocations[0];
   const heroImage = cityHeroImages[citySlug];
+  const cityName = localizeLocationText(city.name, locale);
+  const heroAlt = en && citySlug === "beograd"
+    ? "Panorama of Belgrade and the Sava and Danube rivers"
+    : heroImage.alt;
 
   return (
     <div className="od-page">
@@ -64,17 +69,17 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
         <section className="od-city-hero">
           <div className="od-shell">
             <nav className="od-breadcrumb" aria-label={en ? "Breadcrumb" : "Putanja"}>
-              <SiteLink to="/">{en ? "Home" : "Početna"}</SiteLink><span>›</span><SiteLink to="/lokacije">{en ? "Locations" : "Lokacije"}</SiteLink><span>›</span><span>{city.name}</span>
+              <SiteLink to="/">{en ? "Home" : "Početna"}</SiteLink><span>›</span><SiteLink to="/lokacije">{en ? "Locations" : "Lokacije"}</SiteLink><span>›</span><span>{cityName}</span>
             </nav>
             <div className="od-hero-grid">
               <div className="od-hero-copy">
-                <p className="od-kicker">OrtoDent {city.name}</p>
-                <h1>{en ? <>Dental imaging <span>in {city.name}</span>.</> : <>Snimanje zuba <span>u {cityLocatives[citySlug]}</span>.</>}</h1>
+                <p className="od-kicker">OrtoDent {cityName}</p>
+                <h1>{en ? <>Dental imaging <span>in {cityName}</span>.</> : <>Snimanje zuba <span>u {cityLocatives[citySlug]}</span>.</>}</h1>
                 <LocationBenefits />
               </div>
               <figure className="od-city-hero__image">
-                <img src={heroImage.src} alt={heroImage.alt} style={{ objectPosition: heroImage.position }} fetchPriority="high" decoding="async" />
-                <figcaption>{en ? `${locations.length} locations in ${city.name}` : `${centerCountLabel(locations.length)} u ${cityLocatives[citySlug]}`}</figcaption>
+                <img src={heroImage.src} alt={heroAlt} style={{ objectPosition: heroImage.position }} fetchPriority="high" decoding="async" />
+                <figcaption>{en ? `${locations.length} locations in ${cityName}` : `${centerCountLabel(locations.length)} u ${cityLocatives[citySlug]}`}</figcaption>
               </figure>
             </div>
           </div>
@@ -88,7 +93,7 @@ function CityLocations({ citySlug }: { citySlug: LocationCitySlug }) {
                 <RegionCards citySlug={citySlug} />
               </div>
             )}
-            <header className="od-centered-heading"><h2>{en ? `Centres in ${city.name}` : `Pregled centara u ${cityLocatives[citySlug]}`}</h2><span /></header>
+            <header className="od-centered-heading"><h2>{en ? `Centres in ${cityName}` : `Pregled centara u ${cityLocatives[citySlug]}`}</h2><span /></header>
             <div className="od-list-map-layout">
               <div className="od-location-list">
                 {visibleLocations.map((location) => (

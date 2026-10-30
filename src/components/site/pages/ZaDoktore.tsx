@@ -178,7 +178,7 @@ function ZaDoktore() {
               <div className="od-pro-service-card__copy">
                 <p className="od-pro-eyebrow">KefAnalize</p>
                 <h2>{en ? "Digital analyses. Support for orthodontists." : "Digitalne analize. Podrška ortodontu."}</h2>
-                <p>{en ? "Our specialist team prepares cephalometric measurements in AudaxCeph under the supervision of an orthodontic specialist. Analyses are available through OrtoCloud." : "Kefalometrijska merenja priprema naš stručni tim uz AudaxCeph softver i nadzor specijalista ortodoncije. Analize su dostupne putem OrtoClouda."}</p>
+                <p>{en ? "Cephalometric measurements are performed by an orthodontic specialist using AudaxCeph software. Analyses are available through OrtoCloud." : "Kefalometrijska merenja vrši specijalista ortodoncije uz pomoć AudaxCeph softvera. Analize su dostupne putem OrtoClouda."}</p>
                 <SiteLink to="/usluge/kefalometrija" className="od-pro-text-link">{en ? "More about cephalometric analyses" : "Više o kefalometrijskim analizama"} <ArrowRight aria-hidden="true" /></SiteLink>
               </div>
               <img src={imageSrc(kefaImage)} alt={en ? "Lateral cephalogram with digital cephalometric measurements" : "Lateralni kefalogram sa digitalno ucrtanim kefalometrijskim merenjima"} loading="lazy" decoding="async" />
@@ -235,11 +235,11 @@ function ZaDoktore() {
               </figure>
               <div className="od-pro-support__copy">
               <p className="od-pro-eyebrow">{en ? "Support" : "Podrška"}</p>
-              <h2 id="od-pro-support-title">{en ? <>Collaboration you can<br />rely on.</> : <>Saradnja na koju možete<br />da se oslonite.</>}</h2>
+              <h2 id="od-pro-support-title">{en ? <>A reliable partner<br />at every step.</> : <>Pouzdan partner<br />u svakom koraku.</>}</h2>
               <div className="od-pro-support__text">
-                <p>{en ? "Quality collaboration goes beyond excellent diagnostics: it means availability, fast communication and dependable support." : "Verujemo da kvalitetna saradnja podrazumeva više od vrhunske dijagnostike – ona podrazumeva dostupnost, brzu komunikaciju i podršku na koju možete da računate u svakom trenutku."}</p>
-                <p>{en ? "Our team supports partner dentists from image preparation and targeted anatomical views to installing and using 3D software and OrtoCloud." : "Naš tim pruža kompletnu podršku stomatolozima sa kojima sarađujemo – od izrade snimaka i prikaza ciljanih anatomskih struktura, do instalacije i korišćenja 3D softvera i OrtoCloud platforme."}</p>
-                <p>{en ? "For questions, requests or technical issues, we find a solution quickly, without complicated procedures or unnecessary waiting." : "Za sva pitanja, zahteve ili tehničke nedoumice, tu smo da brzo pronađemo rešenje. Bez komplikovanih procedura i nepotrebnog čekanja – bez obzira na to koji naš centar kontaktirate, Vaš zahtev brzo dolazi do odgovarajućeg člana našeg tima."}</p>
+                <p>{en ? "We believe that a strong partnership goes beyond outstanding diagnostic services. It means being accessible, communicating promptly, and providing support whenever you need it." : "Verujemo da kvalitetna saradnja podrazumeva više od vrhunske dijagnostike – ona podrazumeva dostupnost, brzu komunikaciju i podršku na koju možete da računate u svakom trenutku."}</p>
+                <p>{en ? "Our team provides comprehensive support to the dentists we work with, from image acquisition and the visualization of specific anatomical structures to the installation and use of 3D software and the OrtoCloud platform." : "Naš tim pruža kompletnu podršku stomatolozima sa kojima sarađujemo – od izrade snimaka i prikaza ciljanih anatomskih struktura, do instalacije i korišćenja 3D softvera i OrtoCloud platforme."}</p>
+                <p>{en ? "Whether you have a question, a specific request, or a technical issue, we are here to help you find a solution quickly. No complicated procedures or unnecessary waiting. Whichever of our centers you contact, your request will be promptly directed to the right member of our team." : "Za sva pitanja, zahteve ili tehničke nedoumice, tu smo da brzo pronađemo rešenje. Bez komplikovanih procedura i nepotrebnog čekanja – bez obzira na to koji naš centar kontaktirate, Vaš zahtev brzo dolazi do odgovarajućeg člana našeg tima."}</p>
               </div>
               </div>
             </motion.div>

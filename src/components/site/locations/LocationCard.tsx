@@ -5,6 +5,7 @@ import OpenNowStatus from "@/components/site/locations/OpenNowStatus";
 import ServiceIndicators from "@/components/site/locations/ServiceIndicators";
 import {
   locationPath,
+  localizeLocationText,
   phoneHref,
   type Location,
 } from "@/lib/locations";
@@ -25,7 +26,10 @@ export default function LocationCard({
   showDetails = false,
   onSelect,
 }: LocationCardProps) {
-  const en = useLocale() === "en";
+  const locale = useLocale();
+  const en = locale === "en";
+  const cityName = localizeLocationText(location.city, locale);
+  const address = localizeLocationText(location.address, locale);
   return (
     <motion.article
       layout
@@ -49,7 +53,7 @@ export default function LocationCard({
               )}
             </h3>
           {showCity && (
-              <span className="od-location-item__city">{location.city}</span>
+              <span className="od-location-item__city">{cityName}</span>
           )}
           </div>
         </div>
@@ -65,7 +69,7 @@ export default function LocationCard({
       </div>
 
       <div className="od-location-item__facts">
-        <p>{location.address}</p>
+        <p>{address}</p>
         <p className="od-location-item__phones">
           <Phone aria-hidden="true" />
           <span>
